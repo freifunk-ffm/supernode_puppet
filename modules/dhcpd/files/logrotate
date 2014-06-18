@@ -1,0 +1,13 @@
+/var/log/dhcpd.log
+{
+        rotate 2
+        daily
+        missingok
+        notifempty
+        delaycompress
+        compress
+        postrotate
+                invoke-rc.d rsyslog rotate > /dev/null
+        endscript
+}
+
