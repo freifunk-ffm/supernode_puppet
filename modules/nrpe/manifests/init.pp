@@ -28,5 +28,6 @@ class nrpe {
     mode    => 644,
     content => template('nrpe/nrpe.cfg.erb'),
     require => Package['nagios-nrpe-server'],
+    notify  => Service['nagios-nrpe-server'],
   }  
 }
