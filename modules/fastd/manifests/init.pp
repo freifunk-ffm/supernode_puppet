@@ -3,6 +3,10 @@ class fastd {
     ensure  => installed,
     require => [Augeas['sources_universe'], Exec['apt-get update']],
   }
+
+  packaeg { 'curl':
+    ensure  => installed,
+  }
   
   service { 'fastd':
     ensure      => running,
@@ -34,7 +38,7 @@ class fastd {
     group   => root,
     mode    => '0644',
     content => template('fastd/fastd.conf.erb'),
-    require => Package['fastd'],
+    require => [Package['fastd'], Package['curl']],
     notify  => Service['fastd'],
   }
 
