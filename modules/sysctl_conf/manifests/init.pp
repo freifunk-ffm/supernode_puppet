@@ -8,6 +8,10 @@ class sysctl_conf {
       'set net.ipv6.conf.all.forwarding 1',
       'set net.ipv6.conf.all.autoconf 0',
       'set net.ipv6.conf.all.accept_ra 0',
+      'set net.core.rmem_max 83886080',
+      'set net.core.wmem_max 83886080',
+      'set net.core.rmem_default 83886080',
+      'set net.core.wmem_default 83886080',
     ],
   }
 }
