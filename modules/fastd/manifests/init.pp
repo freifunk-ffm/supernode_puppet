@@ -4,7 +4,7 @@ class fastd {
     require => [Augeas['sources_universe'], Exec['apt-get update']],
   }
 
-  packaeg { 'curl':
+  package { 'curl':
     ensure  => installed,
   }
   
