@@ -10,6 +10,7 @@ log to "/var/log/fastd-mesh-vpn.log" level warn;
 interface "mesh-vpn";
 
 # Support xsalsa20 and aes128 encryption methods, prefer xsalsa20
+method "xsalsa20-poly1305";
 method "salsa2012+gmac";
 method "null";
 
