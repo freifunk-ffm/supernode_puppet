@@ -54,7 +54,7 @@ class supernode {
   }
   include puppet
   class { 'radvd':
-    supernodenum  => $::supernodenum,
+    ipv6_subnet  => $ipv6_subnet,
   }
   include routing
   include rsyslog
@@ -63,6 +63,7 @@ class supernode {
   class { 'tinc':
     backbone_ip_suffix  => $backbone_ip_suffix,
     ipv4_subnet_start   => $ipv4_subnet_start,
+    ipv6_subnet         => $ipv6_subnet,
     supernodenum        => $::supernodenum,
   }
   include unbound

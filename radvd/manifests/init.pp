@@ -1,4 +1,4 @@
-class radvd ($supernodenum) {
+class radvd ($ipv6_subnet) {
   package { 'radvd':
     ensure  => installed,
   }
@@ -18,5 +18,4 @@ class radvd ($supernodenum) {
     require => Package['radvd'],
     notify  => Service['radvd'],
   }
-  
 }

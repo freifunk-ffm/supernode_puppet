@@ -1,4 +1,10 @@
-class tinc ($supernodenum, $backbone_ip_suffix, $ipv4_subnet_start){
+class tinc (
+  $backbone_ip_suffix, 
+  $ipv4_subnet_start, 
+  $ipv6_subnet, 
+  $supernodenum
+) {
+
   package { 'tinc':
     ensure  => installed,
   }

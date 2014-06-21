@@ -6,7 +6,7 @@ interface bat0 {
   AdvOtherConfigFlag on;
   AdvSourceLLAddress off;
   AdvLinkMTU 1350; #1442 - fastd - batman-adv - See wiki for details
-  prefix 2001:67c:20a0:b1<%= supernodenum.to_s.rjust(2, '0') %>::/64 {
+  prefix 2001:67c:20a0:<%= ipv6_subnet %>::/64 {
     AdvOnLink on;
     AdvAutonomous on;
     AdvRouterAddr on;
