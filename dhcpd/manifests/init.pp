@@ -1,4 +1,4 @@
-class dhcpd {
+class dhcpd ($supernodenum, $ipv4_subnet_start, $ipv4_subnet_end){
   package { 'isc-dhcp-server':
     ensure  => installed,
   }
@@ -29,6 +29,10 @@ class dhcpd {
     group   => root,
     mode    => 644,
     source  => 'puppet:///modules/dhcpd/logrotate',
-    require => [Package['logrotate'], File['rsyslog.conf']],
+    require => [
+      Package['logrotate'], 
+      Package['isc-dhcp-server']
+      File['rsyslog.conf'], 
+    ],
   }
 }

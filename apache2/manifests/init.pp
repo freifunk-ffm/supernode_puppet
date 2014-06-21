@@ -3,17 +3,8 @@ class apache2 {
     ensure  => installed,
   }
 
-  package { 'logrotate':
-    ensure  => installed,
+  service { 'apache2':
+    ensure  => running,
+    enable  => true,
   }
-
-  augeas { 'apache logrotate':
-    context => '/files/etc/logrotate.d/apache2',
-    changes => [
-      'set rule/schedule "daily"',
-      'set rule/rotate "7"',
-    ],    
-    require => [Package['apache2'], Package['logrotate']], 
-  }
-
 }

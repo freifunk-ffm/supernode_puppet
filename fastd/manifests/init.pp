@@ -1,4 +1,4 @@
-class fastd {
+class fastd ($supernodenum, $fastd_key, $fastd_web_service_auth) {
   package { 'fastd':
     ensure  => installed,
     require => [Augeas['sources_universe'], Exec['apt-get update']],

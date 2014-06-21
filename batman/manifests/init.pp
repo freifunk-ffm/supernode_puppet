@@ -1,4 +1,4 @@
-class batman {
+class batman ($ipv4_suffix, $ipv4_subnet_start, $ipv6_subnet){
 
   package { 'batman-adv-dkms':
     ensure  => installed,

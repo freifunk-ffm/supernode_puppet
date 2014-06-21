@@ -1,4 +1,4 @@
-class radvd {
+class radvd ($supernodenum) {
   package { 'radvd':
     ensure  => installed,
   }

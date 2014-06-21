@@ -1,4 +1,4 @@
-class fastd_web_service {
+class fastd_web_service ($fastd_web_service_auth) {
   package { 'ruby-sinatra':
     ensure  => installed,
   }
@@ -17,10 +17,6 @@ class fastd_web_service {
     ensure    => installed,
     provider  => 'gem',
     require   => Package['rubygems'],
-  }
-
-  package { 'apache2':
-    ensure  => installed,
   }
 
   package { 'libapache2-mod-passenger':
@@ -85,11 +81,5 @@ class fastd_web_service {
     command     => '/bin/chown -R fastd_serv:fastd_serv /srv/fastd-service/',
     refreshonly => true,
     require     => [File['fastd_web_service conf'], User['fastd_serv']],
-  }
-  
-  service { 'apache2':
-    ensure  => running,
-    enable  => true,
-    require => [Package['apache2'], Augeas['apache_fastd_service']],
   }
 }

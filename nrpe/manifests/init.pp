@@ -1,4 +1,4 @@
-class nrpe {
+class nrpe ($backbone_ip_suffix) {
   package { 'nagios-nrpe-server':
     ensure => installed,
   }
