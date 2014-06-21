@@ -86,10 +86,10 @@ class fastd_web_service {
     refreshonly => true,
     require     => [File['fastd_web_service conf'], User['fastd_serv']],
   }
-
-  service { 'apache2-stop':
-    name    => 'apache2',
-    ensure  => stopped,
+  
+  service { 'apache2':
+    ensure  => running,
+    enable  => true,
     require => [Package['apache2'], Augeas['apache_fastd_service']],
   }
 }
