@@ -24,6 +24,10 @@ class fastd_web_service ($fastd_web_service_auth) {
     require => Package['apache2'],
   }
 
+  package { 'psmisc':
+    ensure  => installed,
+  }
+
   user { 'fastd_serv':
     ensure      => present,
     shell       => '/bin/bash',
@@ -51,7 +55,14 @@ class fastd_web_service ($fastd_web_service_auth) {
     command => '/usr/bin/git clone https://github.com/ff-kbu/fastd-service.git \
 /srv/fastd-service',
     creates => '/srv/fastd-service',
-    require => [Package['git'], Package['netaddr'], Package['sinatra-contrib'], Service['fastd'], Augeas['sudoers']],
+    require => [
+      Package['git'],
+      Package['netaddr'],
+      Package['sinatra-contrib'],
+      Package['psmisc'],
+      Service['fastd'],
+      Augeas['sudoers'],
+    ],
   }
 
   augeas { 'apache_fastd_service':
