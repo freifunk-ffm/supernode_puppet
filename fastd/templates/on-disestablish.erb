@@ -1,0 +1,3 @@
+#!/bin/bash
+NODE_ID=${PEER_NAME:0:12}
+/usr/bin/curl  -u <%= fastd_web_service_auth %>  -X POST -d viewpoint=fastd<%= supernodenum %> -d mac=$NODE_ID -d vpn_sw=fastd -d vpn_status=down -d ip=$PEER_ADDRESS http://register.kbu.freifunk.net/nodes/update_vpn_status

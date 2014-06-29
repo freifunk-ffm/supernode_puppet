@@ -32,19 +32,6 @@ class fastd ($supernodenum, $fastd_key, $fastd_web_service_auth) {
     require => User['fastd_serv'],
   }
 
-  file { 'fastd.conf':
-    path    => '/etc/fastd/mesh-vpn/fastd.conf',
-    owner   => root,
-    group   => root,
-    mode    => '0644',
-    content => template('fastd/fastd.conf.erb'),
-    require => [
-      Package['fastd'],
-      Package['curl'],
-    ],
-    notify  => Service['fastd'],
-  }
-
   file { 'fastd-up':
     path    => '/etc/fastd/mesh-vpn/fastd-up',
     owner   => root,
@@ -52,6 +39,42 @@ class fastd ($supernodenum, $fastd_key, $fastd_web_service_auth) {
     mode    => '0755',
     content => template('fastd/fastd-up.erb'),
     require => Package['fastd'],
+    notify  => Service['fastd'],
+  }
+
+  file { 'fastd-on-establish':
+    path    => '/etc/fastd/mesh-vpn/on-establish',
+    owner   => root,
+    group   => root,
+    mode    => '0755',
+    content => template('fastd/on-establish.erb'),
+    require => Package['fastd'],
+    notify  => Service['fastd'],
+  }
+
+  file { 'fastd-on-disestablish':
+    path    => '/etc/fastd/mesh-vpn/on-disestablish',
+    owner   => root,
+    group   => root,
+    mode    => '0755',
+    content => template('fastd/on-disestablish.erb'),
+    require => Package['fastd'],
+    notify  => Service['fastd'],
+  }
+
+  file { 'fastd.conf':
+    path    => '/etc/fastd/mesh-vpn/fastd.conf',
+    owner   => root,
+    group   => root,
+    mode    => '0644',
+    content => template('fastd/fastd.conf.erb'),
+    require => [
+      File['fastd-up'],
+      File['fastd-on-establish'],
+      File['fastd-on-disestablish'],
+      Package['fastd'],
+      Package['curl'],
+    ],
     notify  => Service['fastd'],
   }
 
