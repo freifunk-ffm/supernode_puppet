@@ -31,7 +31,7 @@ class dhcpd ($supernodenum, $ipv4_subnet_start, $ipv4_subnet_end){
     source  => 'puppet:///modules/dhcpd/logrotate',
     require => [
       Package['logrotate'], 
-      Package['isc-dhcp-server']
+      Package['isc-dhcp-server'],
       File['rsyslog.conf'], 
     ],
   }

@@ -38,7 +38,10 @@ class fastd ($supernodenum, $fastd_key, $fastd_web_service_auth) {
     group   => root,
     mode    => '0644',
     content => template('fastd/fastd.conf.erb'),
-    require => [Package['fastd'], Package['curl']],
+    require => [
+      Package['fastd'],
+      Package['curl'],
+    ],
     notify  => Service['fastd'],
   }
 
