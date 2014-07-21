@@ -23,4 +23,15 @@ class rsyslog {
     require => Package['rsyslog'],
     notify  => Service['rsyslog'],
   }
+
+  file { '01-fastd.conf':
+    ensure  => file,
+    owner   => root,
+    group   => root,
+    mode    => 644,
+    paht    => '/etc/rsyslog.d/01-fastd.conf',
+    source  => 'puppet:///modules/rsyslog/01-fastd.conf',
+    require => Package['rsyslog'],
+    notify  => Service['rsyslog'],
+  }
 }

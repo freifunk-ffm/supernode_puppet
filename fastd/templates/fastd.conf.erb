@@ -1,10 +1,7 @@
 # Log warnings and errors to stderr
-#log level warn;
 log level error;
 
-# Log everything to a log file
-#log to "/var/log/fastd-mesh-vpn.log" level debug;
-log to "/var/log/fastd-mesh-vpn.log" level warn;
+log to syslog level info;
 
 # Set the interface name
 interface "mesh-vpn";
