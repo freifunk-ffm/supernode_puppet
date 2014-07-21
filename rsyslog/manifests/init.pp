@@ -29,7 +29,7 @@ class rsyslog {
     owner   => root,
     group   => root,
     mode    => 644,
-    paht    => '/etc/rsyslog.d/01-fastd.conf',
+    path    => '/etc/rsyslog.d/01-fastd.conf',
     source  => 'puppet:///modules/rsyslog/01-fastd.conf',
     require => Package['rsyslog'],
     notify  => Service['rsyslog'],
