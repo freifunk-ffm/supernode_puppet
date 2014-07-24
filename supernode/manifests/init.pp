@@ -30,6 +30,7 @@ class supernode {
   $backbone_ip_suffix = $backbone_ip_suffixes[ $::supernodenum ]
 
   include apache2
+  include apt
   class { 'batman':
     ipv4_suffix       => $ipv4_suffix,
     ipv4_subnet_start => $ipv4_subnet_start,
