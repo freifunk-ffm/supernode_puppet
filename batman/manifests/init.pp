@@ -36,7 +36,7 @@ class batman ($ipv4_suffix, $ipv4_subnet_start, $ipv6_subnet){
       'set iface[. = "bat0"]/pre-up "modprobe batman-adv && tunctl -t mesh-vpn && batctl if add mesh-vpn"',
     ],
     require => Package['uml-utilities'],
-    notify  => Augeas['iface bat0 inet6']
+#    notify  => Augeas['iface bat0 inet6']
   }
 
 #  augeas { 'iface bat0 inet6':
