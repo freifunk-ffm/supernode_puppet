@@ -79,7 +79,7 @@ class fastd ($supernodenum, $fastd_key, $fastd_web_service_auth) {
   }
 
   exec { 'fastd_backbone':
-    command => '/usr/bin/git clone https://github.com/ff-kbu/fastd-pubkeys \
+    command => '/usr/bin/git clone https://github.com/freifunk-ffm/fastd-backbone-config \
 /etc/fastd/mesh-vpn/backbone',
     creates => '/etc/fastd/mesh-vpn/backbone', 
     require => Package['git'],

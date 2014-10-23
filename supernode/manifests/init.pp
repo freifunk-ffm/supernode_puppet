@@ -6,8 +6,8 @@ class supernode {
     fail('Supernodenum not in range 1-8')
   }
   $ipv4_subnets = {
-                1 => [0, 7], 2 => [56, 63], 3 => [8, 15], 4 => [16, 23],
-                5 => [24, 31], 6 => [32, 39], 7 => [40, 47], 8 => [48, 55]
+                1 => [0, 7], 2 => [8, 15], 3 => [16, 23], 4 => [24, 31],
+                5 => [32, 39], 6 => [40, 47], 7 => [48, 55], 8 => [56, 63]
   }
   $ipv6_subnets = {
                 1 => 'b101', 2 => 'b102', 3 => 'b103', 4 => 'b104',
@@ -21,7 +21,7 @@ class supernode {
   $ipv4_subnet_start  = $ipv4_subnets[ $::supernodenum ][0]
   $ipv4_subnet_end    = $ipv4_subnets[ $::supernodenum ][1]
   if $::supernodenum  == 1 {
-    $ipv4_suffix  = 3
+    $ipv4_suffix  = 2
   }
   else {
     $ipv4_suffix  = 1
@@ -50,9 +50,6 @@ class supernode {
     fastd_web_service_auth  => $::fastd_web_service_auth,
   }
   include iptables
-  class { 'nrpe':
-    backbone_ip_suffix  => $backbone_ip_suffix,
-  }
   include puppet
   class { 'radvd':
     ipv6_subnet  => $ipv6_subnet,
@@ -67,7 +64,7 @@ class supernode {
     ipv6_subnet         => $ipv6_subnet,
     supernodenum        => $::supernodenum,
   }
-  include unbound
+#  include unbound
 
   service { 'ssh':
     ensure => running,

@@ -5,9 +5,10 @@ class radvd ($ipv6_subnet) {
 
   service { 'radvd':
     ensure      => running,
-    enable      => true,
+# enable => true & hasstatus => true geändert durch ipv6 fuckup in ffm
+    enable      => false,
     hasrestart  => true,
-    hasstatus  => true,
+    hasstatus  => false,
     require     => Package['radvd'],
   }
   

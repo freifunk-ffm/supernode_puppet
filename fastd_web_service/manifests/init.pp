@@ -52,7 +52,7 @@ class fastd_web_service ($fastd_web_service_auth) {
   }
 
   exec { 'fastd-service':
-    command => '/usr/bin/git clone https://github.com/ff-kbu/fastd-service.git \
+    command => '/usr/bin/git clone https://github.com/freifunk-ffm/fastd-service.git \
 /srv/fastd-service',
     creates => '/srv/fastd-service',
     require => [

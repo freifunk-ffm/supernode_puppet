@@ -6,9 +6,9 @@ log to syslog level info;
 # Set the interface name
 interface "mesh-vpn";
 
-# Support xsalsa20 and aes128 encryption methods, prefer xsalsa20
-method "xsalsa20-poly1305";
+# Support xsalsa20 and aes128 encryption methods, prefer salsa2012
 method "salsa2012+gmac";
+method "xsalsa20-poly1305";
 method "null";
 
 secure handshakes no;

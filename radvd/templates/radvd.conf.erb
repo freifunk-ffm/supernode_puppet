@@ -1,19 +1,24 @@
 interface bat0 {
-  AdvSendAdvert on;
-  AdvHomeAgentFlag off;
-  MinRtrAdvInterval 10;
-  MaxRtrAdvInterval 30;
-  AdvOtherConfigFlag on;
-  AdvSourceLLAddress off;
-  AdvLinkMTU 1350; #1442 - fastd - batman-adv - See wiki for details
-  prefix 2001:67c:20a0:<%= ipv6_subnet %>::/64 {
-    AdvOnLink on;
-    AdvAutonomous on;
-    AdvRouterAddr on;
-  };
-  prefix fdd3:5d16:b5dd::/64 {
-    AdvOnLink off;
-    AdvAutonomous off;
-    AdvRouterAddr on;
-  };
+AdvSendAdvert on;
+AdvHomeAgentFlag off;
+MinRtrAdvInterval 10;
+MaxRtrAdvInterval 30;
+AdvOtherConfigFlag on;
+AdvSourceLLAddress off;
+AdvLinkMTU 1350; #1442 - fastd - batman-adv - See wiki for details
+prefix 2001:1A50:11:4:<%= ipv6_subnet %>::/64 {
+AdvOnLink on;
+AdvAutonomous on;
+AdvRouterAddr on;
+};
+    RDNSS 2001:1A50:11:4::14 {   # I have 2 DNS servers
+        # I have no options to add here
+    };
+RDNSS fddd:5d16:b5dd:0:a070:1fff:fe5f:5796 {
+};
+prefix fddd:5d16:b5dd::/64 {
+AdvOnLink on;
+AdvAutonomous on;
+AdvRouterAddr on;
+};
 };

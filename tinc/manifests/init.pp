@@ -23,17 +23,18 @@ class tinc (
 
   file { ['/etc/tinc/', '/etc/tinc/backbone']:
     ensure  => directory,
-    notify  => [Exec['tinc_nets_boot'], File['tinc_conf'], File['tinc_up'], Exec['bbkeys']],
+    # notify  => [Exec['tinc_nets_boot'], File['tinc_conf'], File['tinc_up'], Exec['bbkeys']],
+    notify  => [File['tinc_conf'], File['tinc_up'], Exec['bbkeys']],
     require => Package['tinc'],
   }
 
-  exec { 'tinc_nets_boot':
-    command => '/bin/echo "backbone" > /etc/tinc/nets.boot',
-    unless  => '/bin/grep backbone /etc/tinc/nets.boot',
-  }
+#  exec { 'tinc_nets_boot':
+#    command => '/bin/echo "backbone" > /etc/tinc/nets.boot',
+#    unless  => '/bin/grep backbone /etc/tinc/nets.boot',
+#  }
 
   exec { 'bbkeys':
-    command => '/usr/bin/git clone https://github.com/ff-kbu/bbkeys \
+    command => '/usr/bin/git clone https://github.com/freifunk-ffm/bbkeys \
 /etc/tinc/backbone/hosts',
     creates => '/etc/tinc/backbone/hosts',
     notify  => Exec['tinc_gen_key'],
