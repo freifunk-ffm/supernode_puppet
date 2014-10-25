@@ -5,6 +5,7 @@ class supernode {
   if $::supernodenum < 1 {
     fail('Supernodenum not in range 1-8')
   }
+  
   $ipv4_subnets = {
                 1 => [0, 7], 2 => [8, 15], 3 => [16, 23], 4 => [24, 31],
                 5 => [32, 39], 6 => [40, 47], 7 => [48, 55], 8 => [56, 63]
@@ -42,6 +43,8 @@ class supernode {
     ipv4_subnet_end   => $ipv4_subnet_end,
   }
   class { 'fastd':
+#    eigene_ipv4ip_start            => $ipv4_subnet_start,
+#    ipv4_suffix                    => $ipv4_suffix,
     supernodenum            => $::supernodenum,
     fastd_key               => $::fastd_key,
     fastd_web_service_auth  => $::fastd_web_service_auth,
