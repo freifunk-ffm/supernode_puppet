@@ -60,7 +60,6 @@ class supernode {
   class { 'fastd_web_service':
     fastd_web_service_auth  => $::fastd_web_service_auth,
   }
-  include iptables
   include puppet
   class { 'radvd':
     ipv6_subnet  => $ipv6_subnet,

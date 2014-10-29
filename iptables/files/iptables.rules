@@ -1,8 +1,0 @@
-*filter
-
--A FORWARD -i backbone -o bat0 -j ACCEPT
--A FORWARD -i bat0 -o backbone -j ACCEPT
--A FORWARD -j REJECT --reject-with icmp-port-unreachable
-
-COMMIT
-
