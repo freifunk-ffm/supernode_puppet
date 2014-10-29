@@ -61,6 +61,8 @@ class supernode {
   include puppet
   class { 'radvd':
     ipv6_subnet  => $ipv6_subnet,
+    ipv6_rnet => $ipv6_rnet,
+    ipv6_net => $ipv6_net,
   }
   include routing
   include rsyslog

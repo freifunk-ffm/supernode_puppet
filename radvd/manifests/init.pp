@@ -1,12 +1,11 @@
-class radvd ($ipv6_subnet) {
+class radvd ($ipv6_subnet, $ipv6_rnet, $ipv6_net) {
   package { 'radvd':
     ensure  => installed,
   }
 
   service { 'radvd':
     ensure      => running,
-# enable => true & hasstatus => true geändert durch ipv6 fuckup in ffm
-    enable      => false,
+    enable      => true,
     hasrestart  => true,
     hasstatus  => false,
     require     => Package['radvd'],
