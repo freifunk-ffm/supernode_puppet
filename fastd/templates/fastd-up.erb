@@ -9,6 +9,9 @@ killall batadv-vis
 }
 
 /sbin/ifconfig batbridge <%= ipv4_net %>.<%= ipv4_subnet_start %>.<%= ipv4_suffix %> netmask 255.255.0.0 up
+# TODO IPv6-Adresse hinzufügen
+/sbin/ip -6 addr add <%= ipv6_rnet %>::1/64 dev batbridge
+
 /sbin/ifconfig mesh-vpn hw ether 02:ff:0f:a5:7d:<%= supernodenum.to_s.rjust(2, "0") %> up
 /sbin/ip link set dev mesh-vpn up
 
@@ -19,7 +22,7 @@ killall batadv-vis
 /sbin/ifconfig bat0 up
 
 /sbin/ip rule show | grep -q "from <%= ipv4_net %>.0.0/16 lookup ffffm" || /sbin/ip rule add from <%= ipv4_net %>.0.0/16 table ffffm
-/sbin/ip -6 rule show | grep -q "from <%= ipv6_rnet %>::/64 lookup ffffm" || /sbin/ip -6 rule add from <%= ipv6_rnet %>::/64 table ffffm
+/sbin/ip -6 rule show | grep -q "from <%= ipv6_rnet_prefix %>::/<%= ipv6_rnet_mask %> lookup ffffm" || /sbin/ip -6 rule add from <%= ipv6_rnet_prefix %>::/<%= ipv6_rnet_mask %> table ffffm
 /sbin/ip -6 rule show | grep -q "from <%= ipv6_net %>::/64 lookup ffffm" || /sbin/ip -6 rule add from <%= ipv6_net %>::/64 table ffffm
 /sbin/ip route add <%= ipv4_net %>.0.0/16 dev batbridge table ffffm
 /sbin/ip route flush cache

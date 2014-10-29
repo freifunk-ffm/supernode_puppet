@@ -1,4 +1,4 @@
-class fastd ($supernodenum, $fastd_key, $fastd_web_service_auth, $ipv6_net, $ipv6_rnet) {
+class fastd ($supernodenum, $fastd_key, $fastd_web_service_auth, $ipv6_net, $ipv6_rnet, $ipv6_rnet_prefix, $ipv6_rnet_mask) {
   package { 'fastd':
     ensure  => installed,
     require => [Augeas['sources_universe'], Exec['apt-get update']],
