@@ -58,7 +58,7 @@ class supernode {
     ipv6_net                => "$ipv6_net",
     ipv6_rnet                => "$ipv6_rnet",
     ipv6_rnet_prefix	=> "$ipv6_rnet_prefix",
-    ipv6_rnet_mask 	= $::ipv6_rnet_mask,
+    ipv6_rnet_mask 	=> "$ipv6_rnet_mask",
   }
   class { 'fastd_web_service':
     fastd_web_service_auth  => $::fastd_web_service_auth,
