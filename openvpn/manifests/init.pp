@@ -2,7 +2,7 @@ class openvpn {
 
 package { 'openvpn': ensure => installed; }
 
-  service openvpn {
+  service { openvpn :
     ensure => running,
     enable => true,
     hasrestart => true,
@@ -12,7 +12,7 @@ package { 'openvpn': ensure => installed; }
 
   file { ['/etc/openvpn/']:
     ensure => directory,
-    notify => [File['openvpn_vpn-up'], File['openvpn_vpn-route'],Exec['openvpn_config_1'], Exec['openvpn_config_2'], Exec['openvpn_config_3'], Exec['openvpn_config_4'],  Exec['openvpn_config_5'] ],
+    notify => [File['openvpn-default'], File['openvpn_vpn-up'], File['openvpn_vpn-route'],Exec['openvpn_config_1'], Exec['openvpn_config_2'], Exec['openvpn_config_3'], Exec['openvpn_config_4'],  Exec['openvpn_config_5'] ],
     require => Package['openvpn'],
   }
 
@@ -54,21 +54,13 @@ package { 'openvpn': ensure => installed; }
     unless  => '/bin/grep "script-security 2" /etc/openvpn/ovpn-inet.conf',
   }
 
-   if $::osfamily == 'Debian' {
-     concat {
-      '/etc/default/openvpn':
-      owner  => root,
-      group  => root,
-      mode   => 644,
-      warn   => true;
-    }   
-
-    concat::fragment {
-      'openvpn.default.header':
-      content => template('openvpn/etc-default-openvpn.erb'),
-      target  => '/etc/default/openvpn',
-      order   => 01; 
-    }   
-  }
+   file { 'openvpn-default':
+        ensure => file,
+	mode => 0644,
+	content => template('openvpn/etc-default-openvpn.erb'),
+	path  => '/etc/default/openvpn',
+	notify => Service['openvpn']
+    }
+			      
 }
 

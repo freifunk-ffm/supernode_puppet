@@ -6,7 +6,7 @@ class collectd ( $supernodenum ) {
     ensure => running,
     enable => true,
     hasrestart => true,
-    hassstatus => true,
+    hasstatus => true,
     require => Package['collectd']
   }
   file { ['/etc/collectd']:
