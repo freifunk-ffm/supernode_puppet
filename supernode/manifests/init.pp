@@ -54,8 +54,8 @@ class supernode {
     supernodenum            => $::supernodenum,
     fastd_key               => $::fastd_key,
     fastd_web_service_auth  => $::fastd_web_service_auth,
-    ipv6_net                => $::ipv6_net,
-    ipv6_rnet                => $::ipv6_rnet,
+    ipv6_net                => "$ipv6_net",
+    ipv6_rnet                => "$ipv6_rnet",
   }
   class { 'fastd_web_service':
     fastd_web_service_auth  => $::fastd_web_service_auth,
