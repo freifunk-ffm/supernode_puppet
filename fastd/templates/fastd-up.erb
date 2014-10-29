@@ -19,6 +19,8 @@ killall batadv-vis
 /sbin/ifconfig bat0 up
 
 /sbin/ip rule show | grep -q "from <%= ipv4_net %>.0.0/16 lookup ffffm" || /sbin/ip rule add from <%= ipv4_net %>.0.0/16 table ffffm
+/sbin/ip -6 rule show | grep -q "from <%= ipv6_rnet %>::/64 lookup ffffm" || /sbin/ip -6 rule add from <%= ipv6_rnet %>::/64 table ffffm
+/sbin/ip -6 rule show | grep -q "from <%= ipv6_net %>::/64 lookup ffffm" || /sbin/ip -6 rule add from <%= ipv6_net %>::/64 table ffffm
 /sbin/ip route add <%= ipv4_net %>.0.0/16 dev batbridge table ffffm
 /sbin/ip route flush cache
 /etc/init.d/collectd restart

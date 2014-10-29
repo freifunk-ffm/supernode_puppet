@@ -7,7 +7,9 @@ class supernode {
   }
   
   $ipv4_net	    = 10.126
-
+  $ipv6_net_prefix =  2001:1A50:11:4:
+  $ipv6_rnet_prefix =  fddd:5d16:b5dd:
+  
   $ipv4_subnets = {
                 1 => [0, 7], 2 => [8, 15], 3 => [16, 23], 4 => [24, 31],
                 5 => [32, 39], 6 => [40, 47], 7 => [48, 55], 8 => [56, 63]
@@ -30,6 +32,7 @@ class supernode {
     $ipv4_suffix  = 1
   }
   $ipv6_subnet        = $ipv6_subnets[ $::supernodenum ]
+  $ipv6_rnet = $ipv6_rnet_prefix$ipv6_subnet, 
   $backbone_ip_suffix = $backbone_ip_suffixes[ $::supernodenum ]
 
   include apache2
