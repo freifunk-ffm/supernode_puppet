@@ -1,4 +1,4 @@
-class radvd ($ipv6_subnet, $ipv6_rnet, $ipv6_net) {
+class radvd ($ipv6_subnet, $ipv6_net, $ipv6_rnet) {
   package { 'radvd':
     ensure  => installed,
   }
