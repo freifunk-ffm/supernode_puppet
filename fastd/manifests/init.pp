@@ -3,9 +3,6 @@ class fastd ($supernodenum, $fastd_key, $fastd_web_service_auth) {
     ensure  => installed,
     require => [Augeas['sources_universe'], Exec['apt-get update']],
   }
-  package { 'openvpn':
-	ensure => installed,
-  }
   package { 'bridge-utils':
 	ensure => installed,
   }
@@ -19,7 +16,7 @@ class fastd ($supernodenum, $fastd_key, $fastd_web_service_auth) {
     enable      => true,
     hasrestart  => true,
     hasstatus   => true,
-    require     => [ Package['fastd'], Package['bridge-utils'], Package['openvpn'] ],
+    require     => [ Package['fastd'], Package['bridge-utils'] ],
   }
   
   file { ['/etc/fastd', '/etc/fastd/mesh-vpn']:

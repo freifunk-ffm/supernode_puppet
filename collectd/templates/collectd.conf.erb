@@ -1,0 +1,47 @@
+Hostname "fastd<%= supernodenum %>.ffm.freifunk.net"
+FQDNLookup true
+
+LoadPlugin syslog
+
+
+<Plugin syslog>
+  LogLevel info
+</Plugin>
+
+LoadPlugin cpu
+LoadPlugin df
+LoadPlugin disk
+LoadPlugin entropy
+LoadPlugin interface
+LoadPlugin iptables
+LoadPlugin irq
+LoadPlugin load
+LoadPlugin memory
+LoadPlugin network
+LoadPlugin processes
+LoadPlugin swap
+LoadPlugin uptime
+LoadPlugin users
+
+<Plugin df>
+  FSType "rootfs"
+        IgnoreSelected true
+</Plugin>
+
+<Plugin interface>
+  Interface "eth0"
+  Interface "bat0"
+  Interface "ovpn-inet"
+  Interface "batbridge"
+  Interface "backbone"
+  IgnoreSelected false
+</Plugin>
+
+<Plugin network>
+  Server "stats.bb.ffm.freifunk.net" "25826"
+  TimeToLive 128
+</Plugin>
+
+Include "/etc/collectd/filters.conf"
+Include "/etc/collectd/thresholds.conf"
+

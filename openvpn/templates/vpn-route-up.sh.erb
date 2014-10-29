@@ -1,0 +1,99 @@
+#!/bin/bash
+exec >/tmp/vpn-route.log 2>&1
+set -ix
+env
+
+table=ffffm
+
+mask2cdr ()
+{
+   # Assumes there's no "255." after a non-255 byte in the mask
+   local x=${1##*255.}
+   set -- 0^^^128^192^224^240^248^252^254^ $(( (${#1} - ${#x})*2 )) ${x%%.*}
+   x=${1%%$3*}
+   echo $(( $2 + (${#x}/4) ))
+}
+
+convertIpAndNetmaskToCIDR() {
+
+  input="${1}/$(mask2cdr $2)"
+  ip=${input%%/*}
+  net=${input##*/}
+  [[ -z $2 ]] && 
+  {
+    net=32
+    output=$1
+  }
+  
+  if [ $net -lt 32 ]
+  then
+    # volle oktette
+    foctets=$((net/8))
+  
+    # array of IP-octets
+    ipa=( $(echo ${ip//./ }) )
+  
+    output=""
+    for ((i=0;i<foctets;i++))
+    do
+      output="$output${ipa[i]}."
+    done
+  
+    roctet=$((net-(8*foctets)))
+    mask=""
+    for ((i=0;i<8;i++))
+    do
+      if [ $i -lt $roctet ]
+      then
+        mask="${mask}1"
+      else
+        mask="${mask}0"
+      fi
+    done
+  
+    output="${output}$((${ipa[foctets]}&2#$mask))"
+  
+    for ((i=foctets;i<3;i++))
+    do
+      output="${output}.0"
+    done
+  
+  fi
+  echo $output/$net
+}
+
+#stdnet=$(convertIpAndNetmaskToCIDR $ifconfig_remote $ifconfig_netmask)
+amount_v4nets=$(env|grep route_network|sort -u|tail -n 1|cut -d"=" -f1|cut -d"_" -f3)
+#ip route add $stdnet dev $dev proto kernel scope link src $ifconfig_local table $table
+
+if [[ -n $amount_v4nets ]]
+then
+for ((i=1;i<=$amount_v4nets;i++))
+do
+  gw="route_gateway_$i"
+  net="route_network_$i"
+  mask="route_netmask_$i"
+  if [[ "${!mask}" != "255.255.255.255" ]]
+  then
+    ip route add ${!net} dev $dev proto kernel scope link src $ifconfig_local table $table
+  else
+    ip route add ${!gw}  dev $dev scope link  src $ifconfig_local  table $table
+  fi
+done
+fi
+ip route add default via $route_vpn_gateway src $ifconfig_local table $table
+
+ip -6 route add ${ifconfig_ipv6_remote}/64 dev $dev table $table
+amount_v6nets=$(env|grep route_ipv6_network|sort -u|tail -n 1|cut -d"=" -f1|cut -d"_" -f4)
+if [[ -n $amount_v6nets ]]
+then
+for ((i=1;i<=$amount_v6nets;i++))
+do
+  gw="route_ipv6_gateway_$i"
+  net="route_ipv6_network_$i"
+  
+  ip -6 route add ${!net} via ${!gw} dev $dev proto kernel scope link table $table
+done
+fi
+ip -6 route add default via $ifconfig_ipv6_remote table $table
+

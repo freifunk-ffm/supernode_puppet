@@ -6,6 +6,8 @@ class supernode {
     fail('Supernodenum not in range 1-8')
   }
   
+  $ipv4_net	    = 10.126
+
   $ipv4_subnets = {
                 1 => [0, 7], 2 => [8, 15], 3 => [16, 23], 4 => [24, 31],
                 5 => [32, 39], 6 => [40, 47], 7 => [48, 55], 8 => [56, 63]
@@ -61,6 +63,11 @@ class supernode {
   include rsyslog
   include sources_apt
   include sysctl_conf
+  include openvpn
+  class { 'collectd':
+    supernodenum => $::supernodenum,
+  }
+
   class { 'tinc':
     backbone_ip_suffix  => $backbone_ip_suffix,
     ipv4_subnet_start   => $ipv4_subnet_start,

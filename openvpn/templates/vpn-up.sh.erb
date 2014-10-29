@@ -1,0 +1,18 @@
+#!/bin/sh
+dev=$1
+srcip=$4
+thisfastdip=$(ip addr show batbridge|grep "inet "|awk '{print $2}'|cut -d"/" -f1)
+ffnet=10.126.0.0/16
+
+if ip route show table ffffm|grep -q $ffnet
+then
+  ip route replace $ffnet dev batbridge src $thisfastdip table ffffm
+else
+  ip route add $ffnet dev batbridge src $thisfastdip table ffffm
+fi
+/sbin/ifconfig $dev txqueuelen 1000
+
+/etc/fw/$(hostname).fw
+
+exit 0
+
