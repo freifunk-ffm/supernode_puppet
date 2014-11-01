@@ -5,6 +5,9 @@ class supernode {
   if $::supernodenum < 1 {
     fail('Supernodenum not in range 1-8')
   }
+  if file_exists ("/etc/fw/${fqdn}.fw") == 0 {
+    fail('firewall not deployed yet - please create /etc/fw/*.fwb files' )
+  }
   
   $ipv4_net	   = '10.126'
   $ipv6_net_prefix =  '2001:1A50:11:4:'
