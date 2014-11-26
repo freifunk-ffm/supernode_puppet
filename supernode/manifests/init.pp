@@ -1,9 +1,9 @@
 class supernode {
-  if $::supernodenum > 8 {
-    fail('Supernodenum not in range 1-8')
+  if $::supernodenum > 20 {
+    fail('Supernodenum not in range 1-20')
   }
   if $::supernodenum < 1 {
-    fail('Supernodenum not in range 1-8')
+    fail('Supernodenum not in range 1-20')
   }
   if file_exists ("/etc/fw/${fqdn}.fw") == 0 {
     fail('firewall not deployed yet - please create /etc/fw/*.fwb files' )
@@ -12,19 +12,23 @@ class supernode {
   $ipv4_net	   = '10.126'
   $ipv6_net_prefix =  '2001:1A50:11:4:'
   $ipv6_rnet_prefix =  'fddd:5d16:b5dd:'
- $ipv6_rnet_mask = 48
+  $ipv6_rnet_mask = 48
 
   $ipv4_subnets = {
-                1 => [0, 7], 2 => [8, 15], 3 => [16, 23], 4 => [24, 31],
-                5 => [32, 39], 6 => [40, 47], 7 => [48, 55], 8 => [56, 63]
+                1 => [0, 7], 2 => [8, 15], 3 => [16, 23], 4 => [24, 31], 5 => [32, 39], 
+                6 => [40, 47], 7 => [48, 55], 8 => [56, 63], 9 => [64, 71], 10 => [72, 79],
+                11 => [80, 87], 12 => [88, 95], 13 => [96, 103], 14 => [104, 111], 15 => [112, 129],
+                16 => [130, 137], 17 => [138, 145], 18 => [146, 153], 19 => [154, 161], 20 => [162, 169]
   }
   $ipv6_subnets = {
-                1 => 'b101', 2 => 'b102', 3 => 'b103', 4 => 'b104',
-                5 => 'b105', 6 => 'b106', 7 => 'b107', 8 => 'b108'
+                1 => 'b101', 2 => 'b102', 3 => 'b103', 4 => 'b104', 5 => 'b105', 
+                6 => 'b106', 7 => 'b107', 8 => 'b108', 9 => 'b109', 10 => 'b110',
+                11 => 'b111', 12 => 'b112', 13 => 'b113', 14 => 'b114', 15 => 'b115', 
+                16 => 'b116', 17 => 'b117', 18 => 'b118', 19 => 'b119', 20 => 'b120'
   }
   $backbone_ip_suffixes = {
-                1 => 21, 2 => 22, 3 => 23, 4 => 24,
-                5 => 25, 6 => 26, 7 => 27, 8 => 28
+                1 => 21, 2 => 22, 3 => 23, 4 => 24, 5 => 25, 6 => 26, 7 => 27, 8 => 28, 9 => 29, 10 => 30,
+                11 => 31, 12 => 32, 13 => 33, 14 => 34, 15 => 35, 16 => 36, 17 => 37, 18 => 38, 19 => 39, 20 => 40,
   }            
 
   $ipv4_subnet_start  = $ipv4_subnets[ $::supernodenum ][0]
@@ -88,6 +92,10 @@ class supernode {
     supernodenum        => $::supernodenum,
   }
 #  include unbound
+  class { 'postfix': 
+    fastd_key	=> $::fastd_key,
+    fastd_num	=> $::supernodenum,
+  }
 
   service { 'ssh':
     ensure => running,
