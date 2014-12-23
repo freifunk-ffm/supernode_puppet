@@ -12,7 +12,7 @@ package { 'openvpn': ensure => installed; }
 
   file { ['/etc/openvpn/']:
     ensure => directory,
-    notify => [File['openvpn-default'], File['openvpn_vpn-up'], File['openvpn_vpn-route'],Exec['openvpn_config_1'], Exec['openvpn_config_2'], Exec['openvpn_config_3'], Exec['openvpn_config_4'],  Exec['openvpn_config_5'], Exec['openvpn_config_6'] ],
+    notify => [File['openvpn-default'], File['openvpn_vpn-up'], File['openvpn_vpn-route'],Exec['openvpn_config_1'], Exec['openvpn_config_2'], Exec['openvpn_config_3'], Exec['openvpn_config_4'],  Exec['openvpn_config_5'], Exec['openvpn_config_6'],Exec['openvpn_config_7'],Exec['openvpn_config_8'] ],
     require => Package['openvpn'],
   }
 
@@ -43,6 +43,13 @@ package { 'openvpn': ensure => installed; }
   exec { 'openvpn_config_1':
     command => '/bin/echo "route-up vpn-route-up.sh" >> /etc/openvpn/ovpn-inet.conf',
     unless  => '/bin/grep "route-up vpn-route-up.sh" /etc/openvpn/ovpn-inet.conf',
+  }
+  exec { 'openvpn_config_7':
+    command => '/bin/echo "ping-restart 60" >> /etc/openvpn/ovpn-inet.conf',
+    unless  => '/bin/grep "ping-restart" /etc/openvpn/ovpn-inet.conf',
+  }
+  exec { 'openvpn_config_8':
+    command => 'sed "d/ping-exit.*/" -i /etc/openvpn/ovpn-inet.conf',
   }
   exec { 'openvpn_config_2':
     command => '/bin/echo "route-noexec" >> /etc/openvpn/ovpn-inet.conf',
