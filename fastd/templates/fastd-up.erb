@@ -12,7 +12,7 @@ killall batadv-vis
 # TODO IPv6-Adresse hinzufügen
 /sbin/ip -6 addr add <%= ipv6_rnet %>::1/64 dev batbridge
 
-/sbin/ifconfig mesh-vpn hw ether 02:ff:0f:a5:7d:<%= supernodenum.to_s.rjust(2, "0") %> up
+/sbin/ifconfig mesh-vpn hw ether 02:ff:0f:<%= rndmac %>:7d:<%= supernodenum.to_s.rjust(2, "0") %> up
 /sbin/ip link set dev mesh-vpn up
 
 /usr/sbin/batctl if add mesh-vpn

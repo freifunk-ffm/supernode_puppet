@@ -5,7 +5,7 @@ $ipv4_subnet_start  =255
 $ipv4_suffix	    =12
 $backbone_ip_suffix =12
 $ipv6_subnet        =b000
-
+$rndmac=fqdn_rand(99)
 
 # DAs Anmelden dieses hosts am register wird zwar nicht benötigt, um ein fork des moduls zu vermeiden, wird deshalb das pw hier trotzdem gesetzt das passwort wird serverseitig natürlich nicht eingesetzt
 $fastd_web_service_auth =""
