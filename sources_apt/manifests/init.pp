@@ -50,6 +50,31 @@ class sources_apt {
     require => Augeas['sources_universe'],
   }
 
+  augeas { 'sources_backports':
+    context => '/files/etc/apt/sources.list',
+    changes => [
+      'set 01/type deb',
+      'set 01/uri "http://http.debian.net/debian"',
+      'set 01/distribution wheezy-backports',
+      'set 01/component main',
+    ],
+    onlyif  => 'match *[uri="http://http.debian.net/debian"] size==0',
+    require => Service['puppet'],
+    notify  => Exec['apt-get update'],
+  }
+
+#  apt::key { 'universe_backports':
+#    ensure  => present,
+#    keyid   => 'CB201D9C',
+#    notify  => Exec['apt-get update'],
+#    require => Augeas['sources_backports'],
+#  }
+
+
+
+
+
+
   exec { 'apt-get update':
     command     => '/usr/bin/apt-get update',
     require     => Apt::Key['universe_factory'],

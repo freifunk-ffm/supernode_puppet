@@ -1,8 +1,7 @@
 class tinc (
   $backbone_ip_suffix, 
   $ipv4_subnet_start, 
-  $ipv6_subnet, 
-  $supernodenum
+  $ipv6_subnet 
 ) {
 
   package { 'tinc':
@@ -57,7 +56,7 @@ class tinc (
 
   exec { 'concat_subnet_key':
     command     => "/bin/cat /etc/tinc/backbone/subnet /etc/tinc/backbone/rsa_key.pub \
-> /etc/tinc/backbone/hosts/fastd$supernodenum",
+> /etc/tinc/backbone/hosts/$(/bin/hostname -s)",
     refreshonly => true,
     require     => [Exec['tinc_gen_key'], File['tinc_pub_subnet']],
     creates     => "/etc/tinc/backbone/fastd$supernodenum",

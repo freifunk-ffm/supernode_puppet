@@ -1,8 +1,20 @@
-class fastd ($supernodenum, $fastd_key, $fastd_web_service_auth, $ipv6_net, $ipv6_rnet, $ipv6_rnet_prefix, $ipv6_rnet_mask) {
+class fastd ($supernodenum, $fastd_key, $ipv6_net, $ipv6_rnet, $ipv6_rnet_prefix, $ipv6_rnet_mask) {
   package { 'fastd':
     ensure  => installed,
     require => [Augeas['sources_universe'], Exec['apt-get update']],
   }
+  package { 'git':
+	ensure => installed,
+  }
+
+  user { 'fastd_serv':
+    ensure      => present,
+    shell       => '/bin/bash',
+    home        => '/home/fastd_serv',
+    managehome  => true,
+  }
+
+
   package { 'bridge-utils':
 	ensure => installed,
   }

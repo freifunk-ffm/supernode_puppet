@@ -61,7 +61,6 @@ class supernode {
 #    ipv4_suffix                    => $ipv4_suffix,
     supernodenum            => $::supernodenum,
     fastd_key               => $::fastd_key,
-    fastd_web_service_auth  => $::fastd_web_service_auth,
     ipv6_net                => "$ipv6_net",
     ipv6_rnet                => "$ipv6_rnet",
     ipv6_rnet_prefix	=> "$ipv6_rnet_prefix",
@@ -92,10 +91,7 @@ class supernode {
     supernodenum        => $::supernodenum,
   }
 #  include unbound
-  class { 'postfix': 
-    fastd_key	=> $::fastd_key,
-    fastd_num	=> $::supernodenum,
-  }
+  include postfix 
 
   service { 'ssh':
     ensure => running,
