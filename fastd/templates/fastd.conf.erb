@@ -7,6 +7,7 @@ log to syslog level info;
 interface "mesh-vpn";
 
 # Support xsalsa20 and aes128 encryption methods, prefer salsa2012
+method "salsa2012+umac";
 method "salsa2012+gmac";
 method "xsalsa20-poly1305";
 # method "null";
