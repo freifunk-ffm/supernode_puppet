@@ -97,6 +97,9 @@ class supernode {
     ensure => running,
   }
 
+  package { 'ntp':
+    ensure  => installed,
+  }
   package { 'vim':
     ensure  => installed,
   }
