@@ -73,6 +73,9 @@ class lxchost {
     ensure => running,
   }
 
+  package { 'ntp':
+    ensure  => installed,
+  }
   package { 'vim':
     ensure  => installed,
   }
