@@ -92,10 +92,7 @@ class supernode {
   }
 #  include unbound
   include postfix 
-
-  service { 'ssh':
-    ensure => running,
-  }
+include sshd
 
   package { 'ntp':
     ensure  => installed,

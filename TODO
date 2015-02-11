@@ -1,0 +1,3 @@
+* firewall bei lxchost, lxccontainer und supernode automatisch nach dem Starten
+aktivieren
+* checkvpn-script einbauen

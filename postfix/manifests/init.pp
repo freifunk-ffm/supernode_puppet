@@ -21,6 +21,12 @@ class postfix () {
   path => "['/usr/bin','/bin', '/usr/sbin']",
       unless  => '/bin/grep mail.bb.ffm.freifunk.net /etc/postfix/sasl_passwd'
   }
+  
+  exec { 'postfix_config_7':
+  command => 'sed -i "/root:/d" /etc/aliases; /bin/bash -lc "echo \"root: admin@ffm.freifunk.net\"  >> /etc/aliases; newaliases"',
+  path => "['/usr/bin','/bin', '/usr/sbin']",
+  }
+notify {"MAKE SURE TO run doveadm pw -ssha enter the PASSWORD and put $(/bin/hostname -s) into /etc/dovecot/passwd on mail.bb.ffm.freifunk.net":}
 notify {"MAKE SURE TO run doveadm pw -ssha enter the PASSWORD and put $(/bin/hostname -s) into /etc/dovecot/passwd on mail.bb.ffm.freifunk.net":}
 
 }
