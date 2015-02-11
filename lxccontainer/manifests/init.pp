@@ -10,8 +10,6 @@ class lxccontainer {
   include puppet
   include rsyslog
   include sources_apt
-  
-
   include postfix
 
   class { 'fastd':
@@ -24,15 +22,12 @@ class lxccontainer {
     ipv6_rnet_prefix    => "$ipv6_rnet_prefix",
     ipv6_rnet_mask      => "$ipv6_rnet_mask",
   }
-
   package { 'iptables': 
     ensure => installed, 
   }
-
   service { 'ssh':
     ensure => running,
   }
-
   package { 'ntp':
     ensure  => installed,
   }
@@ -44,5 +39,10 @@ class lxccontainer {
   }
   package { 'screen':
     ensure  => installed,
+  }
+  exec { 'firewall':
+    command => 'sed "s|exit|/etc/fw/*.fw;exit|" /etc/rc.local',
+    path => "['/usr/bin','/bin', '/usr/sbin']",
+    unless  => '/bin/grep /etc/fw/ /etc/rc.local'
   }
 }
