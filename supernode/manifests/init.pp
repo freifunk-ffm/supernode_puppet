@@ -92,7 +92,7 @@ class supernode {
   }
 #  include unbound
   include postfix 
-include sshd
+  include sshd
 
   package { 'ntp':
     ensure  => installed,
@@ -100,4 +100,10 @@ include sshd
   package { 'vim':
     ensure  => installed,
   }
+  exec { 'firewall':
+    command => 'sed "s|exit|/etc/fw/*.fw;exit|" /etc/rc.local',
+    path => "['/usr/bin','/bin', '/usr/sbin']",
+    unless  => '/bin/grep /etc/fw/ /etc/rc.local'
+  }
+
 }
