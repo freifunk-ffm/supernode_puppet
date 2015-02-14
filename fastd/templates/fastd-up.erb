@@ -30,3 +30,4 @@ killall batadv-vis
 /sbin/ip -6 route add <%= ipv6_net %>::/64 dev batbridge table ffffm
 /sbin/ip route flush cache
 /etc/init.d/collectd restart
+/etc/init.d/isc-dhcp-server restart

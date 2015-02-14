@@ -91,10 +91,7 @@ class supernode {
   }
 #  include unbound
   include postfix 
-
-  service { 'ssh':
-    ensure => running,
-  }
+  include sshd
 
   package { 'ntp':
     ensure  => installed,
@@ -102,4 +99,10 @@ class supernode {
   package { 'vim':
     ensure  => installed,
   }
+  exec { 'firewall':
+    command => 'sed "s|exit|/etc/fw/*.fw;exit|" /etc/rc.local',
+    path => "['/usr/bin','/bin', '/usr/sbin']",
+    unless  => '/bin/grep /etc/fw/ /etc/rc.local'
+  }
+
 }
