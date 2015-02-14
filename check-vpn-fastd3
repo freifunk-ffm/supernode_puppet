@@ -1,0 +1,121 @@
+#!/bin/bash
+# Script for automated update of default multipath routes based on
+# state of available tunnel interfaces. Execute in regular intervals
+# via cron.
+#set -ix
+#INTERFACES=(tun0 tun1 tun2 tun3)	# Array of all VPN interfaces
+INTERFACES=(ovpn-inet)	# Array of all VPN interfaces
+BANDWIDTHS=(7 16 16 17)		# Approximate effective bandwidths (Mbit/s) of interfaces for use as weights in multipath routes
+PING_DEST=8.8.8.8		# Ping destination
+TABLE=ffffm			# Name of routing table
+BATMAN_IF=bat0			# Batman-adv interface
+
+echo -n "Test available interfaces:"
+# Iterate through interfaces
+i=0
+while [[ $i -lt ${#INTERFACES[@]} ]]
+do
+  echo -n " ${INTERFACES[$i]}"
+  # Check whether ping destination reachable via current interface
+  ping -q -I ${INTERFACES[$i]} $PING_DEST -c 4 -i 1 -W 5 > /dev/null 2>&1
+  if [ $? -eq 0 ]
+  then
+    # If yes, save interface and corresponding weight
+    ACTIVE_INTERFACES+=(${INTERFACES[$i]})
+    ACTIVE_WEIGHTS+=(${BANDWIDTHS[$i]})
+    BANDWIDTH=$[$BANDWIDTH + ${BANDWIDTHS[$i]}] 
+  else
+    INACTIVE_INTERFACES+=(${INTERFACES[$i]})
+  fi
+  i=$[$i+1]
+done
+# Append unit to bandwidth
+BANDWIDTH+="mbit"
+
+#echo
+#echo "Active interfaces: ${ACTIVE_INTERFACES[@]}"
+#echo "Inactive interfaces: ${INACTIVE_INTERFACES[@]}"
+#echo "Total bandwidth: $BANDWIDTH"
+
+# Check whether we have no active interfaces
+if [ ${#ACTIVE_INTERFACES[@]} -eq 0 ]
+then
+  # Deactivate gateway mode
+  /usr/sbin/batctl -m $BATMAN_IF gw off
+  # Shutdown DHCP server to prevent renewal of leases
+  service isc-dhcp-server stop
+  # Shutdown radvd daemon to prevent advertisment of server as gateway
+  service radvd stop
+
+  # Inform user and log change
+  echo "We have no active interfaces. Batman-adv gateway mode has been disabled. DHCP and IPv6 router advertisement daemons have been stopped." >&2
+  logger -t check-mpr-gateway "We have no active interfaces. Batman-adv gateway mode has been disabled. DHCP and IPv6 router advertisement daemons have been stopped."
+
+  # Exit with error code
+  exit 1
+fi
+
+CURRENT_ROUTE=$(ip route show table $TABLE to 0.0.0.0/1)
+[[ -z $CURRENT_ROUTE ]] && CURRENT_ROUTE=$(ip route show table $TABLE to 0.0.0.0/0)
+UPDATE_ROUTE=false
+
+echo "Current route: $CURRENT_ROUTE"
+
+# Iterate through active interfaces
+for IF in ${ACTIVE_INTERFACES[@]}
+do
+  # Check whether current interface is NOT contained in default route
+  if ! [[ $CURRENT_ROUTE =~ .*$IF.* ]]; then
+    # If not, require update of default route
+    UPDATE_ROUTE=true
+  fi
+done
+
+# Iterate through inactive interfaces
+for IF in ${INACTIVE_INTERFACES[@]}
+do
+  # Check whether current interface is contained in default route
+  if [[ $CURRENT_ROUTE =~ ".*$IF.*"  ]]
+  then
+    # If yes, require update of default route
+    UPDATE_ROUTE=true
+  fi
+done
+
+# Check whether default route needs to be updated
+if $UPDATE_ROUTE
+then
+  # Iterate through active interfaces
+  i=0
+  while [[ $i -lt ${#ACTIVE_INTERFACES[@]} ]]
+  do
+    # Extract peer address of current interface
+    HOP_ADDR=$(ip addr show ${ACTIVE_INTERFACES[$i]} | awk '/peer/ {gsub(/\/.*$/, "", $4); print $4}')
+    # Expand "nexthop" configuration
+    NEXTHOPS+="nexthop via $HOP_ADDR dev ${ACTIVE_INTERFACES[$i]} weight ${ACTIVE_WEIGHTS[$i]} "
+    i=$[$i+1]
+  done
+  # Update default route
+  [[ -z $NEXTHOPS ]] && eval "ip route replace table $TABLE 0.0.0.0/1 $NEXTHOPS"
+  [[ -z $NEXTHOPS ]] && eval "ip route replace table $TABLE 128.0.0.0/1 $NEXTHOPS"
+
+  # Inform user and log change
+  echo "New route: $(ip route show table $TABLE to 0.0.0.0/1)"
+  logger -t check-mpr-gateway "Active interfaces have changed. The new active interfaces are: ${ACTIVE_INTERFACES[@]}"
+  logger -t check-mpr-gateway "The default route has been updated: $(ip route show table $TABLE to 0.0.0.0/1)"
+
+  # Check whether gateway mode needs to be activated
+  if [ $(/usr/sbin/batctl -m $BATMAN_IF gw | awk '{print $1}') == "off" ] 
+  then
+    # Activate gateway mode
+    /usr/sbin/batctl -m $BATMAN_IF gw server $BANDWIDTH
+    # Restart DHCP server and radvd daemon
+    service isc-dhcp-server start
+    service radvd start
+
+    # Inform user and log change
+    echo "Batman-adv gateway mode has been enabled. DHCP and IPv6 router advertisement daemons have been started." >&2
+    logger -t check-mpr-gateway "Batman-adv gateway mode has been enabled. DHCP and IPv6 router advertisement daemons have been started."
+  fi
+fi
+
