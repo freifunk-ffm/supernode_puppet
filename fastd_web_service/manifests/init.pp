@@ -28,12 +28,12 @@ class fastd_web_service ($fastd_web_service_auth) {
     ensure  => installed,
   }
 
-  user { 'fastd_serv':
-    ensure      => present,
-    shell       => '/bin/bash',
-    home        => '/home/fastd_serv',
-    managehome  => true,
-  }
+#  user { 'fastd_serv':
+#    ensure      => present,
+#    shell       => '/bin/bash',
+#    home        => '/home/fastd_serv',
+#    managehome  => true,
+#  }
 
   package { 'sudo':
     ensure  => installed,

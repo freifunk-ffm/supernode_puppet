@@ -8,9 +8,9 @@ class tinc (
     ensure  => installed,
   }
   
-  package { 'git':
-    ensure  => installed,
-  }
+#  package { 'git':
+#    ensure  => installed,
+#  }
 
   service { 'tinc':
     ensure      => running,

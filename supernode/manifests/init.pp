@@ -5,9 +5,9 @@ class supernode {
   if $::supernodenum < 1 {
     fail('Supernodenum not in range 1-20')
   }
-  if file_exists ("/etc/fw/${fqdn}.fw") == 0 {
-    fail('firewall not deployed yet - please create /etc/fw/*.fwb files' )
-  }
+#  if file_exists ("/etc/fw/*.fw") == 0 {
+#    fail('firewall not deployed yet - please create /etc/fw/*.fwb files' )
+#  }
   
   $ipv4_net	   = '10.126'
   $ipv6_net_prefix =  '2001:1A50:11:4:'
@@ -88,7 +88,6 @@ class supernode {
     backbone_ip_suffix  => $backbone_ip_suffix,
     ipv4_subnet_start   => $ipv4_subnet_start,
     ipv6_subnet         => $ipv6_subnet,
-    supernodenum        => $::supernodenum,
   }
 #  include unbound
   include postfix 

@@ -17,7 +17,7 @@ class postfix () {
   }
   #"[mail.bb.ffm.freifunk.net] user:pass; postmap file
   exec { 'postfix_config_6':
-  command => '/bin/bash -lc "echo \"[mail.bb.ffm.freifunk.net]  $(/bin/hostname -s):$(/usr/bin/pwgen 10 -1)\" > /etc/postfix/sasl_passwd; /usr/sbin/postmap /etc/postfix/sasl_passwd;"',
+  command => '/bin/bash -c "echo \"[mail.bb.ffm.freifunk.net]  $(/bin/hostname -s):$(/usr/bin/pwgen 10 -1)\" > /etc/postfix/sasl_passwd; /usr/sbin/postmap /etc/postfix/sasl_passwd;"',
   path => "['/usr/bin','/bin', '/usr/sbin']",
       unless  => '/bin/grep mail.bb.ffm.freifunk.net /etc/postfix/sasl_passwd'
   }

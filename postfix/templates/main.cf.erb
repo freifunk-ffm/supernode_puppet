@@ -21,7 +21,8 @@ mailbox_size_limit = 0
 recipient_delimiter = +
 inet_interfaces = all
 smtp_sasl_auth_enable=yes
-smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd #"[mail.bb.ffm.freifunk.net] user:pass; postmap file
+smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd 
+#"[mail.bb.ffm.freifunk.net] user:pass; postmap file
 smtp_sasl_security_options = noanonymous
 smtp_tls_security_level = may
 smtpd_recipient_restrictions = permit_mynetworks, permit_auth_destination, reject

@@ -49,7 +49,7 @@ package { 'openvpn': ensure => installed; }
     unless  => '/bin/grep "ping-restart" /etc/openvpn/ovpn-inet.conf',
   }
   exec { 'openvpn_config_8':
-    command => 'sed "d/ping-exit.*/" -i /etc/openvpn/ovpn-inet.conf',
+    command => '/bin/sed "d/ping-exit.*/" -i /etc/openvpn/ovpn-inet.conf',
   }
   exec { 'openvpn_config_2':
     command => '/bin/echo "route-noexec" >> /etc/openvpn/ovpn-inet.conf',
