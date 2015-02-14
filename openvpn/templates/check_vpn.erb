@@ -43,9 +43,9 @@ then
   # Deactivate gateway mode
   /usr/sbin/batctl -m $BATMAN_IF gw off
   # Shutdown DHCP server to prevent renewal of leases
-  service isc-dhcp-server stop
+  /usr/sbin/service isc-dhcp-server stop
   # Shutdown radvd daemon to prevent advertisment of server as gateway
-  service radvd stop
+  /usr/sbin/service radvd stop
 
   # Inform user and log change
   echo "We have no active interfaces. Batman-adv gateway mode has been disabled. DHCP and IPv6 router advertisement daemons have been stopped." >&2
@@ -110,8 +110,8 @@ then
     # Activate gateway mode
     /usr/sbin/batctl -m $BATMAN_IF gw server $BANDWIDTH
     # Restart DHCP server and radvd daemon
-    service isc-dhcp-server start
-    service radvd start
+    /usr/sbin/service isc-dhcp-server start
+    /usr/sbin/service radvd start
 
     # Inform user and log change
     echo "Batman-adv gateway mode has been enabled. DHCP and IPv6 router advertisement daemons have been started." >&2
