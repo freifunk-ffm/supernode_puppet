@@ -19,6 +19,19 @@ class fastd_web_service ($fastd_web_service_auth) {
     ensure    => '1.5.2',
     require   => Package['rubygems'],
   }
+  
+  define remove-gem ($version) {
+    exec { "remove-gem-${name}-version-${version}":
+      command => "gem uninstall ${name} -v=${version}",
+      unless  => "test `gem list --local | grep -q \"${name}.*${version}\"; echo $?` -ne 0",
+      path    => ['/usr/bin', '/bin'],
+    }
+  } 
+
+  remove-gem {'rack':
+    version => '1.6.0',
+  }
+
   package { 'netaddr':
     ensure    => installed,
     provider  => 'gem',
