@@ -13,6 +13,12 @@ class fastd_web_service ($fastd_web_service_auth) {
     require   => [Package['rubygems'], Package['ruby-sinatra']],
   }
 
+  package { 'rack':
+    ensure    => installed,
+    provider  => 'gem',
+    ensure    => '1.5.2',
+    require   => Package['rubygems'],
+  }
   package { 'netaddr':
     ensure    => installed,
     provider  => 'gem',
