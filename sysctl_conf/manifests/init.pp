@@ -12,6 +12,9 @@ class sysctl_conf {
       'set net.core.wmem_max 83886080',
       'set net.core.rmem_default 83886080',
       'set net.core.wmem_default 83886080',
+      'set net.ipv4.conf.all.send_redirects 0',
+      'set net.ipv4.conf.batbridge.send_redirects 0',
+
     ],
   }
 }
