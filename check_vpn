@@ -2,11 +2,11 @@
 # Script for automated update of default multipath routes based on
 # state of available tunnel interfaces. Execute in regular intervals
 # via cron.
-# set -ix
+set -ix
 #INTERFACES=(tun0 tun1 tun2 tun3)       # Array of all VPN interfaces
 INTERFACES=(ovpn-inet)  # Array of all VPN interfaces
 BANDWIDTHS=(7 16 16 17)         # Approximate effective bandwidths (Mbit/s) of interfaces for use as weights in multipath routes
-PING_DEST=10.8.0.1              # Ping destination
+PING_DEST=8.8.8.8              # Ping destination
 TABLE=ffffm                     # Name of routing table
 BATMAN_IF=bat0                  # Batman-adv interface
 
@@ -59,7 +59,7 @@ CURRENT_ROUTE=$(ip route show table $TABLE to 0.0.0.0/1)
 [[ -z $CURRENT_ROUTE ]] && CURRENT_ROUTE=$(ip route show table $TABLE to 0.0.0.0/0)
 UPDATE_ROUTE=false
 
-echo "Current route: $CURRENT_ROUTE"
+# echo "Current route: $CURRENT_ROUTE"
 
 # Iterate through active interfaces
 for IF in ${ACTIVE_INTERFACES[@]}
