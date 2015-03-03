@@ -100,7 +100,7 @@ class supernode {
     ensure  => installed,
   }
   exec { 'firewall':
-    command => 'sed "s|exit|/etc/fw/*.fw;exit|" /etc/rc.local',
+    command => '/bin/sed "s|exit|/etc/fw/*.fw;exit|" /etc/rc.local',
     path => "['/usr/bin','/bin', '/usr/sbin']",
     unless  => '/bin/grep /etc/fw/ /etc/rc.local'
   }
