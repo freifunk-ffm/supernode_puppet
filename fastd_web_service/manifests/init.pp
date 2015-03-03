@@ -14,9 +14,8 @@ class fastd_web_service ($fastd_web_service_auth) {
   }
 
   package { 'rack':
-    ensure    => installed,
+    ensure    => [ installed, '1.5.2' ],
     provider  => 'gem',
-    ensure    => '1.5.2',
     require   => Package['rubygems'],
   }
   
