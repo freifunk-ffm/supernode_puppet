@@ -5,9 +5,9 @@ class sshd {
     ensure => running,
   }
 
-  file {
+  file { '.ssh'
     ensure => directory,
-    path => '/root/.ssh',
+    path => '/root',
     mode => 0700,
   }
   
