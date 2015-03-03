@@ -54,7 +54,9 @@ package { 'openvpn': ensure => installed; }
   }
   exec { 'openvpn_config_8':
     command => '/bin/sed "d/ping-exit.*/" -i /etc/openvpn/ovpn-inet.conf',
+    unless  => '/bin/grep -q -v ping-exit /etc/openvpn/ovpn-inet.conf',
   }
+
   exec { 'openvpn_config_2':
     command => '/bin/echo "route-noexec" >> /etc/openvpn/ovpn-inet.conf',
     unless  => '/bin/grep "route-noexec" /etc/openvpn/ovpn-inet.conf',
