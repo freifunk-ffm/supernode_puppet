@@ -1,6 +1,6 @@
 class sshd {
 
-  package { 'openssh': ensure => installed, }
+  package { 'openssh-server': ensure => installed, }
   service { 'ssh':
     ensure => running,
   }
