@@ -39,10 +39,16 @@ class lxccontainer {
   }
   package { 'screen':
     ensure  => installed,
+
   }
   exec { 'firewall':
-    command => 'sed "s|exit|/etc/fw/*.fw;exit|" /etc/rc.local',
+    command => '/bin/sed "s|exit|/etc/fw/*.fw;exit|" -i /etc/rc.local',
     path => "['/usr/bin','/bin', '/usr/sbin']",
     unless  => '/bin/grep /etc/fw/ /etc/rc.local'
+  }
+  exec { 'prefer ipv4':
+    command => 'echo "precedence ::ffff:0:0/96  100" >>/etc/gai.conf',
+    path => "['/usr/bin','/bin', '/usr/sbin']",
+    unless => '/bin/grep "^precedence ::ffff:0:0/96  100" /etc/gai.conf'
   }
 }
