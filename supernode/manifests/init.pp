@@ -20,6 +20,12 @@ class supernode {
     content => template('supernode/check_vpn-cron.erb'),
     mode => 0755,
   }
+  file { '/root/testmessage':
+    ensure => file,
+    path => '/root/testmessage',
+    content => template('supernode/testmessage.erb'),
+    mode => 0644,
+  }
 			#
   $ipv4_net	   = '10.126'
   $ipv6_net_prefix =  '2001:1A50:11:4:'
