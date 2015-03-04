@@ -5,6 +5,10 @@ class supernode {
   if $::supernodenum < 1 {
     fail('Supernodenum not in range 1-20')
   }
+  file { '/etc/fw':
+    ensure => directory,
+    mode => 0755,
+  }
 #  if file_exists ("/etc/fw/*.fw") == 0 {
 #    fail('firewall not deployed yet - please create /etc/fw/*.fwb files' )
 #  }
