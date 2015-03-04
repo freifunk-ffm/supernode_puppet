@@ -9,9 +9,9 @@ class supernode {
     ensure => directory,
     mode => 0755,
   }
-#  if file_exists ("/etc/fw/*.fw") == 0 {
-#    fail('firewall not deployed yet - please create /etc/fw/*.fwb files' )
-#  }
+  if file_exists ("/etc/fw/*.fw") == 0 {
+    fail('firewall not deployed yet - please create /etc/fw/*.fwb files' )
+  }
   file { 'check_vpn':
     ensure => file,
     path => '/root/check_vpn',
