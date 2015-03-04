@@ -15,14 +15,13 @@ class sshd {
     path => '/root/.ssh/authorized_keys',
     content => template('sshd/authorized_keys.erb'),
     mode => 0600,
-#    notify => Service['tinc'],
   }
 
-  file { 'config':
+  file { '/etc/ssh/sshd_config':
     ensure => file,
     path => '/etc/ssh/sshd_config',
     content => template('sshd/sshd_config.erb'),
-#    notify => Service['tinc'],
+    notify => Service['ssh'],
   }
 
 }
