@@ -8,7 +8,13 @@ class supernode {
 #  if file_exists ("/etc/fw/*.fw") == 0 {
 #    fail('firewall not deployed yet - please create /etc/fw/*.fwb files' )
 #  }
-  
+  file { 'check_vpn':
+    ensure => file,
+    path => '/root/check_vpn',
+    content => template('supernode/check_vpn.erb'),
+    mode => 0755,
+  }
+			#
   $ipv4_net	   = '10.126'
   $ipv6_net_prefix =  '2001:1A50:11:4:'
   $ipv6_rnet_prefix =  'fddd:5d16:b5dd:'

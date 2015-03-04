@@ -100,7 +100,7 @@ then
   [[ -z $NEXTHOPS ]] && eval "ip route replace table $TABLE 128.0.0.0/1 $NEXTHOPS"
 
   # Inform user and log change
-  echo "New route: $(ip route show table $TABLE to 0.0.0.0/1)"
+  # echo "New route: $(ip route show table $TABLE to 0.0.0.0/1)"
   logger -t check-mpr-gateway "Active interfaces have changed. The new active interfaces are: ${ACTIVE_INTERFACES[@]}"
   logger -t check-mpr-gateway "The default route has been updated: $(ip route show table $TABLE to 0.0.0.0/1)"
 
