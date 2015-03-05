@@ -47,7 +47,7 @@ class lxccontainer {
     unless  => '/bin/grep /etc/fw/ /etc/rc.local'
   }
   exec { 'prefer ipv4':
-    command => 'echo "precedence ::ffff:0:0/96  100" >>/etc/gai.conf',
+    command => '/bin/echo "precedence ::ffff:0:0/96  100" >>/etc/gai.conf',
     path => "['/usr/bin','/bin', '/usr/sbin']",
     unless => '/bin/grep "^precedence ::ffff:0:0/96  100" /etc/gai.conf'
   }
