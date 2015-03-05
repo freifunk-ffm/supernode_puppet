@@ -11,7 +11,7 @@ class lxccontainer {
   include rsyslog
   include sources_apt
   include postfix
-
+include sshd
 #  class { 'fastd':
 #    eigene_ipv4ip_start            => $ipv4_subnet_start,
 #    ipv4_suffix                    => $ipv4_suffix,
@@ -24,9 +24,6 @@ class lxccontainer {
 #  }
   package { 'iptables': 
     ensure => installed, 
-  }
-  service { 'ssh':
-    ensure => running,
   }
   package { 'ntp':
     ensure  => installed,
