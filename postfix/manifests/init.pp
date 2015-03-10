@@ -23,7 +23,13 @@ class postfix () {
     require => [ Package['postfix'], Package['pwgen'] ],
     notify => Service['postfix'],
   }
-  
+
+exec { 'postfix_config_8':
+  command => '/bin/echo "ffm.freifunk.net" >/etc/mailname',
+  require => [ Package['postfix'], Package['pwgen'] ],
+  notify => Service['postfix'],
+} 
+ 
   exec { 'postfix_config_7':
     command => '/bin/sed -i "/root:/d" /etc/aliases; /bin/bash -lc "echo \"root: admin@ffm.freifunk.net\"  >> /etc/aliases; newaliases"',
     path => "['/usr/bin','/bin', '/usr/sbin']",
