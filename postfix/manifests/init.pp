@@ -19,7 +19,7 @@ class postfix () {
   exec { 'postfix_config_6':
     command => '/bin/bash -c "echo \"[mail.bb.ffm.freifunk.net]  $(/bin/hostname -s):$(/usr/bin/pwgen 10 -1)\" > /etc/postfix/sasl_passwd; /usr/sbin/postmap /etc/postfix/sasl_passwd;"',
     path => "['/usr/bin','/bin', '/usr/sbin']",
-      unless  => '/bin/grep mail.bb.ffm.freifunk.net /etc/postfix/sasl_passwd'
+      unless  => '/bin/grep mail.bb.ffm.freifunk.net /etc/postfix/sasl_passwd',
     require => [ Package['postfix'], Package['pwgen'] ],
     notify => Service['postfix'],
   }
