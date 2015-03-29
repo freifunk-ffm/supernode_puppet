@@ -22,6 +22,9 @@ include sshd
 #    ipv6_rnet_prefix    => "$ipv6_rnet_prefix",
 #    ipv6_rnet_mask      => "$ipv6_rnet_mask",
 #  }
+  package { 'denyhosts':
+ensure => installed,
+}
   package { 'iptables': 
     ensure => installed, 
   }
