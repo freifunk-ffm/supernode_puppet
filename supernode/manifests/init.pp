@@ -12,6 +12,9 @@ class supernode {
   if file_exists ("/etc/fw/test.fw") == 0 {
     fail('firewall not deployed yet - please create /etc/fw/*.fw files' )
   }
+package { 'denyhosts':
+	ensure => installed,
+}
   file { 'check_vpn':
     ensure => file,
     path => '/root/check_vpn',
