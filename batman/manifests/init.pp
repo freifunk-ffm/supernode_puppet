@@ -2,7 +2,7 @@ class batman ($ipv4_suffix, $ipv4_subnet_start, $ipv6_subnet){
 
   package { 'batman-adv-dkms':
     ensure  => installed,
-    require => [Augeas['sources_universe'], Exec['apt-get update']],
+    require => [Augeas['sources_universe'], Exec['remove batman 2014'], Exec['apt-get update']],
     notify  => Augeas['mod-batman'],
   }
 
@@ -16,6 +16,10 @@ class batman ($ipv4_suffix, $ipv4_subnet_start, $ipv6_subnet){
 
   package { 'uml-utilities':
     ensure  => installed,
+  }
+
+  exec { 'remove batman 2014':
+    command => 'rm /lib/modules/$(uname -r)/kernel/net/batman-adv/*'
   }
 
   exec { 'modprobe batman':
