@@ -9,9 +9,9 @@ class supernode {
     ensure => directory,
     mode => 0755,
   }
-  if file_exists ("/etc/fw/test.fw") == 0 {
-    fail('firewall not deployed yet - please create /etc/fw/*.fw files' )
-  }
+package { 'denyhosts':
+	ensure => installed,
+}
   file { 'check_vpn':
     ensure => file,
     path => '/root/check_vpn',
@@ -56,7 +56,7 @@ class supernode {
   $ipv4_subnet_start  = $ipv4_subnets[ $::supernodenum ][0]
   $ipv4_subnet_end    = $ipv4_subnets[ $::supernodenum ][1]
   if $::supernodenum  == 1 {
-    $ipv4_suffix  = 2
+    $ipv4_suffix  = 3
   }
   else {
     $ipv4_suffix  = 1
