@@ -9,9 +9,26 @@ class supernode {
     ensure => directory,
     mode => 0755,
   }
-package { 'denyhosts':
-	ensure => installed,
+
+exec {'check_presence':
+  command => '/bin/false',
+  provider => shell,
+  unless => '/usr/bin/test -f /etc/fw/$(hostname -f).fw',
 }
+
+
+package { 'fail2ban':
+	ensure => installed,
+	require => Exec["check_presence"],
+}
+  service { 'fail2ban':
+    ensure      => running,
+    enable      => true,
+    hasrestart  => true,
+    hasstatus   => true,
+    require     => [Package['fail2ban']],
+  }
+
   file { 'check_vpn':
     ensure => file,
     path => '/root/check_vpn',
