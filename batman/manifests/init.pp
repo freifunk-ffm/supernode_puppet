@@ -19,7 +19,9 @@ class batman ($ipv4_suffix, $ipv4_subnet_start, $ipv6_subnet){
   }
 
   exec { 'remove batman 2014':
-    command => 'rm /lib/modules/$(uname -r)/kernel/net/batman-adv/*'
+ provider => shell,
+    command => 'rm -f /lib/modules/$(uname -r)/kernel/net/batman-adv/batman_adv.ko',
+    onlyif => 'test -f /lib/modules/$(uname -r)/kernel/net/batman-adv/batman_adv.ko',
   }
 
   exec { 'modprobe batman':
