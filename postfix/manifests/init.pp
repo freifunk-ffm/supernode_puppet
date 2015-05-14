@@ -36,6 +36,6 @@ class postfix () {
     require => [ Package['postfix'], Package['pwgen'] ],
     notify => Service['postfix'],
   }
-notify {"MAKE SURE TO run doveadm pw -ssha enter the PASSWORD and put $(/bin/hostname -s) into /etc/dovecot/passwd on mail.bb.ffm.freifunk.net":}
+warning ("MAKE SURE TO run doveadm pw -ssha enter the PASSWORD and put $(/bin/hostname -s) into /etc/dovecot/passwd on mail.bb.ffm.freifunk.net")
 
 }
