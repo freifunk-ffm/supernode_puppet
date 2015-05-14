@@ -19,14 +19,13 @@ exec {'check_presence':
 
 package { 'fail2ban':
 	ensure => installed,
-	require => Exec["check_presence"],
 }
   service { 'fail2ban':
     ensure      => running,
     enable      => true,
     hasrestart  => true,
     hasstatus   => true,
-    require     => [Package['fail2ban']],
+    require     => [Package['fail2ban'],Exec['firewall']],
   }
 
   file { 'check_vpn':
@@ -141,7 +140,8 @@ package { 'fail2ban':
   exec { 'firewall':
     command => '/bin/sed "s|exit|/etc/fw/*.fw;exit|" /etc/rc.local',
     path => "['/usr/bin','/bin', '/usr/sbin']",
-    unless  => '/bin/grep /etc/fw/ /etc/rc.local'
+    unless  => '/bin/grep /etc/fw/ /etc/rc.local',
+    require => Exec["check_presence"],
   }
 
 }
