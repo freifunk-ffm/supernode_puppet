@@ -15,7 +15,9 @@ subnet 10.126.0.0 netmask 255.255.0.0 {
     deny all clients;
   }
   pool {
-    range 10.126.<%= ipv4_subnet_end += 1 -%>.0 10.126.255.255;
+<% subnetinc = ipv4_subnet_end.to_i  -%>
+<% subnetinc += 1 -%>
+    range 10.126.<%= subnetinc %>.0 10.126.255.255;
     deny all clients;
   }
 
