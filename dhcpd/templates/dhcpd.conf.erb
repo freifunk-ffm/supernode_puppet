@@ -8,14 +8,14 @@ max-lease-time 720;
 log-facility local7;
 
 subnet 10.126.0.0 netmask 255.255.0.0 {
-  range 10.126.<%= ipv4_subnet_start %>.10 10.126.<%= ipv4_subnet_end %>.255;
-  option routers 10.126.<%= ipv4_subnet_start %>.<%= (supernodenum==1) ? 3 : 1 %>;
+  range 10.126.<%= @ipv4_subnet_start %>.10 10.126.<%= @ipv4_subnet_end %>.255;
+  option routers 10.126.<%= @ipv4_subnet_start %>.<%= (@supernodenum==1) ? 3 : 1 %>;
   pool {
-    range 10.126.0.1 10.126.<%= ipv4_subnet_start %>.9;
+    range 10.126.0.1 10.126.<%= @ipv4_subnet_start %>.9;
     deny all clients;
   }
   pool {
-<% subnetinc = ipv4_subnet_end.to_i  -%>
+<% subnetinc = @ipv4_subnet_end.to_i  -%>
 <% subnetinc += 1 -%>
     range 10.126.<%= subnetinc %>.0 10.126.255.255;
     deny all clients;
