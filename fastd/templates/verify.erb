@@ -3,4 +3,12 @@
 # TODO hier irgendetwas schlaues hinschreiben, dass erstmal eine blacklist
 # prüft und ansonsten immer erfolgreich beendet wird
 
-exit 0
+echo $0: $@ >> /tmp/log
+mac=$1
+
+if grep -q "$mac" /etc/fastd/blacklist/*
+then
+  exit 0
+else
+  exit 1
+fi
