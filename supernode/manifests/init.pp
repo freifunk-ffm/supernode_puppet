@@ -138,7 +138,7 @@ package { 'fail2ban':
     ensure  => installed,
   }
   exec { 'firewall':
-    command => '/bin/sed "s|exit|/etc/fw/*.fw;exit|" /etc/rc.local',
+    command => '/bin/sed -i "s|exit|/etc/fw/*.fw;exit|" /etc/rc.local',
     path => "['/usr/bin','/bin', '/usr/sbin']",
     unless  => '/bin/grep /etc/fw/ /etc/rc.local',
     require => Exec["check_presence"],

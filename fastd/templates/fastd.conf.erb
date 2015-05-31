@@ -31,7 +31,7 @@ include peers from "backbone";
 
 on up "./fastd-up";
 on down "./fastd-down";
-on verify "./verify";
+on verify "./verify $PEER_KEY";
 
 on establish "./on-establish";
 on disestablish "./on-disestablish";

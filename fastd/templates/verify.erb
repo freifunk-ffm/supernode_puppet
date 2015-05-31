@@ -1,14 +1,13 @@
 #!/bin/bash
-
+set -ix
+exec >>/var/log/fastd-verifylog 2>&1
 # TODO hier irgendetwas schlaues hinschreiben, dass erstmal eine blacklist
 # prüft und ansonsten immer erfolgreich beendet wird
+key=$1
 
-echo $0: $@ >> /tmp/log
-mac=$1
-
-if grep -q "$mac" /etc/fastd/blacklist/*
+if grep -q "$key" /etc/fastd/blacklist/blacklist/blacklist
 then
-  exit 0
-else
   exit 1
+else
+  exit 0
 fi
