@@ -33,7 +33,7 @@ class fastd ($supernodenum, $fastd_key, $ipv6_net, $ipv6_rnet, $ipv6_rnet_prefix
     require     => [ Package['fastd'], Package['bridge-utils'] ],
   }
   
-  file { ['/etc/fastd', '/etc/fastd/mesh-vpn']:
+  file { ['/etc/fastd', '/etc/fastd/mesh-vpn-1280']:
     ensure  => directory,
     owner   => root,
     group   => root,
@@ -49,7 +49,7 @@ class fastd ($supernodenum, $fastd_key, $ipv6_net, $ipv6_rnet, $ipv6_rnet_prefix
   }			          }
 
   file { 'mesh-vpn/peers':
-    path    => '/etc/fastd/mesh-vpn/peers',
+    path    => '/etc/fastd/mesh-vpn-1280/peers',
     ensure  => directory,
     owner   => fastd_serv,
     group   => fastd_serv,
@@ -57,7 +57,7 @@ class fastd ($supernodenum, $fastd_key, $ipv6_net, $ipv6_rnet, $ipv6_rnet_prefix
   }
 
   file { 'fastd-up':
-    path    => '/etc/fastd/mesh-vpn/fastd-up',
+    path    => '/etc/fastd/mesh-vpn-1280/fastd-up',
     owner   => root,
     group   => root,
     mode    => '0755',
@@ -67,7 +67,7 @@ class fastd ($supernodenum, $fastd_key, $ipv6_net, $ipv6_rnet, $ipv6_rnet_prefix
   }
 
   file { 'fastd-on-establish':
-    path    => '/etc/fastd/mesh-vpn/on-establish',
+    path    => '/etc/fastd/mesh-vpn-1280/on-establish',
     owner   => root,
     group   => root,
     mode    => '0755',
@@ -77,7 +77,7 @@ class fastd ($supernodenum, $fastd_key, $ipv6_net, $ipv6_rnet, $ipv6_rnet_prefix
   }
 
   file { 'fastd-on-disestablish':
-    path    => '/etc/fastd/mesh-vpn/on-disestablish',
+    path    => '/etc/fastd/mesh-vpn-1280/on-disestablish',
     owner   => root,
     group   => root,
     mode    => '0755',
@@ -88,7 +88,7 @@ class fastd ($supernodenum, $fastd_key, $ipv6_net, $ipv6_rnet, $ipv6_rnet_prefix
 
 
   file { 'verify':
-    path => '/etc/fastd/mesh-vpn/verify',
+    path => '/etc/fastd/mesh-vpn-1280/verify',
     owner => root,
     group => root,
     mode => '0755',
@@ -98,7 +98,7 @@ class fastd ($supernodenum, $fastd_key, $ipv6_net, $ipv6_rnet, $ipv6_rnet_prefix
     notify => Service['fastd'],
   }
   file { 'fastd.conf':
-    path    => '/etc/fastd/mesh-vpn/fastd.conf',
+    path    => '/etc/fastd/mesh-vpn-1280/fastd.conf',
     owner   => root,
     group   => root,
     mode    => '0644',
@@ -120,8 +120,8 @@ class fastd ($supernodenum, $fastd_key, $ipv6_net, $ipv6_rnet, $ipv6_rnet_prefix
  
   exec { 'fastd_backbone':
     command => '/usr/bin/git clone https://github.com/freifunk-ffm/fastd-backbone-config \
-/etc/fastd/mesh-vpn/backbone',
-    creates => '/etc/fastd/mesh-vpn/backbone', 
+/etc/fastd/mesh-vpn-1280/backbone',
+    creates => '/etc/fastd/mesh-vpn-1280/backbone', 
     require => Package['git'],
   }
 }

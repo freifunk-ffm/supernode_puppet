@@ -88,9 +88,9 @@ package { 'denyhosts':
     ipv6_rnet_prefix	=> "$ipv6_rnet_prefix",
     ipv6_rnet_mask 	=> "$ipv6_rnet_mask",
   }
-  class { 'fastd_web_service':
-    fastd_web_service_auth  => $::fastd_web_service_auth,
-  }
+#  class { 'fastd_web_service':
+#    fastd_web_service_auth  => $::fastd_web_service_auth,
+#  }
   include puppet
   class { 'radvd':
     ipv6_subnet  => $ipv6_subnet,
