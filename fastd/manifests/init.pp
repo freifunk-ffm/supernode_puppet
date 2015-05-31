@@ -37,7 +37,7 @@ class fastd ($supernodenum, $fastd_key, $ipv6_net, $ipv6_rnet, $ipv6_rnet_prefix
     ensure  => directory,
     owner   => root,
     group   => root,
-    notify  => [File['verify'], File['fastd.conf'], Exec['fastd_backbone'], Exec['fastd_blacklist'], fILE['Mesh-vpn/peers']],
+    notify  => [File['verify'], File['fastd.conf'], Exec['fastd_backbone'], Exec['fastd_blacklist'], File['mesh-vpn/peers']],
     require => Package['fastd'],
   }
 
@@ -46,7 +46,7 @@ class fastd ($supernodenum, $fastd_key, $ipv6_net, $ipv6_rnet, $ipv6_rnet_prefix
     path => '/etc/cron.d/fastd',
     content => template('fastd/fastd-cron.erb'),
     mode => 0755,
-  }			          }
+  }			          
 
   file { 'mesh-vpn/peers':
     path    => '/etc/fastd/mesh-vpn/peers',
@@ -113,7 +113,7 @@ class fastd ($supernodenum, $fastd_key, $ipv6_net, $ipv6_rnet, $ipv6_rnet_prefix
     notify  => Service['fastd'],
   }
  exec { 'fastd_blacklist':
-   command => '/usr/bin/git clone https://github.com/freifunk-ffm/fastd-bacbone-config/blacklist /etc/fastd/blacklist',
+   command => '/usr/bin/git clone https://github.com/freifunk-ffm/fastd-backbone-config /etc/fastd/blacklist',
    creates => '/etc/fastd/blacklist',
    require => Package['git'],
  }
