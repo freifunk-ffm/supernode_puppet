@@ -9,9 +9,25 @@ class supernode {
     ensure => directory,
     mode => 0755,
   }
-package { 'denyhosts':
+
+exec {'check_presence':
+  command => '/bin/false',
+  provider => shell,
+  unless => '/usr/bin/test -f /etc/fw/$(hostname -f).fw',
+}
+
+
+package { 'fail2ban':
 	ensure => installed,
 }
+  service { 'fail2ban':
+    ensure      => running,
+    enable      => true,
+    hasrestart  => true,
+    hasstatus   => true,
+    require     => [Package['fail2ban'],Exec['firewall']],
+  }
+
   file { 'check_vpn':
     ensure => file,
     path => '/root/check_vpn',
@@ -124,7 +140,8 @@ package { 'denyhosts':
   exec { 'firewall':
     command => '/bin/sed "s|exit|/etc/fw/*.fw;exit|" /etc/rc.local',
     path => "['/usr/bin','/bin', '/usr/sbin']",
-    unless  => '/bin/grep /etc/fw/ /etc/rc.local'
+    unless  => '/bin/grep /etc/fw/ /etc/rc.local',
+    require => Exec["check_presence"],
   }
 
 }

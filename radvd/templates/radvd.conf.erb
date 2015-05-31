@@ -6,7 +6,7 @@ MaxRtrAdvInterval 30;
 AdvOtherConfigFlag on;
 AdvSourceLLAddress off;
 AdvLinkMTU 1350; #1442 - fastd - batman-adv - See wiki for details
-#prefix <%= ipv6_net %>::/64 {
+#prefix <%= @ipv6_net %>::/64 {
 #AdvOnLink on;
 #AdvAutonomous on;
 #AdvRouterAddr on;
@@ -16,7 +16,7 @@ AdvLinkMTU 1350; #1442 - fastd - batman-adv - See wiki for details
     };
 RDNSS fddd:5d16:b5dd:0:a070:1fff:fe5f:5796 {
 };
-prefix <%= ipv6_rnet %>::/48 {
+prefix <%= @ipv6_rnet %>::/48 {
 AdvOnLink on;
 AdvAutonomous on;
 AdvRouterAddr on;
