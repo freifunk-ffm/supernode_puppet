@@ -16,7 +16,34 @@ exec {'check_presence':
   unless => '/usr/bin/test -f /etc/fw/$(hostname -f).fw',
 }
 
+exec { 'getfftools':
+  command => '/usr/bin/git clone https://github.com/ffrl/ff-tools.git /root/ff-tools',
+  notify  => Exec['dlnpyscreen'],
+  require => Package['git'],
+}
 
+exec { 'dlnpyscreen':
+  command => '/usr/bin/wget https://pypi.python.org/packages/source/n/npyscreen/npyscreen-4.8.7.tar.gz -O - |tar xaf -; cd npyscreen-4.8.7;python setup.py  install',
+  notify => Exec ['xtrnpyscreen'],
+  require => [Package['wget'],Package['python']],
+}
+
+package {'python-hurry.filesize':
+  ensure => installed,
+}
+package {'xinetd':
+  ensure => installed,
+}
+package {'monitoring-plugins':
+  ensure => installed,
+}
+package {'check-mk-agent':
+  ensure => installed,
+}
+
+package { 'nagios-nrpe-server':
+  ensure => installed,
+}
 package { 'fail2ban':
 	ensure => installed,
 }
