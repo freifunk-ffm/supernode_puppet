@@ -1,7 +1,7 @@
 #!/bin/sh
-ifconfig $INTERFACE 10.126.255.<%= @backbone_ip_suffix %> netmask 255.255.255.0 up
+ifconfig $INTERFACE 10.126.255.<%= @backbone_ip_suffix %> netmask 255.255.0.0 up
 
-ip route add 10.126.255.0/24 dev $INTERFACE table ffffm
+#ip route add 10.126.255.0/24 dev $INTERFACE table ffffm
 ip route add default dev $INTERFACE table ffffm
 #ip -6 addr add fdd3:5d16:b5dd:3::<%= @backbone_ip_suffix %>/64 dev $INTERFACE
 #ip -6 addr add 2001:67c:20a0:<%= @ipv6_subnet %>::1/128 dev $INTERFACE

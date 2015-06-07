@@ -1,7 +1,7 @@
 Name=<%= 'fastd' + @supernodenum %>
 Device=/dev/net/tun
-Mode=router
+Mode=switch
 Compression=9
-ConnectTo=fastd2
-ConnectTo=fastd1
-ConnectTo=stats
+ConnectTo=datalxc
+ConnectTo=bacula
+ConnectTo=uberspace
