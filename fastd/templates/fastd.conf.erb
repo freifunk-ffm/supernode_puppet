@@ -32,7 +32,7 @@ include peers from "backbone";
 on up "./fastd-up";
 on down "./fastd-down";
 on verify "./verify $PEER_KEY";
-
+status socket "/var/run/fastd-mesh-vpn.sock";
 on establish "./on-establish";
 on disestablish "./on-disestablish";
 

@@ -31,7 +31,7 @@ include peers from "backbone";
 on up "./fastd-up";
 on down "./fastd-down";
 on verify "./verify"
-
+status socket "/var/run/fastd-mesh-vpn-1280.sock";
 on establish "./on-establish";
 on disestablish "./on-disestablish";
 
