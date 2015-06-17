@@ -16,21 +16,12 @@ exec {'check_presence':
   unless => '/usr/bin/test -f /etc/fw/$(hostname -f).fw',
 }
 
-exec { 'getfftools':
-  command => '/usr/bin/git clone https://github.com/ffrl/ff-tools.git /root/ff-tools',
-  notify  => Exec['dlnpyscreen'],
-  require => Package['git'],
-}
-
 exec { 'dlnpyscreen':
   command => '/usr/bin/wget https://pypi.python.org/packages/source/n/npyscreen/npyscreen-4.8.7.tar.gz -O - |tar xaf -; cd npyscreen-4.8.7;python setup.py  install',
   notify => Exec ['xtrnpyscreen'],
   require => [Package['wget'],Package['python']],
 }
 
-package {'python-hurry.filesize':
-  ensure => installed,
-}
 package {'xinetd':
   ensure => installed,
 }
@@ -109,7 +100,7 @@ package { 'fail2ban':
   $ipv6_rnet = "${ipv6_rnet_prefix}${ipv6_subnet}"
   $backbone_ip_suffix = $backbone_ip_suffixes[ $::supernodenum ]
 
-  include apache2
+#  include apache2
   include apt
   class { 'batman':
     ipv4_suffix       => $ipv4_suffix,
@@ -134,6 +125,7 @@ package { 'fail2ban':
 #  class { 'fastd_web_service':
 #    fastd_web_service_auth  => $::fastd_web_service_auth,
 #  }
+  include ff-tools
   include puppet
   class { 'radvd':
     ipv6_subnet  => $ipv6_subnet,
@@ -149,11 +141,11 @@ package { 'fail2ban':
     supernodenum => $::supernodenum,
   }
 
-  class { 'tinc':
-    backbone_ip_suffix  => $backbone_ip_suffix,
-    ipv4_subnet_start   => $ipv4_subnet_start,
-    ipv6_subnet         => $ipv6_subnet,
-  }
+#  class { 'tinc':
+#    backbone_ip_suffix  => $backbone_ip_suffix,
+#    ipv4_subnet_start   => $ipv4_subnet_start,
+#    ipv6_subnet         => $ipv6_subnet,
+#  }
 #  include unbound
   include postfix 
   include sshd
