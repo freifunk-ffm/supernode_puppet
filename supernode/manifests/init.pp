@@ -16,12 +16,6 @@ exec {'check_presence':
   unless => '/usr/bin/test -f /etc/fw/$(hostname -f).fw',
 }
 
-exec { 'dlnpyscreen':
-  command => '/usr/bin/wget https://pypi.python.org/packages/source/n/npyscreen/npyscreen-4.8.7.tar.gz -O - |tar xaf -; cd npyscreen-4.8.7;python setup.py  install',
-  notify => Exec ['xtrnpyscreen'],
-  require => [Package['wget'],Package['python']],
-}
-
 package {'xinetd':
   ensure => installed,
 }
@@ -111,6 +105,16 @@ package { 'fail2ban':
     supernodenum      => $::supernodenum,
     ipv4_subnet_start => $ipv4_subnet_start,
     ipv4_subnet_end   => $ipv4_subnet_end,
+  }
+  class { 'fastd-1280':
+#    eigene_ipv4ip_start            => $ipv4_subnet_start,
+#    ipv4_suffix                    => $ipv4_suffix,
+    supernodenum            => $::supernodenum,
+    fastd_key               => $::fastd_key,
+    ipv6_net                => "$ipv6_net",
+    ipv6_rnet                => "$ipv6_rnet",
+    ipv6_rnet_prefix	=> "$ipv6_rnet_prefix",
+    ipv6_rnet_mask 	=> "$ipv6_rnet_mask",
   }
   class { 'fastd':
 #    eigene_ipv4ip_start            => $ipv4_subnet_start,
