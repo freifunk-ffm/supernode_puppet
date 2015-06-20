@@ -2,7 +2,7 @@ class ff-tools () {
 
   exec { 'getfftools':
     command => '/usr/bin/git clone https://github.com/ffrl/ff-tools.git /root/ff-tools',
-    require => [Package['git'],Exec['fastd_backbone']],
+    require => [Package['python-hurry.filesize'],Package['git'],Exec['fastd_backbone']],
   }
   package {'python-hurry.filesize':
     ensure => installed,
@@ -26,6 +26,5 @@ class ff-tools () {
     command => 'python /root/ff-tools/setup.py install',
     require => [Exec['getfftools'], Exec['installnpyscreen1']],
   }
- 
 }
 
