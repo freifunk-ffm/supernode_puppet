@@ -5,22 +5,15 @@ service { 'fastd-1280':
     enable      => true,
     hasrestart  => true,
     hasstatus   => true,
-    require     => [File['check_fastd-cron-1280'],File['/etc/fastd/mesh-vpn-1280'],File['/etc/fastd'],Package['fastd'],Package['bridge-utils'],Package['curl'],Package['git'], Service['fastd'], User['fastd_serv']],
+    require     => [File['check_fastd-cron'],File['/etc/fastd/mesh-vpn-1280'],File['/etc/fastd'],Package['fastd'],Package['bridge-utils'],Package['curl'],Package['git'], Service['fastd'], User['fastd_serv']],
   }
   
   file { ['/etc/fastd/mesh-vpn-1280']:
     ensure  => directory,
     owner   => root,
     group   => root,
-    notify  => [File['verify-1280'], File['fastd.conf-1280'], Exec['fastd_backbone-1280'], Exec['fastd_blacklist-1280'], File['Mesh-vpn/peers-1280']],
+    notify  => [File['verify-1280'], File['fastd.conf-1280'], Exec['fastd_backbone-1280'], Exec['fastd_blacklist-1280'], File['mesh-vpn/peers-1280']],
     require => Package['fastd'],
-  }
-
-  file { 'check_fastd-cron-1280':
-    ensure => file,
-    path => '/etc/cron.d/fastd',
-    content => template('fastd/fastd-cron.erb'),
-    mode => 0755,
   }
 
   file { 'mesh-vpn/peers-1280':
@@ -71,7 +64,7 @@ service { 'fastd-1280':
       File['fastd.conf'] ],
     notify => Service['fastd'],
   }
-  file { 'fastd-1280.conf':
+  file { 'fastd.conf-1280':
     path    => '/etc/fastd/mesh-vpn-1280/fastd.conf',
     owner   => root,
     group   => root,

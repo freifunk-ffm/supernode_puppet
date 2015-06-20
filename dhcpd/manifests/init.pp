@@ -8,7 +8,7 @@ class dhcpd ($supernodenum, $ipv4_subnet_start, $ipv4_subnet_end){
     enable      => true,
     hasrestart  => true,
     hasstatus   => true,
-    require     => [Package['isc-dhcp-server'], Service['fastd'], Service['tinc']],
+    require     => [Package['isc-dhcp-server'], Service['fastd']],
   }
 
   file { 'dhcpd.conf':
