@@ -1,12 +1,11 @@
 class fastd-1280 ($supernodenum, $fastd_key, $ipv6_net, $ipv6_rnet, $ipv6_rnet_prefix, $ipv6_rnet_mask) {
 
-service { 'fastd-1280':
-    ensure      => running,
-    enable      => true,
-    hasrestart  => true,
-    hasstatus   => true,
-    require     => [File['check_fastd-cron'],File['/etc/fastd/mesh-vpn-1280'],File['/etc/fastd'],Package['fastd'],Package['bridge-utils'],Package['curl'],Package['git'], Service['fastd'], User['fastd_serv']],
-  }
+#service { 'fastd':
+#    ensure      => running,
+#    enable      => true,
+#    hasrestart  => true,
+#    hasstatus   => true,
+#  }
   
   file { ['/etc/fastd/mesh-vpn-1280']:
     ensure  => directory,
@@ -29,9 +28,8 @@ service { 'fastd-1280':
     owner   => root,
     group   => root,
     mode    => '0755',
-    content => template('fastd/fastd-up.erb'),
-    require => Package['fastd'],
-    notify  => Service['fastd-1280'],
+    content => template('fastd-1280/fastd-up.erb'),
+    require     => [File['check_fastd-cron'],File['/etc/fastd/mesh-vpn-1280'],File['/etc/fastd'],Package['fastd'],Package['bridge-utils'],Package['curl'],Package['git'], User['fastd_serv'],Package['fastd']],
   }
 
   file { 'fastd-on-establish-1280':
@@ -39,9 +37,8 @@ service { 'fastd-1280':
     owner   => root,
     group   => root,
     mode    => '0755',
-    content => template('fastd/on-establish.erb'),
+    content => template('fastd-1280/on-establish.erb'),
     require => Package['fastd'],
-    notify  => Service['fastd-1280'],
   }
 
   file { 'fastd-on-disestablish-1280':
@@ -49,9 +46,8 @@ service { 'fastd-1280':
     owner   => root,
     group   => root,
     mode    => '0755',
-    content => template('fastd/on-disestablish.erb'),
+    content => template('fastd-1280/on-disestablish.erb'),
     require => Package['fastd'],
-    notify  => Service['fastd-1280'],
   }
 
   file { 'verify-1280':
@@ -59,7 +55,7 @@ service { 'fastd-1280':
     owner => root,
     group => root,
     mode => '0755',
-    content => template('fastd/verify.erb'),
+    content => template('fastd-1280/verify.erb'),
     require => [
       File['fastd.conf'] ],
     notify => Service['fastd'],
@@ -69,7 +65,7 @@ service { 'fastd-1280':
     owner   => root,
     group   => root,
     mode    => '0644',
-    content => template('fastd/fastd.conf.erb'),
+    content => template('fastd-1280/fastd.conf.erb'),
     require => [
       File['fastd-up-1280'],
       File['fastd-on-establish-1280'],
