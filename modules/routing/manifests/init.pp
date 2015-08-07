@@ -1,6 +1,6 @@
 class routing {
-  exec { 'ffkbu':
-    command => '/bin/echo "200 ffffm" > /etc/iproute2/rt_tables',
-    unless  => '/bin/grep "200 ffffm" /etc/iproute2/rt_tables',
+  # FIXME really replace the whole file?
+  file { '/etc/iproute2/rt_tables':
+    content => '200 ffffm',
   }
 }

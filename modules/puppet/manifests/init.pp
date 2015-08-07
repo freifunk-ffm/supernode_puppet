@@ -1,25 +1,16 @@
 class puppet {
+  # FIXME what about the configuration?
+
+  package {[
+    'libaugeas0', 'augeas-lenses', 'augeas-tools', 'libaugeas-ruby',
+  ] :
+    ensure => installed,
+    before => Service['puppet'],
+  }
+
   service { 'puppet':
-    ensure    => running,
-    hasstatus => true,
-    hasrestart  => true,
-    enable    => true,
-    require   => [Package['libaugeas0'],Package['libaugeas-ruby']],
+    ensure => running,
+    enable => true,
   }
 
-  package { 'libaugeas0':
-    ensure  => installed,
-  }
-
-  package { 'augeas-lenses':
-    ensure  => installed,
-  }
-
-  package { 'augeas-tools':
-    ensure  => installed,
-  }
-
-  package { 'libaugeas-ruby':
-    ensure  => installed,
-  }
 }

@@ -8,24 +8,24 @@ killall batadv-vis
 /sbin/brctl addbr batbridge	
 }
 
-/sbin/ifconfig batbridge <%= scope.lookupvar("supernode::ipv4_net") %>.<%= scope.lookupvar("supernode::ipv4_subnet_start") %>.<%= scope.lookupvar("supernode::ipv4_suffix") %> netmask 255.255.0.0 up
+/sbin/ifconfig batbridge <%= @ipv4_net %>.<%= @ipv4_subnet_start %>.<%= @ipv4_suffix %> netmask 255.255.0.0 up
 # TODO IPv6-Adresse hinzufügen
 /sbin/ip -6 addr add <%= @ipv6_rnet %>::1/64 dev batbridge
 
-/sbin/ifconfig mesh-vpn hw ether 02:ff:0f:<%= @rndmac %>:7d:<%= @supernodenum.to_s.rjust(2, "0") %> up
-/sbin/ip link set dev mesh-vpn up
+/sbin/ifconfig <%= @interface %> hw ether 02:ff:0f:<%= @rndmac %>:7d:<%= @supernodenum.to_s.rjust(2, "0") %> up
+/sbin/ip link set dev <%= @interface %> up
 
-/usr/sbin/batctl if add mesh-vpn
+/usr/sbin/batctl if add <%= @interface %>
 /usr/sbin/batctl it 5000
 /usr/sbin/batctl gw_mode server 100MBit/100MBit
 /sbin/brctl addif batbridge bat0
 /sbin/ifconfig bat0 up
 
-/sbin/ip rule show | grep -q "from <%= scope.lookupvar("supernode::ipv4_net") %>.0.0/16 lookup ffffm" || /sbin/ip rule add from <%= scope.lookupvar("supernode::ipv4_net") %>.0.0/16 table ffffm
+/sbin/ip rule show | grep -q "from <%= @ipv4_net %>.0.0/16 lookup ffffm" || /sbin/ip rule add from <%= @ipv4_net %>.0.0/16 table ffffm
 /sbin/ip -6 rule show | grep -q "from <%= @ipv6_rnet_prefix %>:/<%= @ipv6_rnet_mask %> lookup ffffm" || /sbin/ip -6 rule add from <%= @ipv6_rnet_prefix %>:/<%= @ipv6_rnet_mask %> table ffffm
 /sbin/ip -6 rule show | grep -q "from <%= @ipv6_net %>::/64 lookup ffffm" || /sbin/ip -6 rule add from <%= @ipv6_net %>::/64 table ffffm
 
-/sbin/ip route add <%= scope.lookupvar("supernode::ipv4_net") %>.0.0/16 dev batbridge table ffffm
+/sbin/ip route add <%= @ipv4_net %>.0.0/16 dev batbridge table ffffm
 
 #add route to icvpn - all other freifunk networks
 /sbin/ip route add 10.0.0.0/8 via 10.126.255.11 dev batbridge table ffffm

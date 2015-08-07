@@ -4,18 +4,14 @@ class radvd ($ipv6_subnet, $ipv6_net, $ipv6_rnet) {
   }
 
   service { 'radvd':
-    ensure      => running,
-    enable      => true,
-    hasrestart  => true,
-    hasstatus  => false,
-    require     => Package['radvd'],
+    ensure => running,
+    enable => true,
   }
-  
-  file { 'radvd.conf':
+
+  file { '/etc/radvd.conf':
     ensure  => file,
-    path    => '/etc/radvd.conf',
     content => template('radvd/radvd.conf.erb'),
-    require => Package['radvd'],
     notify  => Service['radvd'],
+    require => Package['radvd'],
   }
 }

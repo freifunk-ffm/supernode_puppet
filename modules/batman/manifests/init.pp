@@ -1,4 +1,5 @@
 class batman ($ipv4_suffix, $ipv4_subnet_start, $ipv6_subnet){
+  # FIXME can't we use the batman module supplied by the kernel?
 
   package { 'batman-adv-dkms':
     ensure  => installed,

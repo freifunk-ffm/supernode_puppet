@@ -1,128 +1,74 @@
-class fastd ($supernodenum, $fastd_key, $ipv6_net, $ipv6_rnet, $ipv6_rnet_prefix, $ipv6_rnet_mask) {
+class fastd (
+  $supernodenum,
+  $fastd_key,
+  $ipv4_net,
+  $ipv4_subnet_start,
+  $ipv4_suffix,
+  $ipv6_net,
+  $ipv6_rnet,
+  $ipv6_rnet_prefix,
+  $ipv6_rnet_mask,
+  $rndmac,
+  $web_service_auth,
+) {
+  $user = 'fastd_serv'
+  $service = 'fastd'
 
-
-  package { 'fastd':
-    ensure  => installed,
-    require => [Augeas['sources_universe'], Exec['apt-get update']],
-  }
-  package { 'git':
-	ensure => installed,
-  }
-
-  user { 'fastd_serv':
-    ensure      => present,
-    shell       => '/bin/bash',
-    home        => '/home/fastd_serv',
-    managehome  => true,
-  }
-
-
-  package { 'bridge-utils':
-	ensure => installed,
-  }
-
-  package { 'curl':
+  package { [
+    'fastd', 'bridge-utils', 'curl',
+  ]:
     ensure  => installed,
   }
-  
-  service { 'fastd':
-    ensure      => running,
-    enable      => true,
-    hasrestart  => true,
-    hasstatus   => true,
-    require     => [ Package['fastd'], Package['bridge-utils'] ],
-  }
-  
-  file { ['/etc/fastd', '/etc/fastd/mesh-vpn']:
-    ensure  => directory,
-    owner   => root,
-    group   => root,
-    notify  => [File['verify'], File['fastd.conf'], Exec['fastd_backbone'], Exec['fastd_blacklist'], File['mesh-vpn/peers']],
-    require => Package['fastd'],
+
+  include git
+
+  user { $user:
+    ensure     => present,
+    shell      => '/bin/bash',
+    home       => '/home/fastd_serv',
+    managehome => true,
   }
 
-  file { 'check_fastd-cron':
-    ensure => file,
-    path => '/etc/cron.d/fastd',
-    content => template('fastd/fastd-cron.erb'),
-    mode => 0755,
-  }			          
-
-  file { 'mesh-vpn/peers':
-    path    => '/etc/fastd/mesh-vpn/peers',
-    ensure  => directory,
-    owner   => fastd_serv,
-    group   => fastd_serv,
-    require => User['fastd_serv'],
-  }
-
-  file { 'fastd-up':
-    path    => '/etc/fastd/mesh-vpn/fastd-up',
-    owner   => root,
-    group   => root,
-    mode    => '0755',
-    content => template('fastd/fastd-up.erb'),
-    require => Package['fastd'],
-    notify  => Service['fastd'],
-  }
-
-  file { 'fastd-on-establish':
-    path    => '/etc/fastd/mesh-vpn/on-establish',
-    owner   => root,
-    group   => root,
-    mode    => '0755',
-    content => template('fastd/on-establish.erb'),
-    require => Package['fastd'],
-    notify  => Service['fastd'],
-  }
-
-  file { 'fastd-on-disestablish':
-    path    => '/etc/fastd/mesh-vpn/on-disestablish',
-    owner   => root,
-    group   => root,
-    mode    => '0755',
-    content => template('fastd/on-disestablish.erb'),
-    require => Package['fastd'],
-    notify  => Service['fastd'],
-  }
-
-
-  file { 'verify':
-    path => '/etc/fastd/mesh-vpn/verify',
-    owner => root,
-    group => root,
-    mode => '0755',
-    content => template('fastd/verify.erb'),
+  service { $service:
+    ensure  => running,
+    enable  => true,
     require => [
-      File['fastd.conf'] ],
-    notify => Service['fastd'],
-  }
-  file { 'fastd.conf':
-    path    => '/etc/fastd/mesh-vpn/fastd.conf',
-    owner   => root,
-    group   => root,
-    mode    => '0644',
-    content => template('fastd/fastd.conf.erb'),
-    require => [
-      File['fastd-up'],
-      File['fastd-on-establish'],
-      File['fastd-on-disestablish'],
       Package['fastd'],
+      Package['bridge-utils'],
       Package['curl'],
     ],
-    notify  => Service['fastd'],
   }
- exec { 'fastd_blacklist':
-   command => '/usr/bin/git clone https://github.com/freifunk-ffm/fastd-backbone-config /etc/fastd/blacklist',
-   creates => '/etc/fastd/blacklist',
-   require => Package['git'],
- }
- 
-  exec { 'fastd_backbone':
-    command => '/usr/bin/git clone https://github.com/freifunk-ffm/fastd-backbone-config \
-/etc/fastd/mesh-vpn/backbone',
-    creates => '/etc/fastd/mesh-vpn/backbone', 
+
+  file { '/etc/fastd':
+    ensure  => directory,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0755',
+    before  => [Exec['fastd_backbone'], Exec['fastd_blacklist']],
+    require => Package['fastd'],
+  }
+
+  file { '/etc/cron.d/fastd':
+    ensure  => file,
+    owner   => 'root',
+    group   => 'root',
+    content => template('fastd/fastd-cron.erb'),
+    mode    => '0755',
+  }
+
+  # FIXME do this on each node or only on the puppetmaster?
+  exec { 'fastd_blacklist':
+    command => '/usr/bin/git clone https://github.com/freifunk-ffm/fastd-backbone-config /etc/fastd/blacklist',
     require => Package['git'],
   }
-}
 
+  Vcsrepo {
+    ensure   => present,
+    require  => Class['git'],
+    provider => 'git',
+  }
+
+  vcsrepo { '/etc/fastd/blacklist':
+    source => 'https://github.com/freifunk-ffm/fastd-backbone-config';
+  }
+}
