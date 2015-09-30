@@ -1,4 +1,7 @@
 #!/bin/sh
+set -ix
+exec >/tmp/vpn-up 2>&1
+env
 dev=$1
 srcip=$4
 thisfastdip=$(ip addr show batbridge|grep "inet "|awk '{print $2}'|cut -d"/" -f1)

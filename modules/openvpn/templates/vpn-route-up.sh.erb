@@ -62,9 +62,9 @@ convertIpAndNetmaskToCIDR() {
   echo $output/$net
 }
 
-#stdnet=$(convertIpAndNetmaskToCIDR $ifconfig_remote $ifconfig_netmask)
+stdnet=$(convertIpAndNetmaskToCIDR $ifconfig_local $ifconfig_netmask)
 amount_v4nets=$(env|grep route_network|sort -u|tail -n 1|cut -d"=" -f1|cut -d"_" -f3)
-#ip route add $stdnet dev $dev proto kernel scope link src $ifconfig_local table $table
+ip route add $stdnet dev $dev proto kernel scope link src $ifconfig_local table $table
 
 if [[ -n $amount_v4nets ]]
 then
@@ -73,12 +73,18 @@ do
   gw="route_gateway_$i"
   net="route_network_$i"
   mask="route_netmask_$i"
-  if [[ "${!mask}" != "255.255.255.255" ]]
+  if [[ "${mask}" != "255.255.255.255" ]]
   then
     ip route add ${!net} dev $dev proto kernel scope link src $ifconfig_local table $table
   else
     ip route add ${!gw}  dev $dev scope link  src $ifconfig_local  table $table
   fi
+if [[ "$ifconfig_netmask" != "255.255.255.255" ]]
+then
+	ip route add ${!net} via $route_net_gateway
+#	ip route add ${!net} via $route_net_gateway table $table
+fi
+
 done
 fi
 ip route add default via $route_vpn_gateway src $ifconfig_local table $table
@@ -96,4 +102,4 @@ do
 done
 fi
 ip -6 route add default via $ifconfig_ipv6_remote table $table
-
+exit 0
