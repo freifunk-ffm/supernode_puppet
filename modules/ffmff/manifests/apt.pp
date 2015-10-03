@@ -20,6 +20,4 @@ class ffmff::apt {
 
   include ::apt::backports
   include ::unattended_upgrades
-
-  Class['apt::update'] -> Package <||>
 }
