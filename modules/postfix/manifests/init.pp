@@ -6,10 +6,7 @@ class postfix () {
   service { 'postfix':
     ensure  => running,
     enable  => true,
-    require => [
-      Package['postfix'],
-      Package['pwgen']
-    ],
+    require => Package['postfix'],
   }
 
   file { '/etc/postfix':
@@ -51,6 +48,6 @@ class postfix () {
     require => File_line['/etc/aliases:root'],
     notify  => Service['postfix'],
   }
-warning ("MAKE SURE TO run doveadm pw -ssha enter the PASSWORD and put $(/bin/hostname -s) into /etc/dovecot/passwd on mail.bb.ffm.freifunk.net")
+warning ("MAKE SURE TO run doveadm pw -ssha enter the PASSWORD and put '${::hostname}' into /etc/dovecot/passwd on mail.bb.ffm.freifunk.net")
 
 }
