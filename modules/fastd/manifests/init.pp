@@ -44,7 +44,6 @@ class fastd (
     owner   => 'root',
     group   => 'root',
     mode    => '0755',
-    before  => [Exec['fastd_backbone'], Exec['fastd_blacklist']],
     require => Package['fastd'],
   }
 
@@ -56,12 +55,6 @@ class fastd (
     mode    => '0755',
   }
 
-  # FIXME do this on each node or only on the puppetmaster?
-  exec { 'fastd_blacklist':
-    command => '/usr/bin/git clone https://github.com/freifunk-ffm/fastd-backbone-config /etc/fastd/blacklist',
-    require => Package['git'],
-  }
-
   Vcsrepo {
     ensure   => present,
     require  => Class['git'],
@@ -69,6 +62,7 @@ class fastd (
   }
 
   vcsrepo { '/etc/fastd/blacklist':
-    source => 'https://github.com/freifunk-ffm/fastd-backbone-config';
+    require => File['/etc/fastd'],
+    source  => 'https://github.com/freifunk-ffm/fastd-backbone-config';
   }
 }
