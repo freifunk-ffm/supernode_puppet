@@ -1,10 +1,15 @@
 class batman ($ipv4_suffix, $ipv4_subnet_start, $ipv6_subnet){
   # FIXME can't we use the batman module supplied by the kernel?
 
+  file {
+    "/lib/modules/${::kernelrelease}/kernel/net/batmand-adv/batman_adv.ko":
+      ensure => absent,
+      before => Package['batman-adv-dkms'],
+  }
+
   package { 'batman-adv-dkms':
-    ensure  => installed,
-    require => [Augeas['sources_universe'], Exec['remove batman 2014'], Exec['apt-get update']],
-    notify  => Augeas['mod-batman'],
+    ensure => installed,
+    notify => Augeas['mod-batman'],
   }
 
   augeas { 'mod-batman':
@@ -17,12 +22,6 @@ class batman ($ipv4_suffix, $ipv4_subnet_start, $ipv6_subnet){
 
   package { 'uml-utilities':
     ensure  => installed,
-  }
-
-  exec { 'remove batman 2014':
- provider => shell,
-    command => 'rm -f /lib/modules/$(uname -r)/kernel/net/batman-adv/batman_adv.ko',
-    onlyif => 'test -f /lib/modules/$(uname -r)/kernel/net/batman-adv/batman_adv.ko',
   }
 
   exec { 'modprobe batman':
