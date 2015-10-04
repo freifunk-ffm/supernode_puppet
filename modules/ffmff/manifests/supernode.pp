@@ -16,6 +16,8 @@ class ffmff::supernode (
     ensure => installed,
   }
 
+  Class['apt::update'] -> Package['check-mk-agent']
+
   file {
     'check_vpn':
       ensure => file,
