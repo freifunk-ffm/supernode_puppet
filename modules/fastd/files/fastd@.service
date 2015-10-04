@@ -1,0 +1,8 @@
+[Unit]
+Description=Fastd %i instance
+
+[Service]
+ExecStart=/usr/bin/fastd --syslog-level info --config /etc/fastd/%i/fastd.conf
+
+[Install]
+WantedBy=multi-user.target

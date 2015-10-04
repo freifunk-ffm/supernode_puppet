@@ -4,9 +4,15 @@ class openvpn {
     ensure => installed,
   }
 
-  service { 'openvpn' :
-    ensure => running,
-    enable => true,
+  service { 'openvpn':
+    ensure => stopped,
+    enable => false,
+  } ->
+
+  service { 'openvpn@ovpn-inet' :
+    ensure   => running,
+    enable   => true,
+    provider => 'systemd',
   }
 
   file { '/etc/openvpn/':
@@ -15,7 +21,7 @@ class openvpn {
   }
 
   File {
-    notify => Service['openvpn'],
+    notify => Service['openvpn@ovpn-inet'],
   }
 
   file { '/etc/openvpn/vpn-route-up.sh':
@@ -30,28 +36,14 @@ class openvpn {
     content => template('openvpn/vpn-up.sh.erb'),
   }
 
-  augeas { '/etc/openvpn/ovpn-inet.conf':
-    incl    => '/etc/openvpn/ovpn-inet.conf',
-    lens    => 'OpenVPN.lns',
-    changes => [
-      'set dev-type tun',
-      'set dev ovpn-inet',
-      'set route-up vpn-route-up.sh',
-      'set ping 10',
-      'set ping-restart 60',
-      'remove ping-exit',
-      'touch route-noexec',
-      'set up vpn-up.sh',
-      'set script-security 2',
-    ],
-    notify  => Service['openvpn'],
+  file { '/etc/openvpn/ovpn-inet.conf':
+    ensure => file,
+    source => 'puppet:///modules/openvpn/ovpn-inet.conf',
+    mode   => '0640',
   }
 
   file { '/etc/default/openvpn':
-    ensure  => file,
-    mode    => '0644',
-    content => template('openvpn/etc-default-openvpn.erb'),
-    notify  => Service['openvpn'],
+    ensure  => absent,
   }
 }
 

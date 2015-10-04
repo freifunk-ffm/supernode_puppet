@@ -4,7 +4,7 @@ class firewall {
 
   file { '/etc/fw':
     ensure => directory,
-    mode => 0755,
+    mode => '0755',
   }
 
   exec {'check_presence':
