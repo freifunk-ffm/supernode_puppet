@@ -24,16 +24,18 @@ class postfix () {
   $postfix_sasl_passwds = '/etc/postfix/sasl_passwd'
   $random_passwd = ffmff_random_string(10)
 
-  file { $postfix_sasl_passwds: }
+  file { $postfix_sasl_passwds:
+    ensure => file,
+  }
 
   file_line { 'postfix_sasl_passwd':
     path  => $postfix_sasl_passwds,
-    match => /mail.bb.ffm.freifunk.net/,
+    match => '/mail.bb.ffm.freifunk.net/',
     line  => "[mail.bb.ffm.freifunk.net] ${::hostname}:${random_passwd}",
   }
 
   exec { "/usr/sbin/postmap ${postfix_sasl_passwds}":
-    onlyif  => "/bin/test ${postfix_sasl_passwds} -nt ${postfix_sasl_passwds}.db",
+    onlyif  => "/usr/bin/test ${postfix_sasl_passwds} -nt ${postfix_sasl_passwds}.db",
     require => File_line['postfix_sasl_passwd'],
     notify  => Service['postfix'],
   }
@@ -44,7 +46,7 @@ class postfix () {
   }
 
   exec { '/usr/bin/newaliases':
-    onlyif  => '/bin/test /etc/aliases -nt /etc/aliases.db',
+    onlyif  => '/usr/bin/test /etc/aliases -nt /etc/aliases.db',
     require => File_line['/etc/aliases:root'],
     notify  => Service['postfix'],
   }
