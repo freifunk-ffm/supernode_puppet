@@ -8,7 +8,7 @@ define fastd::variant (
   $interface = $title
   $socket = "/var/run/fastd-${interface}.sock"
 
-  $service = $::fastd::service
+  $service = "fastd@${title}"
   $user = $::fastd::user
   $fastd_key = $::fastd::fastd_key
   $ipv6_net = $::fastd::ipv6_net
@@ -19,6 +19,14 @@ define fastd::variant (
   $web_service_auth = $::fastd::web_service_auth
 
   $dir = "/etc/fastd/${title}/"
+
+  service { $service:
+    ensure    => running,
+    enable    => true,
+    provider  => 'systemd',
+    require   => Class['::fastd'],
+    subscribe => File['/etc/systemd/system/fastd@.service'],
+  }
 
   File {
     owner   => 'root',

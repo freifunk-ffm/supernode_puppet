@@ -12,13 +12,15 @@ class fastd (
   $web_service_auth,
 ) {
   $user = 'fastd_serv'
-  $service = 'fastd'
+  $legacy_service = 'fastd'
 
   package { [
     'fastd', 'bridge-utils', 'curl',
   ]:
     ensure  => installed,
   }
+
+  Class['apt::update'] -> Package['fastd']
 
   include git
 
@@ -29,14 +31,14 @@ class fastd (
     managehome => true,
   }
 
-  service { $service:
-    ensure  => running,
-    enable  => true,
-    require => [
-      Package['fastd'],
-      Package['bridge-utils'],
-      Package['curl'],
-    ],
+  service { $legacy_service:
+    ensure  => stopped,
+    enable  => false,
+  }
+
+  file { '/etc/default/fastd':
+    ensure => absent,
+    before => Service['fastd'],
   }
 
   file { '/etc/fastd':
@@ -46,6 +48,14 @@ class fastd (
     mode    => '0755',
     require => Package['fastd'],
   }
+
+   file { '/etc/systemd/system/fastd@.service':
+     ensure => file,
+     owner  => 'root',
+     group  => 'root',
+     mode   => '0644',
+     source => 'puppet:///modules/fastd/fastd@.service',
+   }
 
   file { '/etc/cron.d/fastd':
     ensure  => file,
