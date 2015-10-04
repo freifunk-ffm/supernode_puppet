@@ -23,8 +23,8 @@ secret "<%= @fastd_key %>";
 # Set the interface MTU for TAP mode with xsalsa20/aes128 over IPv4 with a base MTU of 1492 (PPPoE)
 # (see MTU selection documentation)
 mtu <%= @mtu %>;
-<%- if @pmtu -%>
-pmtu <%= @pmtu %>;
+<%- if not @pmtu.nil? -%>
+pmtu <%= 'yes' if @pmtu else 'no' %>;
 <%- end -%>
 
 # Include peers from the directory 'peers'
