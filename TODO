@@ -1,1 +1,1 @@
-* checkvpn-script einbauen
+* echo 2048 > /sys/class/net/batbridge/bridge/hash_max
