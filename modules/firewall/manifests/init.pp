@@ -15,8 +15,8 @@ class firewall {
 
   file_line { '/etc/rc.local:firewall':
     path    => '/etc/rc.local',
-    line    => '/etc/fw/*.fw; exit',
-    match   => 'exit',
+    line    => '/etc/fw/*.fw; exit 0',
+    match   => '^exit 0$',
     before  => Service['fail2ban'],
     require => Exec["check_presence"],
   }
