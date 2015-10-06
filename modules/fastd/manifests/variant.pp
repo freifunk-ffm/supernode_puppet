@@ -2,7 +2,11 @@ define fastd::variant (
   $port,
   $mtu,
   $pmtu,
+  $use_backbone_repo,
 ) {
+  validate_integer($port, $mtu)
+  validate_bool($pmtu, $use_backbone_repo)
+
   include ::fastd
 
   $interface = $title
@@ -56,8 +60,19 @@ define fastd::variant (
     "${dir}/fastd.conf":
       mode    => '0644',
       content => template('fastd/fastd.conf.erb');
-    "${dir}/backbone":
+  }
+
+  if $use_backbone_repo {
+    file { "${dir}/backbone":
       ensure => symlink,
-      target => '../blacklist';
+      target => '../blacklist',
+    }
+  } else {
+    file { "${dir}/backbone":
+      ensure  => directory,
+      purge   => true,
+      recurse => true,
+      force   => true,
+    }
   }
 }
