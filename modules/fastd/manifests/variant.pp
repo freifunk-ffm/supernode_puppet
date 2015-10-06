@@ -4,7 +4,8 @@ define fastd::variant (
   $pmtu,
   $use_backbone_repo,
 ) {
-  validate_integer($port, $mtu)
+  validate_integer($port)
+  validate_integer($mtu)
   validate_bool($pmtu, $use_backbone_repo)
 
   include ::fastd
