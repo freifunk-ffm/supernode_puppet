@@ -2,13 +2,14 @@ class collectd (
   $supernodenum
 ) {
 
-  package { 'collectd':
+  package { ['collectd', 'iptables-dev']:
     ensure => installed,
   }
   
   service { 'collectd':
-    ensure => running,
-    enable => true,
+    ensure  => running,
+    enable  => true,
+    require => Package['iptables-dev'],
   }
 
   file { '/etc/collectd':

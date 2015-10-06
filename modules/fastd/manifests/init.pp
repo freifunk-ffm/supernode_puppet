@@ -12,13 +12,15 @@ class fastd (
   $web_service_auth,
 ) {
   $user = 'fastd_serv'
-  $service = 'fastd'
+  $legacy_service = 'fastd'
 
   package { [
     'fastd', 'bridge-utils', 'curl',
   ]:
     ensure  => installed,
   }
+
+  Class['apt::update'] -> Package['fastd']
 
   include git
 
@@ -29,14 +31,14 @@ class fastd (
     managehome => true,
   }
 
-  service { $service:
-    ensure  => running,
-    enable  => true,
-    require => [
-      Package['fastd'],
-      Package['bridge-utils'],
-      Package['curl'],
-    ],
+  service { $legacy_service:
+    ensure  => stopped,
+    enable  => false,
+  }
+
+  file { '/etc/default/fastd':
+    ensure => absent,
+    before => Service['fastd'],
   }
 
   file { '/etc/fastd':
@@ -44,9 +46,16 @@ class fastd (
     owner   => 'root',
     group   => 'root',
     mode    => '0755',
-    before  => [Exec['fastd_backbone'], Exec['fastd_blacklist']],
     require => Package['fastd'],
   }
+
+   file { '/etc/systemd/system/fastd@.service':
+     ensure => file,
+     owner  => 'root',
+     group  => 'root',
+     mode   => '0644',
+     source => 'puppet:///modules/fastd/fastd@.service',
+   }
 
   file { '/etc/cron.d/fastd':
     ensure  => file,
@@ -56,12 +65,6 @@ class fastd (
     mode    => '0755',
   }
 
-  # FIXME do this on each node or only on the puppetmaster?
-  exec { 'fastd_blacklist':
-    command => '/usr/bin/git clone https://github.com/freifunk-ffm/fastd-backbone-config /etc/fastd/blacklist',
-    require => Package['git'],
-  }
-
   Vcsrepo {
     ensure   => present,
     require  => Class['git'],
@@ -69,6 +72,7 @@ class fastd (
   }
 
   vcsrepo { '/etc/fastd/blacklist':
-    source => 'https://github.com/freifunk-ffm/fastd-backbone-config';
+    require => File['/etc/fastd'],
+    source  => 'https://github.com/freifunk-ffm/fastd-backbone-config';
   }
 }

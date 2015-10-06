@@ -10,7 +10,7 @@ interface "<%= @interface %>";
 method "salsa2012+umac";
 method "salsa2012+gmac";
 method "xsalsa20-poly1305";
-# method "null";
+method "null";
 
 secure handshakes no;
 
@@ -23,9 +23,9 @@ secret "<%= @fastd_key %>";
 # Set the interface MTU for TAP mode with xsalsa20/aes128 over IPv4 with a base MTU of 1492 (PPPoE)
 # (see MTU selection documentation)
 mtu <%= @mtu %>;
-<%- if @pmtu -%>
-pmtu <%= @pmtu %>;
-<%- end -%>
+#<%- if not @pmtu.nil? -%>
+#<%- pmtu ? 'yes' : 'no' %>;
+#<%- end -%>
 
 # Include peers from the directory 'peers'
 include peers from "peers";

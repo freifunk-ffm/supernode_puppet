@@ -2,13 +2,18 @@ define fastd::variant (
   $port,
   $mtu,
   $pmtu,
+  $use_backbone_repo,
 ) {
+  validate_integer($port)
+  validate_integer($mtu)
+  validate_bool($pmtu, $use_backbone_repo)
+
   include ::fastd
 
   $interface = $title
   $socket = "/var/run/fastd-${interface}.sock"
 
-  $service = $::fastd::service
+  $service = "fastd@${title}"
   $user = $::fastd::user
   $fastd_key = $::fastd::fastd_key
   $ipv6_net = $::fastd::ipv6_net
@@ -19,6 +24,14 @@ define fastd::variant (
   $web_service_auth = $::fastd::web_service_auth
 
   $dir = "/etc/fastd/${title}/"
+
+  service { $service:
+    ensure    => running,
+    enable    => true,
+    provider  => 'systemd',
+    require   => Class['::fastd'],
+    subscribe => File['/etc/systemd/system/fastd@.service'],
+  }
 
   File {
     owner   => 'root',
@@ -48,8 +61,19 @@ define fastd::variant (
     "${dir}/fastd.conf":
       mode    => '0644',
       content => template('fastd/fastd.conf.erb');
-    "${dir}/backbone":
+  }
+
+  if $use_backbone_repo {
+    file { "${dir}/backbone":
       ensure => symlink,
-      target => '../blacklist';
+      target => '../blacklist',
+    }
+  } else {
+    file { "${dir}/backbone":
+      ensure  => directory,
+      purge   => true,
+      recurse => true,
+      force   => true,
+    }
   }
 }

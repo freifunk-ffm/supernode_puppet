@@ -16,6 +16,8 @@ class ffmff::supernode (
     ensure => installed,
   }
 
+  Class['apt::update'] -> Package['check-mk-agent']
+
   file {
     'check_vpn':
       ensure => file,
@@ -81,13 +83,15 @@ class ffmff::supernode (
 
   fastd::variant {
     'mesh-vpn':
-      mtu    => 1426,
-      port   => 10000,
-      pmtu   => 'no';
+      mtu               => 1426,
+      port              => 10000,
+      pmtu              => false,
+      use_backbone_repo => true;
     'mesh-vpn-1280':
-      mtu  => 1280,
-      port => 10001,
-      pmtu => undef;
+      mtu               => 1280,
+      port              => 10001,
+      pmtu              => true,
+      use_backbone_repo => false;
   }
 
   include ff_tools
