@@ -11,7 +11,9 @@ TABLE=ffffm                     # Name of routing table
 BATMAN_IF=bat0                  # Batman-adv interface
 
 [[ -f /root/disable ]] && {
-exit 0
+    /usr/sbin/batctl -m $BATMAN_IF gw off
+    /etc/init.d/isc-dhcp-server stop
+    exit 0
 }
 
 # echo -n "Test available interfaces:"
