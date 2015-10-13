@@ -23,4 +23,10 @@ class collectd (
     content => template('collectd/collectd.conf.erb'),
     notify  => Service['collectd'],
   }
+  file { '/usr/local/bin/getccount.sh':
+    ensure => file,
+    mode => 0755,
+    content => template('collectd/getccount.sh.erb'),
+    notify => Service['collectd']
+  }
 }

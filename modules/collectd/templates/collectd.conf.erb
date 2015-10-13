@@ -3,7 +3,6 @@ FQDNLookup true
 
 LoadPlugin syslog
 
-
 <Plugin syslog>
   LogLevel info
 </Plugin>
@@ -22,10 +21,17 @@ LoadPlugin processes
 LoadPlugin swap
 LoadPlugin uptime
 LoadPlugin users
+LoadPlugin exec 
 
 <Plugin df>
   FSType "rootfs"
-        IgnoreSelected true
+  IgnoreSelected true
+</Plugin>
+
+<Plugin exec>
+  Exec "collectd" "/usr/local/bin/getccount.sh"
+#  Exec "otheruser" "/path/to/another/binary" "arg0" "arg1"
+#  NotificationExec "user" "/usr/lib/collectd/exec/handle_notification"
 </Plugin>
 
 <Plugin interface>
