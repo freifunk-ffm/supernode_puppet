@@ -1,4 +1,5 @@
 define fastd::variant (
+  $nullcipher,
   $port,
   $mtu,
   $pmtu,
@@ -6,7 +7,7 @@ define fastd::variant (
 ) {
   validate_integer($port)
   validate_integer($mtu)
-  validate_bool($pmtu, $use_backbone_repo)
+  validate_bool($nullcipher, $pmtu, $use_backbone_repo)
 
   include ::fastd
 
@@ -52,10 +53,6 @@ define fastd::variant (
       group   => $user;
     "${dir}/fastd-up":
       content => template('fastd/fastd-up.erb');
-    "${dir}/on-establish":
-      content => template('fastd/on-establish.erb');
-    "${dir}/on-disestablish":
-      content => template('fastd/on-disestablish.erb');
     "${dir}/verify":
       content => template('fastd/verify.erb');
     "${dir}/fastd.conf":

@@ -1,8 +1,4 @@
 * FIX BUG postfix: sasl_passwd contains multiple lines after consecutive runs => password should never change if one has already been created
-* FIX BUG: "template missing" Warning: Variable access via 'pmtu' is deprecated. Use '@pmtu' instead. template[/root/supernodeFFFFM puppet/modules/fastd/templates/fastd.conf.erb]:27 (at /usr/lib/ruby/vendor_ruby/puppet/parser/templatewrapper.rb:76:in `method_missing')
-* do not install radvd
 * use proper template for /etc/rc.local, have it log stderr and stdout to /tmp/rc.local.log, do not exit on the first failed command
-* remove pmtu from fastd-configuration
+* fastd: allow null-cipher for mesh-vpn-1280 but do not allow it for mesh-vpn
 * enlarge size of multicast hash-table: echo 2048 > /sys/class/net/batbridge/bridge/hash_max
-* make sure all changes from the working branch are merged to master
-* remove fastd_web_service and fastd_web_service_auth

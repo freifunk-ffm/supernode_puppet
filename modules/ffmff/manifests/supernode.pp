@@ -81,11 +81,13 @@ class ffmff::supernode (
 
   fastd::variant {
     'mesh-vpn':
+      nullcipher        => false,
       mtu               => 1426,
       port              => 10000,
       pmtu              => false,
       use_backbone_repo => true;
     'mesh-vpn-1280':
+      nullcipher        => true;
       mtu               => 1280,
       port              => 10001,
       pmtu              => false,

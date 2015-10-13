@@ -7,7 +7,7 @@ class ffmff {
   include ::firewall
 
   package { [
-    'ntp', 'vim',
+    'ntp', 'vim', 'iftop'
   ]:
     ensure => installed,
   }
