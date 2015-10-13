@@ -14,7 +14,7 @@ killall batadv-vis
 
 /sbin/ifconfig <%= @interface %> hw ether 02:ff:0f:<%= @rndmac %>:7d:<%= @supernodenum.to_s.rjust(2, "0") %> up
 /sbin/ip link set dev <%= @interface %> up
-
+echo 60 >/sys/class/net/bat0/mesh/hop_penalty
 /usr/sbin/batctl if add <%= @interface %>
 /usr/sbin/batctl it 5000
 /usr/sbin/batctl gw_mode server 100MBit/100MBit
