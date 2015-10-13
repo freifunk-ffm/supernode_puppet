@@ -1,0 +1,30 @@
+#!/bin/bash
+#set -ix
+start=<%= @ipv4_subnet_start %>
+ende=<%= @ipv4_subnet_end %>
+iprange=10.126
+grepstring=""
+#HOSTNAME="${COLLECTD_HOSTNAME:-localhost}"
+HOSTNAME=uber.ffm.freifunk.net
+INTERVAL="${COLLECTD_INTERVAL:-60}"
+
+CMD="/usr/sbin/arp -an"
+export LC_ALL=C
+#CMD="echo -e 10.126.71.1\n10.126.72.22\n10.126.82.1\n10.126.75.1"
+
+getdata()
+{
+  count=$($CMD | grep -v "incomp" |grep bat |grep -c -E  $grepstring)
+  echo "PUTVAL \"$HOSTNAME/exec-Freifunk_Frankfurt_Clients/gauge-<%= @hostname %>_Clients\" interval=$INTERVAL N:${count:-0}"
+}
+
+for ((i=$start;i<=$ende;i++))
+do
+       grepstring="$grepstring -e ${iprange}.${i}.[[:digit:]]+"
+done
+
+while sleep "$INTERVAL"; do
+  getdata
+done
+
+
