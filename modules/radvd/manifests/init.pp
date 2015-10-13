@@ -4,8 +4,8 @@ class radvd ($ipv6_subnet, $ipv6_net, $ipv6_rnet) {
   }
 
   service { 'radvd':
-    ensure => running,
-    enable => true,
+    ensure => stopped,
+    enable => false,
   }
 
   file { '/etc/radvd.conf':
