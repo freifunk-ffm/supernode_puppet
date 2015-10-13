@@ -90,7 +90,7 @@ class ffmff::supernode (
     'mesh-vpn-1280':
       mtu               => 1280,
       port              => 10001,
-      pmtu              => true,
+      pmtu              => false,
       use_backbone_repo => false;
   }
 
