@@ -9,7 +9,6 @@ class fastd (
   $ipv6_rnet_prefix,
   $ipv6_rnet_mask,
   $rndmac,
-  $web_service_auth,
 ) {
   $user = 'fastd_serv'
   $legacy_service = 'fastd'

@@ -9,8 +9,11 @@ interface "<%= @interface %>";
 # Support xsalsa20 and aes128 encryption methods, prefer salsa2012
 method "salsa2012+umac";
 method "salsa2012+gmac";
-<%- @nullcipher ? 'method "null";' : '' %>
-
+<% if @nullcipher == true %>
+method "null";
+<% else %> 
+#method "null"; 
+<% end %>
 secure handshakes no;
 
 # Bind to a fixed port, IPv4 only
@@ -23,7 +26,7 @@ secret "<%= @fastd_key %>";
 # (see MTU selection documentation)
 mtu <%= @mtu %>;
 #<%- if not @pmtu.nil? -%>
-#<%- pmtu ? 'yes' : 'no' %>;
+#<%- @pmtu ? 'yes' : 'no' %>;
 #<%- end -%>
 
 # Include peers from the directory 'peers'

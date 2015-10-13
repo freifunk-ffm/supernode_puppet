@@ -22,7 +22,6 @@ define fastd::variant (
   $ipv6_rnet_prefix = $::fastd::ipv6_rnet_prefix
   $ipv6_rnet_mask = $::fastd::ipv6_rnet_mask
   $rndmac = $::fastd::rndmac
-  $web_service_auth = $::fastd::web_service_auth
 
   $dir = "/etc/fastd/${title}/"
 
