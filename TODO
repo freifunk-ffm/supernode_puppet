@@ -1,4 +1,3 @@
-* FIX BUG postfix: sasl_passwd contains multiple lines after consecutive runs => password should never change if one has already been created
 * use proper template for /etc/rc.local, have it log stderr and stdout to /tmp/rc.local.log, do not exit on the first failed command
 * authorized_keys: ergänzen statt überschreiben der Datei
 * properly install ff-tools
