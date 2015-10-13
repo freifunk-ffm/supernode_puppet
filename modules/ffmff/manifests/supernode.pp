@@ -2,7 +2,6 @@ class ffmff::supernode (
   $supernodenum,
   $fastd_key,
   $rndmac,
-  $fastd_web_service_auth,
 ) {
   validate_integer($supernodenum, 20, 1)
 
@@ -78,7 +77,6 @@ class ffmff::supernode (
     ipv6_rnet_prefix  => $ipv6_rnet_prefix,
     ipv6_rnet_mask    => $ipv6_rnet_mask,
     rndmac            => $rndmac,
-    web_service_auth  => $fastd_web_service_auth,
   }
 
   fastd::variant {
