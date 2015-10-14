@@ -73,7 +73,7 @@ class openvpn {
       line   => '';
     "${ovpn}/route-noexec":
       match => '^route-noexec\s*',
-      line  => 'reoute-noexec';
+      line  => 'route-noexec';
     "${ovpn}/up":
       match => '^up\s',
       line  => 'up vpn-up.sh';
