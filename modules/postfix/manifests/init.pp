@@ -29,9 +29,10 @@ class postfix () {
   }
 
   file_line { 'postfix_sasl_passwd':
-    path  => $postfix_sasl_passwds,
-    match => '/mail.bb.ffm.freifunk.net/',
-    line  => "[mail.bb.ffm.freifunk.net] ${::hostname}:${random_passwd}",
+    path    => $postfix_sasl_passwds,
+    match   => '^\[mail.bb.ffm.freifunk.net\]',
+    replace => false,
+    line    => "[mail.bb.ffm.freifunk.net] ${::hostname}:${random_passwd}",
   }
 
   exec { "/usr/sbin/postmap ${postfix_sasl_passwds}":
