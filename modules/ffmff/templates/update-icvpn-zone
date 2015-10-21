@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -e
+
+cd /var/lib/ffmff
+
+cd ../ivpn-meta.git
+git pull
+
+cd ../icvpn-scripts.git
+git pull
+
+cd ../output
+
+../icvpn-scripts.git/mkdns -f unbound -s ../icvpn-meta.git/ -x frankfurt
