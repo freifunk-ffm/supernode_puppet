@@ -1,6 +1,6 @@
 #!/bin/bash
+exec >>/var/log/fastd-verifylog_<%= @mtu %> 2>&1
 set -ix
-exec >>/var/log/fastd-verifylog 2>&1
 # TODO hier irgendetwas schlaues hinschreiben, dass erstmal eine blacklist
 # prüft und ansonsten immer erfolgreich beendet wird
 key=$1
