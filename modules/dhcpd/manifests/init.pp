@@ -7,6 +7,11 @@ class dhcpd (
     ensure  => installed,
   }
 
+  systemd::service { 'isc-dhcp-server':
+    ensure => present,
+    source => 'puppet:///modules/dhcpd/isc-dhcp-server.service',
+  } ~>
+
   service { 'isc-dhcp-server':
     ensure  => running,
     enable  => true,
