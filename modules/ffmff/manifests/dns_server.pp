@@ -1,6 +1,7 @@
 class ffmff::dns_server {
   $package = 'bind9'
   $service = 'bind9'
+  $user = 'bind'
 
   include dns_repo
 
@@ -24,6 +25,10 @@ class ffmff::dns_server {
     '/etc/bind/zones.ff':
       ensure => link,
       target => '/var/lib/ffmff/output/zones.ff';
+    '/etc/bind/master':
+      ensure => directory,
+      mode   => '0750',
+      owner  => $user,
   }
 
   service { $service:
