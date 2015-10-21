@@ -110,5 +110,5 @@ class ffmff::supernode (
     supernodenum => $supernodenum,
   }
 
-  include ffmff::dns_repo
+  include ffmff::dns_server
 }
