@@ -1,0 +1,6 @@
+[Unit]
+Description=Reload the bind Service
+
+[Service]
+Type=oneshot
+ExecStart=/bin/systemctl reload-or-try-restart bind.service

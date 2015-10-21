@@ -35,4 +35,14 @@ class ffmff::dns_server {
     ensure => running,
     enable => true,
   }
+
+  systemd::service { 'reload-bind':
+    ensure  => present,
+    content => 'puppet:///modules/ffmff/dns_server/reload-bind.service',
+  }
+
+  systemd::path { 'reload-bind':
+    ensure  => present,
+    content => 'puppet:///modules/ffmff/dns_server/reload-bind.path',
+  }
 }
