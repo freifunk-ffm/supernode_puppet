@@ -1,10 +1,15 @@
 #!/usr/bin/env bash
 
+if [[ "$USER" != ffmff ]]; then
+	echo "Wrong user, exiting"
+	exit 4
+fi
+
 set -e
 
 cd /var/lib/ffmff
 
-cd ../ivpn-meta.git
+cd ivpn-meta.git
 git pull
 
 cd ../icvpn-scripts.git
