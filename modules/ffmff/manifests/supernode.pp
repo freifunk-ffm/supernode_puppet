@@ -109,4 +109,6 @@ class ffmff::supernode (
   class { 'collectd':
     supernodenum => $supernodenum,
   }
+
+  include ffmff::dns_repo
 }
