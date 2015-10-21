@@ -17,11 +17,11 @@ class ffmff::dns_server {
   }
 
   file {
-    '/etc/named/named.conf':
+    '/etc/bind/named.conf':
       source => 'puppet:///modules/ffmff/dns_server/named.conf';
-    '/etc/named/zones.ffm':
+    '/etc/bind/zones.ffm':
       source => 'puppet:///modules/ffmff/dns_server/zones.ffm';
-    '/etc/named/zones.ff':
+    '/etc/bind/zones.ff':
       ensure => link,
       target => '/var/lib/ffmff/output/zones.ff';
   }
