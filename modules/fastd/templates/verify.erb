@@ -5,7 +5,7 @@ set -ix
 # prüft und ansonsten immer erfolgreich beendet wird
 key=$1
 
-if grep -q "$key" /etc/fastd/blacklist/blacklist/blacklist
+if grep -q "$key" /etc/fastd/blacklist/blacklist
 then
   exit 1
 else
