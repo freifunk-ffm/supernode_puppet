@@ -49,7 +49,7 @@ class ffmff::dns_repo {
     content => template('ffmff/update-icvpn-zone'),
   }
 
-  package { 'moreutils':
+  package { ['moreutils', 'python-yaml']:
     ensure => present,
   }
 

@@ -17,4 +17,4 @@ git pull
 
 cd ../output
 
-../icvpn-scripts.git/mkdns -f unbound -s ../icvpn-meta.git/ -x frankfurt
+../icvpn-scripts.git/mkdns -f unbound -s ../icvpn-meta.git/ -x frankfurt > unbound.conf
