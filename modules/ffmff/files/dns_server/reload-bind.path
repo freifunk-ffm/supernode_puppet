@@ -1,0 +1,5 @@
+[Unit]
+Description=Watch for changes to the Freifunk config
+
+[Path]
+PathChanged=/var/lib/ffmff/output/zones.ff

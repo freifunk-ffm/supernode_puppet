@@ -1,5 +1,4 @@
 * BUG: /etc/aliases - current implementation of puppet module allows for multiple lines for  "root: " which is syntactically incorrect
-* add bind setup as dns cache to puppet (Magnus?)
 * use proper template for /etc/rc.local, have it log stderr and stdout to /tmp/rc.local.log, do not exit on the first failed command
 * authorized_keys: ergänzen statt überschreiben der Datei
 * properly install ff-tools
