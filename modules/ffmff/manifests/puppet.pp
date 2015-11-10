@@ -14,17 +14,9 @@ class ffmff::puppet (
     server_external_nodes         => '',
   }
 
-  file { '/etc/puppetlabs':
-    ensure => directory,
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0755',
-  }
-
   if $master {
-    file { '/etc/puppetlabs/puppetdb':
-      ensure => link,
-      target => '/etc/puppetdb',
+    class { '::puppetdb::globals':
+      puppetdb_version => '2.3.8',
     }
 
     class { '::puppetdb':
