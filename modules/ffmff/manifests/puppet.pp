@@ -6,6 +6,7 @@ class ffmff::puppet (
   class { '::puppet':
     server                      => $master,
     server_foreman              => false,
+    server_passenger            => false,
     server_storeconfigs_backend => 'puppetdb',
   }
 
