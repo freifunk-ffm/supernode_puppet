@@ -28,10 +28,6 @@ class postfix () {
   $mailrelay_host = 'mail.bb.ffm.freifunk.net'
 
   file { $postfix_sasl_passwds:
-    ensure => file,
-  }
-
-  file { $postfix_sasl_passwds:
     ensure  => file,
     owner   => 'root',
     group   => 'postfix',
