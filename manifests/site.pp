@@ -1,4 +1,8 @@
 node 'puppet.ffm.freifunk.net' {
+  class { 'timezone':
+    timezone => 'UTC',
+  }
+
   class { 'ffmff::puppet':
     master => true,
   }
