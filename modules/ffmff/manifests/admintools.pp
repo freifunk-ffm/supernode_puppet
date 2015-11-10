@@ -1,6 +1,6 @@
 class ffmff::admintools {
   package { [
-    'vim', 'iftop'
+    'vim', 'iftop', 'htop',
   ]:
     ensure => installed,
   }
