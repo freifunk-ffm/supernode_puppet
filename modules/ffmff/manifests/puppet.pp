@@ -13,6 +13,7 @@ class ffmff::puppet (
   if $master {
     class { '::puppetdb':
       manage_package_repo => false,
+      puppetdb_version    => '2.3.8',
     }
   }
 }
