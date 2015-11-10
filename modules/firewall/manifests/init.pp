@@ -1,33 +1,40 @@
-class firewall {
-  # FIXME use proper init script
-  # FIXME remove check_presence
-
-  file { '/etc/fw':
-    ensure => directory,
-    mode => '0755',
+# = Class: firewall
+#
+# Manages packages and services required by the firewall type/provider.
+#
+# This class includes the appropriate sub-class for your operating system,
+# where supported.
+#
+# == Parameters:
+#
+# [*ensure*]
+#   Ensure parameter passed onto Service[] resources.
+#   Default: running
+#
+class firewall (
+  $ensure       = running,
+  $service_name = $::firewall::params::service_name,
+  $package_name = $::firewall::params::package_name,
+) inherits ::firewall::params {
+  case $ensure {
+    /^(running|stopped)$/: {
+      # Do nothing.
+    }
+    default: {
+      fail("${title}: Ensure value '${ensure}' is not supported")
+    }
   }
 
-  exec {'check_presence':
-    command => '/bin/false',
-    provider => shell,
-    unless => '/usr/bin/test -f /etc/fw/$(hostname -f).fw',
-  }
-
-  file_line { '/etc/rc.local:firewall':
-    path    => '/etc/rc.local',
-    line    => '/etc/fw/*.fw; exit 0',
-    match   => '^exit 0$',
-    before  => Service['fail2ban'],
-    require => Exec["check_presence"],
-  }
-
-  package { 'fail2ban':
-    ensure => installed,
-  }
-
-  service { 'fail2ban':
-    ensure      => running,
-    enable      => true,
-    require     => Package['fail2ban'],
+  case $::kernel {
+    'Linux': {
+      class { "${title}::linux":
+        ensure       => $ensure,
+        service_name => $service_name,
+        package_name => $package_name,
+      }
+    }
+    default: {
+      fail("${title}: Kernel '${::kernel}' is not currently supported")
+    }
   }
 }
