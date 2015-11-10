@@ -27,6 +27,9 @@ class ffmff::puppet (
   }
 
   if $master {
+    package { 'ruby-highline':
+      ensure => present,
+    } ->
     class { '::trocla::config': }
     class { '::puppetdb':
       manage_package_repo => false,

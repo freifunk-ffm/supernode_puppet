@@ -9,7 +9,7 @@ class ffmff (
   }
   include ::rsyslog
   include ::sshd
-  include ::postfix
+  # include ::postfix
   include ::ffmff::firewall
   include ::ffmff::ntp
   include ::ffmff::admintools
