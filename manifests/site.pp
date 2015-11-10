@@ -1,6 +1,14 @@
 node 'puppet.ffm.freifunk.net' {
   class { 'timezone':
-    timezone => 'UTC',
+    timezone => 'Etc/UTC',
+  }
+
+  class { 'locales':
+    default_locale => 'en_US.UTF-8',
+    locales        => [
+      'en_US.UTF-8 UTF-8',
+      'de_DE.UTF-8 UTF-8'
+    ],
   }
 
   class { 'ffmff::puppet':
