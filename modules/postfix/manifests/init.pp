@@ -37,7 +37,7 @@ class postfix () {
 
   exec { "/usr/sbin/postmap ${postfix_sasl_passwds}":
     onlyif  => "/usr/bin/test ${postfix_sasl_passwds} -nt ${postfix_sasl_passwds}.db",
-    require => File_line['postfix_sasl_passwd'],
+    require => File[$postfix_sasl_passwds],
     notify  => Service['postfix'],
   }
 
