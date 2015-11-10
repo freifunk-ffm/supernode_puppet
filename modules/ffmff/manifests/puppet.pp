@@ -11,6 +11,8 @@ class ffmff::puppet (
   }
 
   if $master {
-    class { '::puppetdb': }
+    class { '::puppetdb':
+      manage_package_repo => false,
+    }
   }
 }
