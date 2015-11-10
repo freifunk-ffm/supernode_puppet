@@ -4,10 +4,11 @@ class ffmff::puppet (
   validate_bool($master)
 
   class { '::puppet':
-    server                      => $master,
-    server_foreman              => false,
-    server_passenger            => false,
-    server_storeconfigs_backend => 'puppetdb',
+    server                        => $master,
+    server_foreman                => false,
+    server_passenger              => false,
+    server_storeconfigs_backend   => 'puppetdb',
+    server_directory_environments => true,
   }
 
   file { '/etc/puppetlabs':
