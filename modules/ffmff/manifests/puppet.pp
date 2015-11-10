@@ -10,6 +10,8 @@ class ffmff::puppet (
     server_storeconfigs_backend   => 'puppetdb',
     server_directory_environments => true,
     server_git_repo               => true,
+    server_puppetdb_host          => '127.0.0.1',
+    server_external_nodes         => false,
   }
 
   file { '/etc/puppetlabs':
