@@ -4,7 +4,7 @@ class ffmff::puppet (
   validate_bool($master)
 
     class { '::puppetdb::globals':
-      version => '2.3.8',
+      version => '2.3.8puppetlabs-1',
     }
 
   class { '::puppet':
@@ -14,7 +14,7 @@ class ffmff::puppet (
     server_storeconfigs_backend   => 'puppetdb',
     server_directory_environments => true,
     server_git_repo               => true,
-    server_puppetdb_host          => '127.0.0.1',
+    server_puppetdb_host          => 'puppet.ffm.freifunk.net',
     server_external_nodes         => '',
   }
 
