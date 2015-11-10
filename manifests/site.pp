@@ -1,5 +1,5 @@
 node 'puppet.ffm.freifunk.net' {
-  class { 'ffmff':
-    puppetmaster => true,
+  class { 'ffmff::puppet':
+    master => true,
   }
 }
