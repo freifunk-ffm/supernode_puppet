@@ -4,7 +4,7 @@ class ffmff::puppet (
   validate_bool($master)
 
     class { '::puppetdb::globals':
-      puppetdb_version => '2.3.8',
+      version => '2.3.8',
     }
 
   class { '::puppet':
