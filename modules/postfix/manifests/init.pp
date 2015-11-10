@@ -27,6 +27,11 @@ class postfix () {
   $mailrelay_password = trocla($trocla_key)
   $mailrelay_host = 'mail.bb.ffm.freifunk.net'
 
+  @@postfix::sasl_user { $::certname:
+    username   => $mailrelay_user,
+    trocla_key => $trocla_key,
+  }
+
   file { $postfix_sasl_passwds:
     ensure  => file,
     owner   => 'root',
