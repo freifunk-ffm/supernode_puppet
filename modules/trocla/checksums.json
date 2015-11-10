@@ -1,0 +1,13 @@
+{
+  "README.md": "9b28b07ec79db687f110b3f0b02edf61",
+  "lib/puppet/parser/functions/trocla.rb": "023137e3a0972f9a90653a5de5847c66",
+  "lib/puppet/parser/functions/trocla_get.rb": "dd5eeb5ef0eb4e09eac538f354024c77",
+  "lib/puppet/parser/functions/trocla_set.rb": "d73b596f3522f6f63599d6a16a863236",
+  "lib/puppet/util/trocla_helper.rb": "4429cabbd7e7274699ab0830be4467ab",
+  "manifests/config.pp": "a374c8fc10827d9bff7c2fe10b72ee88",
+  "manifests/master/ree.pp": "112309638dec0585aafc30d9cf761bc3",
+  "manifests/master.pp": "7614df7f937e1491eca04dc53d2fc5ea",
+  "manifests/yaml.pp": "92e8625077e4cd2ecabaf86c9d56afef",
+  "metadata.json": "34b8110e26a48ec805a84c1adea92869",
+  "templates/troclarc.yaml.erb": "3e8c57b8a7c2a4cba4a91d0e4dca1477"
+}

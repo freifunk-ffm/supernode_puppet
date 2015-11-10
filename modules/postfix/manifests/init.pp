@@ -22,17 +22,21 @@ class postfix () {
 
   #"[mail.bb.ffm.freifunk.net] user:pass; postmap file
   $postfix_sasl_passwds = '/etc/postfix/sasl_passwd'
-  $random_passwd = ffmff_random_string(10)
+  $mailrelay_user = $::hostname
+  $trocla_key = "mail/${mailrelay_user}/password"
+  $mailrelay_password = trocla($trocla_key)
+  $mailrelay_host = 'mail.bb.ffm.freifunk.net'
 
   file { $postfix_sasl_passwds:
     ensure => file,
   }
 
-  file_line { 'postfix_sasl_passwd':
-    path    => $postfix_sasl_passwds,
-    match   => '^\[mail.bb.ffm.freifunk.net\]',
-    replace => false,
-    line    => "[mail.bb.ffm.freifunk.net] ${::hostname}:${random_passwd}",
+  file { $postfix_sasl_passwds:
+    ensure  => file,
+    owner   => 'root',
+    group   => 'postfix',
+    mode    => '0640',
+    content => "[${mailrelay_host}] ${mailrelay_user}:${mailrelay_password}",
   }
 
   exec { "/usr/sbin/postmap ${postfix_sasl_passwds}":
@@ -51,6 +55,4 @@ class postfix () {
     require => File_line['/etc/aliases:root'],
     notify  => Service['postfix'],
   }
-warning ("MAKE SURE TO run doveadm pw -ssha enter the PASSWORD and put '${::hostname}' into /etc/dovecot/passwd on mail.bb.ffm.freifunk.net")
-
 }
