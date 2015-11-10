@@ -11,9 +11,10 @@ class ffmff (
   include ::sshd
   include ::postfix
   include ::ffmff::firewall
+  include ::ffmff::ntp
 
   package { [
-    'ntp', 'vim', 'iftop'
+    'vim', 'iftop'
   ]:
     ensure => installed,
   }

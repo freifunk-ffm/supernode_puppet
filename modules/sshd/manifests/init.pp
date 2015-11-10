@@ -17,7 +17,7 @@ class sshd {
     ensure => directory,
     mode   => '0700',
   }
-  
+
   file { '/root/.ssh/authorized_keys':
     ensure  => file,
     content => template('sshd/authorized_keys.erb'),
