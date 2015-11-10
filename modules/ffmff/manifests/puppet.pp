@@ -27,6 +27,7 @@ class ffmff::puppet (
   }
 
   if $master {
+    class { '::trocla::config': }
     class { '::puppetdb':
       manage_package_repo => false,
     }
