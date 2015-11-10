@@ -15,12 +15,12 @@ class ffmff::puppet (
   }
 
   if $master {
-    class { '::puppetdb::globals':
-      puppetdb_version => '2.3.8',
-    }
-
     class { '::puppetdb':
       manage_package_repo => false,
+    }
+
+    class { '::puppetdb::globals':
+      puppetdb_version => '2.3.8',
     }
 
     # class { '::puppetdb::master::config': }
