@@ -1,5 +1,5 @@
 class ffmff::timezone {
-  class { 'timezone':
+  class { '::timezone':
     timezone => 'Etc/UTC',
   }
 }
