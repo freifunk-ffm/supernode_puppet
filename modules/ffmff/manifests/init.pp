@@ -1,6 +1,12 @@
-class ffmff {
+class ffmff (
+  $puppetmaster = false,
+) {
+  validate_bool($puppetmaster)
+
   include ::ffmff::apt
-  include ::ffmff::puppet
+  class { '::ffmff::puppet':
+    master => $puppetmaster,
+  }
   include ::rsyslog
   include ::sshd
   include ::postfix
