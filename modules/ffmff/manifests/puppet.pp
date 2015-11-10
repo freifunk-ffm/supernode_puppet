@@ -31,6 +31,6 @@ class ffmff::puppet (
       manage_package_repo => false,
     }
 
-    class { '::puppetdb::master::config': }
+    # class { '::puppetdb::master::config': }
   }
 }
