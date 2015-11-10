@@ -1,10 +1,10 @@
 class ffmff {
   include ::ffmff::apt
-  include ::puppet
+  include ::ffmff::puppet
   include ::rsyslog
   include ::sshd
   include ::postfix
-  include ::firewall
+  include ::ffmff::firewall
 
   package { [
     'ntp', 'vim', 'iftop'
