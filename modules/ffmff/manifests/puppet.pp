@@ -9,6 +9,7 @@ class ffmff::puppet (
     server_passenger              => false,
     server_storeconfigs_backend   => 'puppetdb',
     server_directory_environments => true,
+    server_git_repo               => true,
   }
 
   file { '/etc/puppetlabs':
