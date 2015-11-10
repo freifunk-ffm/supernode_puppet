@@ -13,4 +13,6 @@ class ffmff (
   include ::ffmff::firewall
   include ::ffmff::ntp
   include ::ffmff::admintools
+  include ::ffmff::locales
+  include ::ffmff::timezone
 }
