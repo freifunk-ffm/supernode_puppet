@@ -45,9 +45,10 @@ class ffmff::supernode (
 
   # FIXME move to params
   $ipv4_net = '10.126'
-  $ipv6_net_prefix = '2001:1A50:11:4:'
+#  $ipv6_net_prefix = '2001:1A50:11:4:'
   $ipv6_rnet_prefix = 'fddd:5d16:b5dd:'
-  $ipv6_rnet_mask = 48
+# $ipv6_rnet_mask = 48
+  $ipv6_rnet_mask = 64
 
   $ipv6_subnet        = sprintf('b1%02d', $supernodenum)
   $ipv6_net = "${ipv6_net_prefix}${ipv6_subnet}"
