@@ -12,7 +12,8 @@ killall batadv-vis
 # TODO IPv6-Adresse hinzufügen
 /sbin/ip -6 addr add <%= @ipv6_rnet %>::1/64 dev batbridge
 
-<% if @mtu == 1280 %>
+# MTU: <%= @mtu %>
+<% if @mtu == '1280' %>
 /sbin/ifconfig <%= @interface %> hw ether 02:ff:1f:<%= @rndmac %>:7d:<%= @supernodenum.to_s.rjust(2, "0") %> up
 <% else %>
 /sbin/ifconfig <%= @interface %> hw ether 02:ff:0f:<%= @rndmac %>:7d:<%= @supernodenum.to_s.rjust(2, "0") %> up
