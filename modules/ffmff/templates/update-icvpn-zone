@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+if [[ "$USER" != ffmff ]]; then
+	echo "Wrong user, exiting"
+	exit 4
+fi
+
+set -e
+
+cd /var/lib/ffmff
+
+cd icvpn-meta.git
+git pull
+
+cd ../icvpn-scripts.git
+git pull
+
+cd ../output
+
+../icvpn-scripts.git/mkdns -f bind -s ../icvpn-meta.git/ -x frankfurt > zones.ff

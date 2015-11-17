@@ -1,0 +1,10 @@
+zone "126.10.in-addr.arpa" IN {
+	type slave;
+	masters { 10.126.255.14; };
+	file "/etc/bind/master/126.10.in-addr.arpa";
+};
+zone "ffffm" {
+	type slave;
+	masters { 10.126.255.14; };
+	file "/etc/bind/master/ffffm.zone";
+};
