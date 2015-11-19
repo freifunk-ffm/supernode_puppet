@@ -5,7 +5,7 @@
 #set -ix
 #INTERFACES=(tun0 tun1 tun2 tun3)       # Array of all VPN interfaces
 INTERFACES=(ovpn-inet)  # Array of all VPN interfaces
-BANDWIDTHS=(7 16 16 17)         # Approximate effective bandwidths (Mbit/s) of interfaces for use as weights in multipath routes
+BANDWIDTHS=(30 30 30 6)         # Approximate effective bandwidths (Mbit/s) of interfaces for use as weights in multipath routes
 PING_DEST=8.8.8.8              # Ping destination
 TABLE=ffffm                     # Name of routing table
 BATMAN_IF=bat0                  # Batman-adv interface
@@ -119,7 +119,7 @@ then
   if [ $(/usr/sbin/batctl -m $BATMAN_IF gw | awk '{print $1}') == "off" ] 
   then
     # Activate gateway mode
-    /usr/sbin/batctl -m $BATMAN_IF gw server $BANDWIDTH
+    /usr/sbin/batctl -m $BATMAN_IF gw server $BANDWIDTH/$BANDWIDTH
     # Restart DHCP server and radvd daemon
     /usr/sbin/service isc-dhcp-server start
     /usr/sbin/service radvd start
