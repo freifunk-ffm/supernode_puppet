@@ -82,7 +82,7 @@ class ffmff::supernode (
 
   fastd::variant {
     'mesh-vpn':
-      nullcipher        => false,
+      nullcipher        => true,
       mtu               => 1426,
       port              => 10000,
       pmtu              => false,
