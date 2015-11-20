@@ -22,6 +22,16 @@ class dhcpd (
     ],
   }
 
+  file { '/etc/dhcp/dhcpcd.conf':
+    ensure  => file,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    content => template('dhcpd/dhcpd.conf.erb'),
+    require => Package['isc-dhcp-server'],
+    notify  => Service['isc-dhcp-server'],
+  }
+
   file { '/etc/dhcp/dhcpd.conf':
     ensure  => file,
     owner   => 'root',
