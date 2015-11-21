@@ -86,12 +86,24 @@ class ffmff::supernode (
       mtu               => 1426,
       port              => 10000,
       pmtu              => false,
+      peerlimit		=> 150,
+      macvendor		=> '02:ff:0f',
       use_backbone_repo => true;
     'mesh-vpn-1280':
       nullcipher        => true,
       mtu               => 1280,
       port              => 10001,
       pmtu              => false,
+      peerlimit		=> 150,
+      macvendor		=> '02:ff:1f',
+      use_backbone_repo => false;
+    'mesh-vpn-1426':
+      nullcipher        => true,
+      mtu               => 1426,
+      port              => 10002,
+      pmtu              => false,
+      peerlimit		=> 150,
+      macvendor		=> '02:ff:2f',
       use_backbone_repo => false;
   }
 

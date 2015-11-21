@@ -3,10 +3,13 @@ define fastd::variant (
   $port,
   $mtu,
   $pmtu,
+  $peerlimit,
+  $macvendor,
   $use_backbone_repo,
 ) {
   validate_integer($port)
   validate_integer($mtu)
+  validate_integer($peerlimit)
   validate_bool($nullcipher, $pmtu, $use_backbone_repo)
 
   include ::fastd
