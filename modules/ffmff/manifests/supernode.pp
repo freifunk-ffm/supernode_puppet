@@ -61,10 +61,16 @@ class ffmff::supernode (
     ipv6_subnet       => $ipv6_subnet,
   }
 
+  validate_integer($supernodenum)
+  $gateway_router_host = $supernodenum ? {
+    1       => 3,
+    default => 1,
+  }
+
   class { 'dhcpd':
-    supernodenum      => $supernodenum,
-    ipv4_subnet_start => $ipv4_subnet_start,
-    ipv4_subnet_end   => $ipv4_subnet_end,
+    gateway_router_host => $gateway_router_host,
+    ipv4_subnet_start   => $ipv4_subnet_start,
+    ipv4_subnet_end     => $ipv4_subnet_end,
   }
 
   class { 'fastd':

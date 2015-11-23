@@ -1,8 +1,14 @@
 class dhcpd (
-  $supernodenum,
+  $gateway_router_host = 1,
   $ipv4_subnet_start,
   $ipv4_subnet_end,
 ) {
+  $ipv4_regex = '(\d+\.){4}'
+  validate_re($ipv4_subnet_start, $ipv4_regex)
+  validate_re($ipv4_subnet_end, $ipv4_regex)
+
+  validate_integer($gateway_router_host)
+
   package { 'isc-dhcp-server':
     ensure  => installed,
   }
