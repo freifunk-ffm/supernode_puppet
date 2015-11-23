@@ -33,7 +33,14 @@ class ffmff::puppet (
     package { 'ruby-highline':
       ensure => present,
     } ->
-    class { '::trocla::config': }
+    class { '::trocla::config':
+      password_length     => 20,
+      manage_dependencies => false,
+      adapter             => 'YAML',
+      adapter_options     => {
+        file              => '/var/lib/puppet/server_data/trocla_data.yaml',
+      },
+    }
     class { '::puppetdb':
       manage_package_repo => false,
     }
