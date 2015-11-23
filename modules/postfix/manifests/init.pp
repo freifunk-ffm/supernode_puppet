@@ -1,4 +1,6 @@
 class postfix () {
+  $admin_mail = 'admin@ffm.freifunk.net'
+
   package { 'postfix':
     ensure => installed,
   }
@@ -47,15 +49,24 @@ class postfix () {
     notify => Exec['/usr/bin/newaliases'],
   }
 
-  file_line { '/etc/aliases:root':
-    line   => 'ffmff: root',
-    path   => '/etc/aliases',
-    notify => Exec['/usr/bin/newaliases'],
-  }
-
   exec { '/usr/bin/newaliases':
     onlyif  => '/usr/bin/test /etc/aliases -nt /etc/aliases.db',
     require => File_line['/etc/aliases:root'],
+    notify  => Service['postfix'],
+  }
+
+  $smtp_maps_file = '/etc/postfix/generic'
+
+  file { $smtp_maps_file:
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0640',
+    content => "@${::hostname} ${admin_mail}",
+  }
+
+  exec { "/usr/sbin/postmap ${smtp_maps_file}":
+    onlyif  => "/usr/bin/test ${smtp_maps_file} -nt ${smtp_maps_file}.db",
+    require => File[$smtp_maps_file],
     notify  => Service['postfix'],
   }
 
