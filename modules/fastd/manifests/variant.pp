@@ -65,7 +65,7 @@ define fastd::variant (
   if $use_backbone_repo {
     file { "${dir}/backbone":
       ensure => symlink,
-      target => '../blacklist',
+      target => '../backbone',
       force  => true,
     }
   } else {
