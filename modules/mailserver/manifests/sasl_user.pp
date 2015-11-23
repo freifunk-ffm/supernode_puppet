@@ -5,10 +5,10 @@ define mailserver::sasl_user (
   include mailserver::params
 
   $db = $mailserver::params::generated_userdb
-  $password = trocla_get($trocla_key)
+  $password = trocla_get($trocla_key, 'sha1')
 
   concat::fragment { "${db}+${username}":
     target  => $db,
-    content => "${username}:{PLAIN}${password}",
+    content => "${username}:${password}",
   }
 }
