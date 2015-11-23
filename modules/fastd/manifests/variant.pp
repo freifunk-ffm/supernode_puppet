@@ -68,6 +68,8 @@ define fastd::variant (
       target => '../backbone',
       force  => true,
     }
+
+    Vcsrepo['/etc/fastd/backbone'] ~> Service[$service]
   } else {
     file { "${dir}/backbone":
       ensure  => directory,
