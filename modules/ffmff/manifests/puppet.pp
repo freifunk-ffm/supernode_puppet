@@ -24,6 +24,9 @@ class ffmff::puppet (
     server_git_repo               => true,
     server_puppetdb_host          => 'puppet.ffm.freifunk.net',
     server_external_nodes         => '',
+    server_additional_settings    => {
+      trusted_node_data => true,
+    },
   }
 
   if $master {
