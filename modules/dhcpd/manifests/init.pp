@@ -3,7 +3,7 @@ class dhcpd (
   $ipv4_subnet_start,
   $ipv4_subnet_end,
 ) {
-  $ipv4_regex = '(\d+\.){4}'
+  $ipv4_regex = '(\d+\.){3}\d+'
   validate_re($ipv4_subnet_start, $ipv4_regex)
   validate_re($ipv4_subnet_end, $ipv4_regex)
 
