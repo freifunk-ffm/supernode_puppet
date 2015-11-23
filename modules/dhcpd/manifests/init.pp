@@ -3,10 +3,8 @@ class dhcpd (
   $ipv4_subnet_start,
   $ipv4_subnet_end,
 ) {
-  $ipv4_regex = '(\d+\.){3}\d+'
-  validate_re($ipv4_subnet_start, $ipv4_regex)
-  validate_re($ipv4_subnet_end, $ipv4_regex)
-
+  validate_integer($ipv4_subnet_start)
+  validate_integer($ipv4_subnet_end)
   validate_integer($gateway_router_host)
 
   package { 'isc-dhcp-server':
