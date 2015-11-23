@@ -61,7 +61,7 @@ class postfix () {
     owner   => 'root',
     group   => 'root',
     mode    => '0640',
-    content => "@${::hostname} ${admin_mail}",
+    content => "@${::fqdn} ${admin_mail}",
   }
 
   exec { "/usr/sbin/postmap ${smtp_maps_file}":
