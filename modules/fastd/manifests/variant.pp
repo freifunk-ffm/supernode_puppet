@@ -66,6 +66,7 @@ define fastd::variant (
     file { "${dir}/backbone":
       ensure => symlink,
       target => '../blacklist',
+      force  => true,
     }
   } else {
     file { "${dir}/backbone":
