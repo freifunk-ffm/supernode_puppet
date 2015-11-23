@@ -28,6 +28,7 @@ class postfix () {
   $trocla_key = "postfix/${::fqdn}/password"
   $sasl_password = trocla($trocla_key)
   $sasl_user = $::hostname
+  $mailrelay = 'mail.bb.ffm.freifunk.net'
 
   @@mailserver::sasl_user { $sasl_user:
     trocla_key => $trocla_key,
@@ -38,7 +39,7 @@ class postfix () {
     owner   => 'root',
     group   => 'postfix',
     mode    => '0640',
-    content => "[${mailrelay}] ${sasl_user}:${sasl_passwd}",
+    content => "[${mailrelay}] ${sasl_user}:${sasl_password}",
     notify  => Service['postfix'],
   }
 
