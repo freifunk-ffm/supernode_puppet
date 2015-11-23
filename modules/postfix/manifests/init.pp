@@ -24,22 +24,27 @@ class postfix () {
 
   #"[mail.bb.ffm.freifunk.net] user:pass; postmap file
   $postfix_sasl_passwds = '/etc/postfix/sasl_passwd'
-  $random_passwd = ffmff_random_string(10)
 
-  file { $postfix_sasl_passwds:
-    ensure => file,
+  $trocla_key = "postfix/${::fqdn}/password"
+  $sasl_password = trocla($trocla_key)
+  $sasl_user = $::hostname
+
+  @@mailserver::sasl_user { $sasl_user:
+    trocla_key => $trocla_key,
   }
 
-  file_line { 'postfix_sasl_passwd':
-    path    => $postfix_sasl_passwds,
-    match   => '^\[mail.bb.ffm.freifunk.net\]',
-    replace => false,
-    line    => "[mail.bb.ffm.freifunk.net] ${::hostname}:${random_passwd}",
+  file { $postfix_sasl_passwds:
+    ensure  => file,
+    owner   => 'root',
+    group   => 'postfix',
+    mode    => '0640',
+    content => "[${mailrelay}] ${sasl_user}:${sasl_passwd}",
+    notify  => Service['postfix'],
   }
 
   exec { "/usr/sbin/postmap ${postfix_sasl_passwds}":
     onlyif  => "/usr/bin/test ${postfix_sasl_passwds} -nt ${postfix_sasl_passwds}.db",
-    require => File_line['postfix_sasl_passwd'],
+    require => File['postfix_sasl_passwd'],
     notify  => Service['postfix'],
   }
 
@@ -69,7 +74,4 @@ class postfix () {
     require => File[$smtp_maps_file],
     notify  => Service['postfix'],
   }
-
-warning ("MAKE SURE TO run doveadm pw -ssha enter the PASSWORD and put '${::hostname}' into /etc/dovecot/passwd on mail.bb.ffm.freifunk.net")
-
 }

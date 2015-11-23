@@ -10,3 +10,7 @@ node /fastd\d+\.ffm\.freifunk\.net/ {
     rndmac       => fqdn_rand(99),
   }
 }
+
+node 'mail.ffm.freifunk.net' {
+  class { 'mailserver': }
+}
