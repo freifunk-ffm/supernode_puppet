@@ -26,7 +26,7 @@ class postfix () {
   $postfix_sasl_passwds = '/etc/postfix/sasl_passwd'
 
   $trocla_key = "postfix/${::fqdn}/password"
-  $sasl_password = trocla($trocla_key)
+  $sasl_password = base64('encode', trocla($trocla_key))
   $sasl_user = $::hostname
   $mailrelay = 'mail.bb.ffm.freifunk.net'
 

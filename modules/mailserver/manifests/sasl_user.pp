@@ -5,7 +5,7 @@ define mailserver::sasl_user (
   include mailserver::params
 
   $db = $mailserver::params::generated_userdb
-  $password = trocla_get($trocla_key, 'sha1')
+  $password = base64('encode', trocla_get($trocla_key))
 
   concat::fragment { "${db}+${username}":
     target  => $db,
