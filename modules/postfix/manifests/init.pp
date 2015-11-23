@@ -42,8 +42,15 @@ class postfix () {
   }
 
   file_line { '/etc/aliases:root':
-    line => 'root: admin@ffm.freifunk.net',
-    path => '/etc/aliases',
+    line   => 'root: admin@ffm.freifunk.net',
+    path   => '/etc/aliases',
+    notify => Exec['/usr/bin/newaliases'],
+  }
+
+  file_line { '/etc/aliases:root':
+    line   => 'ffmff: root',
+    path   => '/etc/aliases',
+    notify => Exec['/usr/bin/newaliases'],
   }
 
   exec { '/usr/bin/newaliases':
@@ -51,6 +58,7 @@ class postfix () {
     require => File_line['/etc/aliases:root'],
     notify  => Service['postfix'],
   }
+
 warning ("MAKE SURE TO run doveadm pw -ssha enter the PASSWORD and put '${::hostname}' into /etc/dovecot/passwd on mail.bb.ffm.freifunk.net")
 
 }

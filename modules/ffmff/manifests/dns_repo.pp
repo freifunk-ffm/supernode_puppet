@@ -55,7 +55,7 @@ class ffmff::dns_repo {
 
   cron { 'update-icvpn-zone':
     command  => "/usr/bin/chronic ${update_icvpn_zone}",
-    user     => 'ffmff',
+    user     => $user,
     hour     => [02, 12],
     minute   => 0,
     month    => '*',
