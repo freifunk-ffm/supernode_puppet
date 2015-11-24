@@ -5,7 +5,7 @@ set -ix
 # prueft und ansonsten immer erfolgreich beendet wird
 key=$1
 
-if grep -q "$key" "<%= @dir %>/backbone/blacklist"
+if grep -q "$key" "<%= @dir %>/backbone/blacklist/blacklist"
 then
   exit 1
 else
