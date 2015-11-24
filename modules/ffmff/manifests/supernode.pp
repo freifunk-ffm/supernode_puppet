@@ -94,7 +94,7 @@ class ffmff::supernode (
       pmtu              => false,
       peerlimit		=> 150,
       macvendor		=> '02:ff:0f',
-      use_backbone_repo => true;
+      backbone => true;
     'mesh-vpn-1280':
       nullcipher        => true,
       mtu               => 1280,
@@ -102,7 +102,7 @@ class ffmff::supernode (
       pmtu              => false,
       peerlimit		=> 150,
       macvendor		=> '02:ff:1f',
-      use_backbone_repo => false;
+      backbone => false;
     'mesh-vpn-1426':
       nullcipher        => true,
       mtu               => 1426,
@@ -110,7 +110,7 @@ class ffmff::supernode (
       pmtu              => false,
       peerlimit		=> 150,
       macvendor		=> '02:ff:2f',
-      use_backbone_repo => false;
+      backbone => false;
   }
 
   include ff_tools
