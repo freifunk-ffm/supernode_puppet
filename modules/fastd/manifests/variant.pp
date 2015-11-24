@@ -78,4 +78,10 @@ define fastd::variant (
       force   => true,
     }
   }
+
+  file { "${dir}/blacklist":
+    ensure  => absent,
+    recurse => true,
+    force   => true,
+  }
 }
