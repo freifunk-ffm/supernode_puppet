@@ -30,6 +30,7 @@ mtu <%= @mtu %>;
 #<%- end -%>
 
 # Include peers from the directory 'peers'
+peer limit <%= @peerlimit %>;
 
 include peers from "peers";
 <% if @use_backbone_repo == true %>

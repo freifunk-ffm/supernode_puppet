@@ -13,13 +13,17 @@ killall batadv-vis
 /sbin/ip -6 addr add <%= @ipv6_rnet %>::1/64 dev batbridge
 
 # MTU: <%= @mtu %>
-<% if @mtu == '1280' %>
-/sbin/ifconfig <%= @interface %> hw ether 02:ff:1f:<%= @rndmac %>:7d:<%= @supernodenum.to_s.rjust(2, "0") %> up
-<% else %>
-/sbin/ifconfig <%= @interface %> hw ether 02:ff:0f:<%= @rndmac %>:7d:<%= @supernodenum.to_s.rjust(2, "0") %> up
-<% end %>	
+/sbin/ifconfig <%= @interface %> hw ether <%= @macvendor %>:<%= @rndmac %>:7d:<%= @supernodenum.to_s.rjust(2, "0") %> up
+
+#<% if @mtu == '1280' %>
+#/sbin/ifconfig <%= @interface %> hw ether 02:ff:1f:<%= @rndmac %>:7d:<%= @supernodenum.to_s.rjust(2, "0") %> up
+#<% else %>
+#/sbin/ifconfig <%= @interface %> hw ether 02:ff:0f:<%= @rndmac %>:7d:<%= @supernodenum.to_s.rjust(2, "0") %> up
+#<% end %>	
+
 /sbin/ip link set dev <%= @interface %> up
 echo 60 >/sys/class/net/bat0/mesh/hop_penalty
+/usr/sbin/batctl bl enable
 /usr/sbin/batctl if add <%= @interface %>
 /usr/sbin/batctl it 5000
 /usr/sbin/batctl gw_mode server 100MBit/100MBit
