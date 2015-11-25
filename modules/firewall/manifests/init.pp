@@ -7,10 +7,12 @@ class firewall {
     mode => '0755',
   }
 
+  $fqdn = $::trusted['certname']
+
   exec {'check_presence':
     command => '/bin/false',
     provider => shell,
-    unless => '/usr/bin/test -f /etc/fw/$(hostname -f).fw',
+    unless => "/usr/bin/test -f /etc/fw/${fqdn}.fw",
   }
 
   file_line { '/etc/rc.local:firewall':

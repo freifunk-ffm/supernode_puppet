@@ -1,4 +1,6 @@
 class postfix () {
+  $admin_mail = 'admin@ffm.freifunk.net'
+
   package { 'postfix':
     ensure => installed,
   }
@@ -22,28 +24,35 @@ class postfix () {
 
   #"[mail.bb.ffm.freifunk.net] user:pass; postmap file
   $postfix_sasl_passwds = '/etc/postfix/sasl_passwd'
-  $random_passwd = ffmff_random_string(10)
 
-  file { $postfix_sasl_passwds:
-    ensure => file,
+  $trocla_key = "postfix/${::fqdn}/password"
+  $sasl_password = base64('encode', trocla($trocla_key))
+  $sasl_user = $::hostname
+  $mailrelay = 'mail.bb.ffm.freifunk.net'
+
+  @@mailserver::sasl_user { $sasl_user:
+    trocla_key => $trocla_key,
   }
 
-  file_line { 'postfix_sasl_passwd':
-    path    => $postfix_sasl_passwds,
-    match   => '^\[mail.bb.ffm.freifunk.net\]',
-    replace => false,
-    line    => "[mail.bb.ffm.freifunk.net] ${::hostname}:${random_passwd}",
+  file { $postfix_sasl_passwds:
+    ensure  => file,
+    owner   => 'root',
+    group   => 'postfix',
+    mode    => '0640',
+    content => "[${mailrelay}] ${sasl_user}:${sasl_password}",
+    notify  => Service['postfix'],
   }
 
   exec { "/usr/sbin/postmap ${postfix_sasl_passwds}":
     onlyif  => "/usr/bin/test ${postfix_sasl_passwds} -nt ${postfix_sasl_passwds}.db",
-    require => File_line['postfix_sasl_passwd'],
+    require => File[$postfix_sasl_passwds],
     notify  => Service['postfix'],
   }
 
   file_line { '/etc/aliases:root':
-    line => 'root: admin@ffm.freifunk.net',
-    path => '/etc/aliases',
+    line   => 'root: admin@ffm.freifunk.net',
+    path   => '/etc/aliases',
+    notify => Exec['/usr/bin/newaliases'],
   }
 
   exec { '/usr/bin/newaliases':
@@ -51,6 +60,19 @@ class postfix () {
     require => File_line['/etc/aliases:root'],
     notify  => Service['postfix'],
   }
-warning ("MAKE SURE TO run doveadm pw -ssha enter the PASSWORD and put '${::hostname}' into /etc/dovecot/passwd on mail.bb.ffm.freifunk.net")
 
+  $smtp_maps_file = '/etc/postfix/generic'
+
+  file { $smtp_maps_file:
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0640',
+    content => "@${::fqdn} ${admin_mail}",
+  }
+
+  exec { "/usr/sbin/postmap ${smtp_maps_file}":
+    onlyif  => "/usr/bin/test ${smtp_maps_file} -nt ${smtp_maps_file}.db",
+    require => File[$smtp_maps_file],
+    notify  => Service['postfix'],
+  }
 }

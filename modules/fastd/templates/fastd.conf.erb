@@ -33,15 +33,14 @@ mtu <%= @mtu %>;
 peer limit <%= @peerlimit %>;
 
 include peers from "peers";
-<% if @use_backbone_repo == true %>
+<% if @backbone %>
 include peers from "backbone";
 <% else %>
-#include peers from "backbone";
+on verify "./verify $PEER_KEY";
 <% end %>
 
 on up "./fastd-up";
 on down "./fastd-down";
-on verify "./verify $PEER_KEY";
 status socket "<%= @socket %>";
 #on establish "./on-establish";
 #on disestablish "./on-disestablish";

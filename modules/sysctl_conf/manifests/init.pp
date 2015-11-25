@@ -16,11 +16,11 @@ class sysctl_conf {
       'set net.ipv4.conf.batbridge.send_redirects 0',
       'set net.ipv6.conf.batbridge.accept_ra 2',
       'set net.ipv4.neigh.default.gc_thresh1 256',
-      'net.ipv4.neigh.default.gc_thresh2 1024',
-      'net.ipv4.neigh.default.gc_thresh3 2048',
-      'net.ipv6.neigh.default.gc_thresh1 256',
-      'net.ipv6.neigh.default.gc_thresh2 1024',
-      'net.ipv6.neigh.default.gc_thresh3 2048',
+      'set net.ipv4.neigh.default.gc_thresh2 1024',
+      'set net.ipv4.neigh.default.gc_thresh3 2048',
+      'set net.ipv6.neigh.default.gc_thresh1 256',
+      'set net.ipv6.neigh.default.gc_thresh2 1024',
+      'set net.ipv6.neigh.default.gc_thresh3 2048',
     ],
   }
 }
