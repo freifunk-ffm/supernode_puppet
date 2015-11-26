@@ -1,0 +1,119 @@
+#!/bin/bash
+#set -ix
+GATEWAY=$2
+######################################################################
+################### Traffic Shaping Rules ############################
+######################################################################
+for i in $1
+do
+  echo $i
+done
+# set up the chains where marking happens - for connections as well as single
+# packets.
+for IPT in $1
+do
+  $IPT -F -t mangle
+  for ((i=1;i<9;i+=1))
+  do
+    $IPT -F mark_${i} -t mangle
+    $IPT -X mark_${i} -t mangle
+    $IPT -N mark_${i} -t mangle
+    # set up logging for the marked packets
+    if [[ $marklog == "true" ]]
+    then
+      $IPT -t mangle -A mark_$i  -j LOG  --log-level info --log-prefix "packet class $i "
+    fi
+    $IPT -t mangle -A mark_$i  -j MARK --set-mark 0x${i}
+  done
+
+  for ((i=1;i<9;i+=1))
+  do
+
+    $IPT -F connmark_${i} -t mangle
+    $IPT -X connmark_${i} -t mangle
+    $IPT -N connmark_${i} -t mangle
+    # set up logging for the marked packets
+    if [[ $marklog == "true" ]]
+    then
+      if (($i == $logclass))
+      then
+	$IPT -t mangle -A connmark_$i -j LOG  --log-level info --log-prefix "connection class $i "
+      fi
+    fi
+    $IPT -t mangle -m state --state NEW -A connmark_$i -j MARK --set-mark 0x${i}
+    $IPT -t mangle -m state --state NEW -A connmark_$i -j CONNMARK --save-mark
+  done
+
+  $IPT -F markchain -t mangle
+  $IPT -X markchain -t mangle
+  $IPT -N markchain -t mangle
+  $IPT -t mangle -I FORWARD -j markchain
+  $IPT -t mangle -I OUTPUT -j markchain
+  $IPT -t mangle -I POSTROUTING -j markchain
+
+  # A good idea is to prioritize packets to begin tcp connections, those with SYN flag set:
+  $IPT -t mangle -A markchain -p tcp -m tcp --tcp-flags SYN,RST,ACK SYN -j mark_3
+  $IPT -t mangle -A markchain -p tcp -m tcp --tcp-flags SYN,RST,ACK SYN -j RETURN
+
+  # prioritize short ssh packets - those that are used for interactive sessions
+  for chain in "markchain"
+  do
+    for i in $sshports
+    do
+      $IPT -t mangle -A $chain -p tcp -m tcp --sport $i -m length --length 0:100   -j mark_2
+      $IPT -t mangle -A $chain -p tcp -m tcp --sport $i -m length --length 0:100   -j RETURN
+      $IPT -t mangle -A $chain -p tcp -m tcp --dport $i -m length --length 0:100   -j mark_2
+      $IPT -t mangle -A $chain -p tcp -m tcp --dport $i -m length --length 0:100   -j RETURN
+    done
+  done
+
+  # mark bulk-ssh-traffic
+  for chain in "markchain-$(basename $IPT)"
+  do
+    for i in $sshports
+    do
+      $IPT -t mangle -A $chain  -p tcp -m tcp --sport $i -m length --length 100:65535  -j mark_5
+      $IPT -t mangle -A $chain  -p tcp -m tcp --sport $i -m length --length 100:65535  -j RETURN
+    done
+  done
+
+  #put icvpn traffic in class 6
+  $IPT -t mangle -A markchain -o +  -p tcp -m tcp  --sport 655  -j mark_6
+  $IPT -t mangle -A markchain -o +  -p tcp -m tcp  --sport 655  -j RETURN
+  $IPT -t mangle -A markchain -o +  -p udp -m udp  --sport 655  -j mark_6
+  $IPT -t mangle -A markchain -o +  -p udp -m udp  --sport 655  -j RETURN
+
+  # put freifunk-traffic into class 8
+  $IPT -t mangle -A markchain -s 10.126.0.0/16   -j mark_8
+  $IPT -t mangle -A markchain -s 10.126.0.0/16   -j RETURN
+  $IPT -t mangle -A markchain -s 10.0.0.0/8   -j mark_8
+  $IPT -t mangle -A markchain -s 10.0.0.0/8   -j RETURN
+  $IPT -t mangle -A markchain -d $GATEWAY   -j mark_8
+  $IPT -t mangle -A markchain -d $GATEWAY   -j RETURN
+
+
+  # iff the previous rules found no match, use tos-field to classify traffic
+  for chain in "markchain"
+  do
+    $IPT -t mangle -A $chain -m tos --tos 2  -j mark_8
+    $IPT -t mangle -A $chain -m tos --tos 2  -j RETURN
+    $IPT -t mangle -A $chain -m tos --tos Minimize-Delay -j mark_3
+    $IPT -t mangle -A $chain -m tos --tos Minimize-Delay -j RETURN
+    $IPT -t mangle -A $chain -m tos --tos Minimize-Cost -j mark_5
+    $IPT -t mangle -A $chain -m tos --tos Minimize-Cost -j RETURN
+    $IPT -t mangle -A $chain -m tos --tos Maximize-Throughput -j mark_7
+    $IPT -t mangle -A $chain -m tos --tos Maximize-Throughput -j RETURN
+    $IPT -t mangle -A $chain -p all  -m tos --tos 16  -j mark_3
+    $IPT -t mangle -A $chain -p all  -m tos --tos 16  -j RETURN
+  done
+
+  # set standard traffic-class if there is still no match
+  for chain in "markchain"
+  do
+    $IPT -t mangle -A $chain -m state --state NEW  -j mark_4
+    $IPT -t mangle -A $chain -m state --state NEW  -j RETURN
+    $IPT -t mangle -A $chain -m state --state NEW  -j mark_4
+    $IPT -t mangle -A $chain -m state --state NEW  -j RETURN
+  done
+done
+
