@@ -4,7 +4,7 @@
 #
 #  Firewall Builder  fwb_ipt v5.1.0.3599
 #
-#  Generated Thu Nov 26 18:20:31 2015 CET by christof
+#  Generated Thu Nov 26 18:33:21 2015 CET by christof
 #
 # files: * icinga.ffm.freifunk.net.fw /etc/fw/icinga.ffm.freifunk.net.fw
 #
@@ -288,7 +288,7 @@ verify_interfaces() {
 
 prolog_commands() {
     echo "Running prolog script"
-    
+    mkdir -p /etc/fw
 }
 
 epilog_commands() {
@@ -480,7 +480,7 @@ test -z "$cmd" && {
 
 case "$cmd" in
     start)
-        log "Activating firewall script generated Thu Nov 26 18:20:31 2015 by christof"
+        log "Activating firewall script generated Thu Nov 26 18:33:21 2015 by christof"
         check_tools
          prolog_commands 
         check_run_time_address_table_files

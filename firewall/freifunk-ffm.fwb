@@ -2694,7 +2694,7 @@
       <ServiceGroup id="id1599X20429" name="TagServices" comment="" ro="False"/>
     </ServiceGroup>
     <ObjectGroup id="id1600X20429" subfolders="Christof,Dominik,Elmar,Jan-kbu,Magnus,darko,datafabrik,igor,uberspace,uvensys" name="Firewalls" comment="" ro="False">
-      <Firewall id="id1953X20429" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1448558432" lastInstalled="1434829882" lastModified="1434300881" platform="iptables" version="" name="inetgw.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id1953X20429" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1448559202" lastInstalled="1434829882" lastModified="1448558859" platform="iptables" version="" name="inetgw.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id1957X20429" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <NATRule id="id6280X31637" disabled="True" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -3244,7 +3244,7 @@
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script"/>
+          <Option name="prolog_script">mkdir -p /etc/fw</Option>
           <Option name="scpArgs">-P 22118</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 22118</Option>
@@ -3258,7 +3258,7 @@
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id4191X9028" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1448558437" lastInstalled="1441059734" lastModified="1441059703" platform="iptables" version="" name="uber.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id4191X9028" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1448559206" lastInstalled="1441059734" lastModified="1448558921" platform="iptables" version="" name="uber.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id4195X9028" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <NATRule id="id19987X27248" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -4148,8 +4148,7 @@
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">after_flush</Option>
-          <Option name="prolog_script">echo running prolog
-# /root/setupsshforwards</Option>
+          <Option name="prolog_script">mkdir -p /etc/fw</Option>
           <Option name="scpArgs"/>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs"/>
@@ -4163,7 +4162,7 @@
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id48443X9028" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1448558434" lastInstalled="1441059504" lastModified="1441059466" platform="iptables" version="" name="proxy.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id48443X9028" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1448559203" lastInstalled="1441059504" lastModified="1448558887" platform="iptables" version="" name="proxy.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id48447X9028" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -4417,7 +4416,7 @@
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script"/>
+          <Option name="prolog_script">mkdir -p /etc/fw</Option>
           <Option name="scpArgs">-P 22115</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 22115</Option>
@@ -4431,7 +4430,7 @@
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id129115X9028" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1448558436" lastInstalled="1434831056" lastModified="1434300856" platform="iptables" version="" name="stats.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id129115X9028" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1448559205" lastInstalled="1434831056" lastModified="1448558895" platform="iptables" version="" name="stats.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id129119X9028" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -4702,7 +4701,7 @@
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script"/>
+          <Option name="prolog_script">mkdir -p /etc/fw</Option>
           <Option name="scpArgs">-P 22116</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 22116</Option>
@@ -4716,7 +4715,7 @@
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id162578X9028" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1448558432" lastInstalled="1434829969" lastModified="1434300875" platform="iptables" version="" name="mail.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id162578X9028" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1448559202" lastInstalled="1434829969" lastModified="1448558868" platform="iptables" version="" name="mail.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id162582X9028" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -4927,7 +4926,7 @@
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script"/>
+          <Option name="prolog_script">mkdir -p /etc/fw</Option>
           <Option name="scpArgs">-P 22117</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 22117</Option>
@@ -4941,7 +4940,7 @@
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id6240X21166" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1448558427" lastInstalled="1445474615" lastModified="1445474586" platform="iptables" version="" name="datalxc.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id6240X21166" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1448559196" lastInstalled="1445474615" lastModified="1448558982" platform="iptables" version="" name="datalxc.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id6244X21166" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <NATRule id="id37235X21166" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -5831,7 +5830,7 @@
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script"/>
+          <Option name="prolog_script">mkdir -p /etc/fw</Option>
           <Option name="scpArgs"/>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs"/>
@@ -5845,7 +5844,7 @@
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id82932X21166" folder="Jan-kbu" host_OS="linux24" inactive="False" lastCompiled="1448558429" lastInstalled="1448017466" lastModified="1448017445" platform="iptables" version="" name="fastd3.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id82932X21166" folder="Jan-kbu" host_OS="linux24" inactive="False" lastCompiled="1448559199" lastInstalled="1448017466" lastModified="1448558765" platform="iptables" version="" name="fastd3.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id82936X21166" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <NATRule id="id101419X21166" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -6274,7 +6273,7 @@
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script"/>
+          <Option name="prolog_script">mkdir -p /etc/fw</Option>
           <Option name="scpArgs">-P 2211</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 2211</Option>
@@ -6288,7 +6287,7 @@
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id6244X11180" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1448558429" lastInstalled="1448017653" lastModified="1448017633" platform="iptables" version="" name="fastd2.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id6244X11180" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1448559198" lastInstalled="1448017653" lastModified="1448558992" platform="iptables" version="" name="fastd2.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id6512X11180" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <NATRule id="id6514X11180" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -6772,7 +6771,7 @@
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script"/>
+          <Option name="prolog_script">mkdir -p /etc/fw</Option>
           <Option name="scpArgs"/>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs"/>
@@ -7047,7 +7046,7 @@
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id99783X20122" folder="uberspace" host_OS="linux24" lastCompiled="1448558432" lastInstalled="1434829989" lastModified="1434300869" platform="iptables" name="map.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id99783X20122" folder="uberspace" host_OS="linux24" lastCompiled="1448559202" lastInstalled="1434829989" lastModified="1448558877" platform="iptables" name="map.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id99787X20122" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -7261,7 +7260,7 @@
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script"/>
+          <Option name="prolog_script">mkdir -p /etc/fw</Option>
           <Option name="scpArgs">-P 22112</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 22112</Option>
@@ -7275,7 +7274,7 @@
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id182809X20122" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1448558426" lastInstalled="1434831116" lastModified="1434300896" platform="iptables" version="" name="database.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id182809X20122" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1448559196" lastInstalled="1434831116" lastModified="1448558841" platform="iptables" version="" name="database.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id183008X20122" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -7578,7 +7577,7 @@
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script"/>
+          <Option name="prolog_script">mkdir -p /etc/fw</Option>
           <Option name="scpArgs">-P 22111</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 22111</Option>
@@ -7592,7 +7591,7 @@
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id200719X20122" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1448558435" lastInstalled="1434830389" lastModified="1434300932" platform="iptables" version="" name="register.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id200719X20122" folder="datafabrik" host_OS="linux24" inactive="True" lastCompiled="1448558435" lastInstalled="1434830389" lastModified="1448559081" platform="iptables" version="" name="register.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id200955X20122" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -7835,7 +7834,7 @@
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script"/>
+          <Option name="prolog_script">mkdir -p /etc/fw</Option>
           <Option name="scpArgs">-P 2207</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 2207</Option>
@@ -7849,7 +7848,7 @@
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id201164X20122" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1448558438" lastInstalled="1437143024" lastModified="1437134393" platform="iptables" version="" name="yacy.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id201164X20122" folder="datafabrik" host_OS="linux24" inactive="True" lastCompiled="1448558438" lastInstalled="1437143024" lastModified="1448559073" platform="iptables" version="" name="yacy.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id201426X20122" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <NATRule id="id12136X19669" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -8321,7 +8320,7 @@
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script"/>
+          <Option name="prolog_script">mkdir -p /etc/fw</Option>
           <Option name="scpArgs"/>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs"/>
@@ -8335,7 +8334,7 @@
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id222731X20122" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1448558427" lastInstalled="1442180153" lastModified="1442180122" platform="iptables" version="" name="dns.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id222731X20122" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1448559197" lastInstalled="1442180153" lastModified="1448558850" platform="iptables" version="" name="dns.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id222930X20122" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -8569,7 +8568,7 @@
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script"/>
+          <Option name="prolog_script">mkdir -p /etc/fw</Option>
           <Option name="scpArgs">-P 22119</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 22119</Option>
@@ -8583,7 +8582,7 @@
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id12502X7246" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1448558435" lastInstalled="1436993607" lastModified="1436993566" platform="iptables" version="" name="seafile.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id12502X7246" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1448559205" lastInstalled="1436993607" lastModified="1448559055" platform="iptables" version="" name="seafile.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id12738X7246" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -8917,7 +8916,7 @@
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script"/>
+          <Option name="prolog_script">mkdir -p /etc/fw</Option>
           <Option name="scpArgs">-P 22122</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 22122</Option>
@@ -8931,7 +8930,7 @@
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id40923X7246" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1448558435" lastInstalled="1436822590" lastModified="1436822578" platform="iptables" version="" name="radicale.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id40923X7246" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1448559204" lastInstalled="1436822590" lastModified="1448559037" platform="iptables" version="" name="radicale.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id41159X7246" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -9171,7 +9170,7 @@
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script"/>
+          <Option name="prolog_script">mkdir -p /etc/fw</Option>
           <Option name="scpArgs">-P 22123</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 22123</Option>
@@ -9185,7 +9184,7 @@
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id41654X7246" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1448558434" lastInstalled="1446681449" lastModified="1445474639" platform="iptables" version="" name="proxy2.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id41654X7246" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1448559204" lastInstalled="1446681449" lastModified="1448559029" platform="iptables" version="" name="proxy2.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id41885X7246" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -9572,7 +9571,7 @@
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script"/>
+          <Option name="prolog_script">mkdir -p /etc/fw</Option>
           <Option name="scpArgs">-P 22124</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 22124</Option>
@@ -9586,7 +9585,7 @@
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id14061X29949" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1448558433" lastInstalled="1436822944" lastModified="1436822928" platform="iptables" version="" name="otrs.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id14061X29949" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1448559203" lastInstalled="1436822944" lastModified="1448559021" platform="iptables" version="" name="otrs.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id14292X29949" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -9828,7 +9827,7 @@
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script"/>
+          <Option name="prolog_script">mkdir -p /etc/fw</Option>
           <Option name="scpArgs">-P 22125</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 22125</Option>
@@ -9842,7 +9841,7 @@
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id44323X23067" folder="igor" host_OS="linux24" lastCompiled="1448558428" lastInstalled="1448139848" lastModified="1448139837" platform="iptables" name="fastd1.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id44323X23067" folder="igor" host_OS="linux24" lastCompiled="1448559197" lastInstalled="1448139848" lastModified="1448558748" platform="iptables" name="fastd1.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id44327X23067" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="False" top_rule_set="True">
           <NATRule id="id38254X30153" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -10290,7 +10289,7 @@
           <Option name="add_mgmt_ssh_rule_when_stoped">False</Option>
           <Option name="add_rules_for_ipv6_neighbor_discovery">False</Option>
           <Option name="admUser">root</Option>
-          <Option name="altAddress">5.9.31.112</Option>
+          <Option name="altAddress">fastd1.ffm.freifunk.net</Option>
           <Option name="bridging_fw">False</Option>
           <Option name="check_shading">True</Option>
           <Option name="clamp_mss_to_mtu">False</Option>
@@ -10328,7 +10327,7 @@
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script"/>
+          <Option name="prolog_script">mkdir -p /etc/fw</Option>
           <Option name="scpArgs">-P 22125</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 22125</Option>
@@ -10342,7 +10341,7 @@
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id23806X15949" folder="Magnus" host_OS="linux24" lastCompiled="1448558425" lastInstalled="1437119856" lastModified="1437119824" platform="iptables" name="bacula.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id23806X15949" folder="Magnus" host_OS="linux24" lastCompiled="1448559195" lastInstalled="1437119856" lastModified="1448558779" platform="iptables" name="bacula.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id23810X15949" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -10565,7 +10564,7 @@
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script"/>
+          <Option name="prolog_script">mkdir -p /etc/fw</Option>
           <Option name="scpArgs"/>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs"/>
@@ -10579,7 +10578,7 @@
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id24104X28041" folder="darko" host_OS="linux24" lastCompiled="1448558431" lastInstalled="1437580908" lastModified="1437580859" platform="iptables" name="icinga.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id24104X28041" folder="darko" host_OS="linux24" lastCompiled="1448559201" lastInstalled="1437580908" lastModified="1448559096" platform="iptables" name="icinga.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id24108X28041" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -10859,7 +10858,7 @@
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script"/>
+          <Option name="prolog_script">mkdir -p /etc/fw</Option>
           <Option name="scpArgs">-P 2022</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 2022</Option>
@@ -10873,7 +10872,7 @@
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id25280X32056" folder="Christof" host_OS="linux24" lastCompiled="1448558436" lastInstalled="0" lastModified="1434300978" platform="iptables" name="testbot.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id25280X32056" folder="Christof" host_OS="linux24" lastCompiled="1448559205" lastInstalled="0" lastModified="1448559110" platform="iptables" name="testbot.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id25284X32056" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -11048,7 +11047,7 @@
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script"/>
+          <Option name="prolog_script">mkdir -p /etc/fw</Option>
           <Option name="scpArgs"/>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs"/>
@@ -11062,7 +11061,7 @@
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id17976X10901" folder="Christof" host_OS="linux24" inactive="False" lastCompiled="1448558437" lastInstalled="1433804576" lastModified="1434301549" platform="iptables" version="" name="testfastd.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id17976X10901" folder="Christof" host_OS="linux24" inactive="False" lastCompiled="1448559206" lastInstalled="1433804576" lastModified="1448559190" platform="iptables" version="" name="testfastd.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id18331X10901" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="False" top_rule_set="True">
           <NATRule id="id18333X10901" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -11447,7 +11446,7 @@
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script"/>
+          <Option name="prolog_script">mkdir -p /etc/fw</Option>
           <Option name="scpArgs"/>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs"/>
@@ -11461,7 +11460,7 @@
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id18416X21003" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1448558426" lastInstalled="1437117196" lastModified="1437117106" platform="iptables" version="" name="bounce.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id18416X21003" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1448559195" lastInstalled="1437117196" lastModified="1448558972" platform="iptables" version="" name="bounce.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id18647X21003" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -11705,7 +11704,7 @@
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script"/>
+          <Option name="prolog_script">mkdir -p /etc/fw</Option>
           <Option name="scpArgs">-P 22121</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 22121</Option>
@@ -11719,7 +11718,7 @@
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id32639X29431" folder="Elmar" host_OS="linux24" inactive="False" lastCompiled="1448558430" lastInstalled="1448054471" lastModified="1448050001" platform="iptables" version="" name="fastd4.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id32639X29431" folder="Elmar" host_OS="linux24" inactive="False" lastCompiled="1448559200" lastInstalled="1448054471" lastModified="1448558948" platform="iptables" version="" name="fastd4.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id33030X29431" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <NATRule id="id33032X29431" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -12250,7 +12249,7 @@
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script"/>
+          <Option name="prolog_script">mkdir -p /etc/fw</Option>
           <Option name="scpArgs"/>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs"/>
@@ -12264,7 +12263,7 @@
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id75985X29431" folder="Christof" host_OS="linux24" inactive="False" lastCompiled="1448558428" lastInstalled="1444042240" lastModified="1446681136" platform="iptables" version="" name="fastd10.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id75985X29431" folder="Christof" host_OS="linux24" inactive="False" lastCompiled="1448559198" lastInstalled="1444042240" lastModified="1448559123" platform="iptables" version="" name="fastd10.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id76376X29431" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <NATRule id="id76378X29431" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -12713,7 +12712,7 @@
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script"/>
+          <Option name="prolog_script">mkdir -p /etc/fw</Option>
           <Option name="scpArgs"/>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs"/>
@@ -12727,7 +12726,7 @@
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id21251X32010" folder="Dominik" host_OS="linux24" inactive="False" lastCompiled="1448558430" lastInstalled="1446681412" lastModified="1448218206" platform="iptables" version="" name="fastd5.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id21251X32010" folder="Dominik" host_OS="linux24" inactive="False" lastCompiled="1448559200" lastInstalled="1446681412" lastModified="1448558961" platform="iptables" version="" name="fastd5.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id21693X32010" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="False" top_rule_set="True">
           <NATRule id="id21695X32010" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -13215,7 +13214,7 @@
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script"/>
+          <Option name="prolog_script">mkdir -p /etc/fw</Option>
           <Option name="scpArgs"/>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs"/>
@@ -13229,7 +13228,7 @@
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id22014X1477" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1448558431" lastInstalled="1444042248" lastModified="1446681136" platform="iptables" version="" name="fastd6.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id22014X1477" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1448559201" lastInstalled="1444042248" lastModified="1448559010" platform="iptables" version="" name="fastd6.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id22434X1477" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <NATRule id="id22436X1477" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -13696,7 +13695,7 @@
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script"/>
+          <Option name="prolog_script">mkdir -p /etc/fw</Option>
           <Option name="scpArgs"/>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs"/>
