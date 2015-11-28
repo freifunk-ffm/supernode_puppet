@@ -4,7 +4,7 @@
 #
 #  Firewall Builder  fwb_ipt v5.1.0.3599
 #
-#  Generated Thu Nov 26 18:33:26 2015 CET by christof
+#  Generated Sat Nov 28 16:15:11 2015 CET by christof
 #
 # files: * uber.ffm.freifunk.net.fw /etc/fw/uber.ffm.freifunk.net.fw
 #
@@ -290,6 +290,8 @@ epilog_commands() {
     echo "Running epilog script"
     # /root/setupgeneralshaping "$IPTABLES $IP6TABLES" 95.143.172.233/32
 /etc/init.d/fail2ban restart
+
+$IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j ACCEPT
 }
 
 run_epilog_and_exit() {
@@ -508,23 +510,23 @@ script_body() {
     $IPTABLES -A FORWARD -i eth0  -p tcp -m tcp  -d 192.168.100.118   --dport 656  -m state --state NEW  -j ACCEPT
     $IPTABLES -A FORWARD -i eth0  -p udp -m udp  -d 192.168.100.118   --dport 656  -m state --state NEW  -j ACCEPT
     # 
-    # Rule 14 (batbridge)
+    # Rule 15 (batbridge)
     # 
-    echo "Rule 14 (batbridge)"
+    echo "Rule 15 (batbridge)"
     # 
     $IPTABLES -A INPUT -i batbridge  -p udp -m udp  --dport 16962  -m state --state NEW  -j ACCEPT
     $IPTABLES -A FORWARD -i batbridge  -p udp -m udp  --dport 16962  -m state --state NEW  -j ACCEPT
     # 
-    # Rule 17 (global)
+    # Rule 18 (global)
     # 
-    echo "Rule 17 (global)"
+    echo "Rule 18 (global)"
     # 
-    $IPTABLES -N RULE_17
-    $IPTABLES -A OUTPUT  -j RULE_17
-    $IPTABLES -A INPUT  -j RULE_17
-    $IPTABLES -A FORWARD  -j RULE_17
-    $IPTABLES -A RULE_17  -j LOG  --log-level info --log-prefix "uber-RULE 17 -- DENY "
-    $IPTABLES -A RULE_17  -j DROP
+    $IPTABLES -N RULE_18
+    $IPTABLES -A OUTPUT  -j RULE_18
+    $IPTABLES -A INPUT  -j RULE_18
+    $IPTABLES -A FORWARD  -j RULE_18
+    $IPTABLES -A RULE_18  -j LOG  --log-level info --log-prefix "uber-RULE 18 -- DENY "
+    $IPTABLES -A RULE_18  -j DROP
 
 
     # ================ IPv6
@@ -618,23 +620,23 @@ script_body() {
     $IP6TABLES -A OUTPUT -p udp -m udp  --dport 123  -m state --state NEW  -j ACCEPT
     $IP6TABLES -A FORWARD -o +  -p udp -m udp  --dport 123  -m state --state NEW  -j ACCEPT
     # 
-    # Rule 14 (batbridge)
+    # Rule 15 (batbridge)
     # 
-    echo "Rule 14 (batbridge)"
+    echo "Rule 15 (batbridge)"
     # 
     $IP6TABLES -A INPUT -i batbridge  -p udp -m udp  --dport 16962  -m state --state NEW  -j ACCEPT
     $IP6TABLES -A FORWARD -i batbridge  -p udp -m udp  --dport 16962  -m state --state NEW  -j ACCEPT
     # 
-    # Rule 17 (global)
+    # Rule 18 (global)
     # 
-    echo "Rule 17 (global)"
+    echo "Rule 18 (global)"
     # 
-    $IP6TABLES -N RULE_17
-    $IP6TABLES -A OUTPUT  -j RULE_17
-    $IP6TABLES -A INPUT  -j RULE_17
-    $IP6TABLES -A FORWARD  -j RULE_17
-    $IP6TABLES -A RULE_17  -j LOG  --log-level info --log-prefix "uber-RULE 17 -- DENY "
-    $IP6TABLES -A RULE_17  -j DROP
+    $IP6TABLES -N RULE_18
+    $IP6TABLES -A OUTPUT  -j RULE_18
+    $IP6TABLES -A INPUT  -j RULE_18
+    $IP6TABLES -A FORWARD  -j RULE_18
+    $IP6TABLES -A RULE_18  -j LOG  --log-level info --log-prefix "uber-RULE 18 -- DENY "
+    $IP6TABLES -A RULE_18  -j DROP
 
     # ============== ROUTING RULES ============== 
 
@@ -765,7 +767,7 @@ test -z "$cmd" && {
 
 case "$cmd" in
     start)
-        log "Activating firewall script generated Thu Nov 26 18:33:26 2015 by christof"
+        log "Activating firewall script generated Sat Nov 28 16:15:11 2015 by christof"
         check_tools
         
         check_run_time_address_table_files

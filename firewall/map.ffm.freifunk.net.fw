@@ -4,7 +4,7 @@
 #
 #  Firewall Builder  fwb_ipt v5.1.0.3599
 #
-#  Generated Thu Nov 26 18:33:22 2015 CET by christof
+#  Generated Sat Nov 28 12:34:29 2015 CET by christof
 #
 # files: * map.ffm.freifunk.net.fw /etc/fw/map.ffm.freifunk.net.fw
 #
@@ -362,7 +362,7 @@ script_body() {
     $IPTABLES -A OUTPUT  -j RULE_5
     $IPTABLES -A INPUT  -j RULE_5
     $IPTABLES -A FORWARD  -j RULE_5
-    $IPTABLES -A RULE_5  -j LOG  --log-level info --log-prefix "RULE 5 -- DENY "
+    $IPTABLES -A RULE_5  -j LOG  --log-level info --log-prefix "map-RULE 5 -- DENY "
     $IPTABLES -A RULE_5  -j DROP
 
 
@@ -497,7 +497,7 @@ test -z "$cmd" && {
 
 case "$cmd" in
     start)
-        log "Activating firewall script generated Thu Nov 26 18:33:22 2015 by christof"
+        log "Activating firewall script generated Sat Nov 28 12:34:29 2015 by christof"
         check_tools
          prolog_commands 
         check_run_time_address_table_files
