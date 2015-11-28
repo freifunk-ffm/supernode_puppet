@@ -70,7 +70,7 @@ class fastd (
     provider => 'git',
   }
 
-  vcsrepo { '/etc/fastd/blacklist':
+  vcsrepo { '/etc/fastd/backbone':
     require => File['/etc/fastd'],
     source  => 'https://github.com/freifunk-ffm/fastd-backbone-config';
   }

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [[ "$USER" != ffmff ]]; then
+if [[ "$LOGNAME" != ffmff ]]; then
 	echo "Wrong user, exiting"
 	exit 4
 fi

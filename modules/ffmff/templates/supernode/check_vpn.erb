@@ -56,7 +56,14 @@ then
   # Inform user and log change
   echo "We have no active interfaces. Batman-adv gateway mode has been disabled. DHCP and IPv6 router advertisement daemons have been stopped." >&2
   logger -t check-mpr-gateway "We have no active interfaces. Batman-adv gateway mode has been disabled. DHCP and IPv6 router advertisement daemons have been stopped."
-  /usr/bin/pgrep openvpn >/dev/null || bash -l /etc/init.d/openvpn restart
+  /usr/bin/pgrep openvpn >/dev/null || {
+	 bash -l /etc/init.d/openvpn restart
+  } || {
+	/etc/init.d/openvpn stop
+	sleep 30
+	/etc/init.d/openvpn start
+  }
+
   # Exit with error code
   exit 1
 fi
