@@ -4,8 +4,8 @@ Before=network.target
 
 [Service]
 Type=oneshot
-ExecStart=/etc/fw/script
-ExecReload=/etc/fw/script
+ExecStart=/etc/fw/script start
+ExecReload=/etc/fw/script reload
 RemainAfterExit=yes
 
 [Install]
