@@ -1,5 +1,5 @@
 [Unit]
-Description=Apply FWBuilder configuratoin
+Description=Apply FWBuilder configuration
 Before=network.target
 
 [Service]
