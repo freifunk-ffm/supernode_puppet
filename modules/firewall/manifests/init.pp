@@ -1,26 +1,53 @@
 class firewall {
-  # FIXME use proper init script
-  # FIXME remove check_presence
+  $fqdn = $::trusted['certname']
+  $fw_dir = '/etc/fw'
+  $fw_file = "${fw_dir}/${fw_file}"
+  $fw_link = "${fw_dir}/script"
+  $service = 'fwbuilder'
 
-  file { '/etc/fw':
-    ensure => directory,
-    mode => '0755',
+  file { $fw_dir:
+    ensure  => directory,
+    mode    => '0755',
+    group   => 'root',
+    owner   => 'root',
+    purge   => true,
+    recurse => true,
+    force   => true,
   }
 
-  $fqdn = $::trusted['certname']
+  file { $fw_file:
+    ensure => file,
+    mode   => '0644',
+    owner  => 'root',
+    group  => 'root',
+    source => "puppet:///modules/firewall/fwbuilder/${fqdn}.fw",
+    notify => Service[$service],
+  }
 
-  exec {'check_presence':
-    command => '/bin/false',
-    provider => shell,
-    unless => "/usr/bin/test -f /etc/fw/${fqdn}.fw",
+  file { $fw_link:
+    ensure => link,
+    target => $fqdn,
+    notify => Service[$service],
   }
 
   file_line { '/etc/rc.local:firewall':
-    path    => '/etc/rc.local',
-    line    => '/etc/fw/*.fw; exit 0',
-    match   => '^exit 0$',
-    before  => Service['fail2ban'],
-    require => Exec["check_presence"],
+    ensure           => absent,
+    path             => '/etc/rc.local',
+    match            => '^/etc/fw/',
+    match_for_absent => true,
+    multiple         => true,
+    notify           => Service[$service],
+    before           => Service['fail2ban'],
+  }
+
+  systemd::service { $service:
+    ensure => present,
+    source => 'puppet:///modules/firewall/fwbuilder.service'
+  }
+
+  service { $service:
+    ensure => running,
+    enable => true,
   }
 
   package { 'fail2ban':
@@ -28,8 +55,8 @@ class firewall {
   }
 
   service { 'fail2ban':
-    ensure      => running,
-    enable      => true,
-    require     => Package['fail2ban'],
+    ensure  => running,
+    enable  => true,
+    require => Package['fail2ban'],
   }
 }
