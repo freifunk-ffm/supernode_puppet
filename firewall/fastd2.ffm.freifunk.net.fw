@@ -4,7 +4,7 @@
 #
 #  Firewall Builder  fwb_ipt v5.1.0.3599
 #
-#  Generated Sat Nov 28 16:17:33 2015 CET by christof
+#  Generated Sat Jan 30 13:41:14 2016 CET by christof
 #
 # files: * fastd2.ffm.freifunk.net.fw /etc/fw/fastd2.ffm.freifunk.net.fw
 #
@@ -430,12 +430,9 @@ script_body() {
     # 
     echo "Rule 12 (global)"
     # 
-    $IPTABLES -N RULE_12
-    $IPTABLES -A OUTPUT  -j RULE_12
-    $IPTABLES -A INPUT  -j RULE_12
-    $IPTABLES -A FORWARD  -j RULE_12
-    $IPTABLES -A RULE_12  -j LOG  --log-level info --log-prefix "fastd2.ffm RULE 12 -- DENY "
-    $IPTABLES -A RULE_12  -j DROP
+    $IPTABLES -A OUTPUT  -j DROP
+    $IPTABLES -A INPUT  -j DROP
+    $IPTABLES -A FORWARD  -j DROP
 
 
     # ================ IPv6
@@ -550,12 +547,9 @@ script_body() {
     # 
     echo "Rule 12 (global)"
     # 
-    $IP6TABLES -N RULE_12
-    $IP6TABLES -A OUTPUT  -j RULE_12
-    $IP6TABLES -A INPUT  -j RULE_12
-    $IP6TABLES -A FORWARD  -j RULE_12
-    $IP6TABLES -A RULE_12  -j LOG  --log-level info --log-prefix "fastd2.ffm RULE 12 -- DENY "
-    $IP6TABLES -A RULE_12  -j DROP
+    $IP6TABLES -A OUTPUT  -j DROP
+    $IP6TABLES -A INPUT  -j DROP
+    $IP6TABLES -A FORWARD  -j DROP
 
     # ============== ROUTING RULES ============== 
 
@@ -687,7 +681,7 @@ test -z "$cmd" && {
 
 case "$cmd" in
     start)
-        log "Activating firewall script generated Sat Nov 28 16:17:33 2015 by christof"
+        log "Activating firewall script generated Sat Jan 30 13:41:14 2016 by christof"
         check_tools
          prolog_commands 
         check_run_time_address_table_files

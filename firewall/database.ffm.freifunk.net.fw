@@ -4,7 +4,7 @@
 #
 #  Firewall Builder  fwb_ipt v5.1.0.3599
 #
-#  Generated Sat Nov 28 16:17:27 2015 CET by christof
+#  Generated Mon Dec 21 09:37:48 2015 CET by christof
 #
 # files: * database.ffm.freifunk.net.fw /etc/fw/database.ffm.freifunk.net.fw
 #
@@ -366,12 +366,9 @@ script_body() {
     # 
     echo "Rule 6 (global)"
     # 
-    $IPTABLES -N RULE_6
-    $IPTABLES -A OUTPUT  -j RULE_6
-    $IPTABLES -A INPUT  -j RULE_6
-    $IPTABLES -A FORWARD  -j RULE_6
-    $IPTABLES -A RULE_6  -j LOG  --log-level info --log-prefix "db-RULE 6 -- DENY "
-    $IPTABLES -A RULE_6  -j DROP
+    $IPTABLES -A OUTPUT  -j DROP
+    $IPTABLES -A INPUT  -j DROP
+    $IPTABLES -A FORWARD  -j DROP
 
 
 
@@ -505,7 +502,7 @@ test -z "$cmd" && {
 
 case "$cmd" in
     start)
-        log "Activating firewall script generated Sat Nov 28 16:17:27 2015 by christof"
+        log "Activating firewall script generated Mon Dec 21 09:37:48 2015 by christof"
         check_tools
          prolog_commands 
         check_run_time_address_table_files

@@ -4,7 +4,7 @@
 #
 #  Firewall Builder  fwb_ipt v5.1.0.3599
 #
-#  Generated Sat Nov 28 16:17:43 2015 CET by christof
+#  Generated Sat Jan 30 14:44:46 2016 CET by christof
 #
 # files: * radicale.ffm.freifunk.net.fw /etc/fw/radicale.ffm.freifunk.net.fw
 #
@@ -366,11 +366,8 @@ script_body() {
     # 
     echo "Rule 6 (global)"
     # 
-    $IPTABLES -N Out_RULE_6
-    $IPTABLES -A OUTPUT  -j Out_RULE_6
-    $IPTABLES -A FORWARD -o +   -j Out_RULE_6
-    $IPTABLES -A Out_RULE_6  -j LOG  --log-level info --log-prefix "radicale.ffm RULE 6 -- DENY "
-    $IPTABLES -A Out_RULE_6  -j DROP
+    $IPTABLES -A OUTPUT  -j DROP
+    $IPTABLES -A FORWARD -o +   -j DROP
 
 
     # ================ IPv6
@@ -432,11 +429,8 @@ script_body() {
     # 
     echo "Rule 6 (global)"
     # 
-    $IP6TABLES -N Out_RULE_6
-    $IP6TABLES -A OUTPUT  -j Out_RULE_6
-    $IP6TABLES -A FORWARD -o +   -j Out_RULE_6
-    $IP6TABLES -A Out_RULE_6  -j LOG  --log-level info --log-prefix "radicale.ffm RULE 6 -- DENY "
-    $IP6TABLES -A Out_RULE_6  -j DROP
+    $IP6TABLES -A OUTPUT  -j DROP
+    $IP6TABLES -A FORWARD -o +   -j DROP
 
     # ============== ROUTING RULES ============== 
 
@@ -567,7 +561,7 @@ test -z "$cmd" && {
 
 case "$cmd" in
     start)
-        log "Activating firewall script generated Sat Nov 28 16:17:43 2015 by christof"
+        log "Activating firewall script generated Sat Jan 30 14:44:46 2016 by christof"
         check_tools
          prolog_commands 
         check_run_time_address_table_files

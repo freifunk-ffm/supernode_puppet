@@ -4,7 +4,7 @@
 #
 #  Firewall Builder  fwb_ipt v5.1.0.3599
 #
-#  Generated Sat Nov 28 16:17:42 2015 CET by christof
+#  Generated Mon Dec 21 09:37:50 2015 CET by christof
 #
 # files: * proxy.ffm.freifunk.net.fw /etc/fw/proxy.ffm.freifunk.net.fw
 #
@@ -368,12 +368,9 @@ script_body() {
     # 
     echo "Rule 5 (global)"
     # 
-    $IPTABLES -N RULE_5
-    $IPTABLES -A OUTPUT  -j RULE_5
-    $IPTABLES -A INPUT  -j RULE_5
-    $IPTABLES -A FORWARD  -j RULE_5
-    $IPTABLES -A RULE_5  -j LOG  --log-level info --log-prefix "proxy-RULE 5 -- DENY "
-    $IPTABLES -A RULE_5  -j DROP
+    $IPTABLES -A OUTPUT  -j DROP
+    $IPTABLES -A INPUT  -j DROP
+    $IPTABLES -A FORWARD  -j DROP
 
 
 
@@ -507,7 +504,7 @@ test -z "$cmd" && {
 
 case "$cmd" in
     start)
-        log "Activating firewall script generated Sat Nov 28 16:17:42 2015 by christof"
+        log "Activating firewall script generated Mon Dec 21 09:37:50 2015 by christof"
         check_tools
          prolog_commands 
         check_run_time_address_table_files

@@ -2697,7 +2697,7 @@
       <ServiceGroup id="id1599X20429" name="TagServices" comment="" ro="False"/>
     </ServiceGroup>
     <ObjectGroup id="id1600X20429" subfolders="Christof,Dominik,Elmar,Jan-kbu,Magnus,darko,datafabrik,igor,uberspace,uvensys" name="Firewalls" comment="" ro="False">
-      <Firewall id="id1953X20429" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1448559202" lastInstalled="1434829882" lastModified="1448558859" platform="iptables" version="" name="inetgw.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id1953X20429" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1450687069" lastInstalled="1450687631" lastModified="1450686997" platform="iptables" version="" name="inetgw.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id1957X20429" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <NATRule id="id6280X31637" disabled="True" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -3083,7 +3083,7 @@
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id2590X10652" disabled="False" group="" log="True" position="11" action="Deny" direction="Both" comment="">
+          <PolicyRule id="id2590X10652" disabled="False" group="" log="False" position="11" action="Deny" direction="Both" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -3261,7 +3261,7 @@
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id4191X9028" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1448723712" lastInstalled="1448723716" lastModified="1448723705" platform="iptables" version="" name="uber.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id4191X9028" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1450687071" lastInstalled="1450688187" lastModified="1450687052" platform="iptables" version="" name="uber.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id4195X9028" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <NATRule id="id19987X27248" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -3923,7 +3923,7 @@
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id150780X12809" disabled="True" group="" log="True" position="14" action="Accept" direction="Both" comment="">
+          <PolicyRule id="id150780X12809" disabled="True" group="" log="False" position="14" action="Accept" direction="Both" comment="">
             <Src neg="False">
               <ObjectRef ref="id133131X12809"/>
             </Src>
@@ -4003,7 +4003,7 @@
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id158485X19669" disabled="False" group="" log="True" position="18" action="Deny" direction="Both" comment="">
+          <PolicyRule id="id158485X19669" disabled="False" group="" log="False" position="18" action="Deny" direction="Both" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -4188,7 +4188,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id48443X9028" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1448559203" lastInstalled="1441059504" lastModified="1448558887" platform="iptables" version="" name="proxy.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id48443X9028" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1450687070" lastInstalled="1450687866" lastModified="1450687024" platform="iptables" version="" name="proxy.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id48447X9028" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -4334,7 +4334,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id139998X619" disabled="False" group="" log="True" position="5" action="Deny" direction="Both" comment="">
+          <PolicyRule id="id139998X619" disabled="False" group="" log="False" position="5" action="Deny" direction="Both" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -4456,7 +4456,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id129115X9028" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1448707227" lastInstalled="1448707236" lastModified="1448707216" platform="iptables" version="" name="stats.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id129115X9028" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1450687070" lastInstalled="1450687957" lastModified="1450687033" platform="iptables" version="" name="stats.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id129119X9028" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -4620,7 +4620,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id148868X20122" disabled="False" group="" log="True" position="6" action="Deny" direction="Both" comment="">
+          <PolicyRule id="id148868X20122" disabled="False" group="" log="False" position="6" action="Deny" direction="Both" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -4776,7 +4776,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id162578X9028" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1448559202" lastInstalled="1434829969" lastModified="1448558868" platform="iptables" version="" name="mail.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id162578X9028" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1450687069" lastInstalled="1450687672" lastModified="1450687006" platform="iptables" version="" name="mail.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id162582X9028" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -4884,7 +4884,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id126456X619" disabled="False" group="" log="True" position="5" action="Deny" direction="Both" comment="">
+          <PolicyRule id="id126456X619" disabled="False" group="" log="False" position="5" action="Deny" direction="Both" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -5001,7 +5001,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id6240X21166" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1448559196" lastInstalled="1445474615" lastModified="1448558982" platform="iptables" version="" name="datalxc.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id6240X21166" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1454166656" lastInstalled="1454166660" lastModified="1454166647" platform="iptables" version="" name="datalxc.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id6244X21166" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <NATRule id="id37235X21166" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -5363,6 +5363,32 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
             </ODst>
             <OSrv neg="False">
               <ServiceRef ref="tcp-HTTP"/>
+            </OSrv>
+            <TSrc neg="False">
+              <ObjectRef ref="sysid0"/>
+            </TSrc>
+            <TDst neg="False">
+              <ObjectRef ref="id41672X7246"/>
+            </TDst>
+            <TSrv neg="False">
+              <ServiceRef ref="tcp-HTTP"/>
+            </TSrv>
+            <ItfInb neg="False">
+              <ObjectRef ref="sysid0"/>
+            </ItfInb>
+            <ItfOutb neg="False">
+              <ObjectRef ref="sysid0"/>
+            </ItfOutb>
+            <NATRuleOptions/>
+          </NATRule>
+          <NATRule id="id56507X17907" disabled="False" group="" position="14" action="Translate" comment="broken">
+            <OSrc neg="False">
+              <ObjectRef ref="sysid0"/>
+            </OSrc>
+            <ODst neg="False">
+              <ObjectRef ref="id6250X21166"/>
+            </ODst>
+            <OSrv neg="False">
               <ServiceRef ref="id3B4FED69"/>
             </OSrv>
             <TSrc neg="False">
@@ -5372,7 +5398,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <ObjectRef ref="id41672X7246"/>
             </TDst>
             <TSrv neg="False">
-              <ServiceRef ref="sysid1"/>
+              <ServiceRef ref="id3B4FED69"/>
             </TSrv>
             <ItfInb neg="False">
               <ObjectRef ref="sysid0"/>
@@ -5640,7 +5666,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id346847X19669" disabled="False" group="" log="False" position="9" action="Accept" direction="Inbound" comment="">
+          <PolicyRule id="id346847X19669" disabled="False" group="" log="True" position="9" action="Accept" direction="Inbound" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -5905,7 +5931,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id82932X21166" folder="Jan-kbu" host_OS="linux24" inactive="False" lastCompiled="1448559199" lastInstalled="1448017466" lastModified="1448558765" platform="iptables" version="" name="fastd3.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id82932X21166" folder="Jan-kbu" host_OS="linux24" inactive="False" lastCompiled="1449524960" lastInstalled="1449524968" lastModified="1449524953" platform="iptables" version="" name="fastd3.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id82936X21166" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <NATRule id="id101419X21166" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -6205,7 +6231,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id83028X21166" disabled="False" group="" log="True" position="11" action="Deny" direction="Both" comment="">
+          <PolicyRule id="id83028X21166" disabled="False" group="" log="False" position="11" action="Deny" direction="Both" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -6348,7 +6374,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id6244X11180" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1448559198" lastInstalled="1448017653" lastModified="1448558992" platform="iptables" version="" name="fastd2.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id6244X11180" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1454157675" lastInstalled="1454157683" lastModified="1454157526" platform="iptables" version="" name="fastd2.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id6512X11180" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <NATRule id="id6514X11180" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -6669,7 +6695,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id6483X11180" disabled="False" group="" log="True" position="12" action="Deny" direction="Both" comment="">
+          <PolicyRule id="id6483X11180" disabled="False" group="" log="False" position="12" action="Deny" direction="Both" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -6846,7 +6872,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id31012X619" folder="datafabrik" host_OS="linux24" inactive="True" lastCompiled="1448558433" lastInstalled="1426841453" lastModified="1434831211" platform="iptables" version="" name="oc.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id31012X619" folder="datafabrik" host_OS="linux24" inactive="True" lastCompiled="1448723861" lastInstalled="1426841453" lastModified="1434831211" platform="iptables" version="" name="oc.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id31342X619" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -7107,7 +7133,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id99783X20122" folder="uberspace" host_OS="linux24" lastCompiled="1448710469" lastInstalled="1448710476" lastModified="1448710463" platform="iptables" name="map.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id99783X20122" folder="uberspace" host_OS="linux24" lastCompiled="1450687069" lastInstalled="1450687705" lastModified="1450687014" platform="iptables" name="map.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id99787X20122" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -7214,7 +7240,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id99920X20122" disabled="False" group="" log="True" position="5" action="Deny" direction="Both" comment="">
+          <PolicyRule id="id99920X20122" disabled="False" group="" log="False" position="5" action="Deny" direction="Both" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -7335,7 +7361,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id182809X20122" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1448559196" lastInstalled="1434831116" lastModified="1448558841" platform="iptables" version="" name="database.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id182809X20122" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1450687068" lastInstalled="1450687238" lastModified="1450686984" platform="iptables" version="" name="database.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id183008X20122" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -7498,7 +7524,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id182979X20122" disabled="False" group="" log="True" position="6" action="Deny" direction="Both" comment="">
+          <PolicyRule id="id182979X20122" disabled="False" group="" log="False" position="6" action="Deny" direction="Both" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -7652,7 +7678,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id200719X20122" folder="datafabrik" host_OS="linux24" inactive="True" lastCompiled="1448558435" lastInstalled="1434830389" lastModified="1448559081" platform="iptables" version="" name="register.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id200719X20122" folder="datafabrik" host_OS="linux24" inactive="True" lastCompiled="1448723863" lastInstalled="1434830389" lastModified="1448559081" platform="iptables" version="" name="register.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id200955X20122" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -7909,7 +7935,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id201164X20122" folder="datafabrik" host_OS="linux24" inactive="True" lastCompiled="1448558438" lastInstalled="1437143024" lastModified="1448559073" platform="iptables" version="" name="yacy.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id201164X20122" folder="datafabrik" host_OS="linux24" inactive="True" lastCompiled="1448723867" lastInstalled="1437143024" lastModified="1448559073" platform="iptables" version="" name="yacy.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id201426X20122" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <NATRule id="id12136X19669" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -8395,7 +8421,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id222731X20122" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1448559197" lastInstalled="1442180153" lastModified="1448558850" platform="iptables" version="" name="dns.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id222731X20122" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1450687068" lastInstalled="1450687423" lastModified="1450686991" platform="iptables" version="" name="dns.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id222930X20122" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -8522,7 +8548,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id222901X20122" disabled="False" group="" log="True" position="6" action="Deny" direction="Both" comment="">
+          <PolicyRule id="id222901X20122" disabled="False" group="" log="False" position="6" action="Deny" direction="Both" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -8643,7 +8669,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id12502X7246" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1448559205" lastInstalled="1436993607" lastModified="1448559055" platform="iptables" version="" name="seafile.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id12502X7246" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1454161500" lastInstalled="1454161505" lastModified="1454157562" platform="iptables" version="" name="seafile.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id12738X7246" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -8863,7 +8889,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id12709X7246" disabled="False" group="" log="True" position="7" action="Deny" direction="Outbound" comment="">
+          <PolicyRule id="id12709X7246" disabled="False" group="" log="False" position="7" action="Deny" direction="Outbound" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -8991,7 +9017,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id40923X7246" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1448559204" lastInstalled="1436822590" lastModified="1448559037" platform="iptables" version="" name="radicale.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id40923X7246" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1454161487" lastInstalled="1454161492" lastModified="1454157546" platform="iptables" version="" name="radicale.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id41159X7246" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -9117,7 +9143,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id41130X7246" disabled="False" group="" log="True" position="6" action="Deny" direction="Outbound" comment="">
+          <PolicyRule id="id41130X7246" disabled="False" group="" log="False" position="6" action="Deny" direction="Outbound" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -9245,7 +9271,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id41654X7246" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1448559204" lastInstalled="1446681449" lastModified="1448559029" platform="iptables" version="" name="proxy2.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id41654X7246" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1454167427" lastInstalled="1454167430" lastModified="1454167420" platform="iptables" version="" name="proxy2.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id41885X7246" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -9486,7 +9512,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="ulog_nlgroup">1</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id41856X7246" disabled="False" group="" log="True" position="8" action="Deny" direction="Outbound" comment="">
+          <PolicyRule id="id41856X7246" disabled="False" group="" log="False" position="8" action="Deny" direction="Outbound" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -9646,7 +9672,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id14061X29949" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1448559203" lastInstalled="1436822944" lastModified="1448559021" platform="iptables" version="" name="otrs.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id14061X29949" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1454157705" lastInstalled="1436822944" lastModified="1454157535" platform="iptables" version="" name="otrs.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id14292X29949" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -9774,7 +9800,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id14263X29949" disabled="False" group="" log="True" position="6" action="Deny" direction="Outbound" comment="">
+          <PolicyRule id="id14263X29949" disabled="False" group="" log="False" position="6" action="Deny" direction="Outbound" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -9902,7 +9928,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id44323X23067" folder="igor" host_OS="linux24" lastCompiled="1448559197" lastInstalled="1448139848" lastModified="1448558748" platform="iptables" name="fastd1.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id44323X23067" folder="igor" host_OS="linux24" lastCompiled="1448723850" lastInstalled="1450687562" lastModified="1448558748" platform="iptables" name="fastd1.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id44327X23067" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="False" top_rule_set="True">
           <NATRule id="id38254X30153" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -10402,7 +10428,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id23806X15949" folder="Magnus" host_OS="linux24" lastCompiled="1448559195" lastInstalled="1437119856" lastModified="1448558779" platform="iptables" name="bacula.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id23806X15949" folder="Magnus" host_OS="linux24" lastCompiled="1448723846" lastInstalled="1450687079" lastModified="1448558779" platform="iptables" name="bacula.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id23810X15949" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -10639,7 +10665,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id24104X28041" folder="darko" host_OS="linux24" lastCompiled="1448559201" lastInstalled="1437580908" lastModified="1448559096" platform="iptables" name="icinga.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id24104X28041" folder="darko" host_OS="linux24" lastCompiled="1448723856" lastInstalled="1450687615" lastModified="1448559096" platform="iptables" name="icinga.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id24108X28041" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -10933,7 +10959,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id25280X32056" folder="Christof" host_OS="linux24" lastCompiled="1448559205" lastInstalled="0" lastModified="1448559110" platform="iptables" name="testbot.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id25280X32056" folder="Christof" host_OS="linux24" lastCompiled="1448723864" lastInstalled="0" lastModified="1448559110" platform="iptables" name="testbot.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id25284X32056" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -11122,7 +11148,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id17976X10901" folder="Christof" host_OS="linux24" inactive="False" lastCompiled="1448559206" lastInstalled="1433804576" lastModified="1448559190" platform="iptables" version="" name="testfastd.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id17976X10901" folder="Christof" host_OS="linux24" inactive="False" lastCompiled="1448723865" lastInstalled="1433804576" lastModified="1448559190" platform="iptables" version="" name="testfastd.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id18331X10901" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="False" top_rule_set="True">
           <NATRule id="id18333X10901" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -11521,7 +11547,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id18416X21003" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1448559195" lastInstalled="1437117196" lastModified="1448558972" platform="iptables" version="" name="bounce.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id18416X21003" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1454157570" lastInstalled="1454157602" lastModified="1454157521" platform="iptables" version="" name="bounce.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id18647X21003" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -11650,7 +11676,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id18618X21003" disabled="False" group="" log="True" position="6" action="Deny" direction="Outbound" comment="">
+          <PolicyRule id="id18618X21003" disabled="False" group="" log="False" position="6" action="Deny" direction="Outbound" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -11779,7 +11805,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id32639X29431" folder="Elmar" host_OS="linux24" inactive="False" lastCompiled="1448559200" lastInstalled="1448054471" lastModified="1448558948" platform="iptables" version="" name="fastd4.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id32639X29431" folder="Elmar" host_OS="linux24" inactive="False" lastCompiled="1453588105" lastInstalled="1453588113" lastModified="1453588083" platform="iptables" version="" name="fastd4.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id33030X29431" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <NATRule id="id33032X29431" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -12141,7 +12167,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id33001X29431" disabled="False" group="" log="True" position="14" action="Deny" direction="Both" comment="">
+          <PolicyRule id="id33001X29431" disabled="False" group="" log="False" position="14" action="Deny" direction="Both" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -12324,7 +12350,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id75985X29431" folder="Christof" host_OS="linux24" inactive="False" lastCompiled="1448559198" lastInstalled="1444042240" lastModified="1448559123" platform="iptables" version="" name="fastd10.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id75985X29431" folder="Christof" host_OS="linux24" inactive="False" lastCompiled="1448723852" lastInstalled="1444042240" lastModified="1448559123" platform="iptables" version="" name="fastd10.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id76376X29431" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <NATRule id="id76378X29431" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -12787,7 +12813,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id21251X32010" folder="Dominik" host_OS="linux24" inactive="False" lastCompiled="1448559200" lastInstalled="1446681412" lastModified="1448558961" platform="iptables" version="" name="fastd5.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id21251X32010" folder="Dominik" host_OS="linux24" inactive="False" lastCompiled="1448723855" lastInstalled="1450687591" lastModified="1448558961" platform="iptables" version="" name="fastd5.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id21693X32010" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="False" top_rule_set="True">
           <NATRule id="id21695X32010" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -13289,7 +13315,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id22014X1477" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1448559201" lastInstalled="1444042248" lastModified="1448559010" platform="iptables" version="" name="fastd6.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id22014X1477" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1448723856" lastInstalled="1444042248" lastModified="1448559010" platform="iptables" version="" name="fastd6.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id22434X1477" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <NATRule id="id22436X1477" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
