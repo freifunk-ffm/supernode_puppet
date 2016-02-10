@@ -31,13 +31,13 @@ class firewall {
   }
 
   file_line { '/etc/rc.local:firewall':
-    ensure           => absent,
-    path             => '/etc/rc.local',
-    match            => '^/etc/fw/',
-    match_for_absent => true,
-    multiple         => true,
-    notify           => Service[$service],
-    before           => Service['fail2ban'],
+    ensure            => absent,
+    path              => '/etc/rc.local',
+    match             => '^/etc/fw/',
+    match_for_absence => true,
+    multiple          => true,
+    notify            => Service[$service],
+    before            => Service['fail2ban'],
   }
 
   systemd::service { $service:
