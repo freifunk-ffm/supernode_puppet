@@ -8,4 +8,6 @@ define systemd::service (
     source  => $source,
     content => $content,
   }
+
+  Systemd::Unit["${title}.service"] ~> Service[$title]
 }
