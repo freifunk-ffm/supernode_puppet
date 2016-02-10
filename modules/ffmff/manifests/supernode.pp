@@ -45,12 +45,10 @@ class ffmff::supernode (
 
   # FIXME move to params
   $ipv4_net = '10.126'
-#  $ipv6_net_prefix = '2001:1A50:11:4:'
   $ipv6_rnet_prefix = 'fddd:5d16:b5dd:'
-# $ipv6_rnet_mask = 48
   $ipv6_rnet_mask = 64
 
-  $ipv6_subnet        = sprintf('b1%02d', $supernodenum)
+  $ipv6_subnet        = '0'
   $ipv6_net = "${ipv6_net_prefix}${ipv6_subnet}"
   $ipv6_rnet = "${ipv6_rnet_prefix}${ipv6_subnet}"
   $backbone_ip_suffix = $supernodenum + 20
@@ -58,7 +56,6 @@ class ffmff::supernode (
   class { 'batman':
     ipv4_suffix       => $ipv4_suffix,
     ipv4_subnet_start => $ipv4_subnet_start,
-    ipv6_subnet       => $ipv6_subnet,
   }
 
   validate_integer($supernodenum)
