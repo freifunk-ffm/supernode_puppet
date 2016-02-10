@@ -17,7 +17,7 @@ class firewall {
 
   file { $fw_file:
     ensure => file,
-    mode   => '0644',
+    mode   => '0750',
     owner  => 'root',
     group  => 'root',
     source => "puppet:///modules/firewall/fwbuilder/${fqdn}.fw",
