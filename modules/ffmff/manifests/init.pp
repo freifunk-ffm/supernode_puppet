@@ -10,7 +10,7 @@ class ffmff (
   include ::rsyslog
   include ::sshd
   include ::postfix
-  include ::ffmff::firewall
+  include ::firewall
   include ::ffmff::ntp
   include ::ffmff::admintools
   include ::ffmff::locales
