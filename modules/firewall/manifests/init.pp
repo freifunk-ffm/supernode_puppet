@@ -26,7 +26,7 @@ class firewall {
 
   file { $fw_link:
     ensure => link,
-    target => $fqdn,
+    target => $fw_file,
     notify => Service[$service],
   }
 
