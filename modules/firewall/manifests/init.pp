@@ -34,6 +34,7 @@ class firewall {
     ensure            => absent,
     path              => '/etc/rc.local',
     match             => '^/etc/fw/',
+    line              => '',
     match_for_absence => true,
     multiple          => true,
     notify            => Service[$service],
