@@ -1,7 +1,7 @@
 class firewall {
-  $fqdn = $trusted['certname']
+  $fqdn = $::trusted['certname']
   $fw_dir = '/etc/fw'
-  $fw_file = "${fw_dir}/${fw_file}"
+  $fw_file = "${fw_dir}/${fqdn}"
   $fw_link = "${fw_dir}/script"
   $service = 'fwbuilder'
 
