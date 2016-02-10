@@ -1,0 +1,12 @@
+[Unit]
+Description=Puppet agent
+Wants=basic.target
+After=basic.target network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/puppet agent
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

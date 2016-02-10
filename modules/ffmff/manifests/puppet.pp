@@ -29,6 +29,10 @@ class ffmff::puppet (
     },
   }
 
+  systemd::service { 'puppet':
+    source => 'puppet:///modules/ffmff/systemd/units/puppet.service',
+  }
+
   if $master {
     package { 'ruby-highline':
       ensure => present,
@@ -43,6 +47,10 @@ class ffmff::puppet (
     }
     class { '::puppetdb':
       manage_package_repo => false,
+    }
+
+    systemd::service { 'puppetmaster':
+      source => 'puppet:///modules/ffmff/systemd/units/puppetmaster.service',
     }
   }
 }
