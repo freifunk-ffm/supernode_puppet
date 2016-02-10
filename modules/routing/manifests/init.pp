@@ -3,6 +3,9 @@ class routing {
   package { 'ipset':
     ensure => installed,
   }
+  package { 'jq':
+    ensure => installed,
+  }
 
 
   file { '/etc/iproute2/rt_tables':
