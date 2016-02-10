@@ -11,5 +11,9 @@ define systemd::service (
     content => $content,
   }
 
+  Service <| title == $title |> {
+    provider => 'systemd',
+  }
+
   Exec[$systemd::reload_command] ~> Service[$title]
 }
