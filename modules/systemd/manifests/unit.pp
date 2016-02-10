@@ -5,7 +5,9 @@ define systemd::unit (
 ) {
   include systemd
 
-  file { "${systemd::unit_dir}/${title}":
+  $file = "${systemd::unit_dir}/${title}"
+
+  file { $file:
     ensure  => $ensure,
     source  => $source,
     content => $content,
@@ -14,4 +16,6 @@ define systemd::unit (
     group   => 'root',
     notify  => $systemd::reload,
   }
+
+  File[$file] ~> Exec[$systemd::reload_command]
 }

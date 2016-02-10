@@ -3,11 +3,13 @@ define systemd::service (
   $source = undef,
   $content = undef,
 ) {
+  include systemd
+
   systemd::unit { "${title}.service":
     ensure  => $ensure,
     source  => $source,
     content => $content,
   }
 
-  Systemd::Unit["${title}.service"] ~> Service[$title]
+  Exec[$systemd::reload_command] ~> Service[$title]
 }
