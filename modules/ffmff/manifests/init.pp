@@ -1,14 +1,18 @@
-class ffmff {
+class ffmff (
+  $puppetmaster = false,
+) {
+  validate_bool($puppetmaster)
+
   include ::ffmff::apt
-  include ::puppet
+  class { '::ffmff::puppet':
+    master => $puppetmaster,
+  }
   include ::rsyslog
   include ::sshd
   include ::postfix
-  include ::firewall
-
-  package { [
-    'ntp', 'vim', 'iftop'
-  ]:
-    ensure => installed,
-  }
+  include ::ffmff::firewall
+  include ::ffmff::ntp
+  include ::ffmff::admintools
+  include ::ffmff::locales
+  include ::ffmff::timezone
 }

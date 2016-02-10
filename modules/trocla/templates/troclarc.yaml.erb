@@ -1,0 +1,20 @@
+---
+options:
+    random: <%= @random_passwords %>
+    length: <%= @password_length %> 
+adapter: :<%= @adapter %>
+<% unless @adapter_options.empty? %>
+adapter_options:
+<% @adapter_options.keys.sort.each do |key| -%>
+    :<%= key %>: '<%= @adapter_options[key] %>'
+<% end -%>
+<% end -%>
+<% if @encryption %>
+encryption: :<%= @encryption %>
+<% end -%>
+<% unless @ssl_options.empty? %>
+ssl_options:
+<% @ssl_options.keys.sort.each do |key| -%>
+    :<%= key %>: '<%= @ssl_options[key] %>'
+<% end -%>
+<% end -%>

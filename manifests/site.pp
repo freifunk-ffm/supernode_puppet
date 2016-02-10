@@ -14,3 +14,9 @@ node /fastd\d+\.ffm\.freifunk\.net/ {
 node 'mail.ffm.freifunk.net' {
   class { 'mailserver': }
 }
+
+node 'puppet.ffm.freifunk.net' {
+  class { 'ffmff':
+    puppetmaster => true,
+  }
+}
