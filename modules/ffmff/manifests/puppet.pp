@@ -16,6 +16,7 @@ class ffmff::puppet (
   }
 
   class { '::puppet':
+    puppetmaster                  => 'puppet.ffm.freifunk.net'
     server                        => $master,
     server_foreman                => false,
     server_passenger              => false,
