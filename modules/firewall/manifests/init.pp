@@ -47,7 +47,9 @@ class firewall {
 
   service { $service:
     ensure => running,
-    enable => true,
+#    enable => true,
+    # seems to break fastd4
+    enable => false,
   }
 
   package { 'fail2ban':
