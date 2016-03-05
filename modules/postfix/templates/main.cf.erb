@@ -24,5 +24,6 @@ smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
 #"[mail.bb.ffm.freifunk.net] user:pass; postmap file
 smtp_sasl_security_options = noanonymous
 smtp_tls_security_level = may
+smtp_generic_maps = hash:/etc/postfix/generic
 smtpd_recipient_restrictions = permit_mynetworks, permit_auth_destination, reject
 smtpd_sender_restrictions = permit_mynetworks, reject_unauth_destination

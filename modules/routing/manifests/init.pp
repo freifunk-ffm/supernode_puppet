@@ -1,7 +1,15 @@
 class routing {
   # FIXME really replace the whole file?
+  package { 'ipset':
+    ensure => installed,
+  }
+  package { 'jq':
+    ensure => installed,
+  }
+
+
   file { '/etc/iproute2/rt_tables':
-    content => '200 ffffm',
+    content => template('routing/rt_tables'),
   }
   file { '/usr/local/bin/directexit':                                         
     ensure  => file,

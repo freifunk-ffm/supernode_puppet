@@ -5,12 +5,12 @@ define fastd::variant (
   $pmtu,
   $peerlimit,
   $macvendor,
-  $use_backbone_repo,
+  $backbone,
 ) {
   validate_integer($port)
   validate_integer($mtu)
   validate_integer($peerlimit)
-  validate_bool($nullcipher, $pmtu, $use_backbone_repo)
+  validate_bool($nullcipher, $pmtu, $backbone)
 
   include ::fastd
 
@@ -62,17 +62,15 @@ define fastd::variant (
       content => template('fastd/fastd.conf.erb');
   }
 
-  if $use_backbone_repo {
-    file { "${dir}/backbone":
-      ensure => symlink,
-      target => '../blacklist',
-    }
-  } else {
-    file { "${dir}/backbone":
-      ensure  => directory,
-      purge   => true,
-      recurse => true,
-      force   => true,
-    }
+  file { "${dir}/backbone":
+    ensure => symlink,
+    target => '../backbone',
+    force  => true,
+  }
+
+  file { "${dir}/blacklist":
+    ensure  => absent,
+    recurse => true,
+    force   => true,
   }
 }
