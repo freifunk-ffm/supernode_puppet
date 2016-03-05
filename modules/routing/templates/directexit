@@ -1,0 +1,54 @@
+#!/bin/bash
+resources=( 
+32934 # facebook
+714   # apple
+15169 # google
+8075  # micro$oft
+)
+#19679 # dropbox
+#2906 # netflix
+ip4s=()
+ip6s=()
+
+
+cleanup() {
+	rm -f $asdata
+}
+
+ipsc() {
+	local ipset
+	ipset=$1
+	while read
+	do
+		ipset add $ipset $REPLY
+	done
+}
+
+
+trap cleanup 1 2 3 6 9 13 14 15
+asdata=$(mktemp asdata.XXXXXX)
+ipset flush ${ipsetname[i]}-temp
+for as in "${resources[@]}"
+do
+	curl -s 'https://stat.ripe.net/data/announced-prefixes/data.json?min_peers_seeing=0&resource='$as|jq  --raw-output .data.prefixes[].prefix >$asdata 
+
+
+	ipsetname=(exit exit6)
+	grepcmd=("-v :" ":")
+
+	for ((i=0;i<${#ipsetname[@]};i++)); do
+		   ipsc ${ipsetname[i]}-temp < <(grep ${grepcmd[i]} $asdata)
+	done
+done
+for ip in ${ip4s[@]}
+do
+	ipsc exit-temp <<< $ip
+done
+for ip in ${ip6s[@]}
+do
+	ipsc exit6-temp <<< $ip
+done
+ipset swap ${ipsetname[i]} ${ipsetname[i]}-temp
+ipset flush ${ipsetname[i]}-temp
+cleanup
+trap - 1 2 3 6 9 13 14 15
