@@ -4,6 +4,20 @@ resources=(
 714   # apple
 15169 # google
 8075  # micro$oft
+2906 # netflix
+8403 # Spotify
+46489 # Twitch
+13414 # Twitter
+32590 # Valve
+10310 # Yahoo
+#Freifunk:
+44194
+201701
+49009
+3624
+36692 # OpenDNS
+57976 # Blizzard
+
 )
 #19679 # dropbox
 #2906 # netflix
