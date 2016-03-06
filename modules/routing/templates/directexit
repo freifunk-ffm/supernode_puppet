@@ -1,26 +1,25 @@
 #!/bin/bash
 resources=( 
-32934 # facebook
-714   # apple
-15169 # google
-8075  # micro$oft
-2906 # netflix
-8403 # Spotify
-46489 # Twitch
-13414 # Twitter
-32590 # Valve
-10310 # Yahoo
-#Freifunk:
-44194
-201701
-49009
-3624
-36692 # OpenDNS
-57976 # Blizzard
-
+	714   # Apple
+	#19679 # Dropbox
+	57976 # Blizzard
+	32934 # Facebook
+	15169 # Google
+	8075  # Micro$oft
+	#2906  # Netflix
+	36692 # OpenDNS
+	8403  # Spotify
+	46489 # Twitch
+	13414 # Twitter
+	32590 # Valve
+	10310 # Yahoo
+	#Freifunk:
+	44194  # Freifunk Berlin
+	201701 # Freifunk Rheinland
+	49009  # Freifunk Rheinland / Hamburg
+	3624   # Freifunk Bremen
 )
-#19679 # dropbox
-#2906 # netflix
+
 ip4s=()
 ip6s=()
 
@@ -32,37 +31,43 @@ cleanup() {
 ipsc() {
 	local ipset
 	ipset=$1
-	while read
-	do
+
+	while read; do
 		ipset add $ipset $REPLY
 	done
 }
 
 
 trap cleanup 1 2 3 6 9 13 14 15
+
 asdata=$(mktemp asdata.XXXXXX)
 ipset flush ${ipsetname[i]}-temp
-for as in "${resources[@]}"
-do
-	curl -s 'https://stat.ripe.net/data/announced-prefixes/data.json?min_peers_seeing=0&resource='$as|jq  --raw-output .data.prefixes[].prefix >$asdata 
 
+for as in "${resources[@]}"; do
+	# Get IPs
+	curl -s 'https://stat.ripe.net/data/announced-prefixes/data.json?min_peers_seeing=0&resource='$as|jq --raw-output .data.prefixes[].prefix > $asdata
 
+	# Ipsets
 	ipsetname=(exit exit6)
+	# Grep parameter for ipset
 	grepcmd=("-v :" ":")
 
 	for ((i=0;i<${#ipsetname[@]};i++)); do
-		   ipsc ${ipsetname[i]}-temp < <(grep ${grepcmd[i]} $asdata)
+		ipsc ${ipsetname[i]}-temp < <(grep ${grepcmd[i]} $asdata)
 	done
 done
-for ip in ${ip4s[@]}
-do
+
+for ip in ${ip4s[@]}; do
 	ipsc exit-temp <<< $ip
 done
-for ip in ${ip6s[@]}
-do
+
+for ip in ${ip6s[@]}; do
 	ipsc exit6-temp <<< $ip
 done
+
 ipset swap ${ipsetname[i]} ${ipsetname[i]}-temp
 ipset flush ${ipsetname[i]}-temp
 cleanup
+
 trap - 1 2 3 6 9 13 14 15
+
