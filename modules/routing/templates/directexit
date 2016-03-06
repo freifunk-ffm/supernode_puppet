@@ -1,5 +1,5 @@
 #!/bin/bash
-resources=( 
+asList=(
 	714   # Apple
 	#19679 # Dropbox
 	57976 # Blizzard
@@ -20,54 +20,41 @@ resources=(
 	3624   # Freifunk Bremen
 )
 
-ip4s=()
-ip6s=()
+
+# Ipsets to add
+ipsets=(exit exit6)
+# Grep parameter for ipsets
+grepcmd=('-v :' ':')
 
 
-cleanup() {
-	rm -f $asdata
-}
-
-ipsc() {
+# Add ip ranges to ipset
+ipsetAdd() {
 	local ipset
 	ipset=$1
 
 	while read; do
-		ipset add $ipset $REPLY
+		ipset add "$ipset" "$REPLY"
 	done
 }
 
 
-trap cleanup 1 2 3 6 9 13 14 15
+for ((i=0; i<${#ipsets[@]}; i++)); do
+	ipset flush "${ipsets[i]}-temp"
+done
 
-asdata=$(mktemp asdata.XXXXXX)
-ipset flush ${ipsetname[i]}-temp
-
-for as in "${resources[@]}"; do
+for as in "${asList[@]}"; do
 	# Get IPs
-	curl -s 'https://stat.ripe.net/data/announced-prefixes/data.json?min_peers_seeing=0&resource='$as|jq --raw-output .data.prefixes[].prefix > $asdata
+	asdata=$(curl -s 'https://stat.ripe.net/data/announced-prefixes/data.json?min_peers_seeing=0&resource='$as|jq --raw-output .data.prefixes[].prefix)
 
-	# Ipsets
-	ipsetname=(exit exit6)
-	# Grep parameter for ipset
-	grepcmd=("-v :" ":")
-
-	for ((i=0;i<${#ipsetname[@]};i++)); do
-		ipsc ${ipsetname[i]}-temp < <(grep ${grepcmd[i]} $asdata)
+	for ((i=0;i<${#ipsets[@]};i++)); do
+		# Add IPs to ipset
+		ipsetAdd "${ipsets[i]}-temp" < <(echo "${asdata}" | grep ${grepcmd[i]})
 	done
 done
 
-for ip in ${ip4s[@]}; do
-	ipsc exit-temp <<< $ip
+## Apply and cleanup
+for ((i=0; i<${#ipsets[@]}; i++)); do
+	ipset swap "${ipsets[i]}" "${ipsets[i]}-temp"
+	ipset flush "${ipsets[i]}-temp"
 done
-
-for ip in ${ip6s[@]}; do
-	ipsc exit6-temp <<< $ip
-done
-
-ipset swap ${ipsetname[i]} ${ipsetname[i]}-temp
-ipset flush ${ipsetname[i]}-temp
-cleanup
-
-trap - 1 2 3 6 9 13 14 15
 
