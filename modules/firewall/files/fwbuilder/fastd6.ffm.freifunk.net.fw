@@ -4,7 +4,7 @@
 #
 #  Firewall Builder  fwb_ipt v5.1.0.3599
 #
-#  Generated Wed Feb 10 21:14:24 2016 CET by christof
+#  Generated Thu Feb 11 19:52:31 2016 CET by christof
 #
 # files: * fastd6.ffm.freifunk.net.fw /etc/fw/fastd6.ffm.freifunk.net.fw
 #
@@ -464,7 +464,7 @@ script_body() {
     echo "Rule 0 (NAT)"
     # 
     $IP6TABLES -t nat -A POSTROUTING -o ovpn-inet   -s 2001:1a50:11:4::/64  -j MASQUERADE
-    $IP6TABLES -t nat -A POSTROUTING -o ovpn-inet   -s fddd:5d16:b5dd::/48  -j MASQUERADE
+    $IP6TABLES -t nat -A POSTROUTING -o ovpn-inet   -s fddd:5d16:b5dd::/64  -j MASQUERADE
 
 
 
@@ -481,8 +481,8 @@ script_body() {
     # 
     echo "Rule 1 (global)"
     # 
-    $IP6TABLES -A FORWARD -i +  -p tcp -m tcp  -s fddd:5d16:b5dd::/48   -d fddd:5d16:b5dd:b101::1   --dport 53  -m state --state NEW  -j ACCEPT
-    $IP6TABLES -A FORWARD -i +  -p udp -m udp  -s fddd:5d16:b5dd::/48   -d fddd:5d16:b5dd:b101::1   --dport 53  -m state --state NEW  -j ACCEPT
+    $IP6TABLES -A FORWARD -i +  -p tcp -m tcp  -s fddd:5d16:b5dd::/64   -d fddd:5d16:b5dd:b101::1   --dport 53  -m state --state NEW  -j ACCEPT
+    $IP6TABLES -A FORWARD -i +  -p udp -m udp  -s fddd:5d16:b5dd::/64   -d fddd:5d16:b5dd:b101::1   --dport 53  -m state --state NEW  -j ACCEPT
     # 
     # Rule 4 (global)
     # 
@@ -529,24 +529,17 @@ script_body() {
     echo "Rule 9 (batbridge)"
     # 
     $IP6TABLES -N Cid22289X1477.0
-    $IP6TABLES -A OUTPUT -o batbridge   -s 2001:1a50:11:4::/64   -m state --state NEW  -j Cid22289X1477.0
-    $IP6TABLES -A OUTPUT -o batbridge   -s fddd:5d16:b5dd::/48   -m state --state NEW  -j Cid22289X1477.0
+    $IP6TABLES -A FORWARD -o batbridge   -s 2001:1a50:11:4::/64   -m state --state NEW  -j Cid22289X1477.0
+    $IP6TABLES -A FORWARD -o batbridge   -s fddd:5d16:b5dd::/64   -m state --state NEW  -j Cid22289X1477.0
     $IP6TABLES -A Cid22289X1477.0  -d 2001:1a50:11:4::/64   -j ACCEPT
-    $IP6TABLES -A Cid22289X1477.0  -d fddd:5d16:b5dd::/48   -j ACCEPT
-    $IP6TABLES -N Cid22289X1477.1
-    $IP6TABLES -A FORWARD -o batbridge   -s 2001:1a50:11:4::/64   -m state --state NEW  -j Cid22289X1477.1
-    $IP6TABLES -A FORWARD -o batbridge   -s fddd:5d16:b5dd::/48   -m state --state NEW  -j Cid22289X1477.1
-    $IP6TABLES -A Cid22289X1477.1  -d 2001:1a50:11:4::/64   -j ACCEPT
-    $IP6TABLES -A Cid22289X1477.1  -d fddd:5d16:b5dd::/48   -j ACCEPT
+    $IP6TABLES -A Cid22289X1477.0  -d fddd:5d16:b5dd::/64   -j ACCEPT
     # 
     # Rule 11 (ovpn-inet)
     # 
     echo "Rule 11 (ovpn-inet)"
     # 
-    $IP6TABLES -A OUTPUT -o ovpn-inet   -s 2001:1a50:11:4::/64   -m state --state NEW  -j ACCEPT
-    $IP6TABLES -A OUTPUT -o ovpn-inet   -s fddd:5d16:b5dd::/48   -m state --state NEW  -j ACCEPT
     $IP6TABLES -A FORWARD -o ovpn-inet   -s 2001:1a50:11:4::/64   -m state --state NEW  -j ACCEPT
-    $IP6TABLES -A FORWARD -o ovpn-inet   -s fddd:5d16:b5dd::/48   -m state --state NEW  -j ACCEPT
+    $IP6TABLES -A FORWARD -o ovpn-inet   -s fddd:5d16:b5dd::/64   -m state --state NEW  -j ACCEPT
     # 
     # Rule 13 (global)
     # 
@@ -689,7 +682,7 @@ test -z "$cmd" && {
 
 case "$cmd" in
     start)
-        log "Activating firewall script generated Wed Feb 10 21:14:24 2016 by christof"
+        log "Activating firewall script generated Thu Feb 11 19:52:31 2016 by christof"
         check_tools
          prolog_commands 
         check_run_time_address_table_files

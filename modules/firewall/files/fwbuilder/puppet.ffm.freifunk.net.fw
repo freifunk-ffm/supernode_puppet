@@ -4,7 +4,7 @@
 #
 #  Firewall Builder  fwb_ipt v5.1.0.3599
 #
-#  Generated Wed Feb 10 21:31:02 2016 CET by christof
+#  Generated Wed Feb 10 23:35:41 2016 CET by christof
 #
 # files: * puppet.ffm.freifunk.net.fw /etc/fw/puppet.ffm.freifunk.net.fw
 #
@@ -333,8 +333,8 @@ script_body() {
     # 
     echo "Rule 1 (global)"
     # 
-    $IPTABLES -A INPUT -p tcp -m tcp  --dport 22  -m state --state NEW  -j ACCEPT
-    $IPTABLES -A FORWARD -i +  -p tcp -m tcp  --dport 22  -m state --state NEW  -j ACCEPT
+    $IPTABLES -A INPUT -p tcp -m tcp  -m multiport  --dports 8140,22  -m state --state NEW  -j ACCEPT
+    $IPTABLES -A FORWARD -i +  -p tcp -m tcp  -m multiport  --dports 8140,22  -m state --state NEW  -j ACCEPT
     # 
     # Rule 2 (global)
     # 
@@ -343,13 +343,6 @@ script_body() {
     $IPTABLES -A OUTPUT -p icmp  -m icmp  --icmp-type any  -m state --state NEW  -j ACCEPT
     $IPTABLES -A INPUT -p icmp  -m icmp  --icmp-type any  -m state --state NEW  -j ACCEPT
     $IPTABLES -A FORWARD -p icmp  -m icmp  --icmp-type any  -m state --state NEW  -j ACCEPT
-    # 
-    # Rule 3 (batbridge,eth0)
-    # 
-    echo "Rule 3 (batbridge,eth0)"
-    # 
-    $IPTABLES -A INPUT -i batbridge  -p tcp -m tcp  -d 10.126.255.1   --dport 8140  -m state --state NEW  -j ACCEPT
-    $IPTABLES -A INPUT -i eth0  -p tcp -m tcp  -d 10.126.255.1   --dport 8140  -m state --state NEW  -j ACCEPT
     # 
     # Rule 4 (eth0)
     # 
@@ -398,8 +391,8 @@ script_body() {
     # 
     echo "Rule 1 (global)"
     # 
-    $IP6TABLES -A INPUT -p tcp -m tcp  --dport 22  -m state --state NEW  -j ACCEPT
-    $IP6TABLES -A FORWARD -i +  -p tcp -m tcp  --dport 22  -m state --state NEW  -j ACCEPT
+    $IP6TABLES -A INPUT -p tcp -m tcp  -m multiport  --dports 8140,22  -m state --state NEW  -j ACCEPT
+    $IP6TABLES -A FORWARD -i +  -p tcp -m tcp  -m multiport  --dports 8140,22  -m state --state NEW  -j ACCEPT
     # 
     # Rule 2 (global)
     # 
@@ -410,15 +403,6 @@ script_body() {
     $IP6TABLES -A OUTPUT -p ipv6-icmp  -j ACCEPT
     $IP6TABLES -A INPUT -p ipv6-icmp  -j ACCEPT
     $IP6TABLES -A FORWARD -p ipv6-icmp  -j ACCEPT
-    # 
-    # Rule 3 (batbridge,eth0)
-    # 
-    echo "Rule 3 (batbridge,eth0)"
-    # 
-    $IP6TABLES -N Cid23102X4186.0
-    $IP6TABLES -A INPUT -i batbridge  -p tcp -m tcp  --dport 8140  -m state --state NEW  -j Cid23102X4186.0
-    $IP6TABLES -A Cid23102X4186.0  -d fddd:5d16:b5dd:0:3072:9ff:fe20:d546   -j ACCEPT
-    $IP6TABLES -A Cid23102X4186.0  -d fe80::3072:9ff:fe20:d546   -j ACCEPT
     # 
     # Rule 5 (batbridge)
     # 
@@ -562,7 +546,7 @@ test -z "$cmd" && {
 
 case "$cmd" in
     start)
-        log "Activating firewall script generated Wed Feb 10 21:31:02 2016 by christof"
+        log "Activating firewall script generated Wed Feb 10 23:35:41 2016 by christof"
         check_tools
          prolog_commands 
         check_run_time_address_table_files
