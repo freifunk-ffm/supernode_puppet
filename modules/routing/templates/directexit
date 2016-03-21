@@ -15,6 +15,10 @@ asList=(
 	32590 # Valve
 	10310 # Yahoo
 	8302  # Zattoo
+	32787 # AKAMAI (other)
+	20940 # AKAMAI
+	13335 # CLOUDFLARE
+	
 	#Freifunk
 	44194  # Freifunk Berlin
 	3624   # Freifunk Bremen
