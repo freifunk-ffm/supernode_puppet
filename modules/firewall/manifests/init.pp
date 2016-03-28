@@ -23,6 +23,11 @@ class firewall {
     source => "puppet:///modules/firewall/fwbuilder/${fqdn}.fw",
     notify => Service[$service],
   }
+  
+  file { '/etc/network/if-up.d/script':
+    ensure => file,
+    target => $fw_file,
+  }
 
   file { $fw_link:
     ensure => link,
