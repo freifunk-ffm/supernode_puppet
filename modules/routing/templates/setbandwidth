@@ -6,7 +6,7 @@ ext_ingress=ifb0	# Use a unique ifb per rate limiter!
 			# Set these as per your provider's settings, at 90% to start with
 ext_up=${1}kbps		# Max theoretical: for this example, up is 1024kbit
 ext_down=${1}kbps	# Max theoretical: for this example, down is 8192kbit
-q=1514                  # HTB Quantum = 1500bytes IP + 14 bytes ethernet.
+q=300                  # HTB Quantum = 1500bytes IP + 14 bytes ethernet.
 			# Higher bandwidths may require a higher htb quantum. MEASURE.
 			# Some ADSL devices might require a stab setting.
 
@@ -47,8 +47,8 @@ $tc qdisc add dev $ext_ingress root handle 1: htb default 11
 
 # Add root class HTB with rate limiting
 
-$tc class add dev $ext_ingress parent 1: classid 1:1 htb rate $ext_down
-$tc class add dev $ext_ingress parent 1:1 classid 1:11 htb rate $ext_down prio 0 quantum $q
+$tc class add dev $ext_ingress parent 1: classid 1:1 htb rate $ext_down ceil $ext_down
+$tc class add dev $ext_ingress parent 1:1 classid 1:11 htb rate $ext_down prio 0 ceil $ext_down  quantum $q
 
 
 # Add FQ_CODEL qdisc with ECN support (if you want ecn)
@@ -59,8 +59,8 @@ $tc qdisc add dev $ext_ingress parent 1:11 fq_codel
 $tc qdisc add dev $ext root handle 1: htb default 11
 
 # Add root class HTB with rate limiting
-$tc class add dev $ext parent 1: classid 1:1 htb rate $ext_up
-$tc class add dev $ext parent 1:1 classid 1:11 htb rate $ext_up prio 0 quantum $q
+$tc class add dev $ext parent 1: classid 1:1 htb rate $ext_up ceil $ext_up
+$tc class add dev $ext parent 1:1 classid 1:11 htb rate $ext_up ceil $ext_up prio 0 quantum $q
 
 # Note: You can apply a packet limit here and on ingress if you are memory constrained - e.g
 # for low bandwidths and machines with < 64MB of ram, limit 1000 is good, otherwise no point
