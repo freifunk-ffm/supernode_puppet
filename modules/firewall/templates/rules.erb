@@ -38,6 +38,15 @@ Ping(DROP)   	wan             $FW
 #       (assumes that the ff-> wan policy is ACCEPT).
 #
 
+# direkte Ausleitung
+# sbin/iptables -A PREROUTING -t mangle -m set --match-set exit dst -j MARK --set-mark 0x1
+# #/sbin/ip6tables -A PREROUTING -t mangle -m set --match-set exit6 dst -j MARK --set-mark 0x1
+# /sbin/ip rule add fwmark 0x1 lookup main
+#
+# TODO: DAS FUNKTIONIERT DOCH NIE!
+# TODO: wohin mit dem: ip rule fwmark 0x1 lookup main?
+IPTABLES(MARK -A PREROUTING -t mangle --set-mark 0x01          ff    +exit,+exit6
+
 Ping(ACCEPT)    ff             $FW
 Ping(ACCEPT)    ff             vpn
 Ping(ACCEPT)    dmz            ff
