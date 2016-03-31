@@ -2,6 +2,21 @@ class collectd (
   $supernodenum
 ) {
 
+  $user = 'collectd'
+  $group = $user
+
+  user { $user:
+    ensure => present,
+    system => true,
+  }
+
+  group { $group:
+    ensure  => present,
+    system  => true,
+    require => User[$user],
+  }
+
+
   package { ['collectd', 'iptables-dev']:
     ensure => installed,
   }
