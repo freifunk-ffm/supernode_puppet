@@ -1,0 +1,54 @@
+######################################################################################################################################################################################################
+#ACTION		SOURCE		DEST		PROTO	DEST	SOURCE		ORIGINAL	RATE		USER/	MARK	CONNLIMIT	TIME		HEADERS		SWITCH		HELPER
+#							PORT	PORT(S)		DEST		LIMIT		GROUP
+?SECTION ALL
+?SECTION ESTABLISHED
+?SECTION RELATED
+?SECTION INVALID
+?SECTION UNTRACKED
+?SECTION NEW
+
+
+#       Don't allow connection pickup from the wan
+#
+Invalid(DROP)	wan		all		tcp
+#
+#	Accept DNS connections from the firewall to the Internet
+#
+DNS(ACCEPT)	$FW		wan
+#
+#
+#	Accept SSH connections from the ffcal network to the firewall and DMZ
+#
+SSH(ACCEPT)     ff             $FW
+SSH(ACCEPT)     wan            $FW
+#
+#	DMZ DNS access to the Internet
+#
+DNS(ACCEPT)	ff		$FW
+
+# allow inbound fastd connections
+ACCEPT		wan		$FW		udp	10000,10001,10002
+# Drop Ping from the "bad" wan zone.
+
+Ping(DROP)   	wan             $FW
+
+#
+#       Make ping work bi-directionally between the dmz, wan, Firewall and ffcal zone
+#       (assumes that the ff-> wan policy is ACCEPT).
+#
+
+Ping(ACCEPT)    ff             $FW
+Ping(ACCEPT)    ff             vpn
+Ping(ACCEPT)    dmz            ff
+Ping(ACCEPT)    dmz            wan
+
+ACCEPT		$FW		wan		icmp
+ACCEPT		$FW		ff		icmp
+ACCEPT		$FW		vpn		icmp
+
+# Uncomment this if using Proxy ARP and static NAT and you want to alffw ping from
+# the wan zone to the dmz and ffc
+#Ping(ACCEPT)    wan             dmz
+#Ping(ACCEPT)    wan             ffc
+
