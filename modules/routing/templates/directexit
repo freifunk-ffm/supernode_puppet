@@ -23,6 +23,16 @@ asList=(
 )
 
 
+ipsetCreate() {
+# TODO test this line
+/sbin/ipset list |grep -q "^${1}$" || /sbin/ipset create $1 hash:net family inet$2 hashsize 2048 maxelem 65536
+}
+
+ipsetCreate exit ""
+ipsetCreate exit-temp ""
+ipsetCreate exit6 6
+ipsetCreate exit-temp 6
+
 # Ipsets to add
 ipsets=(exit exit6)
 # Grep parameter for ipsets
