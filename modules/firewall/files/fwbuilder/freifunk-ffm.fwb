@@ -10584,7 +10584,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id44323X23067" folder="igor" host_OS="linux24" inactive="False" lastCompiled="1457563651" lastInstalled="1457563657" lastModified="1457563640" platform="iptables" version="1.4.1.1" name="fastd1.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id44323X23067" folder="igor" host_OS="linux24" inactive="False" lastCompiled="1459645084" lastInstalled="1457563657" lastModified="1459644723" platform="iptables" version="1.4.1.1" name="fastd1.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id44327X23067" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="False" top_rule_set="True">
           <NATRule id="id38254X30153" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -11008,7 +11008,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <RuleSetOptions/>
         </Routing>
         <Interface id="id44372X23067" dedicated_failover="False" dyn="False" label="outside" mgmt="False" security_level="0" unnum="False" unprotected="False" name="eth0" comment="" ro="False">
-          <IPv4 id="id44400X23067" name="fastd1.ffm.freifunk.net:eth0:ip" comment="" ro="False" address="192.168.122.5" netmask="255.255.255.0"/>
+          <IPv4 id="id44400X23067" name="fastd1.ffm.freifunk.net:eth0:ip" comment="" ro="False" address="5.9.221.124" netmask="255.255.255.255"/>
           <InterfaceOptions>
             <Option name="type">ethernet</Option>
           </InterfaceOptions>
