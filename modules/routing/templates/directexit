@@ -19,10 +19,12 @@ asList=(
 	20940 # AKAMAI
 	13335 # CLOUDFLARE
 	43821 # WIKIMEDIA-EU
+	14907 # WIKIMEDIA-USA 
 	
 	#Freifunk
 	44194  # Freifunk Berlin
 	3624   # Freifunk Bremen
+	6766   # Freifunk Darmstadt
 	201701 # Freifunk Rheinland
 	49009  # Freifunk Rheinland / Hamburg
 )
