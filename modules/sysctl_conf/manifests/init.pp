@@ -21,6 +21,7 @@ class sysctl_conf {
       'set net.ipv6.neigh.default.gc_thresh1 256',
       'set net.ipv6.neigh.default.gc_thresh2 1024',
       'set net.ipv6.neigh.default.gc_thresh3 2048',
+      'set net.netfilter.nf_conntrack_max 32000',
     ],
   }
 }
