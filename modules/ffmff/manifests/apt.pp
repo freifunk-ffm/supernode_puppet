@@ -1,5 +1,5 @@
 class ffmff::apt {
-  $release = $::lsbdistrelease
+  $release = $::lsbdistcodename
   $repos = ['main']
 
   class { '::apt':
