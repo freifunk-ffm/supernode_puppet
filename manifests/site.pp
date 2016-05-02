@@ -21,7 +21,7 @@ node 'puppet.ffm.freifunk.net' {
   }
 }
 
-node 'fastd25.freifunk.net' {
+node 'fastd25.ffm.freifunk.net' {
   class { 'ffmff::supernode':
     supernodenum => 20,  # maximum...
     fastd_key    => 'invalid',
