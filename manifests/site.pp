@@ -24,7 +24,7 @@ node 'puppet.ffm.freifunk.net' {
 node 'fastd25.ffm.freifunk.net' {
   class { 'ffmff::supernode':
     supernodenum => 20,  # maximum...
-    fastd_key    => 'invalid',
+    fastd_key    => '0000000000000000000000000000000000000000000000000000000000000000',
     rndmac       => fqdn_rand(99),
   }
 }
