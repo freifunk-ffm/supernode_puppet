@@ -13,16 +13,16 @@ class batman ($ipv4_suffix, $ipv4_subnet_start){
     require => Class['apt::update'],
   }
 
-  augeas { 'mod-batman':
-    context => '/files/etc/modules',
-    changes => 'ins batman-adv after *[last()]',
-    onlyif  => 'match batman-adv size==0',
-    notify  => Exec['modprobe batman'],
-    require => Package['batman-adv-dkms'],
-  }
-
   package { 'uml-utilities':
     ensure  => installed,
+  }
+
+  file { '/etc/modules.load.d/batman-adv.conf':
+    ensure => file,
+    content => 'batman-adv',
+    owner => 'root',
+    group => 'root',
+    mode => '0644',
   }
 
   exec { 'modprobe batman':
