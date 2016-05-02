@@ -20,3 +20,11 @@ node 'puppet.ffm.freifunk.net' {
     puppetmaster => true,
   }
 }
+
+node 'fastd25.freifunk.net' {
+  class { 'ffmff::supernode':
+    supernodenum => 20,  # maximum...
+    fastd_key    => 'invalid',
+    rndmac       => fqdn_rand(99),
+  }
+}
