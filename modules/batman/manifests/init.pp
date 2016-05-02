@@ -16,7 +16,7 @@ class batman ($ipv4_suffix, $ipv4_subnet_start){
     ensure  => installed,
   }
 
-  file { '/etc/modules.load.d/batman-adv.conf':
+  file { '/etc/modules-load.d/batman-adv.conf':
     ensure => file,
     content => 'batman-adv',
     owner => 'root',
