@@ -41,8 +41,8 @@ class firewall {
   }
 
   systemd::service { $service:
-    ensure => present,
-    source => 'puppet:///modules/firewall/fwbuilder.service'
+    ensure  => present,
+    content => template('firewall/fwbuilder.service'),
   }
 
   service { $service:
