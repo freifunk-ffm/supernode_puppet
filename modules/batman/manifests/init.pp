@@ -9,7 +9,6 @@ class batman ($ipv4_suffix, $ipv4_subnet_start){
 
   package { 'batman-adv-dkms':
     ensure  => installed,
-    notify  => Augeas['mod-batman'],
     require => Class['apt::update'],
   }
 
