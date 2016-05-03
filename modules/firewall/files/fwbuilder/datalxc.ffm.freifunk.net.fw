@@ -4,7 +4,7 @@
 #
 #  Firewall Builder  fwb_ipt v5.1.0.3599
 #
-#  Generated Wed Feb 10 21:29:05 2016 CET by christof
+#  Generated Thu Feb 11 19:52:22 2016 CET by christof
 #
 # files: * datalxc.ffm.freifunk.net.fw /etc/fw/datalxc.ffm.freifunk.net.fw
 #
@@ -408,7 +408,7 @@ script_body() {
     # 
     echo "Rule 12 (NAT)"
     # 
-    $IPTABLES -t nat -A PREROUTING -p tcp -m tcp   -d 185.37.145.36  --dport 8140 -j DNAT --to-destination 10.126.255.7:8140
+    $IPTABLES -t nat -A PREROUTING -p tcp -m tcp   -d 185.37.145.36  --dport 8140 -j DNAT --to-destination 192.168.100.127:8140
     # 
     # Rule 13 (NAT)
     # 
@@ -496,8 +496,8 @@ script_body() {
     # 
     echo "Rule 8 (global)"
     # 
-    $IPTABLES -A INPUT -p tcp -m tcp  --dport 22  -m state --state NEW  -j ACCEPT
-    $IPTABLES -A FORWARD -i +  -p tcp -m tcp  --dport 22  -m state --state NEW  -j ACCEPT
+    $IPTABLES -A INPUT -p tcp -m tcp  -m multiport  --dports 8140,22  -m state --state NEW  -j ACCEPT
+    $IPTABLES -A FORWARD -i +  -p tcp -m tcp  -m multiport  --dports 8140,22  -m state --state NEW  -j ACCEPT
     # 
     # Rule 9 (eth0)
     # 
@@ -589,8 +589,8 @@ script_body() {
     # 
     echo "Rule 8 (global)"
     # 
-    $IP6TABLES -A INPUT -p tcp -m tcp  --dport 22  -m state --state NEW  -j ACCEPT
-    $IP6TABLES -A FORWARD -i +  -p tcp -m tcp  --dport 22  -m state --state NEW  -j ACCEPT
+    $IP6TABLES -A INPUT -p tcp -m tcp  -m multiport  --dports 8140,22  -m state --state NEW  -j ACCEPT
+    $IP6TABLES -A FORWARD -i +  -p tcp -m tcp  -m multiport  --dports 8140,22  -m state --state NEW  -j ACCEPT
     # 
     # Rule 10 (global)
     # 
@@ -743,7 +743,7 @@ test -z "$cmd" && {
 
 case "$cmd" in
     start)
-        log "Activating firewall script generated Wed Feb 10 21:29:05 2016 by christof"
+        log "Activating firewall script generated Thu Feb 11 19:52:22 2016 by christof"
         check_tools
          prolog_commands 
         check_run_time_address_table_files

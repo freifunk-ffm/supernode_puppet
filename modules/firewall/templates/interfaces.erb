@@ -1,0 +1,7 @@
+?FORMAT 2
+###############################################################################
+#ZONE   INTERFACE       OPTIONS
+wan     eth0            tcpflags,dhcp,nosmurfs,routefilter,logmartians,sourceroute=0
+ff      batbridge       tcpflags,bridge,dhcp,nosmurfs,routefilter,logmartians
+vpn     ovpn-inet       tcpflags,dhcp,nosmurfs,routefilter,logmartians
+

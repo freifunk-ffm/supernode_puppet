@@ -1,0 +1,11 @@
+###############################################################################
+#SOURCE		DEST		POLICY		LOG LEVEL	LIMIT:BURST
+
+ff		vpn		ACCEPT
+wan		all		DROP		info
+vpn		all		DROP		info
+firewall	wan		ACCEPT
+
+# THE FOLLOWING POLICY MUST BE LAST
+all		all		REJECT		info
+

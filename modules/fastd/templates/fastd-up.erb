@@ -30,6 +30,7 @@ echo 60 >/sys/class/net/bat0/mesh/hop_penalty
 /sbin/brctl addif batbridge bat0
 /sbin/ifconfig bat0 up
 
+/sbin/ip rule show | grep -q "fwmark 0x1 lookup exit" || /sbin/ip rule add fwmark 0x1 table exit
 /sbin/ip rule show | grep -q "from <%= @ipv4_net %>.0.0/16 lookup ffffm" || /sbin/ip rule add from <%= @ipv4_net %>.0.0/16 table ffffm
 /sbin/ip -6 rule show | grep -q "from <%= @ipv6_rnet_prefix %>:/<%= @ipv6_rnet_mask %> lookup ffffm" || /sbin/ip -6 rule add from <%= @ipv6_rnet_prefix %>:/<%= @ipv6_rnet_mask %> table ffffm
 /sbin/ip -6 rule show | grep -q "from <%= @ipv6_net %>::/64 lookup ffffm" || /sbin/ip -6 rule add from <%= @ipv6_net %>::/64 table ffffm
