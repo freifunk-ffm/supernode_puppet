@@ -1,3 +1,5 @@
+# test123 
+
 node /fastd\d+\.ffm\.freifunk\.net/ {
   $certname = $::trusted['certname']
 
