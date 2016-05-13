@@ -354,7 +354,7 @@ script_body() {
     # 
     echo "Rule 2 (eth0)"
     # 
-    $IPTABLES -A INPUT -i eth0  -p tcp -m tcp  -m multiport  -s 130.180.93.142   -d 136.243.216.104   --dports 6556,5666  -m state --state NEW  -j ACCEPT
+    $IPTABLES -A INPUT -i eth0  -p tcp -m tcp  -m multiport  -s 130.180.93.142   -d 138.201.45.136   --dports 6556,5666  -m state --state NEW  -j ACCEPT
     # 
     # Rule 3 (batbridge)
     # 
@@ -403,11 +403,11 @@ script_body() {
     $IPTABLES -A INPUT -i batbridge  -p tcp -m tcp  -d 10.126.24.1   --dport 80  -m state --state NEW  -j ACCEPT
     $IPTABLES -A INPUT -i batbridge  -p udp -m udp  -m multiport  -d 10.126.24.1   --dports 10000,10001,10002  -m state --state NEW  -j ACCEPT
     $IPTABLES -A INPUT -i eth0  -p tcp -m tcp  -d 10.126.24.1   --dport 80  -m state --state NEW  -j ACCEPT
-    $IPTABLES -A INPUT -i eth0  -p udp -m udp  -m multiport  -d 10.126.24.1   --dports 10000,10001,10002  -m state --state NEW  -j ACCEPT
-    $IPTABLES -A INPUT -i batbridge  -p tcp -m tcp  -d 136.243.216.104   --dport 80  -m state --state NEW  -j ACCEPT
-    $IPTABLES -A INPUT -i batbridge  -p udp -m udp  -m multiport  -d 136.243.216.104   --dports 10000,10001,10002  -m state --state NEW  -j ACCEPT
-    $IPTABLES -A INPUT -i eth0  -p tcp -m tcp  -d 136.243.216.104   --dport 80  -m state --state NEW  -j ACCEPT
-    $IPTABLES -A INPUT -i eth0  -p udp -m udp  -m multiport  -d 136.243.216.104   --dports 10000,10001,10002  -m state --state NEW  -j ACCEPT
+    $IPTABLES -A INPUT -i eth0  -p udp -m udp  -m multiport  -d 10.126.24.1   --dports 10000,10001  -m state --state NEW  -j ACCEPT
+    $IPTABLES -A INPUT -i batbridge  -p tcp -m tcp  -d 138.201.45.136   --dport 80  -m state --state NEW  -j ACCEPT
+    $IPTABLES -A INPUT -i batbridge  -p udp -m udp  -m multiport  -d 138.201.45.136   --dports 10000,10001  -m state --state NEW  -j ACCEPT
+    $IPTABLES -A INPUT -i eth0  -p tcp -m tcp  -d 138.201.45.136   --dport 80  -m state --state NEW  -j ACCEPT
+    $IPTABLES -A INPUT -i eth0  -p udp -m udp  -m multiport  -d 138.201.45.136   --dports 10000,10001  -m state --state NEW  -j ACCEPT
     # 
     # Rule 11 (batbridge)
     # 
@@ -431,7 +431,7 @@ script_body() {
     # 
     echo "Rule 13 (eth0)"
     # 
-    $IPTABLES -A OUTPUT -o eth0   -s 136.243.216.104   -m state --state NEW  -j ACCEPT
+    $IPTABLES -A OUTPUT -o eth0   -s 138.201.45.136   -m state --state NEW  -j ACCEPT
     # 
     # Rule 14 (global)
     # 
