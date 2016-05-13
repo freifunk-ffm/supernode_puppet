@@ -1,4 +1,7 @@
-class ffmff::lxchost {
+class ffmff::lxchost (
+  $lxcnum,
+  $rndmac,
+) {
   include ffmff
 
   package { [

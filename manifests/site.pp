@@ -17,7 +17,7 @@ node /lxc\d+\.ffm.freifunk.net/ {
   $certname = $::trusted['certname']
 #  $lxcnum = regsubst($certname,'^lxc(\d+).*','\1')
   class { 'ffmff::lxchost':
-#	lxcnum => $lxcnum,
+	lxcnum => $lxcnum,
 	rndmac => fqdn_rand(99),
   }
 }
