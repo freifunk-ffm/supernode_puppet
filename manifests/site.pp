@@ -13,6 +13,13 @@ node /fastd\d+\.ffm\.freifunk\.net/ {
   }
 }
 
+node /lxc\d+\.ffm.freifunk.net/ {
+  $lxcnum = regsubst($certname,'^lxc(\d+).*','\1')
+  class { 'ffmff::lxc':
+	lxcnum => $lxcnum,
+	rndmac => fqdn_rand(99),
+}
+
 node 'mail.ffm.freifunk.net' {
   class { 'mailserver': }
 }
