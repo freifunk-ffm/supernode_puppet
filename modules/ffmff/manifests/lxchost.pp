@@ -17,4 +17,12 @@ class ffmff::lxchost (
       path => '/etc/gai.conf',
       line => 'precedence ::ffff:0:0/96  100',
     }
+    file { '/etc/modules-load.d/tun.conf':
+      ensure => file,
+      content => 'tun',
+      owner => 'root',
+      group => 'root',
+      mode => '0644',
+    }
+
 }
