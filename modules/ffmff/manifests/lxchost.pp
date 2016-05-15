@@ -9,6 +9,7 @@ class ffmff::lxchost (
   ]:
     ensure => installed,
   }
+  include sysctl_conf
 
   file_line { 'prefer_ipv4':
     path => '/etc/gai.conf',
