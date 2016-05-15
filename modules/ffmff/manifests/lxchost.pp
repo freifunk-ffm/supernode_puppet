@@ -6,15 +6,12 @@ class ffmff::lxchost (
   include ffmff
 
     package { [
-      'git',  'iptables', 'lxc', 'screen','dnsmasq'
+      'git',  'iptables', 'lxc', 'screen'
     ]:
     ensure => installed,
     }
-  service { ['dnsmaq']:
-    ensure => running,
-  }
   include sysctl_conf
-#    include ffmff::dns_server
+  include ffmff::dns_server
 
     file_line { 'prefer_ipv4':
       path => '/etc/gai.conf',

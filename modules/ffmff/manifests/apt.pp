@@ -2,6 +2,7 @@ class ffmff::apt {
   $release = $::lsbdistcodename
   $repos = ['main']
 
+package { ['apt-transport-https']: ensure => installed }
   class { '::apt':
     purge => {
       'sources.list.d' => true,
