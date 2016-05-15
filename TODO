@@ -1,3 +1,10 @@
+* lxchost: iptables -A POSTROUTING -t nat -s 192.168.200.0/24 -o br-wan -j MASQUERADE
+* lxchost: insgesamt fehlt die gesamte firewall...
+
+
+* babel-gw: alles....
+
+
 * BUG: /etc/aliases - current implementation of puppet module allows for multiple lines for  "root: " which is syntactically incorrect
 * iperf installieren und bereit halten
 * IPv6-setup durchführen
