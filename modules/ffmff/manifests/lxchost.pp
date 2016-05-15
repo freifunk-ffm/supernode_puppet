@@ -14,7 +14,7 @@ class ffmff::lxchost (
     ensure => running,
   }
   include sysctl_conf
-    include ffmff::dns_server
+#    include ffmff::dns_server
 
     file_line { 'prefer_ipv4':
       path => '/etc/gai.conf',
