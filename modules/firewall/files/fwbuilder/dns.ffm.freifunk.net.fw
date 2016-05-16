@@ -4,7 +4,7 @@
 #
 #  Firewall Builder  fwb_ipt v5.1.0.3599
 #
-#  Generated Wed Feb 10 21:14:19 2016 CET by christof
+#  Generated Sun Sep 13 23:35:27 2015 CEST by christof
 #
 # files: * dns.ffm.freifunk.net.fw /etc/fw/dns.ffm.freifunk.net.fw
 #
@@ -283,7 +283,7 @@ verify_interfaces() {
 
 prolog_commands() {
     echo "Running prolog script"
-    mkdir -p /etc/fw
+    
 }
 
 epilog_commands() {
@@ -366,9 +366,12 @@ script_body() {
     # 
     echo "Rule 6 (global)"
     # 
-    $IPTABLES -A OUTPUT  -j DROP
-    $IPTABLES -A INPUT  -j DROP
-    $IPTABLES -A FORWARD  -j DROP
+    $IPTABLES -N RULE_6
+    $IPTABLES -A OUTPUT  -j RULE_6
+    $IPTABLES -A INPUT  -j RULE_6
+    $IPTABLES -A FORWARD  -j RULE_6
+    $IPTABLES -A RULE_6  -j LOG  --log-level info --log-prefix "dns-RULE 6 -- DENY "
+    $IPTABLES -A RULE_6  -j DROP
 
 
     # ================ IPv6
@@ -432,9 +435,12 @@ script_body() {
     # 
     echo "Rule 6 (global)"
     # 
-    $IP6TABLES -A OUTPUT  -j DROP
-    $IP6TABLES -A INPUT  -j DROP
-    $IP6TABLES -A FORWARD  -j DROP
+    $IP6TABLES -N RULE_6
+    $IP6TABLES -A OUTPUT  -j RULE_6
+    $IP6TABLES -A INPUT  -j RULE_6
+    $IP6TABLES -A FORWARD  -j RULE_6
+    $IP6TABLES -A RULE_6  -j LOG  --log-level info --log-prefix "dns-RULE 6 -- DENY "
+    $IP6TABLES -A RULE_6  -j DROP
 
     # ============== ROUTING RULES ============== 
 
@@ -565,7 +571,7 @@ test -z "$cmd" && {
 
 case "$cmd" in
     start)
-        log "Activating firewall script generated Wed Feb 10 21:14:19 2016 by christof"
+        log "Activating firewall script generated Sun Sep 13 23:35:27 2015 by christof"
         check_tools
          prolog_commands 
         check_run_time_address_table_files

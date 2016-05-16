@@ -4,7 +4,7 @@
 #
 #  Firewall Builder  fwb_ipt v5.1.0.3599
 #
-#  Generated Wed Feb 10 21:14:26 2016 CET by christof
+#  Generated Sun Jun 14 18:56:41 2015 CEST by christof
 #
 # files: * oc.ffm.freifunk.net.fw /etc/fw/oc.ffm.freifunk.net.fw
 #
@@ -570,7 +570,7 @@ test -z "$cmd" && {
 
 case "$cmd" in
     start)
-        log "Activating firewall script generated Wed Feb 10 21:14:26 2016 by christof"
+        log "Activating firewall script generated Sun Jun 14 18:56:41 2015 by christof"
         check_tools
          prolog_commands 
         check_run_time_address_table_files

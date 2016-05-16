@@ -4,7 +4,7 @@
 #
 #  Firewall Builder  fwb_ipt v5.1.0.3599
 #
-#  Generated Thu Feb 11 19:52:22 2016 CET by christof
+#  Generated Thu Apr 28 09:31:47 2016 CEST by christof
 #
 # files: * datalxc.ffm.freifunk.net.fw /etc/fw/datalxc.ffm.freifunk.net.fw
 #
@@ -285,18 +285,12 @@ load_modules() {
 
 verify_interfaces() {
     :
-    echo "Verifying interfaces: batbridge eth0 br0 lo"
-    for i in batbridge eth0 br0 lo ; do
-        $IP link show "$i" > /dev/null 2>&1 || {
-            log "Interface $i does not exist"
-            exit 1
-        }
-    done
+    
 }
 
 prolog_commands() {
     echo "Running prolog script"
-    mkdir -p /etc/fw
+    
 }
 
 epilog_commands() {
@@ -312,17 +306,6 @@ run_epilog_and_exit() {
 configure_interfaces() {
     :
     # Configure interfaces
-    # See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=429689
-    # this ensures that secondary ip address is "promoted" to primary
-    # when primary address is deleted, instead of deleting both
-    # primary and secondary addresses. It looks like this is only
-    # available starting from Linux 2.6.16 
-    test -f /proc/sys/net/ipv4/conf/all/promote_secondaries && \
-        echo 1 >  /proc/sys/net/ipv4/conf/all/promote_secondaries
-    update_addresses_of_interface "batbridge fddd:5d16:b5dd:0:c817:dcff:fe50:82ba/64 10.126.255.12/16" ""
-    update_addresses_of_interface "eth0 185.37.145.36/28" ""
-    update_addresses_of_interface "br0 192.168.100.1/24" ""
-    update_addresses_of_interface "lo ::1/128 127.0.0.1/8" ""
 }
 
 script_body() {
@@ -348,73 +331,73 @@ script_body() {
     # 
     echo "Rule 1 (NAT)"
     # 
-    $IPTABLES -t nat -A PREROUTING -p tcp -m tcp   -d 185.37.145.36  --dport 22121 -j DNAT --to-destination 10.126.255.2:22
+    $IPTABLES -t nat -A PREROUTING -p tcp -m tcp   -d 185.37.145.36  --dport 8140 -j DNAT --to-destination 10.126.255.1:8140
     # 
     # Rule 2 (NAT)
     # 
     echo "Rule 2 (NAT)"
     # 
-    $IPTABLES -t nat -A PREROUTING -p tcp -m tcp   -d 185.37.145.36  --dport 4242 -j DNAT --to-destination 10.126.255.2:4242
+    $IPTABLES -t nat -A PREROUTING -p tcp -m tcp   -d 185.37.145.36  --dport 22127 -j DNAT --to-destination 10.126.255.1:22
     # 
     # Rule 3 (NAT)
     # 
     echo "Rule 3 (NAT)"
     # 
-    $IPTABLES -t nat -A PREROUTING -p tcp -m tcp   -d 185.37.145.36  --dport 22125 -j DNAT --to-destination 10.126.255.20:22
+    $IPTABLES -t nat -A PREROUTING -p tcp -m tcp   -d 185.37.145.36  --dport 22121 -j DNAT --to-destination 10.126.255.2:22
     # 
     # Rule 4 (NAT)
     # 
     echo "Rule 4 (NAT)"
     # 
-    $IPTABLES -t nat -A PREROUTING -p tcp -m tcp   -d 185.37.145.36  --dport 2216 -j DNAT --to-destination 10.126.255.16:22
+    $IPTABLES -t nat -A PREROUTING -p tcp -m tcp   -d 185.37.145.36  --dport 4242 -j DNAT --to-destination 10.126.255.2:4242
     # 
     # Rule 5 (NAT)
     # 
     echo "Rule 5 (NAT)"
     # 
-    $IPTABLES -t nat -A PREROUTING -p tcp -m tcp   -d 185.37.145.36  --dport 22124 -j DNAT --to-destination 10.126.255.19:22
+    $IPTABLES -t nat -A PREROUTING -p tcp -m tcp   -d 185.37.145.36  --dport 22125 -j DNAT --to-destination 10.126.255.20:22
     # 
     # Rule 6 (NAT)
     # 
     echo "Rule 6 (NAT)"
     # 
-    $IPTABLES -t nat -A PREROUTING -p tcp -m tcp   -d 185.37.145.36  --dport 22123 -j DNAT --to-destination 10.126.255.18:22
+    $IPTABLES -t nat -A PREROUTING -p tcp -m tcp   -d 185.37.145.36  --dport 2216 -j DNAT --to-destination 10.126.255.16:22
     # 
     # Rule 7 (NAT)
     # 
     echo "Rule 7 (NAT)"
     # 
-    $IPTABLES -t nat -A PREROUTING -p tcp -m tcp   -d 185.37.145.36  --dport 22122 -j DNAT --to-destination 10.126.255.17:22
+    $IPTABLES -t nat -A PREROUTING -p tcp -m tcp   -d 185.37.145.36  --dport 22124 -j DNAT --to-destination 10.126.255.19:22
+    # 
+    # Rule 8 (NAT)
+    # 
+    echo "Rule 8 (NAT)"
+    # 
+    $IPTABLES -t nat -A PREROUTING -p tcp -m tcp   -d 185.37.145.36  --dport 22123 -j DNAT --to-destination 10.126.255.18:22
     # 
     # Rule 9 (NAT)
     # 
     echo "Rule 9 (NAT)"
     # 
-    $IPTABLES -t nat -A PREROUTING -p tcp -m tcp   -d 185.37.145.36  --dport 12001 -j DNAT --to-destination 10.126.255.17:12001
-    # 
-    # Rule 10 (NAT)
-    # 
-    echo "Rule 10 (NAT)"
-    # 
-    $IPTABLES -t nat -A PREROUTING -p tcp -m tcp   -d 185.37.145.36  --dport 8000 -j DNAT --to-destination 10.126.255.19:8000
+    $IPTABLES -t nat -A PREROUTING -p tcp -m tcp   -d 185.37.145.36  --dport 22122 -j DNAT --to-destination 10.126.255.17:22
     # 
     # Rule 11 (NAT)
     # 
     echo "Rule 11 (NAT)"
     # 
-    $IPTABLES -t nat -A PREROUTING -p tcp -m tcp   -d 185.37.145.36  --dport 10001 -j DNAT --to-destination 10.126.255.17:10001
+    $IPTABLES -t nat -A PREROUTING -p tcp -m tcp   -d 185.37.145.36  --dport 12001 -j DNAT --to-destination 10.126.255.17:12001
     # 
     # Rule 12 (NAT)
     # 
     echo "Rule 12 (NAT)"
     # 
-    $IPTABLES -t nat -A PREROUTING -p tcp -m tcp   -d 185.37.145.36  --dport 8140 -j DNAT --to-destination 192.168.100.127:8140
+    $IPTABLES -t nat -A PREROUTING -p tcp -m tcp   -d 185.37.145.36  --dport 8000 -j DNAT --to-destination 10.126.255.19:8000
     # 
     # Rule 13 (NAT)
     # 
     echo "Rule 13 (NAT)"
     # 
-    $IPTABLES -t nat -A PREROUTING -p tcp -m tcp   -d 185.37.145.36  --dport 22127 -j DNAT --to-destination 192.168.100.127:22
+    $IPTABLES -t nat -A PREROUTING -p tcp -m tcp   -d 185.37.145.36  --dport 10001 -j DNAT --to-destination 10.126.255.17:10001
     # 
     # Rule 14 (NAT)
     # 
@@ -427,14 +410,7 @@ script_body() {
     echo "Rule 15 (NAT)"
     # 
     # broken
-    $IPTABLES -t nat -A PREROUTING -p tcp -m tcp   -d 185.37.145.36  --dport 80 -j DNAT --to-destination 10.126.255.19:80
-    # 
-    # Rule 16 (NAT)
-    # 
-    echo "Rule 16 (NAT)"
-    # 
-    # broken
-    $IPTABLES -t nat -A PREROUTING -p tcp -m tcp   -d 185.37.145.36  --dport 443 -j DNAT --to-destination 10.126.255.19:443
+    $IPTABLES -t nat -A PREROUTING -p tcp -m tcp -m multiport   -d 185.37.145.36  --dports 80,443 -j DNAT --to-destination 10.126.255.19
 
 
 
@@ -496,18 +472,15 @@ script_body() {
     # 
     echo "Rule 8 (global)"
     # 
-    $IPTABLES -A INPUT -p tcp -m tcp  -m multiport  --dports 8140,22  -m state --state NEW  -j ACCEPT
-    $IPTABLES -A FORWARD -i +  -p tcp -m tcp  -m multiport  --dports 8140,22  -m state --state NEW  -j ACCEPT
+    $IPTABLES -A INPUT -p tcp -m tcp  --dport 22  -m state --state NEW  -j ACCEPT
+    $IPTABLES -A FORWARD -i +  -p tcp -m tcp  --dport 22  -m state --state NEW  -j ACCEPT
     # 
     # Rule 9 (eth0)
     # 
     echo "Rule 9 (eth0)"
     # 
-    $IPTABLES -N In_RULE_9
-    $IPTABLES -A INPUT -i eth0  -p tcp -m tcp  -m multiport  --dports 10001,80,443,12001  -m state --state NEW  -j In_RULE_9
-    $IPTABLES -A FORWARD -i eth0  -p tcp -m tcp  -m multiport  --dports 10001,80,443,12001  -m state --state NEW  -j In_RULE_9
-    $IPTABLES -A In_RULE_9  -j LOG  --log-level info --log-prefix "datalxc.RULE 9 -- ACCEPT "
-    $IPTABLES -A In_RULE_9  -j ACCEPT
+    $IPTABLES -A INPUT -i eth0  -p tcp -m tcp  -m multiport  --dports 10001,80,443,8140,12001  -m state --state NEW  -j ACCEPT
+    $IPTABLES -A FORWARD -i eth0  -p tcp -m tcp  -m multiport  --dports 10001,80,443,8140,12001  -m state --state NEW  -j ACCEPT
     # 
     # Rule 10 (global)
     # 
@@ -589,8 +562,8 @@ script_body() {
     # 
     echo "Rule 8 (global)"
     # 
-    $IP6TABLES -A INPUT -p tcp -m tcp  -m multiport  --dports 8140,22  -m state --state NEW  -j ACCEPT
-    $IP6TABLES -A FORWARD -i +  -p tcp -m tcp  -m multiport  --dports 8140,22  -m state --state NEW  -j ACCEPT
+    $IP6TABLES -A INPUT -p tcp -m tcp  --dport 22  -m state --state NEW  -j ACCEPT
+    $IP6TABLES -A FORWARD -i +  -p tcp -m tcp  --dport 22  -m state --state NEW  -j ACCEPT
     # 
     # Rule 10 (global)
     # 
@@ -743,7 +716,7 @@ test -z "$cmd" && {
 
 case "$cmd" in
     start)
-        log "Activating firewall script generated Thu Feb 11 19:52:22 2016 by christof"
+        log "Activating firewall script generated Thu Apr 28 09:31:47 2016 by christof"
         check_tools
          prolog_commands 
         check_run_time_address_table_files

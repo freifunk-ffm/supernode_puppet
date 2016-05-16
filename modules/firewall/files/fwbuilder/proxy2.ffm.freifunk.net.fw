@@ -4,7 +4,7 @@
 #
 #  Firewall Builder  fwb_ipt v5.1.0.3599
 #
-#  Generated Thu Feb 11 19:52:34 2016 CET by christof
+#  Generated Fri Oct 30 21:56:16 2015 CET by christof
 #
 # files: * proxy2.ffm.freifunk.net.fw /etc/fw/proxy2.ffm.freifunk.net.fw
 #
@@ -277,7 +277,7 @@ verify_interfaces() {
 
 prolog_commands() {
     echo "Running prolog script"
-    mkdir -p /etc/fw
+    
 }
 
 epilog_commands() {
@@ -368,8 +368,11 @@ script_body() {
     # 
     echo "Rule 8 (global)"
     # 
-    $IP6TABLES -A OUTPUT  -j DROP
-    $IP6TABLES -A FORWARD -o +   -j DROP
+    $IP6TABLES -N Out_RULE_8
+    $IP6TABLES -A OUTPUT  -j Out_RULE_8
+    $IP6TABLES -A FORWARD -o +   -j Out_RULE_8
+    $IP6TABLES -A Out_RULE_8  -j LOG  --log-level info --log-prefix "proxy2.ffm RULE 8 -- DENY "
+    $IP6TABLES -A Out_RULE_8  -j DROP
 
 
     # ================ IPv4
@@ -441,8 +444,11 @@ script_body() {
     # 
     echo "Rule 8 (global)"
     # 
-    $IPTABLES -A OUTPUT  -j DROP
-    $IPTABLES -A FORWARD -o +   -j DROP
+    $IPTABLES -N Out_RULE_8
+    $IPTABLES -A OUTPUT  -j Out_RULE_8
+    $IPTABLES -A FORWARD -o +   -j Out_RULE_8
+    $IPTABLES -A Out_RULE_8  -j LOG  --log-level info --log-prefix "proxy2.ffm RULE 8 -- DENY "
+    $IPTABLES -A Out_RULE_8  -j DROP
 
     # ============== ROUTING RULES ============== 
 
@@ -573,7 +579,7 @@ test -z "$cmd" && {
 
 case "$cmd" in
     start)
-        log "Activating firewall script generated Thu Feb 11 19:52:34 2016 by christof"
+        log "Activating firewall script generated Fri Oct 30 21:56:16 2015 by christof"
         check_tools
          prolog_commands 
         check_run_time_address_table_files

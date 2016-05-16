@@ -4,7 +4,7 @@
 #
 #  Firewall Builder  fwb_ipt v5.1.0.3599
 #
-#  Generated Wed Feb 10 21:14:32 2016 CET by christof
+#  Generated Wed Jul 15 22:53:10 2015 CEST by christof
 #
 # files: * seafile.ffm.freifunk.net.fw /etc/fw/seafile.ffm.freifunk.net.fw
 #
@@ -277,7 +277,7 @@ verify_interfaces() {
 
 prolog_commands() {
     echo "Running prolog script"
-    mkdir -p /etc/fw
+    
 }
 
 epilog_commands() {
@@ -375,8 +375,11 @@ script_body() {
     # 
     echo "Rule 7 (global)"
     # 
-    $IPTABLES -A OUTPUT  -j DROP
-    $IPTABLES -A FORWARD -o +   -j DROP
+    $IPTABLES -N Out_RULE_7
+    $IPTABLES -A OUTPUT  -j Out_RULE_7
+    $IPTABLES -A FORWARD -o +   -j Out_RULE_7
+    $IPTABLES -A Out_RULE_7  -j LOG  --log-level info --log-prefix "seafile.ffm RULE 7 -- DENY "
+    $IPTABLES -A Out_RULE_7  -j DROP
 
 
     # ================ IPv6
@@ -438,8 +441,11 @@ script_body() {
     # 
     echo "Rule 7 (global)"
     # 
-    $IP6TABLES -A OUTPUT  -j DROP
-    $IP6TABLES -A FORWARD -o +   -j DROP
+    $IP6TABLES -N Out_RULE_7
+    $IP6TABLES -A OUTPUT  -j Out_RULE_7
+    $IP6TABLES -A FORWARD -o +   -j Out_RULE_7
+    $IP6TABLES -A Out_RULE_7  -j LOG  --log-level info --log-prefix "seafile.ffm RULE 7 -- DENY "
+    $IP6TABLES -A Out_RULE_7  -j DROP
 
     # ============== ROUTING RULES ============== 
 
@@ -570,7 +576,7 @@ test -z "$cmd" && {
 
 case "$cmd" in
     start)
-        log "Activating firewall script generated Wed Feb 10 21:14:32 2016 by christof"
+        log "Activating firewall script generated Wed Jul 15 22:53:10 2015 by christof"
         check_tools
          prolog_commands 
         check_run_time_address_table_files

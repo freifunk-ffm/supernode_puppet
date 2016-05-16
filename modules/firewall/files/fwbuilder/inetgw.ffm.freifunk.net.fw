@@ -4,7 +4,7 @@
 #
 #  Firewall Builder  fwb_ipt v5.1.0.3599
 #
-#  Generated Wed Feb 10 21:14:25 2016 CET by christof
+#  Generated Sun Jun 14 18:56:39 2015 CEST by christof
 #
 # files: * inetgw.ffm.freifunk.net.fw /etc/fw/inetgw.ffm.freifunk.net.fw
 #
@@ -281,7 +281,7 @@ verify_interfaces() {
 
 prolog_commands() {
     echo "Running prolog script"
-    mkdir -p /etc/fw
+    
 }
 
 epilog_commands() {
@@ -419,9 +419,12 @@ script_body() {
     # 
     echo "Rule 11 (global)"
     # 
-    $IPTABLES -A OUTPUT  -j DROP
-    $IPTABLES -A INPUT  -j DROP
-    $IPTABLES -A FORWARD  -j DROP
+    $IPTABLES -N RULE_11
+    $IPTABLES -A OUTPUT  -j RULE_11
+    $IPTABLES -A INPUT  -j RULE_11
+    $IPTABLES -A FORWARD  -j RULE_11
+    $IPTABLES -A RULE_11  -j LOG  --log-level info --log-prefix "inetgw-RULE 11 -- DENY "
+    $IPTABLES -A RULE_11  -j DROP
 }
 
 ip_forward() {
@@ -480,7 +483,7 @@ test -z "$cmd" && {
 
 case "$cmd" in
     start)
-        log "Activating firewall script generated Wed Feb 10 21:14:25 2016 by christof"
+        log "Activating firewall script generated Sun Jun 14 18:56:39 2015 by christof"
         check_tools
          prolog_commands 
         check_run_time_address_table_files

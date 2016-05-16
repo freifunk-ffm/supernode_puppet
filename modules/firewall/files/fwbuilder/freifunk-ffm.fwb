@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE FWObjectDatabase SYSTEM "fwbuilder.dtd">
-<FWObjectDatabase xmlns="http://www.fwbuilder.org/1.0/" version="22" lastModified="1455141159" id="root">
+<FWObjectDatabase xmlns="http://www.fwbuilder.org/1.0/" version="22" lastModified="1459204224" id="root">
   <Library id="syslib000" color="#d4f8ff" name="Standard" comment="Standard objects" ro="True">
     <AnyNetwork id="sysid0" name="Any" comment="Any Network" ro="False" address="0.0.0.0" netmask="0.0.0.0"/>
     <AnyIPService id="sysid1" protocol_num="0" name="Any" comment="Any IP Service" ro="False"/>
@@ -2570,9 +2570,7 @@
         <IPv4 id="id34063X28041" name="static.krizic.net" comment="" ro="False" address="130.180.93.142" netmask="0.0.0.0"/>
       </ObjectGroup>
       <ObjectGroup id="id1585X20429" name="DNS Names" comment="" ro="False"/>
-      <ObjectGroup id="id1586X20429" name="Address Tables" comment="" ro="False">
-        <AddressTable id="id23706X4186" filename="" run_time="False" name="exit" comment="" ro="False"/>
-      </ObjectGroup>
+      <ObjectGroup id="id1586X20429" name="Address Tables" comment="" ro="False"/>
       <ObjectGroup id="id1587X20429" name="Groups" comment="" ro="False">
         <ObjectGroup id="id131582X20122" name="FF Deutschland Netze" comment="" ro="False">
           <ObjectRef ref="id72701X20122"/>
@@ -2634,20 +2632,17 @@
         <Network id="id2038X20429" name="FF FFM IPv4 Netz" comment="Freifunk Frankfut (über fastd1)" ro="False" address="10.126.0.0" netmask="255.255.0.0"/>
         <Network id="id66594X22563" name="lxc-netz" comment="" ro="False" address="192.168.100.0" netmask="255.255.255.0"/>
         <Network id="id7923X28895" name="ICVPN Transfernet" comment="Freifunk Frankfut (über fastd1)" ro="False" address="10.207.0.0" netmask="255.255.0.0"/>
-        <NetworkIPv6 id="id6189X11993" name="FFM private IPv6 net" comment="" ro="False" address="fddd:5d16:b5dd::" netmask="64"/>
+        <NetworkIPv6 id="id6189X11993" name="FFM private IPv6 net" comment="" ro="False" address="fddd:5d16:b5dd::" netmask="48"/>
         <NetworkIPv6 id="id6213X11993" name="FF FFM public IPv6 net" comment="" ro="False" address="2001:1a50:11:4::" netmask="64"/>
         <Network id="id72701X20122" name="FF  IPv4 Netz" comment="Freifunk Frankfut (über fastd1)" ro="False" address="10.0.0.0" netmask="255.0.0.0"/>
         <NetworkIPv6 id="id72404X27175" name="FF FFM private IPv6 net" comment="" ro="False" address="fddd:5d16:b5dd::" netmask="64"/>
-        <NetworkIPv6 id="id133131X12809" name="ff fe80-net" comment="" ro="False" address="fe80::" netmask="64"/>
       </ObjectGroup>
       <ObjectGroup id="id1590X20429" name="Address Ranges" comment="" ro="False"/>
     </ObjectGroup>
     <ServiceGroup id="id1591X20429" name="Services" comment="" ro="False">
       <ServiceGroup id="id1592X20429" name="Groups" comment="" ro="False"/>
       <ServiceGroup id="id1593X20429" name="ICMP" comment="" ro="False"/>
-      <ServiceGroup id="id1594X20429" name="IP" comment="" ro="False">
-        <IPService id="id204456X12809" any_opt="False" dscp="" fragm="True" lsrr="False" protocol_num="0" rr="False" rtralt="False" short_fragm="True" ssrr="False" tos="" ts="False" name="fragments" comment="" ro="False"/>
-      </ServiceGroup>
+      <ServiceGroup id="id1594X20429" name="IP" comment="" ro="False"/>
       <ServiceGroup id="id1595X20429" name="TCP" comment="" ro="False">
         <TCPService id="id86784X9028" ack_flag="False" ack_flag_mask="False" established="False" fin_flag="False" fin_flag_mask="False" psh_flag="False" psh_flag_mask="False" rst_flag="False" rst_flag_mask="False" syn_flag="False" syn_flag_mask="False" urg_flag="False" urg_flag_mask="False" name="tinc icvpn" comment="" ro="False" src_range_start="0" src_range_end="0" dst_range_start="656" dst_range_end="656"/>
         <TCPService id="id150603X9028" ack_flag="False" ack_flag_mask="False" established="False" fin_flag="False" fin_flag_mask="False" psh_flag="False" psh_flag_mask="False" rst_flag="False" rst_flag_mask="False" syn_flag="False" syn_flag_mask="False" urg_flag="False" urg_flag_mask="False" name="munin" comment="" ro="False" src_range_start="0" src_range_end="0" dst_range_start="4949" dst_range_end="4949"/>
@@ -2683,8 +2678,8 @@
         <TCPService id="id102481X23979" ack_flag="False" ack_flag_mask="False" established="False" fin_flag="False" fin_flag_mask="False" psh_flag="False" psh_flag_mask="False" rst_flag="False" rst_flag_mask="False" syn_flag="False" syn_flag_mask="False" urg_flag="False" urg_flag_mask="False" name="https-server" comment="" ro="False" src_range_start="443" src_range_end="443" dst_range_start="0" dst_range_end="0"/>
         <TCPService id="id114913X23979" ack_flag="False" ack_flag_mask="False" established="False" fin_flag="False" fin_flag_mask="False" psh_flag="False" psh_flag_mask="False" rst_flag="False" rst_flag_mask="False" syn_flag="False" syn_flag_mask="False" urg_flag="False" urg_flag_mask="False" name="quassel" comment="" ro="False" src_range_start="0" src_range_end="0" dst_range_start="4242" dst_range_end="4242"/>
         <TCPService id="id76547X29431" ack_flag="False" ack_flag_mask="False" established="False" fin_flag="False" fin_flag_mask="False" psh_flag="False" psh_flag_mask="False" rst_flag="False" rst_flag_mask="False" syn_flag="False" syn_flag_mask="False" urg_flag="False" urg_flag_mask="False" name="ntop" comment="" ro="False" src_range_start="0" src_range_end="0" dst_range_start="3000" dst_range_end="3000"/>
-        <TCPService id="id23309X4186" ack_flag="False" ack_flag_mask="False" established="False" fin_flag="False" fin_flag_mask="False" psh_flag="False" psh_flag_mask="False" rst_flag="False" rst_flag_mask="False" syn_flag="False" syn_flag_mask="False" urg_flag="False" urg_flag_mask="False" name="puppet" comment="" ro="False" src_range_start="0" src_range_end="0" dst_range_start="8140" dst_range_end="8140"/>
-        <TCPService id="id23345X4186" ack_flag="False" ack_flag_mask="False" established="False" fin_flag="False" fin_flag_mask="False" psh_flag="False" psh_flag_mask="False" rst_flag="False" rst_flag_mask="False" syn_flag="False" syn_flag_mask="False" urg_flag="False" urg_flag_mask="False" name="ssh-port-puppet" comment="" ro="False" src_range_start="0" src_range_end="0" dst_range_start="22127" dst_range_end="22127"/>
+        <TCPService id="id36850X11435" ack_flag="False" ack_flag_mask="False" established="False" fin_flag="False" fin_flag_mask="False" psh_flag="False" psh_flag_mask="False" rst_flag="False" rst_flag_mask="False" syn_flag="False" syn_flag_mask="False" urg_flag="False" urg_flag_mask="False" name="puppet" comment="" ro="False" src_range_start="0" src_range_end="0" dst_range_start="8140" dst_range_end="8140"/>
+        <TCPService id="id51635X11435" ack_flag="False" ack_flag_mask="False" established="False" fin_flag="False" fin_flag_mask="False" psh_flag="False" psh_flag_mask="False" rst_flag="False" rst_flag_mask="False" syn_flag="False" syn_flag_mask="False" urg_flag="False" urg_flag_mask="False" name="ssh-puppet" comment="" ro="False" src_range_start="0" src_range_end="0" dst_range_start="22127" dst_range_end="22127"/>
       </ServiceGroup>
       <ServiceGroup id="id1596X20429" name="UDP" comment="" ro="False">
         <UDPService id="id86771X9028" name="tinc icvpn" comment="" ro="False" src_range_start="0" src_range_end="0" dst_range_start="656" dst_range_end="656"/>
@@ -2694,14 +2689,14 @@
         <UDPService id="id41228X8432" name="collectd-ff-intern" comment="" ro="False" src_range_start="0" src_range_end="0" dst_range_start="25826" dst_range_end="25826"/>
         <UDPService id="id12031X25717" name="alfred" comment="" ro="False" src_range_start="0" src_range_end="0" dst_range_start="16962" dst_range_end="16962"/>
         <UDPService id="id15120X15962" name="fastd-1" comment="" ro="False" src_range_start="0" src_range_end="0" dst_range_start="10001" dst_range_end="10001"/>
-        <UDPService id="id451737X3999" name="fastd-2" comment="" ro="False" src_range_start="0" src_range_end="0" dst_range_start="10002" dst_range_end="10002"/>
+        <UDPService id="id25265X29245" name="fastd-2" comment="" ro="False" src_range_start="0" src_range_end="0" dst_range_start="10002" dst_range_end="10002"/>
       </ServiceGroup>
       <ServiceGroup id="id1597X20429" name="Users" comment="" ro="False"/>
       <ServiceGroup id="id1598X20429" name="Custom" comment="" ro="False"/>
       <ServiceGroup id="id1599X20429" name="TagServices" comment="" ro="False"/>
     </ServiceGroup>
     <ObjectGroup id="id1600X20429" subfolders="Christof,Dominik,Elmar,Jan-kbu,Magnus,darko,datafabrik,igor,uberspace,uvensys" name="Firewalls" comment="" ro="False">
-      <Firewall id="id1953X20429" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1455135265" lastInstalled="1450687631" lastModified="1450686997" platform="iptables" version="" name="inetgw.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id1953X20429" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1434300999" lastInstalled="1434829882" lastModified="1434300881" platform="iptables" version="" name="inetgw.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id1957X20429" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <NATRule id="id6280X31637" disabled="True" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -3087,7 +3082,7 @@
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id2590X10652" disabled="False" group="" log="False" position="11" action="Deny" direction="Both" comment="">
+          <PolicyRule id="id2590X10652" disabled="False" group="" log="True" position="11" action="Deny" direction="Both" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -3251,7 +3246,7 @@
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script">mkdir -p /etc/fw</Option>
+          <Option name="prolog_script"/>
           <Option name="scpArgs">-P 22118</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 22118</Option>
@@ -3265,7 +3260,7 @@
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id4191X9028" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1457550106" lastInstalled="1457550117" lastModified="1457550078" platform="iptables" version="" name="uber.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id4191X9028" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1461828713" lastInstalled="1441059734" lastModified="1462006625" platform="iptables" version="" name="uber.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id4195X9028" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <NATRule id="id19987X27248" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -3668,42 +3663,7 @@
               <IntervalRef ref="sysid2"/>
             </When>
             <PolicyRuleOptions>
-              <Option name="classification">False</Option>
-              <Option name="classify_str"/>
-              <Option name="connlimit_above_not">False</Option>
-              <Option name="connlimit_masklen">0</Option>
-              <Option name="connlimit_value">0</Option>
-              <Option name="firewall_is_part_of_any_and_networks"/>
-              <Option name="hashlimit_burst">0</Option>
-              <Option name="hashlimit_dstlimit">False</Option>
-              <Option name="hashlimit_expire">0</Option>
-              <Option name="hashlimit_gcinterval">0</Option>
-              <Option name="hashlimit_max">0</Option>
-              <Option name="hashlimit_mode_dstip">False</Option>
-              <Option name="hashlimit_mode_dstport">False</Option>
-              <Option name="hashlimit_mode_srcip">False</Option>
-              <Option name="hashlimit_mode_srcport">False</Option>
-              <Option name="hashlimit_name"/>
-              <Option name="hashlimit_size">0</Option>
-              <Option name="hashlimit_suffix"/>
-              <Option name="hashlimit_value">0</Option>
-              <Option name="ipt_continue">False</Option>
-              <Option name="ipt_gw"/>
-              <Option name="ipt_iif"/>
-              <Option name="ipt_mark_connections">False</Option>
-              <Option name="ipt_oif"/>
-              <Option name="ipt_tee">False</Option>
-              <Option name="limit_burst">0</Option>
-              <Option name="limit_suffix"/>
-              <Option name="limit_value">0</Option>
-              <Option name="limit_value_not">False</Option>
-              <Option name="log_level"/>
-              <Option name="log_prefix"/>
-              <Option name="routing">False</Option>
-              <Option name="stateless">True</Option>
-              <Option name="tagging">False</Option>
-              <Option name="tagobject_id"/>
-              <Option name="ulog_nlgroup">1</Option>
+              <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
           <PolicyRule id="id554378X19669" disabled="False" group="" log="False" position="2" action="Accept" direction="Outbound" comment="">
@@ -3723,42 +3683,7 @@
               <IntervalRef ref="sysid2"/>
             </When>
             <PolicyRuleOptions>
-              <Option name="classification">False</Option>
-              <Option name="classify_str"/>
-              <Option name="connlimit_above_not">False</Option>
-              <Option name="connlimit_masklen">0</Option>
-              <Option name="connlimit_value">0</Option>
-              <Option name="firewall_is_part_of_any_and_networks"/>
-              <Option name="hashlimit_burst">0</Option>
-              <Option name="hashlimit_dstlimit">False</Option>
-              <Option name="hashlimit_expire">0</Option>
-              <Option name="hashlimit_gcinterval">0</Option>
-              <Option name="hashlimit_max">0</Option>
-              <Option name="hashlimit_mode_dstip">False</Option>
-              <Option name="hashlimit_mode_dstport">False</Option>
-              <Option name="hashlimit_mode_srcip">False</Option>
-              <Option name="hashlimit_mode_srcport">False</Option>
-              <Option name="hashlimit_name"/>
-              <Option name="hashlimit_size">0</Option>
-              <Option name="hashlimit_suffix"/>
-              <Option name="hashlimit_value">0</Option>
-              <Option name="ipt_continue">False</Option>
-              <Option name="ipt_gw"/>
-              <Option name="ipt_iif"/>
-              <Option name="ipt_mark_connections">False</Option>
-              <Option name="ipt_oif"/>
-              <Option name="ipt_tee">False</Option>
-              <Option name="limit_burst">0</Option>
-              <Option name="limit_suffix"/>
-              <Option name="limit_value">0</Option>
-              <Option name="limit_value_not">False</Option>
-              <Option name="log_level"/>
-              <Option name="log_prefix"/>
-              <Option name="routing">False</Option>
-              <Option name="stateless">True</Option>
-              <Option name="tagging">False</Option>
-              <Option name="tagobject_id"/>
-              <Option name="ulog_nlgroup">1</Option>
+              <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
           <PolicyRule id="id18138X31733" disabled="False" group="" log="False" position="3" action="Accept" direction="Inbound" comment="">
@@ -3779,42 +3704,7 @@
               <IntervalRef ref="sysid2"/>
             </When>
             <PolicyRuleOptions>
-              <Option name="classification">False</Option>
-              <Option name="classify_str"/>
-              <Option name="connlimit_above_not">False</Option>
-              <Option name="connlimit_masklen">0</Option>
-              <Option name="connlimit_value">0</Option>
-              <Option name="firewall_is_part_of_any_and_networks"/>
-              <Option name="hashlimit_burst">0</Option>
-              <Option name="hashlimit_dstlimit">False</Option>
-              <Option name="hashlimit_expire">0</Option>
-              <Option name="hashlimit_gcinterval">0</Option>
-              <Option name="hashlimit_max">0</Option>
-              <Option name="hashlimit_mode_dstip">False</Option>
-              <Option name="hashlimit_mode_dstport">False</Option>
-              <Option name="hashlimit_mode_srcip">False</Option>
-              <Option name="hashlimit_mode_srcport">False</Option>
-              <Option name="hashlimit_name"/>
-              <Option name="hashlimit_size">0</Option>
-              <Option name="hashlimit_suffix"/>
-              <Option name="hashlimit_value">0</Option>
-              <Option name="ipt_continue">False</Option>
-              <Option name="ipt_gw"/>
-              <Option name="ipt_iif"/>
-              <Option name="ipt_mark_connections">False</Option>
-              <Option name="ipt_oif"/>
-              <Option name="ipt_tee">False</Option>
-              <Option name="limit_burst">0</Option>
-              <Option name="limit_suffix"/>
-              <Option name="limit_value">0</Option>
-              <Option name="limit_value_not">False</Option>
-              <Option name="log_level"/>
-              <Option name="log_prefix"/>
-              <Option name="routing">False</Option>
-              <Option name="stateless">True</Option>
-              <Option name="tagging">False</Option>
-              <Option name="tagobject_id"/>
-              <Option name="ulog_nlgroup">1</Option>
+              <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
           <PolicyRule id="id18196X31733" disabled="False" group="" log="False" position="4" action="Accept" direction="Inbound" comment="">
@@ -3835,42 +3725,7 @@
               <IntervalRef ref="sysid2"/>
             </When>
             <PolicyRuleOptions>
-              <Option name="classification">False</Option>
-              <Option name="classify_str"/>
-              <Option name="connlimit_above_not">False</Option>
-              <Option name="connlimit_masklen">0</Option>
-              <Option name="connlimit_value">0</Option>
-              <Option name="firewall_is_part_of_any_and_networks"/>
-              <Option name="hashlimit_burst">0</Option>
-              <Option name="hashlimit_dstlimit">False</Option>
-              <Option name="hashlimit_expire">0</Option>
-              <Option name="hashlimit_gcinterval">0</Option>
-              <Option name="hashlimit_max">0</Option>
-              <Option name="hashlimit_mode_dstip">False</Option>
-              <Option name="hashlimit_mode_dstport">False</Option>
-              <Option name="hashlimit_mode_srcip">False</Option>
-              <Option name="hashlimit_mode_srcport">False</Option>
-              <Option name="hashlimit_name"/>
-              <Option name="hashlimit_size">0</Option>
-              <Option name="hashlimit_suffix"/>
-              <Option name="hashlimit_value">0</Option>
-              <Option name="ipt_continue">False</Option>
-              <Option name="ipt_gw"/>
-              <Option name="ipt_iif"/>
-              <Option name="ipt_mark_connections">False</Option>
-              <Option name="ipt_oif"/>
-              <Option name="ipt_tee">False</Option>
-              <Option name="limit_burst">0</Option>
-              <Option name="limit_suffix"/>
-              <Option name="limit_value">0</Option>
-              <Option name="limit_value_not">False</Option>
-              <Option name="log_level"/>
-              <Option name="log_prefix"/>
-              <Option name="routing">False</Option>
-              <Option name="stateless">True</Option>
-              <Option name="tagging">False</Option>
-              <Option name="tagobject_id"/>
-              <Option name="ulog_nlgroup">1</Option>
+              <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
           <PolicyRule id="id534280X19669" disabled="False" group="" log="False" position="5" action="Accept" direction="Inbound" comment="">
@@ -3893,42 +3748,7 @@
               <IntervalRef ref="sysid2"/>
             </When>
             <PolicyRuleOptions>
-              <Option name="classification">False</Option>
-              <Option name="classify_str"/>
-              <Option name="connlimit_above_not">False</Option>
-              <Option name="connlimit_masklen">0</Option>
-              <Option name="connlimit_value">0</Option>
-              <Option name="firewall_is_part_of_any_and_networks"/>
-              <Option name="hashlimit_burst">0</Option>
-              <Option name="hashlimit_dstlimit">False</Option>
-              <Option name="hashlimit_expire">0</Option>
-              <Option name="hashlimit_gcinterval">0</Option>
-              <Option name="hashlimit_max">0</Option>
-              <Option name="hashlimit_mode_dstip">False</Option>
-              <Option name="hashlimit_mode_dstport">False</Option>
-              <Option name="hashlimit_mode_srcip">False</Option>
-              <Option name="hashlimit_mode_srcport">False</Option>
-              <Option name="hashlimit_name"/>
-              <Option name="hashlimit_size">0</Option>
-              <Option name="hashlimit_suffix"/>
-              <Option name="hashlimit_value">0</Option>
-              <Option name="ipt_continue">False</Option>
-              <Option name="ipt_gw"/>
-              <Option name="ipt_iif"/>
-              <Option name="ipt_mark_connections">False</Option>
-              <Option name="ipt_oif"/>
-              <Option name="ipt_tee">False</Option>
-              <Option name="limit_burst">0</Option>
-              <Option name="limit_suffix"/>
-              <Option name="limit_value">0</Option>
-              <Option name="limit_value_not">False</Option>
-              <Option name="log_level"/>
-              <Option name="log_prefix"/>
-              <Option name="routing">False</Option>
-              <Option name="stateless">True</Option>
-              <Option name="tagging">False</Option>
-              <Option name="tagobject_id"/>
-              <Option name="ulog_nlgroup">1</Option>
+              <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
           <PolicyRule id="id615777X19669" disabled="False" group="" log="False" position="6" action="Accept" direction="Inbound" comment="tinc backbone ermöglichen">
@@ -3950,42 +3770,7 @@
               <IntervalRef ref="sysid2"/>
             </When>
             <PolicyRuleOptions>
-              <Option name="classification">False</Option>
-              <Option name="classify_str"/>
-              <Option name="connlimit_above_not">False</Option>
-              <Option name="connlimit_masklen">0</Option>
-              <Option name="connlimit_value">0</Option>
-              <Option name="firewall_is_part_of_any_and_networks"/>
-              <Option name="hashlimit_burst">0</Option>
-              <Option name="hashlimit_dstlimit">False</Option>
-              <Option name="hashlimit_expire">0</Option>
-              <Option name="hashlimit_gcinterval">0</Option>
-              <Option name="hashlimit_max">0</Option>
-              <Option name="hashlimit_mode_dstip">False</Option>
-              <Option name="hashlimit_mode_dstport">False</Option>
-              <Option name="hashlimit_mode_srcip">False</Option>
-              <Option name="hashlimit_mode_srcport">False</Option>
-              <Option name="hashlimit_name"/>
-              <Option name="hashlimit_size">0</Option>
-              <Option name="hashlimit_suffix"/>
-              <Option name="hashlimit_value">0</Option>
-              <Option name="ipt_continue">False</Option>
-              <Option name="ipt_gw"/>
-              <Option name="ipt_iif"/>
-              <Option name="ipt_mark_connections">False</Option>
-              <Option name="ipt_oif"/>
-              <Option name="ipt_tee">False</Option>
-              <Option name="limit_burst">0</Option>
-              <Option name="limit_suffix"/>
-              <Option name="limit_value">0</Option>
-              <Option name="limit_value_not">False</Option>
-              <Option name="log_level"/>
-              <Option name="log_prefix"/>
-              <Option name="routing">False</Option>
-              <Option name="stateless">True</Option>
-              <Option name="tagging">False</Option>
-              <Option name="tagobject_id"/>
-              <Option name="ulog_nlgroup">1</Option>
+              <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
           <PolicyRule id="id595365X19669" disabled="False" group="" log="False" position="7" action="Accept" direction="Inbound" comment="">
@@ -4006,42 +3791,7 @@
               <IntervalRef ref="sysid2"/>
             </When>
             <PolicyRuleOptions>
-              <Option name="classification">False</Option>
-              <Option name="classify_str"/>
-              <Option name="connlimit_above_not">False</Option>
-              <Option name="connlimit_masklen">0</Option>
-              <Option name="connlimit_value">0</Option>
-              <Option name="firewall_is_part_of_any_and_networks"/>
-              <Option name="hashlimit_burst">0</Option>
-              <Option name="hashlimit_dstlimit">False</Option>
-              <Option name="hashlimit_expire">0</Option>
-              <Option name="hashlimit_gcinterval">0</Option>
-              <Option name="hashlimit_max">0</Option>
-              <Option name="hashlimit_mode_dstip">False</Option>
-              <Option name="hashlimit_mode_dstport">False</Option>
-              <Option name="hashlimit_mode_srcip">False</Option>
-              <Option name="hashlimit_mode_srcport">False</Option>
-              <Option name="hashlimit_name"/>
-              <Option name="hashlimit_size">0</Option>
-              <Option name="hashlimit_suffix"/>
-              <Option name="hashlimit_value">0</Option>
-              <Option name="ipt_continue">False</Option>
-              <Option name="ipt_gw"/>
-              <Option name="ipt_iif"/>
-              <Option name="ipt_mark_connections">False</Option>
-              <Option name="ipt_oif"/>
-              <Option name="ipt_tee">False</Option>
-              <Option name="limit_burst">0</Option>
-              <Option name="limit_suffix"/>
-              <Option name="limit_value">0</Option>
-              <Option name="limit_value_not">False</Option>
-              <Option name="log_level"/>
-              <Option name="log_prefix"/>
-              <Option name="routing">False</Option>
-              <Option name="stateless">True</Option>
-              <Option name="tagging">False</Option>
-              <Option name="tagobject_id"/>
-              <Option name="ulog_nlgroup">1</Option>
+              <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
           <PolicyRule id="id177920X19669" disabled="False" group="" log="False" position="8" action="Accept" direction="Outbound" comment="">
@@ -4066,42 +3816,7 @@
               <IntervalRef ref="sysid2"/>
             </When>
             <PolicyRuleOptions>
-              <Option name="classification">False</Option>
-              <Option name="classify_str"/>
-              <Option name="connlimit_above_not">False</Option>
-              <Option name="connlimit_masklen">0</Option>
-              <Option name="connlimit_value">0</Option>
-              <Option name="firewall_is_part_of_any_and_networks"/>
-              <Option name="hashlimit_burst">0</Option>
-              <Option name="hashlimit_dstlimit">False</Option>
-              <Option name="hashlimit_expire">0</Option>
-              <Option name="hashlimit_gcinterval">0</Option>
-              <Option name="hashlimit_max">0</Option>
-              <Option name="hashlimit_mode_dstip">False</Option>
-              <Option name="hashlimit_mode_dstport">False</Option>
-              <Option name="hashlimit_mode_srcip">False</Option>
-              <Option name="hashlimit_mode_srcport">False</Option>
-              <Option name="hashlimit_name"/>
-              <Option name="hashlimit_size">0</Option>
-              <Option name="hashlimit_suffix"/>
-              <Option name="hashlimit_value">0</Option>
-              <Option name="ipt_continue">False</Option>
-              <Option name="ipt_gw"/>
-              <Option name="ipt_iif"/>
-              <Option name="ipt_mark_connections">False</Option>
-              <Option name="ipt_oif"/>
-              <Option name="ipt_tee">False</Option>
-              <Option name="limit_burst">0</Option>
-              <Option name="limit_suffix"/>
-              <Option name="limit_value">0</Option>
-              <Option name="limit_value_not">False</Option>
-              <Option name="log_level"/>
-              <Option name="log_prefix"/>
-              <Option name="routing">False</Option>
-              <Option name="stateless">True</Option>
-              <Option name="tagging">False</Option>
-              <Option name="tagobject_id"/>
-              <Option name="ulog_nlgroup">1</Option>
+              <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
           <PolicyRule id="id231277X9028" disabled="False" group="" log="False" position="9" action="Accept" direction="Both" comment="">
@@ -4121,42 +3836,7 @@
               <IntervalRef ref="sysid2"/>
             </When>
             <PolicyRuleOptions>
-              <Option name="classification">False</Option>
-              <Option name="classify_str"/>
-              <Option name="connlimit_above_not">False</Option>
-              <Option name="connlimit_masklen">0</Option>
-              <Option name="connlimit_value">0</Option>
-              <Option name="firewall_is_part_of_any_and_networks"/>
-              <Option name="hashlimit_burst">0</Option>
-              <Option name="hashlimit_dstlimit">False</Option>
-              <Option name="hashlimit_expire">0</Option>
-              <Option name="hashlimit_gcinterval">0</Option>
-              <Option name="hashlimit_max">0</Option>
-              <Option name="hashlimit_mode_dstip">False</Option>
-              <Option name="hashlimit_mode_dstport">False</Option>
-              <Option name="hashlimit_mode_srcip">False</Option>
-              <Option name="hashlimit_mode_srcport">False</Option>
-              <Option name="hashlimit_name"/>
-              <Option name="hashlimit_size">0</Option>
-              <Option name="hashlimit_suffix"/>
-              <Option name="hashlimit_value">0</Option>
-              <Option name="ipt_continue">False</Option>
-              <Option name="ipt_gw"/>
-              <Option name="ipt_iif"/>
-              <Option name="ipt_mark_connections">False</Option>
-              <Option name="ipt_oif"/>
-              <Option name="ipt_tee">False</Option>
-              <Option name="limit_burst">0</Option>
-              <Option name="limit_suffix"/>
-              <Option name="limit_value">0</Option>
-              <Option name="limit_value_not">False</Option>
-              <Option name="log_level"/>
-              <Option name="log_prefix"/>
-              <Option name="routing">False</Option>
-              <Option name="stateless">True</Option>
-              <Option name="tagging">False</Option>
-              <Option name="tagobject_id"/>
-              <Option name="ulog_nlgroup">1</Option>
+              <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
           <PolicyRule id="id246335X9028" disabled="False" group="" log="False" position="10" action="Accept" direction="Outbound" comment="">
@@ -4178,42 +3858,7 @@
               <IntervalRef ref="sysid2"/>
             </When>
             <PolicyRuleOptions>
-              <Option name="classification">False</Option>
-              <Option name="classify_str"/>
-              <Option name="connlimit_above_not">False</Option>
-              <Option name="connlimit_masklen">0</Option>
-              <Option name="connlimit_value">0</Option>
-              <Option name="firewall_is_part_of_any_and_networks"/>
-              <Option name="hashlimit_burst">0</Option>
-              <Option name="hashlimit_dstlimit">False</Option>
-              <Option name="hashlimit_expire">0</Option>
-              <Option name="hashlimit_gcinterval">0</Option>
-              <Option name="hashlimit_max">0</Option>
-              <Option name="hashlimit_mode_dstip">False</Option>
-              <Option name="hashlimit_mode_dstport">False</Option>
-              <Option name="hashlimit_mode_srcip">False</Option>
-              <Option name="hashlimit_mode_srcport">False</Option>
-              <Option name="hashlimit_name"/>
-              <Option name="hashlimit_size">0</Option>
-              <Option name="hashlimit_suffix"/>
-              <Option name="hashlimit_value">0</Option>
-              <Option name="ipt_continue">False</Option>
-              <Option name="ipt_gw"/>
-              <Option name="ipt_iif"/>
-              <Option name="ipt_mark_connections">False</Option>
-              <Option name="ipt_oif"/>
-              <Option name="ipt_tee">False</Option>
-              <Option name="limit_burst">0</Option>
-              <Option name="limit_suffix"/>
-              <Option name="limit_value">0</Option>
-              <Option name="limit_value_not">False</Option>
-              <Option name="log_level"/>
-              <Option name="log_prefix"/>
-              <Option name="routing">False</Option>
-              <Option name="stateless">True</Option>
-              <Option name="tagging">False</Option>
-              <Option name="tagobject_id"/>
-              <Option name="ulog_nlgroup">1</Option>
+              <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
           <PolicyRule id="id214779X9028" disabled="False" group="" log="False" position="11" action="Accept" direction="Both" comment="">
@@ -4233,42 +3878,7 @@
               <IntervalRef ref="sysid2"/>
             </When>
             <PolicyRuleOptions>
-              <Option name="classification">False</Option>
-              <Option name="classify_str"/>
-              <Option name="connlimit_above_not">False</Option>
-              <Option name="connlimit_masklen">0</Option>
-              <Option name="connlimit_value">0</Option>
-              <Option name="firewall_is_part_of_any_and_networks"/>
-              <Option name="hashlimit_burst">0</Option>
-              <Option name="hashlimit_dstlimit">False</Option>
-              <Option name="hashlimit_expire">0</Option>
-              <Option name="hashlimit_gcinterval">0</Option>
-              <Option name="hashlimit_max">0</Option>
-              <Option name="hashlimit_mode_dstip">False</Option>
-              <Option name="hashlimit_mode_dstport">False</Option>
-              <Option name="hashlimit_mode_srcip">False</Option>
-              <Option name="hashlimit_mode_srcport">False</Option>
-              <Option name="hashlimit_name"/>
-              <Option name="hashlimit_size">0</Option>
-              <Option name="hashlimit_suffix"/>
-              <Option name="hashlimit_value">0</Option>
-              <Option name="ipt_continue">False</Option>
-              <Option name="ipt_gw"/>
-              <Option name="ipt_iif"/>
-              <Option name="ipt_mark_connections">False</Option>
-              <Option name="ipt_oif"/>
-              <Option name="ipt_tee">False</Option>
-              <Option name="limit_burst">0</Option>
-              <Option name="limit_suffix"/>
-              <Option name="limit_value">0</Option>
-              <Option name="limit_value_not">False</Option>
-              <Option name="log_level"/>
-              <Option name="log_prefix"/>
-              <Option name="routing">False</Option>
-              <Option name="stateless">True</Option>
-              <Option name="tagging">False</Option>
-              <Option name="tagobject_id"/>
-              <Option name="ulog_nlgroup">1</Option>
+              <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
           <PolicyRule id="id47178X9028" disabled="False" group="" log="False" position="12" action="Accept" direction="Outbound" comment="">
@@ -4288,42 +3898,7 @@
               <IntervalRef ref="sysid2"/>
             </When>
             <PolicyRuleOptions>
-              <Option name="classification">False</Option>
-              <Option name="classify_str"/>
-              <Option name="connlimit_above_not">False</Option>
-              <Option name="connlimit_masklen">0</Option>
-              <Option name="connlimit_value">0</Option>
-              <Option name="firewall_is_part_of_any_and_networks"/>
-              <Option name="hashlimit_burst">0</Option>
-              <Option name="hashlimit_dstlimit">False</Option>
-              <Option name="hashlimit_expire">0</Option>
-              <Option name="hashlimit_gcinterval">0</Option>
-              <Option name="hashlimit_max">0</Option>
-              <Option name="hashlimit_mode_dstip">False</Option>
-              <Option name="hashlimit_mode_dstport">False</Option>
-              <Option name="hashlimit_mode_srcip">False</Option>
-              <Option name="hashlimit_mode_srcport">False</Option>
-              <Option name="hashlimit_name"/>
-              <Option name="hashlimit_size">0</Option>
-              <Option name="hashlimit_suffix"/>
-              <Option name="hashlimit_value">0</Option>
-              <Option name="ipt_continue">False</Option>
-              <Option name="ipt_gw"/>
-              <Option name="ipt_iif"/>
-              <Option name="ipt_mark_connections">False</Option>
-              <Option name="ipt_oif"/>
-              <Option name="ipt_tee">False</Option>
-              <Option name="limit_burst">0</Option>
-              <Option name="limit_suffix"/>
-              <Option name="limit_value">0</Option>
-              <Option name="limit_value_not">False</Option>
-              <Option name="log_level"/>
-              <Option name="log_prefix"/>
-              <Option name="routing">False</Option>
-              <Option name="stateless">True</Option>
-              <Option name="tagging">False</Option>
-              <Option name="tagobject_id"/>
-              <Option name="ulog_nlgroup">1</Option>
+              <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
           <PolicyRule id="id86735X9028" disabled="False" group="" log="False" position="13" action="Accept" direction="Inbound" comment="allow access to tinc on icvpn server from outside">
@@ -4344,100 +3919,10 @@
               <IntervalRef ref="sysid2"/>
             </When>
             <PolicyRuleOptions>
-              <Option name="classification">False</Option>
-              <Option name="classify_str"/>
-              <Option name="connlimit_above_not">False</Option>
-              <Option name="connlimit_masklen">0</Option>
-              <Option name="connlimit_value">0</Option>
-              <Option name="firewall_is_part_of_any_and_networks"/>
-              <Option name="hashlimit_burst">0</Option>
-              <Option name="hashlimit_dstlimit">False</Option>
-              <Option name="hashlimit_expire">0</Option>
-              <Option name="hashlimit_gcinterval">0</Option>
-              <Option name="hashlimit_max">0</Option>
-              <Option name="hashlimit_mode_dstip">False</Option>
-              <Option name="hashlimit_mode_dstport">False</Option>
-              <Option name="hashlimit_mode_srcip">False</Option>
-              <Option name="hashlimit_mode_srcport">False</Option>
-              <Option name="hashlimit_name"/>
-              <Option name="hashlimit_size">0</Option>
-              <Option name="hashlimit_suffix"/>
-              <Option name="hashlimit_value">0</Option>
-              <Option name="ipt_continue">False</Option>
-              <Option name="ipt_gw"/>
-              <Option name="ipt_iif"/>
-              <Option name="ipt_mark_connections">False</Option>
-              <Option name="ipt_oif"/>
-              <Option name="ipt_tee">False</Option>
-              <Option name="limit_burst">0</Option>
-              <Option name="limit_suffix"/>
-              <Option name="limit_value">0</Option>
-              <Option name="limit_value_not">False</Option>
-              <Option name="log_level"/>
-              <Option name="log_prefix"/>
-              <Option name="routing">False</Option>
-              <Option name="stateless">True</Option>
-              <Option name="tagging">False</Option>
-              <Option name="tagobject_id"/>
-              <Option name="ulog_nlgroup">1</Option>
+              <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id150780X12809" disabled="True" group="" log="False" position="14" action="Accept" direction="Both" comment="">
-            <Src neg="False">
-              <ObjectRef ref="id133131X12809"/>
-            </Src>
-            <Dst neg="False">
-              <ObjectRef ref="id15382X9028"/>
-            </Dst>
-            <Srv neg="False">
-              <ServiceRef ref="id204456X12809"/>
-            </Srv>
-            <Itf neg="False">
-              <ObjectRef ref="id15382X9028"/>
-            </Itf>
-            <When neg="False">
-              <IntervalRef ref="sysid2"/>
-            </When>
-            <PolicyRuleOptions>
-              <Option name="classification">False</Option>
-              <Option name="classify_str"/>
-              <Option name="connlimit_above_not">False</Option>
-              <Option name="connlimit_masklen">0</Option>
-              <Option name="connlimit_value">0</Option>
-              <Option name="firewall_is_part_of_any_and_networks"/>
-              <Option name="hashlimit_burst">0</Option>
-              <Option name="hashlimit_dstlimit">False</Option>
-              <Option name="hashlimit_expire">0</Option>
-              <Option name="hashlimit_gcinterval">0</Option>
-              <Option name="hashlimit_max">0</Option>
-              <Option name="hashlimit_mode_dstip">False</Option>
-              <Option name="hashlimit_mode_dstport">False</Option>
-              <Option name="hashlimit_mode_srcip">False</Option>
-              <Option name="hashlimit_mode_srcport">False</Option>
-              <Option name="hashlimit_name"/>
-              <Option name="hashlimit_size">0</Option>
-              <Option name="hashlimit_suffix"/>
-              <Option name="hashlimit_value">0</Option>
-              <Option name="ipt_continue">False</Option>
-              <Option name="ipt_gw"/>
-              <Option name="ipt_iif"/>
-              <Option name="ipt_mark_connections">False</Option>
-              <Option name="ipt_oif"/>
-              <Option name="ipt_tee">False</Option>
-              <Option name="limit_burst">0</Option>
-              <Option name="limit_suffix"/>
-              <Option name="limit_value">0</Option>
-              <Option name="limit_value_not">False</Option>
-              <Option name="log_level"/>
-              <Option name="log_prefix"/>
-              <Option name="routing">False</Option>
-              <Option name="stateless">True</Option>
-              <Option name="tagging">False</Option>
-              <Option name="tagobject_id"/>
-              <Option name="ulog_nlgroup">1</Option>
-            </PolicyRuleOptions>
-          </PolicyRule>
-          <PolicyRule id="id209455X9028" disabled="False" group="" log="False" position="15" action="Accept" direction="Inbound" comment="">
+          <PolicyRule id="id209455X9028" disabled="False" group="" log="False" position="14" action="Accept" direction="Inbound" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -4454,45 +3939,10 @@
               <IntervalRef ref="sysid2"/>
             </When>
             <PolicyRuleOptions>
-              <Option name="classification">False</Option>
-              <Option name="classify_str"/>
-              <Option name="connlimit_above_not">False</Option>
-              <Option name="connlimit_masklen">0</Option>
-              <Option name="connlimit_value">0</Option>
-              <Option name="firewall_is_part_of_any_and_networks"/>
-              <Option name="hashlimit_burst">0</Option>
-              <Option name="hashlimit_dstlimit">False</Option>
-              <Option name="hashlimit_expire">0</Option>
-              <Option name="hashlimit_gcinterval">0</Option>
-              <Option name="hashlimit_max">0</Option>
-              <Option name="hashlimit_mode_dstip">False</Option>
-              <Option name="hashlimit_mode_dstport">False</Option>
-              <Option name="hashlimit_mode_srcip">False</Option>
-              <Option name="hashlimit_mode_srcport">False</Option>
-              <Option name="hashlimit_name"/>
-              <Option name="hashlimit_size">0</Option>
-              <Option name="hashlimit_suffix"/>
-              <Option name="hashlimit_value">0</Option>
-              <Option name="ipt_continue">False</Option>
-              <Option name="ipt_gw"/>
-              <Option name="ipt_iif"/>
-              <Option name="ipt_mark_connections">False</Option>
-              <Option name="ipt_oif"/>
-              <Option name="ipt_tee">False</Option>
-              <Option name="limit_burst">0</Option>
-              <Option name="limit_suffix"/>
-              <Option name="limit_value">0</Option>
-              <Option name="limit_value_not">False</Option>
-              <Option name="log_level"/>
-              <Option name="log_prefix"/>
-              <Option name="routing">False</Option>
-              <Option name="stateless">True</Option>
-              <Option name="tagging">False</Option>
-              <Option name="tagobject_id"/>
-              <Option name="ulog_nlgroup">1</Option>
+              <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id148068X9028" disabled="True" group="" log="False" position="16" action="Accept" direction="Outbound" comment="allow access to colelctd on server from outside">
+          <PolicyRule id="id148068X9028" disabled="True" group="" log="False" position="15" action="Accept" direction="Outbound" comment="allow access to colelctd on server from outside">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -4509,45 +3959,10 @@
               <IntervalRef ref="sysid2"/>
             </When>
             <PolicyRuleOptions>
-              <Option name="classification">False</Option>
-              <Option name="classify_str"/>
-              <Option name="connlimit_above_not">False</Option>
-              <Option name="connlimit_masklen">0</Option>
-              <Option name="connlimit_value">0</Option>
-              <Option name="firewall_is_part_of_any_and_networks"/>
-              <Option name="hashlimit_burst">0</Option>
-              <Option name="hashlimit_dstlimit">False</Option>
-              <Option name="hashlimit_expire">0</Option>
-              <Option name="hashlimit_gcinterval">0</Option>
-              <Option name="hashlimit_max">0</Option>
-              <Option name="hashlimit_mode_dstip">False</Option>
-              <Option name="hashlimit_mode_dstport">False</Option>
-              <Option name="hashlimit_mode_srcip">False</Option>
-              <Option name="hashlimit_mode_srcport">False</Option>
-              <Option name="hashlimit_name"/>
-              <Option name="hashlimit_size">0</Option>
-              <Option name="hashlimit_suffix"/>
-              <Option name="hashlimit_value">0</Option>
-              <Option name="ipt_continue">False</Option>
-              <Option name="ipt_gw"/>
-              <Option name="ipt_iif"/>
-              <Option name="ipt_mark_connections">False</Option>
-              <Option name="ipt_oif"/>
-              <Option name="ipt_tee">False</Option>
-              <Option name="limit_burst">0</Option>
-              <Option name="limit_suffix"/>
-              <Option name="limit_value">0</Option>
-              <Option name="limit_value_not">False</Option>
-              <Option name="log_level"/>
-              <Option name="log_prefix"/>
-              <Option name="routing">False</Option>
-              <Option name="stateless">True</Option>
-              <Option name="tagging">False</Option>
-              <Option name="tagobject_id"/>
-              <Option name="ulog_nlgroup">1</Option>
+              <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id47142X9028" disabled="True" group="" log="False" position="17" action="Accept" direction="Inbound" comment="">
+          <PolicyRule id="id47142X9028" disabled="True" group="" log="False" position="16" action="Accept" direction="Inbound" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -4564,45 +3979,10 @@
               <IntervalRef ref="sysid2"/>
             </When>
             <PolicyRuleOptions>
-              <Option name="classification">False</Option>
-              <Option name="classify_str"/>
-              <Option name="connlimit_above_not">False</Option>
-              <Option name="connlimit_masklen">0</Option>
-              <Option name="connlimit_value">0</Option>
-              <Option name="firewall_is_part_of_any_and_networks"/>
-              <Option name="hashlimit_burst">0</Option>
-              <Option name="hashlimit_dstlimit">False</Option>
-              <Option name="hashlimit_expire">0</Option>
-              <Option name="hashlimit_gcinterval">0</Option>
-              <Option name="hashlimit_max">0</Option>
-              <Option name="hashlimit_mode_dstip">False</Option>
-              <Option name="hashlimit_mode_dstport">False</Option>
-              <Option name="hashlimit_mode_srcip">False</Option>
-              <Option name="hashlimit_mode_srcport">False</Option>
-              <Option name="hashlimit_name"/>
-              <Option name="hashlimit_size">0</Option>
-              <Option name="hashlimit_suffix"/>
-              <Option name="hashlimit_value">0</Option>
-              <Option name="ipt_continue">False</Option>
-              <Option name="ipt_gw"/>
-              <Option name="ipt_iif"/>
-              <Option name="ipt_mark_connections">False</Option>
-              <Option name="ipt_oif"/>
-              <Option name="ipt_tee">False</Option>
-              <Option name="limit_burst">0</Option>
-              <Option name="limit_suffix"/>
-              <Option name="limit_value">0</Option>
-              <Option name="limit_value_not">False</Option>
-              <Option name="log_level"/>
-              <Option name="log_prefix"/>
-              <Option name="routing">False</Option>
-              <Option name="stateless">True</Option>
-              <Option name="tagging">False</Option>
-              <Option name="tagobject_id"/>
-              <Option name="ulog_nlgroup">1</Option>
+              <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id158485X19669" disabled="False" group="" log="False" position="18" action="Deny" direction="Both" comment="">
+          <PolicyRule id="id158485X19669" disabled="False" group="" log="False" position="17" action="Deny" direction="Both" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -4664,7 +4044,6 @@
         <Interface id="id15382X9028" dedicated_failover="False" dyn="False" label="" mgmt="False" security_level="0" unnum="False" unprotected="False" name="batbridge" comment="" ro="False">
           <IPv4 id="id15422X9028" name="uber.ffm.freifunk.net:batbridge:ip" comment="" ro="False" address="10.126.0.2" netmask="255.255.0.0"/>
           <IPv6 id="id6815X8155" name="uber.ffm.freifunk.net:batbridge:ip6" comment="" ro="False" address="2001:1a50:11:4::2" netmask="64"/>
-          <IPv6 id="id98686X12809" name="uber.ffm.freifunk.net:batbridge:ipv6" comment="" ro="False" address="fe80::3c48:bdff:fe17:b480" netmask="64"/>
           <InterfaceOptions>
             <Option name="bonding_policy"/>
             <Option name="bondng_driver_options"/>
@@ -4714,9 +4093,7 @@
           <Option name="debug">False</Option>
           <Option name="drop_invalid">False</Option>
           <Option name="epilog_script"># /root/setupgeneralshaping "$IPTABLES $IP6TABLES" 95.143.172.233/32
-/etc/init.d/fail2ban restart
-
-$IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j ACCEPT</Option>
+/etc/init.d/fail2ban restart</Option>
           <Option name="firewall_dir">/etc/fw</Option>
           <Option name="firewall_is_part_of_any_and_networks">True</Option>
           <Option name="flush_and_set_default_policy">True</Option>
@@ -4773,7 +4150,8 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">after_flush</Option>
-          <Option name="prolog_script">mkdir -p /etc/fw</Option>
+          <Option name="prolog_script">echo running prolog
+# /root/setupsshforwards</Option>
           <Option name="scpArgs"/>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs"/>
@@ -4787,7 +4165,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id48443X9028" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1455135267" lastInstalled="1450687866" lastModified="1450687024" platform="iptables" version="" name="proxy.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id48443X9028" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1441059478" lastInstalled="1441059504" lastModified="1441059466" platform="iptables" version="" name="proxy.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id48447X9028" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -4933,7 +4311,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id139998X619" disabled="False" group="" log="False" position="5" action="Deny" direction="Both" comment="">
+          <PolicyRule id="id139998X619" disabled="False" group="" log="True" position="5" action="Deny" direction="Both" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -5041,7 +4419,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script">mkdir -p /etc/fw</Option>
+          <Option name="prolog_script"/>
           <Option name="scpArgs">-P 22115</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 22115</Option>
@@ -5055,7 +4433,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id129115X9028" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1455135272" lastInstalled="1450687957" lastModified="1450687033" platform="iptables" version="" name="stats.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id129115X9028" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1434301009" lastInstalled="1434831056" lastModified="1434300856" platform="iptables" version="" name="stats.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id129119X9028" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -5219,7 +4597,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id148868X20122" disabled="False" group="" log="False" position="6" action="Deny" direction="Both" comment="">
+          <PolicyRule id="id148868X20122" disabled="False" group="" log="True" position="6" action="Deny" direction="Both" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -5236,42 +4614,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <IntervalRef ref="sysid2"/>
             </When>
             <PolicyRuleOptions>
-              <Option name="classification">False</Option>
-              <Option name="classify_str"/>
-              <Option name="connlimit_above_not">False</Option>
-              <Option name="connlimit_masklen">0</Option>
-              <Option name="connlimit_value">0</Option>
-              <Option name="firewall_is_part_of_any_and_networks"/>
-              <Option name="hashlimit_burst">0</Option>
-              <Option name="hashlimit_dstlimit">False</Option>
-              <Option name="hashlimit_expire">0</Option>
-              <Option name="hashlimit_gcinterval">0</Option>
-              <Option name="hashlimit_max">0</Option>
-              <Option name="hashlimit_mode_dstip">False</Option>
-              <Option name="hashlimit_mode_dstport">False</Option>
-              <Option name="hashlimit_mode_srcip">False</Option>
-              <Option name="hashlimit_mode_srcport">False</Option>
-              <Option name="hashlimit_name"/>
-              <Option name="hashlimit_size">0</Option>
-              <Option name="hashlimit_suffix"/>
-              <Option name="hashlimit_value">0</Option>
-              <Option name="ipt_continue">False</Option>
-              <Option name="ipt_gw"/>
-              <Option name="ipt_iif"/>
-              <Option name="ipt_mark_connections">False</Option>
-              <Option name="ipt_oif"/>
-              <Option name="ipt_tee">False</Option>
-              <Option name="limit_burst">0</Option>
-              <Option name="limit_suffix"/>
-              <Option name="limit_value">0</Option>
-              <Option name="limit_value_not">False</Option>
-              <Option name="log_level"/>
-              <Option name="log_prefix"/>
-              <Option name="routing">False</Option>
               <Option name="stateless">True</Option>
-              <Option name="tagging">False</Option>
-              <Option name="tagobject_id"/>
-              <Option name="ulog_nlgroup">1</Option>
             </PolicyRuleOptions>
           </PolicyRule>
           <RuleSetOptions/>
@@ -5361,21 +4704,21 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script">mkdir -p /etc/fw</Option>
+          <Option name="prolog_script"/>
           <Option name="scpArgs">-P 22116</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 22116</Option>
           <Option name="ulog_cprange">0</Option>
           <Option name="ulog_nlgroup">1</Option>
           <Option name="ulog_qthreshold">1</Option>
-          <Option name="use_ULOG">True</Option>
+          <Option name="use_ULOG">False</Option>
           <Option name="use_iptables_restore">False</Option>
           <Option name="use_m_set">False</Option>
           <Option name="use_numeric_log_levels">False</Option>
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id162578X9028" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1455135266" lastInstalled="1450687672" lastModified="1450687006" platform="iptables" version="" name="mail.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id162578X9028" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1434301000" lastInstalled="1434829969" lastModified="1434300875" platform="iptables" version="" name="mail.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id162582X9028" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -5483,7 +4826,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id126456X619" disabled="False" group="" log="False" position="5" action="Deny" direction="Both" comment="">
+          <PolicyRule id="id126456X619" disabled="False" group="" log="True" position="5" action="Deny" direction="Both" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -5586,7 +4929,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script">mkdir -p /etc/fw</Option>
+          <Option name="prolog_script"/>
           <Option name="scpArgs">-P 22117</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 22117</Option>
@@ -5600,7 +4943,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id6240X21166" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1455216743" lastInstalled="1455143841" lastModified="1455216589" platform="iptables" version="" name="datalxc.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id6240X21166" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1461828708" lastInstalled="1461867637" lastModified="1461828700" platform="iptables" version="" name="datalxc.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id6244X21166" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <NATRule id="id37235X21166" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -5629,7 +4972,61 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
             </ItfOutb>
             <NATRuleOptions/>
           </NATRule>
-          <NATRule id="id18834X21003" disabled="False" group="" position="1" action="Translate" comment="">
+          <NATRule id="id85554X11435" disabled="False" group="" position="1" action="Translate" comment="">
+            <OSrc neg="False">
+              <ObjectRef ref="sysid0"/>
+            </OSrc>
+            <ODst neg="False">
+              <ObjectRef ref="id6250X21166"/>
+            </ODst>
+            <OSrv neg="False">
+              <ServiceRef ref="id36850X11435"/>
+            </OSrv>
+            <TSrc neg="False">
+              <ObjectRef ref="sysid0"/>
+            </TSrc>
+            <TDst neg="False">
+              <ObjectRef ref="id36704X11435"/>
+            </TDst>
+            <TSrv neg="False">
+              <ServiceRef ref="id36850X11435"/>
+            </TSrv>
+            <ItfInb neg="False">
+              <ObjectRef ref="sysid0"/>
+            </ItfInb>
+            <ItfOutb neg="False">
+              <ObjectRef ref="sysid0"/>
+            </ItfOutb>
+            <NATRuleOptions/>
+          </NATRule>
+          <NATRule id="id51665X11435" disabled="False" group="" position="2" action="Translate" comment="">
+            <OSrc neg="False">
+              <ObjectRef ref="sysid0"/>
+            </OSrc>
+            <ODst neg="False">
+              <ObjectRef ref="id6250X21166"/>
+            </ODst>
+            <OSrv neg="False">
+              <ServiceRef ref="id51635X11435"/>
+            </OSrv>
+            <TSrc neg="False">
+              <ObjectRef ref="sysid0"/>
+            </TSrc>
+            <TDst neg="False">
+              <ObjectRef ref="id36704X11435"/>
+            </TDst>
+            <TSrv neg="False">
+              <ServiceRef ref="tcp-SSH"/>
+            </TSrv>
+            <ItfInb neg="False">
+              <ObjectRef ref="sysid0"/>
+            </ItfInb>
+            <ItfOutb neg="False">
+              <ObjectRef ref="sysid0"/>
+            </ItfOutb>
+            <NATRuleOptions/>
+          </NATRule>
+          <NATRule id="id18834X21003" disabled="False" group="" position="3" action="Translate" comment="">
             <OSrc neg="False">
               <ObjectRef ref="sysid0"/>
             </OSrc>
@@ -5656,7 +5053,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
             </ItfOutb>
             <NATRuleOptions/>
           </NATRule>
-          <NATRule id="id114965X23979" disabled="False" group="" position="2" action="Translate" comment="">
+          <NATRule id="id114965X23979" disabled="False" group="" position="4" action="Translate" comment="">
             <OSrc neg="False">
               <ObjectRef ref="sysid0"/>
             </OSrc>
@@ -5683,7 +5080,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
             </ItfOutb>
             <NATRuleOptions/>
           </NATRule>
-          <NATRule id="id14464X29949" disabled="False" group="" position="3" action="Translate" comment="">
+          <NATRule id="id14464X29949" disabled="False" group="" position="5" action="Translate" comment="">
             <OSrc neg="False">
               <ObjectRef ref="sysid0"/>
             </OSrc>
@@ -5710,7 +5107,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
             </ItfOutb>
             <NATRuleOptions/>
           </NATRule>
-          <NATRule id="id7028X619" disabled="False" group="" position="4" action="Translate" comment="">
+          <NATRule id="id7028X619" disabled="False" group="" position="6" action="Translate" comment="">
             <OSrc neg="False">
               <ObjectRef ref="sysid0"/>
             </OSrc>
@@ -5737,7 +5134,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
             </ItfOutb>
             <NATRuleOptions/>
           </NATRule>
-          <NATRule id="id42058X7246" disabled="False" group="" position="5" action="Translate" comment="">
+          <NATRule id="id42058X7246" disabled="False" group="" position="7" action="Translate" comment="">
             <OSrc neg="False">
               <ObjectRef ref="sysid0"/>
             </OSrc>
@@ -5764,7 +5161,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
             </ItfOutb>
             <NATRuleOptions/>
           </NATRule>
-          <NATRule id="id41373X7246" disabled="False" group="" position="6" action="Translate" comment="">
+          <NATRule id="id41373X7246" disabled="False" group="" position="8" action="Translate" comment="">
             <OSrc neg="False">
               <ObjectRef ref="sysid0"/>
             </OSrc>
@@ -5791,7 +5188,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
             </ItfOutb>
             <NATRuleOptions/>
           </NATRule>
-          <NATRule id="id12827X7246" disabled="False" group="" position="7" action="Translate" comment="">
+          <NATRule id="id12827X7246" disabled="False" group="" position="9" action="Translate" comment="">
             <OSrc neg="False">
               <ObjectRef ref="sysid0"/>
             </OSrc>
@@ -5818,7 +5215,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
             </ItfOutb>
             <NATRuleOptions/>
           </NATRule>
-          <NATRule id="id99639X619" disabled="True" group="" position="8" action="Translate" comment="">
+          <NATRule id="id99639X619" disabled="True" group="" position="10" action="Translate" comment="">
             <OSrc neg="False">
               <ObjectRef ref="sysid0"/>
             </OSrc>
@@ -5845,7 +5242,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
             </ItfOutb>
             <NATRuleOptions/>
           </NATRule>
-          <NATRule id="id104923X619" disabled="False" group="" position="9" action="Translate" comment="">
+          <NATRule id="id104923X619" disabled="False" group="" position="11" action="Translate" comment="">
             <OSrc neg="False">
               <ObjectRef ref="sysid0"/>
             </OSrc>
@@ -5872,7 +5269,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
             </ItfOutb>
             <NATRuleOptions/>
           </NATRule>
-          <NATRule id="id105009X619" disabled="False" group="" position="10" action="Translate" comment="">
+          <NATRule id="id105009X619" disabled="False" group="" position="12" action="Translate" comment="">
             <OSrc neg="False">
               <ObjectRef ref="sysid0"/>
             </OSrc>
@@ -5899,7 +5296,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
             </ItfOutb>
             <NATRuleOptions/>
           </NATRule>
-          <NATRule id="id105095X619" disabled="False" group="" position="11" action="Translate" comment="">
+          <NATRule id="id105095X619" disabled="False" group="" position="13" action="Translate" comment="">
             <OSrc neg="False">
               <ObjectRef ref="sysid0"/>
             </OSrc>
@@ -5917,60 +5314,6 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
             </TDst>
             <TSrv neg="False">
               <ServiceRef ref="id99461X619"/>
-            </TSrv>
-            <ItfInb neg="False">
-              <ObjectRef ref="sysid0"/>
-            </ItfInb>
-            <ItfOutb neg="False">
-              <ObjectRef ref="sysid0"/>
-            </ItfOutb>
-            <NATRuleOptions/>
-          </NATRule>
-          <NATRule id="id23519X4186" disabled="False" group="" position="12" action="Translate" comment="">
-            <OSrc neg="False">
-              <ObjectRef ref="sysid0"/>
-            </OSrc>
-            <ODst neg="False">
-              <ObjectRef ref="id6250X21166"/>
-            </ODst>
-            <OSrv neg="False">
-              <ServiceRef ref="id23309X4186"/>
-            </OSrv>
-            <TSrc neg="False">
-              <ObjectRef ref="sysid0"/>
-            </TSrc>
-            <TDst neg="False">
-              <ObjectRef ref="id22997X4186"/>
-            </TDst>
-            <TSrv neg="False">
-              <ServiceRef ref="id23309X4186"/>
-            </TSrv>
-            <ItfInb neg="False">
-              <ObjectRef ref="sysid0"/>
-            </ItfInb>
-            <ItfOutb neg="False">
-              <ObjectRef ref="sysid0"/>
-            </ItfOutb>
-            <NATRuleOptions/>
-          </NATRule>
-          <NATRule id="id23401X4186" disabled="False" group="" position="13" action="Translate" comment="">
-            <OSrc neg="False">
-              <ObjectRef ref="sysid0"/>
-            </OSrc>
-            <ODst neg="False">
-              <ObjectRef ref="id6250X21166"/>
-            </ODst>
-            <OSrv neg="False">
-              <ServiceRef ref="id23345X4186"/>
-            </OSrv>
-            <TSrc neg="False">
-              <ObjectRef ref="sysid0"/>
-            </TSrc>
-            <TDst neg="False">
-              <ObjectRef ref="id22997X4186"/>
-            </TDst>
-            <TSrv neg="False">
-              <ServiceRef ref="tcp-SSH"/>
             </TSrv>
             <ItfInb neg="False">
               <ObjectRef ref="sysid0"/>
@@ -6016,32 +5359,6 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
             </ODst>
             <OSrv neg="False">
               <ServiceRef ref="tcp-HTTP"/>
-            </OSrv>
-            <TSrc neg="False">
-              <ObjectRef ref="sysid0"/>
-            </TSrc>
-            <TDst neg="False">
-              <ObjectRef ref="id41672X7246"/>
-            </TDst>
-            <TSrv neg="False">
-              <ServiceRef ref="tcp-HTTP"/>
-            </TSrv>
-            <ItfInb neg="False">
-              <ObjectRef ref="sysid0"/>
-            </ItfInb>
-            <ItfOutb neg="False">
-              <ObjectRef ref="sysid0"/>
-            </ItfOutb>
-            <NATRuleOptions/>
-          </NATRule>
-          <NATRule id="id56507X17907" disabled="False" group="" position="16" action="Translate" comment="broken">
-            <OSrc neg="False">
-              <ObjectRef ref="sysid0"/>
-            </OSrc>
-            <ODst neg="False">
-              <ObjectRef ref="id6250X21166"/>
-            </ODst>
-            <OSrv neg="False">
               <ServiceRef ref="id3B4FED69"/>
             </OSrv>
             <TSrc neg="False">
@@ -6051,7 +5368,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <ObjectRef ref="id41672X7246"/>
             </TDst>
             <TSrv neg="False">
-              <ServiceRef ref="id3B4FED69"/>
+              <ServiceRef ref="sysid1"/>
             </TSrv>
             <ItfInb neg="False">
               <ObjectRef ref="sysid0"/>
@@ -6260,7 +5577,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <PolicyRule id="id71045X21166" disabled="False" group="" log="False" position="6" action="Accept" direction="Outbound" comment="">
             <Src neg="False">
               <ObjectRef ref="id2038X20429"/>
-              <ObjectRef ref="id6189X11993"/>
+              <ObjectRef ref="id72404X27175"/>
             </Src>
             <Dst neg="False">
               <ObjectRef ref="sysid0"/>
@@ -6281,7 +5598,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <PolicyRule id="id23948X15949" disabled="False" group="" log="False" position="7" action="Accept" direction="Inbound" comment="">
             <Src neg="False">
               <ObjectRef ref="id2038X20429"/>
-              <ObjectRef ref="id6189X11993"/>
+              <ObjectRef ref="id72404X27175"/>
             </Src>
             <Dst neg="False">
               <ObjectRef ref="sysid0"/>
@@ -6308,7 +5625,6 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
             </Dst>
             <Srv neg="False">
               <ServiceRef ref="tcp-SSH"/>
-              <ServiceRef ref="id23309X4186"/>
             </Srv>
             <Itf neg="False">
               <ObjectRef ref="sysid0"/>
@@ -6320,7 +5636,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id346847X19669" disabled="False" group="" log="True" position="9" action="Accept" direction="Inbound" comment="">
+          <PolicyRule id="id346847X19669" disabled="False" group="" log="False" position="9" action="Accept" direction="Inbound" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -6332,6 +5648,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <ServiceRef ref="id3B4FED69"/>
               <ServiceRef ref="id99461X619"/>
               <ServiceRef ref="id99492X619"/>
+              <ServiceRef ref="id36850X11435"/>
             </Srv>
             <Itf neg="False">
               <ObjectRef ref="id6250X21166"/>
@@ -6509,7 +5826,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="compiler"/>
           <Option name="configure_bonding_interfaces">False</Option>
           <Option name="configure_bridge_interfaces">False</Option>
-          <Option name="configure_interfaces">True</Option>
+          <Option name="configure_interfaces">False</Option>
           <Option name="configure_vlan_interfaces">False</Option>
           <Option name="data_dir"/>
           <Option name="debug">False</Option>
@@ -6571,7 +5888,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script">mkdir -p /etc/fw</Option>
+          <Option name="prolog_script"/>
           <Option name="scpArgs"/>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs"/>
@@ -6582,10 +5899,10 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="use_iptables_restore">False</Option>
           <Option name="use_m_set">False</Option>
           <Option name="use_numeric_log_levels">False</Option>
-          <Option name="verify_interfaces">True</Option>
+          <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id82932X21166" folder="Jan-kbu" host_OS="linux24" inactive="False" lastCompiled="1455321844" lastInstalled="1455321860" lastModified="1455321834" platform="iptables" version="" name="fastd3.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id82932X21166" folder="Jan-kbu" host_OS="linux24" inactive="False" lastCompiled="1461618437" lastInstalled="1461618444" lastModified="1461618426" platform="iptables" version="" name="fastd3.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id82936X21166" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <NATRule id="id101419X21166" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -6665,7 +5982,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <ObjectRef ref="id6189X11993"/>
             </Src>
             <Dst neg="False">
-              <ObjectRef ref="id101290X21166"/>
+              <ObjectRef ref="id44490X23067"/>
             </Dst>
             <Srv neg="False">
               <ServiceRef ref="id3F530CC8"/>
@@ -6751,10 +6068,9 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <ObjectRef ref="id101290X21166"/>
             </Dst>
             <Srv neg="False">
-              <ServiceRef ref="tcp-HTTP"/>
               <ServiceRef ref="id83116X21166"/>
               <ServiceRef ref="id15120X15962"/>
-              <ServiceRef ref="id451737X3999"/>
+              <ServiceRef ref="id25265X29245"/>
             </Srv>
             <Itf neg="False">
               <ObjectRef ref="id82940X21166"/>
@@ -6828,42 +6144,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <IntervalRef ref="sysid2"/>
             </When>
             <PolicyRuleOptions>
-              <Option name="classification">False</Option>
-              <Option name="classify_str"/>
-              <Option name="connlimit_above_not">False</Option>
-              <Option name="connlimit_masklen">0</Option>
-              <Option name="connlimit_value">0</Option>
-              <Option name="firewall_is_part_of_any_and_networks"/>
-              <Option name="hashlimit_burst">0</Option>
-              <Option name="hashlimit_dstlimit">False</Option>
-              <Option name="hashlimit_expire">0</Option>
-              <Option name="hashlimit_gcinterval">0</Option>
-              <Option name="hashlimit_max">0</Option>
-              <Option name="hashlimit_mode_dstip">False</Option>
-              <Option name="hashlimit_mode_dstport">False</Option>
-              <Option name="hashlimit_mode_srcip">False</Option>
-              <Option name="hashlimit_mode_srcport">False</Option>
-              <Option name="hashlimit_name"/>
-              <Option name="hashlimit_size">0</Option>
-              <Option name="hashlimit_suffix"/>
-              <Option name="hashlimit_value">0</Option>
-              <Option name="ipt_continue">False</Option>
-              <Option name="ipt_gw"/>
-              <Option name="ipt_iif"/>
-              <Option name="ipt_mark_connections">False</Option>
-              <Option name="ipt_oif"/>
-              <Option name="ipt_tee">False</Option>
-              <Option name="limit_burst">0</Option>
-              <Option name="limit_suffix"/>
-              <Option name="limit_value">0</Option>
-              <Option name="limit_value_not">False</Option>
-              <Option name="log_level"/>
-              <Option name="log_prefix"/>
-              <Option name="routing">False</Option>
-              <Option name="stateless">True</Option>
-              <Option name="tagging">False</Option>
-              <Option name="tagobject_id"/>
-              <Option name="ulog_nlgroup">1</Option>
+              <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
           <PolicyRule id="id82968X21166" disabled="False" group="" log="False" position="10" action="Accept" direction="Outbound" comment="">
@@ -6980,7 +6261,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="altAddress">fastd3.ffm.freifunk.net</Option>
           <Option name="bridging_fw">False</Option>
           <Option name="check_shading">True</Option>
-          <Option name="clamp_mss_to_mtu">False</Option>
+          <Option name="clamp_mss_to_mtu">True</Option>
           <Option name="clear_unknown_interfaces">False</Option>
           <Option name="cmdline"/>
           <Option name="compiler"/>
@@ -7015,7 +6296,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script">mkdir -p /etc/fw</Option>
+          <Option name="prolog_script"/>
           <Option name="scpArgs">-P 2211</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 2211</Option>
@@ -7029,13 +6310,11 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id6244X11180" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1455321884" lastInstalled="1455321889" lastModified="1455321876" platform="iptables" version="" name="fastd2.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id6244X11180" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1461827425" lastInstalled="1461827465" lastModified="1461968930" platform="iptables" version="" name="fastd2.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id6512X11180" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <NATRule id="id6514X11180" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
               <ObjectRef ref="id2038X20429"/>
-              <ObjectRef ref="id6189X11993"/>
-              <ObjectRef ref="id6213X11993"/>
             </OSrc>
             <ODst neg="False">
               <ObjectRef ref="sysid0"/>
@@ -7057,6 +6336,33 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
             </ItfInb>
             <ItfOutb neg="False">
               <ObjectRef ref="id6273X11180"/>
+            </ItfOutb>
+            <NATRuleOptions/>
+          </NATRule>
+          <NATRule id="id25338X29245" disabled="False" group="" position="1" action="Translate" comment="">
+            <OSrc neg="False">
+              <ObjectRef ref="id2038X20429"/>
+            </OSrc>
+            <ODst neg="False">
+              <ObjectRef ref="sysid0"/>
+            </ODst>
+            <OSrv neg="False">
+              <ServiceRef ref="sysid1"/>
+            </OSrv>
+            <TSrc neg="False">
+              <ObjectRef ref="id6252X11180"/>
+            </TSrc>
+            <TDst neg="False">
+              <ObjectRef ref="sysid0"/>
+            </TDst>
+            <TSrv neg="False">
+              <ServiceRef ref="sysid1"/>
+            </TSrv>
+            <ItfInb neg="False">
+              <ObjectRef ref="sysid0"/>
+            </ItfInb>
+            <ItfOutb neg="False">
+              <ObjectRef ref="id6252X11180"/>
             </ItfOutb>
             <NATRuleOptions/>
           </NATRule>
@@ -7089,6 +6395,8 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <ObjectRef ref="id6189X11993"/>
             </Src>
             <Dst neg="False">
+              <ObjectRef ref="id44490X23067"/>
+              <ObjectRef ref="id222744X20122"/>
               <ObjectRef ref="id6259X11180"/>
             </Dst>
             <Srv neg="False">
@@ -7187,7 +6495,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id6307X11180" disabled="False" group="" log="False" position="6" action="Accept" direction="Inbound" comment="">
+          <PolicyRule id="id6307X11180" disabled="False" group="" log="False" position="6" action="Accept" direction="Both" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -7216,10 +6524,9 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <ObjectRef ref="id6259X11180"/>
             </Dst>
             <Srv neg="False">
-              <ServiceRef ref="tcp-HTTP"/>
               <ServiceRef ref="id83116X21166"/>
               <ServiceRef ref="id15120X15962"/>
-              <ServiceRef ref="id451737X3999"/>
+              <ServiceRef ref="id25265X29245"/>
             </Srv>
             <Itf neg="False">
               <ObjectRef ref="id6252X11180"/>
@@ -7232,10 +6539,30 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id6367X11180" disabled="False" group="" log="False" position="8" action="Accept" direction="Outbound" comment="">
+          <PolicyRule id="id754202X29245" disabled="False" group="" log="False" position="8" action="Accept" direction="Both" comment="">
             <Src neg="False">
-              <ObjectRef ref="id6213X11993"/>
+              <ObjectRef ref="sysid0"/>
+            </Src>
+            <Dst neg="False">
+              <ObjectRef ref="id2685X75851"/>
+            </Dst>
+            <Srv neg="False">
+              <ServiceRef ref="sysid1"/>
+            </Srv>
+            <Itf neg="False">
+              <ObjectRef ref="sysid0"/>
+            </Itf>
+            <When neg="False">
+              <IntervalRef ref="sysid2"/>
+            </When>
+            <PolicyRuleOptions>
+              <Option name="stateless">False</Option>
+            </PolicyRuleOptions>
+          </PolicyRule>
+          <PolicyRule id="id6367X11180" disabled="False" group="" log="False" position="9" action="Accept" direction="Outbound" comment="">
+            <Src neg="False">
               <ObjectRef ref="id6189X11993"/>
+              <ObjectRef ref="id6213X11993"/>
             </Src>
             <Dst neg="False">
               <ObjectRef ref="id6189X11993"/>
@@ -7251,15 +6578,51 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <IntervalRef ref="sysid2"/>
             </When>
             <PolicyRuleOptions>
-              <Option name="stateless">False</Option>
+              <Option name="classification">False</Option>
+              <Option name="classify_str"/>
+              <Option name="connlimit_above_not">False</Option>
+              <Option name="connlimit_masklen">0</Option>
+              <Option name="connlimit_value">0</Option>
+              <Option name="firewall_is_part_of_any_and_networks"/>
+              <Option name="hashlimit_burst">0</Option>
+              <Option name="hashlimit_dstlimit">False</Option>
+              <Option name="hashlimit_expire">0</Option>
+              <Option name="hashlimit_gcinterval">0</Option>
+              <Option name="hashlimit_max">0</Option>
+              <Option name="hashlimit_mode_dstip">False</Option>
+              <Option name="hashlimit_mode_dstport">False</Option>
+              <Option name="hashlimit_mode_srcip">False</Option>
+              <Option name="hashlimit_mode_srcport">False</Option>
+              <Option name="hashlimit_name"/>
+              <Option name="hashlimit_size">0</Option>
+              <Option name="hashlimit_suffix"/>
+              <Option name="hashlimit_value">0</Option>
+              <Option name="ipt_continue">False</Option>
+              <Option name="ipt_gw"/>
+              <Option name="ipt_iif"/>
+              <Option name="ipt_mark_connections">False</Option>
+              <Option name="ipt_oif"/>
+              <Option name="ipt_tee">False</Option>
+              <Option name="limit_burst">0</Option>
+              <Option name="limit_suffix"/>
+              <Option name="limit_value">0</Option>
+              <Option name="limit_value_not">False</Option>
+              <Option name="log_level"/>
+              <Option name="log_prefix"/>
+              <Option name="routing">False</Option>
+              <Option name="stateless">True</Option>
+              <Option name="tagging">False</Option>
+              <Option name="tagobject_id"/>
+              <Option name="ulog_nlgroup">1</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id6397X11180" disabled="False" group="" log="False" position="9" action="Accept" direction="Outbound" comment="">
+          <PolicyRule id="id6397X11180" disabled="False" group="" log="False" position="10" action="Accept" direction="Outbound" comment="">
             <Src neg="False">
               <ObjectRef ref="id2038X20429"/>
             </Src>
             <Dst neg="False">
               <ObjectRef ref="id2038X20429"/>
+              <ObjectRef ref="id3DC75CE5"/>
             </Dst>
             <Srv neg="False">
               <ServiceRef ref="sysid1"/>
@@ -7271,14 +6634,49 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <IntervalRef ref="sysid2"/>
             </When>
             <PolicyRuleOptions>
-              <Option name="stateless">False</Option>
+              <Option name="classification">False</Option>
+              <Option name="classify_str"/>
+              <Option name="connlimit_above_not">False</Option>
+              <Option name="connlimit_masklen">0</Option>
+              <Option name="connlimit_value">0</Option>
+              <Option name="firewall_is_part_of_any_and_networks"/>
+              <Option name="hashlimit_burst">0</Option>
+              <Option name="hashlimit_dstlimit">False</Option>
+              <Option name="hashlimit_expire">0</Option>
+              <Option name="hashlimit_gcinterval">0</Option>
+              <Option name="hashlimit_max">0</Option>
+              <Option name="hashlimit_mode_dstip">False</Option>
+              <Option name="hashlimit_mode_dstport">False</Option>
+              <Option name="hashlimit_mode_srcip">False</Option>
+              <Option name="hashlimit_mode_srcport">False</Option>
+              <Option name="hashlimit_name"/>
+              <Option name="hashlimit_size">0</Option>
+              <Option name="hashlimit_suffix"/>
+              <Option name="hashlimit_value">0</Option>
+              <Option name="ipt_continue">False</Option>
+              <Option name="ipt_gw"/>
+              <Option name="ipt_iif"/>
+              <Option name="ipt_mark_connections">False</Option>
+              <Option name="ipt_oif"/>
+              <Option name="ipt_tee">False</Option>
+              <Option name="limit_burst">0</Option>
+              <Option name="limit_suffix"/>
+              <Option name="limit_value">0</Option>
+              <Option name="limit_value_not">False</Option>
+              <Option name="log_level"/>
+              <Option name="log_prefix"/>
+              <Option name="routing">False</Option>
+              <Option name="stateless">True</Option>
+              <Option name="tagging">False</Option>
+              <Option name="tagobject_id"/>
+              <Option name="ulog_nlgroup">1</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id6425X11180" disabled="False" group="" log="False" position="10" action="Accept" direction="Outbound" comment="">
+          <PolicyRule id="id6425X11180" disabled="False" group="" log="False" position="11" action="Accept" direction="Outbound" comment="">
             <Src neg="False">
               <ObjectRef ref="id2038X20429"/>
               <ObjectRef ref="id6189X11993"/>
-              <ObjectRef ref="id6213X11993"/>
+              <ObjectRef ref="id6273X11180"/>
             </Src>
             <Dst neg="False">
               <ObjectRef ref="sysid0"/>
@@ -7331,7 +6729,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="ulog_nlgroup">1</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id6455X11180" disabled="False" group="" log="False" position="11" action="Accept" direction="Outbound" comment="">
+          <PolicyRule id="id6455X11180" disabled="False" group="" log="False" position="12" action="Accept" direction="Outbound" comment="">
             <Src neg="False">
               <ObjectRef ref="id6252X11180"/>
             </Src>
@@ -7351,7 +6749,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id6483X11180" disabled="False" group="" log="False" position="12" action="Deny" direction="Both" comment="">
+          <PolicyRule id="id6483X11180" disabled="False" group="" log="True" position="13" action="Deny" direction="Both" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -7446,18 +6844,28 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="altAddress">fastd2.ffm.freifunk.net</Option>
           <Option name="bridging_fw">False</Option>
           <Option name="check_shading">True</Option>
-          <Option name="clamp_mss_to_mtu">False</Option>
+          <Option name="clamp_mss_to_mtu">True</Option>
           <Option name="clear_unknown_interfaces">False</Option>
           <Option name="cmdline"/>
           <Option name="compiler"/>
           <Option name="configure_bonding_interfaces">False</Option>
           <Option name="configure_bridge_interfaces">False</Option>
-          <Option name="configure_interfaces">True</Option>
+          <Option name="configure_interfaces">False</Option>
           <Option name="configure_vlan_interfaces">False</Option>
           <Option name="data_dir"/>
           <Option name="debug">False</Option>
           <Option name="drop_invalid">False</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart</Option>
+          <Option name="epilog_script">/etc/init.d/fail2ban restart
+
+/sbin/iptables -I FORWARD 1  -i  batbridge -m set --match-set exit dst -o eth0 -j ACCEPT
+#/sbin/ip6tables -I FORWARD 1  -i  batbridge -m set --match-set exit6 dst -o eth0 -j ACCEPT
+/sbin/iptables -I OUTPUT 1  -s 10.126.0.0/16 -m set --match-set exit dst -o eth0 -j ACCEPT
+#/sbin/ip6tables -I OUTPUT 1  -s fddd -m set --match-set exit6 dst -o eth0 -j ACCEPT
+
+/sbin/iptables -A PREROUTING -t mangle -m set --match-set exit dst -j MARK --set-mark 0x1
+#/sbin/ip6tables -A PREROUTING -t mangle -m set --match-set exit6 dst -j MARK --set-mark 0x1
+/sbin/ip rule add fwmark 0x1 lookup main
+</Option>
           <Option name="firewall_dir">/etc/fw</Option>
           <Option name="firewall_is_part_of_any_and_networks">True</Option>
           <Option name="flush_and_set_default_policy">True</Option>
@@ -7514,7 +6922,11 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script">mkdir -p /etc/fw</Option>
+          <Option name="prolog_script">/sbin/ipset create exit hash:net family inet hashsize 2048 maxelem 65536
+/sbin/ipset create exit-temp hash:net family inet hashsize 2048 maxelem 65536
+/sbin/ipset create exit6 hash:net family inet6 hashsize 2048 maxelem 65536
+/sbin/ipset create exit6-temp hash:net family inet6  hashsize 2048 maxelem 65536
+</Option>
           <Option name="scpArgs"/>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs"/>
@@ -7528,7 +6940,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id31012X619" folder="datafabrik" host_OS="linux24" inactive="True" lastCompiled="1455135267" lastInstalled="1426841453" lastModified="1434831211" platform="iptables" version="" name="oc.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id31012X619" folder="datafabrik" host_OS="linux24" inactive="True" lastCompiled="1434301002" lastInstalled="1426841453" lastModified="1434831211" platform="iptables" version="" name="oc.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id31342X619" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -7789,7 +7201,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id99783X20122" folder="uberspace" host_OS="linux24" lastCompiled="1455135266" lastInstalled="1450687705" lastModified="1450687014" platform="iptables" name="map.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id99783X20122" folder="uberspace" host_OS="linux24" lastCompiled="1434301001" lastInstalled="1434829989" lastModified="1434300869" platform="iptables" name="map.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id99787X20122" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -7896,7 +7308,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id99920X20122" disabled="False" group="" log="False" position="5" action="Deny" direction="Both" comment="">
+          <PolicyRule id="id99920X20122" disabled="False" group="" log="True" position="5" action="Deny" direction="Both" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -7993,7 +7405,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="log_invalid">False</Option>
           <Option name="log_ip_opt">False</Option>
           <Option name="log_level">info</Option>
-          <Option name="log_prefix">map-RULE %N -- %A </Option>
+          <Option name="log_prefix">RULE %N -- %A </Option>
           <Option name="log_tcp_opt">False</Option>
           <Option name="log_tcp_seq">False</Option>
           <Option name="loopback_interface">lo</Option>
@@ -8003,7 +7415,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script">mkdir -p /etc/fw</Option>
+          <Option name="prolog_script"/>
           <Option name="scpArgs">-P 22112</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 22112</Option>
@@ -8017,7 +7429,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id182809X20122" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1455135257" lastInstalled="1450687238" lastModified="1450686984" platform="iptables" version="" name="database.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id182809X20122" folder="uberspace" host_OS="linux24" inactive="True" lastCompiled="1434300991" lastInstalled="1434831116" lastModified="1461968926" platform="iptables" version="" name="database.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id183008X20122" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -8180,7 +7592,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id182979X20122" disabled="False" group="" log="False" position="6" action="Deny" direction="Both" comment="">
+          <PolicyRule id="id182979X20122" disabled="False" group="" log="True" position="6" action="Deny" direction="Both" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -8320,7 +7732,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script">mkdir -p /etc/fw</Option>
+          <Option name="prolog_script"/>
           <Option name="scpArgs">-P 22111</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 22111</Option>
@@ -8334,7 +7746,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id200719X20122" folder="datafabrik" host_OS="linux24" inactive="True" lastCompiled="1455135271" lastInstalled="1434830389" lastModified="1448559081" platform="iptables" version="" name="register.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id200719X20122" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1434301007" lastInstalled="1434830389" lastModified="1434300932" platform="iptables" version="" name="register.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id200955X20122" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -8577,7 +7989,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script">mkdir -p /etc/fw</Option>
+          <Option name="prolog_script"/>
           <Option name="scpArgs">-P 2207</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 2207</Option>
@@ -8591,7 +8003,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id201164X20122" folder="datafabrik" host_OS="linux24" inactive="True" lastCompiled="1455135274" lastInstalled="1437143024" lastModified="1448559073" platform="iptables" version="" name="yacy.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id201164X20122" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1437142975" lastInstalled="1437143024" lastModified="1437134393" platform="iptables" version="" name="yacy.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id201426X20122" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <NATRule id="id12136X19669" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -9063,7 +8475,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script">mkdir -p /etc/fw</Option>
+          <Option name="prolog_script"/>
           <Option name="scpArgs"/>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs"/>
@@ -9077,7 +8489,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id222731X20122" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1455135260" lastInstalled="1450687423" lastModified="1450686991" platform="iptables" version="" name="dns.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id222731X20122" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1442180128" lastInstalled="1442180153" lastModified="1442180122" platform="iptables" version="" name="dns.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id222930X20122" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -9204,7 +8616,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id222901X20122" disabled="False" group="" log="False" position="6" action="Deny" direction="Both" comment="">
+          <PolicyRule id="id222901X20122" disabled="False" group="" log="True" position="6" action="Deny" direction="Both" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -9311,7 +8723,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script">mkdir -p /etc/fw</Option>
+          <Option name="prolog_script"/>
           <Option name="scpArgs">-P 22119</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 22119</Option>
@@ -9325,7 +8737,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id12502X7246" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1455135272" lastInstalled="1454161505" lastModified="1454157562" platform="iptables" version="" name="seafile.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id12502X7246" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1436993591" lastInstalled="1436993607" lastModified="1436993566" platform="iptables" version="" name="seafile.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id12738X7246" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -9545,7 +8957,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id12709X7246" disabled="False" group="" log="False" position="7" action="Deny" direction="Outbound" comment="">
+          <PolicyRule id="id12709X7246" disabled="False" group="" log="True" position="7" action="Deny" direction="Outbound" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -9659,7 +9071,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script">mkdir -p /etc/fw</Option>
+          <Option name="prolog_script"/>
           <Option name="scpArgs">-P 22122</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 22122</Option>
@@ -9673,7 +9085,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id40923X7246" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1455135269" lastInstalled="1454161492" lastModified="1454157546" platform="iptables" version="" name="radicale.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id40923X7246" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1436822583" lastInstalled="1436822590" lastModified="1436822578" platform="iptables" version="" name="radicale.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id41159X7246" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -9799,7 +9211,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id41130X7246" disabled="False" group="" log="False" position="6" action="Deny" direction="Outbound" comment="">
+          <PolicyRule id="id41130X7246" disabled="False" group="" log="True" position="6" action="Deny" direction="Outbound" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -9913,7 +9325,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script">mkdir -p /etc/fw</Option>
+          <Option name="prolog_script"/>
           <Option name="scpArgs">-P 22123</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 22123</Option>
@@ -9927,7 +9339,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id41654X7246" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1455216755" lastInstalled="1454167430" lastModified="1455216607" platform="iptables" version="" name="proxy2.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id41654X7246" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1446238577" lastInstalled="1446681449" lastModified="1445474639" platform="iptables" version="" name="proxy2.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id41885X7246" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -9995,7 +9407,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           </PolicyRule>
           <PolicyRule id="id188716X31556" disabled="True" group="" log="False" position="3" action="Accept" direction="Both" comment="">
             <Src neg="False">
-              <ObjectRef ref="id6189X11993"/>
+              <ObjectRef ref="id72404X27175"/>
             </Src>
             <Dst neg="False">
               <ObjectRef ref="sysid0"/>
@@ -10063,7 +9475,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
             </Src>
             <Dst neg="False">
               <ObjectRef ref="id2038X20429"/>
-              <ObjectRef ref="id6189X11993"/>
+              <ObjectRef ref="id72404X27175"/>
             </Dst>
             <Srv neg="False">
               <ServiceRef ref="sysid1"/>
@@ -10168,7 +9580,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="ulog_nlgroup">1</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id41856X7246" disabled="False" group="" log="False" position="8" action="Deny" direction="Outbound" comment="">
+          <PolicyRule id="id41856X7246" disabled="False" group="" log="True" position="8" action="Deny" direction="Outbound" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -10314,7 +9726,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script">mkdir -p /etc/fw</Option>
+          <Option name="prolog_script"/>
           <Option name="scpArgs">-P 22124</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 22124</Option>
@@ -10328,7 +9740,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id14061X29949" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1455135267" lastInstalled="1436822944" lastModified="1454157535" platform="iptables" version="" name="otrs.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id14061X29949" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1436822933" lastInstalled="1436822944" lastModified="1436822928" platform="iptables" version="" name="otrs.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id14292X29949" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -10456,7 +9868,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id14263X29949" disabled="False" group="" log="False" position="6" action="Deny" direction="Outbound" comment="">
+          <PolicyRule id="id14263X29949" disabled="False" group="" log="True" position="6" action="Deny" direction="Outbound" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -10570,7 +9982,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script">mkdir -p /etc/fw</Option>
+          <Option name="prolog_script"/>
           <Option name="scpArgs">-P 22125</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 22125</Option>
@@ -10584,7 +9996,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id44323X23067" folder="igor" host_OS="linux24" inactive="False" lastCompiled="1459645084" lastInstalled="1457563657" lastModified="1459644723" platform="iptables" version="1.4.1.1" name="fastd1.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id44323X23067" folder="igor" host_OS="linux24" lastCompiled="1461617252" lastInstalled="1461617258" lastModified="1463401728" platform="iptables" name="fastd1.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id44327X23067" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="False" top_rule_set="True">
           <NATRule id="id38254X30153" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -10613,7 +10025,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
             </ItfOutb>
             <NATRuleOptions/>
           </NATRule>
-          <NATRule id="id163385X4186" disabled="False" group="" position="1" action="Translate" comment="">
+          <NATRule id="id45635X23067" disabled="False" group="" position="1" action="Translate" comment="">
             <OSrc neg="False">
               <ObjectRef ref="id2038X20429"/>
               <ObjectRef ref="id6189X11993"/>
@@ -10637,11 +10049,15 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <ObjectRef ref="sysid0"/>
             </ItfInb>
             <ItfOutb neg="False">
-              <ObjectRef ref="sysid0"/>
+              <ObjectRef ref="id44466X23067"/>
             </ItfOutb>
-            <NATRuleOptions/>
+            <NATRuleOptions>
+              <Option name="ipt_nat_persistent">False</Option>
+              <Option name="ipt_nat_random">False</Option>
+              <Option name="ipt_use_snat_instead_of_masq">False</Option>
+            </NATRuleOptions>
           </NATRule>
-          <NATRule id="id45635X23067" disabled="False" group="" position="2" action="Translate" comment="">
+          <NATRule id="id322057X29245" disabled="False" group="" position="2" action="Translate" comment="">
             <OSrc neg="False">
               <ObjectRef ref="id2038X20429"/>
               <ObjectRef ref="id6189X11993"/>
@@ -10665,9 +10081,13 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <ObjectRef ref="sysid0"/>
             </ItfInb>
             <ItfOutb neg="False">
-              <ObjectRef ref="sysid0"/>
+              <ObjectRef ref="id44372X23067"/>
             </ItfOutb>
-            <NATRuleOptions/>
+            <NATRuleOptions>
+              <Option name="ipt_nat_persistent">False</Option>
+              <Option name="ipt_nat_random">False</Option>
+              <Option name="ipt_use_snat_instead_of_masq">False</Option>
+            </NATRuleOptions>
           </NATRule>
           <RuleSetOptions/>
         </NAT>
@@ -10818,7 +10238,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id44898X23067" disabled="False" group="" log="False" position="7" action="Accept" direction="Inbound" comment="">
+          <PolicyRule id="id44898X23067" disabled="False" group="" log="False" position="7" action="Accept" direction="Both" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -10844,15 +10264,13 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
             </Src>
             <Dst neg="False">
               <ObjectRef ref="id44372X23067"/>
-              <ObjectRef ref="id44490X23067"/>
             </Dst>
             <Srv neg="False">
               <ServiceRef ref="id83116X21166"/>
               <ServiceRef ref="id15120X15962"/>
-              <ServiceRef ref="id451737X3999"/>
+              <ServiceRef ref="id25265X29245"/>
             </Srv>
             <Itf neg="False">
-              <ObjectRef ref="id44490X23067"/>
               <ObjectRef ref="id44372X23067"/>
             </Itf>
             <When neg="False">
@@ -10864,12 +10282,10 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           </PolicyRule>
           <PolicyRule id="id44778X23067" disabled="False" group="" log="False" position="9" action="Accept" direction="Outbound" comment="">
             <Src neg="False">
-              <ObjectRef ref="id6213X11993"/>
               <ObjectRef ref="id6189X11993"/>
             </Src>
             <Dst neg="False">
               <ObjectRef ref="id6189X11993"/>
-              <ObjectRef ref="id6213X11993"/>
             </Dst>
             <Srv neg="False">
               <ServiceRef ref="sysid1"/>
@@ -10881,7 +10297,42 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <IntervalRef ref="sysid2"/>
             </When>
             <PolicyRuleOptions>
-              <Option name="stateless">False</Option>
+              <Option name="classification">False</Option>
+              <Option name="classify_str"/>
+              <Option name="connlimit_above_not">False</Option>
+              <Option name="connlimit_masklen">0</Option>
+              <Option name="connlimit_value">0</Option>
+              <Option name="firewall_is_part_of_any_and_networks"/>
+              <Option name="hashlimit_burst">0</Option>
+              <Option name="hashlimit_dstlimit">False</Option>
+              <Option name="hashlimit_expire">0</Option>
+              <Option name="hashlimit_gcinterval">0</Option>
+              <Option name="hashlimit_max">0</Option>
+              <Option name="hashlimit_mode_dstip">False</Option>
+              <Option name="hashlimit_mode_dstport">False</Option>
+              <Option name="hashlimit_mode_srcip">False</Option>
+              <Option name="hashlimit_mode_srcport">False</Option>
+              <Option name="hashlimit_name"/>
+              <Option name="hashlimit_size">0</Option>
+              <Option name="hashlimit_suffix"/>
+              <Option name="hashlimit_value">0</Option>
+              <Option name="ipt_continue">False</Option>
+              <Option name="ipt_gw"/>
+              <Option name="ipt_iif"/>
+              <Option name="ipt_mark_connections">False</Option>
+              <Option name="ipt_oif"/>
+              <Option name="ipt_tee">False</Option>
+              <Option name="limit_burst">0</Option>
+              <Option name="limit_suffix"/>
+              <Option name="limit_value">0</Option>
+              <Option name="limit_value_not">False</Option>
+              <Option name="log_level"/>
+              <Option name="log_prefix"/>
+              <Option name="routing">False</Option>
+              <Option name="stateless">True</Option>
+              <Option name="tagging">False</Option>
+              <Option name="tagobject_id"/>
+              <Option name="ulog_nlgroup">1</Option>
             </PolicyRuleOptions>
           </PolicyRule>
           <PolicyRule id="id44720X23067" disabled="False" group="" log="False" position="10" action="Accept" direction="Outbound" comment="">
@@ -10901,13 +10352,49 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <IntervalRef ref="sysid2"/>
             </When>
             <PolicyRuleOptions>
-              <Option name="stateless">False</Option>
+              <Option name="classification">False</Option>
+              <Option name="classify_str"/>
+              <Option name="connlimit_above_not">False</Option>
+              <Option name="connlimit_masklen">0</Option>
+              <Option name="connlimit_value">0</Option>
+              <Option name="firewall_is_part_of_any_and_networks"/>
+              <Option name="hashlimit_burst">0</Option>
+              <Option name="hashlimit_dstlimit">False</Option>
+              <Option name="hashlimit_expire">0</Option>
+              <Option name="hashlimit_gcinterval">0</Option>
+              <Option name="hashlimit_max">0</Option>
+              <Option name="hashlimit_mode_dstip">False</Option>
+              <Option name="hashlimit_mode_dstport">False</Option>
+              <Option name="hashlimit_mode_srcip">False</Option>
+              <Option name="hashlimit_mode_srcport">False</Option>
+              <Option name="hashlimit_name"/>
+              <Option name="hashlimit_size">0</Option>
+              <Option name="hashlimit_suffix"/>
+              <Option name="hashlimit_value">0</Option>
+              <Option name="ipt_continue">False</Option>
+              <Option name="ipt_gw"/>
+              <Option name="ipt_iif"/>
+              <Option name="ipt_mark_connections">False</Option>
+              <Option name="ipt_oif"/>
+              <Option name="ipt_tee">False</Option>
+              <Option name="limit_burst">0</Option>
+              <Option name="limit_suffix"/>
+              <Option name="limit_value">0</Option>
+              <Option name="limit_value_not">False</Option>
+              <Option name="log_level"/>
+              <Option name="log_prefix"/>
+              <Option name="routing">False</Option>
+              <Option name="stateless">True</Option>
+              <Option name="tagging">False</Option>
+              <Option name="tagobject_id"/>
+              <Option name="ulog_nlgroup">1</Option>
             </PolicyRuleOptions>
           </PolicyRule>
           <PolicyRule id="id44662X23067" disabled="False" group="" log="False" position="11" action="Accept" direction="Outbound" comment="">
             <Src neg="False">
               <ObjectRef ref="id2038X20429"/>
               <ObjectRef ref="id6189X11993"/>
+              <ObjectRef ref="id44466X23067"/>
             </Src>
             <Dst neg="False">
               <ObjectRef ref="sysid0"/>
@@ -10980,7 +10467,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id44548X23067" disabled="False" group="" log="True" position="13" action="Deny" direction="Both" comment="">
+          <PolicyRule id="id44548X23067" disabled="False" group="" log="False" position="13" action="Deny" direction="Both" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -11062,7 +10549,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="altAddress">fastd1.ffm.freifunk.net</Option>
           <Option name="bridging_fw">False</Option>
           <Option name="check_shading">True</Option>
-          <Option name="clamp_mss_to_mtu">False</Option>
+          <Option name="clamp_mss_to_mtu">True</Option>
           <Option name="clear_unknown_interfaces">False</Option>
           <Option name="cmdline"/>
           <Option name="compiler"/>
@@ -11075,13 +10562,14 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="epilog_script">/etc/init.d/fail2ban restart
 
 /sbin/iptables -I FORWARD 1  -i  batbridge -m set --match-set exit dst -o eth0 -j ACCEPT
-/sbin/ip6tables -I FORWARD 1  -i  batbridge -m set --match-set exit6 dst -o eth0 -j ACCEPT
+#/sbin/ip6tables -I FORWARD 1  -i  batbridge -m set --match-set exit6 dst -o eth0 -j ACCEPT
 /sbin/iptables -I OUTPUT 1  -s 10.126.0.0/16 -m set --match-set exit dst -o eth0 -j ACCEPT
 #/sbin/ip6tables -I OUTPUT 1  -s fddd -m set --match-set exit6 dst -o eth0 -j ACCEPT
 
-/sbin/iptables -A PREROUTING -t mangle -m set --match-set exit dst -j MARK --set-mark 0x1 
-/sbin/ip6tables -A PREROUTING -t mangle -m set --match-set exit6 dst -j MARK --set-mark 0x1 
-/sbin/ip rule add fwmark 0x1 lookup main</Option>
+/sbin/iptables -A PREROUTING -t mangle -m set --match-set exit dst -j MARK --set-mark 0x1
+#/sbin/ip6tables -A PREROUTING -t mangle -m set --match-set exit6 dst -j MARK --set-mark 0x1
+/sbin/ip rule |grep -q  "fwmark 0x1 lookup main" || /sbin/ip rule add fwmark 0x1 lookup main
+</Option>
           <Option name="firewall_dir">/etc/fw</Option>
           <Option name="firewall_is_part_of_any_and_networks">True</Option>
           <Option name="flush_and_set_default_policy">True</Option>
@@ -11096,7 +10584,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="log_invalid">False</Option>
           <Option name="log_ip_opt">False</Option>
           <Option name="log_level">info</Option>
-          <Option name="log_prefix">fastd1 RULE %N -- %A </Option>
+          <Option name="log_prefix">RULE %N -- %A </Option>
           <Option name="log_tcp_opt">False</Option>
           <Option name="log_tcp_seq">False</Option>
           <Option name="loopback_interface">lo</Option>
@@ -11107,15 +10595,14 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
           <Option name="prolog_script">mkdir -p /etc/fw
-/sbin/ipset create exit hash:net
-/sbin/ipset create exit-temp hash:net
-/sbin/ipset create exit6 hash:net family inet6
-/sbin/ipset create exit6-temp hash:net family inet6
-
+/sbin/ipset create exit hash:net family inet hashsize 2048 maxelem 65536 -exist
+/sbin/ipset create exit-temp hash:net family inet hashsize 2048 maxelem 65536 -exist
+/sbin/ipset create exit6 hash:net family inet6 hashsize 2048 maxelem 65536 -exist
+/sbin/ipset create exit6-temp hash:net family inet6  hashsize 2048 maxelem 65536 -exist
 </Option>
-          <Option name="scpArgs">-P 22125</Option>
+          <Option name="scpArgs"/>
           <Option name="script_name_on_firewall"/>
-          <Option name="sshArgs">-p 22125</Option>
+          <Option name="sshArgs"/>
           <Option name="ulog_cprange">0</Option>
           <Option name="ulog_nlgroup">1</Option>
           <Option name="ulog_qthreshold">1</Option>
@@ -11126,7 +10613,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id23806X15949" folder="Magnus" host_OS="linux24" lastCompiled="1455135256" lastInstalled="1450687079" lastModified="1448558779" platform="iptables" name="bacula.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id23806X15949" folder="Magnus" host_OS="linux24" lastCompiled="1437119831" lastInstalled="1437119856" lastModified="1437119824" platform="iptables" name="bacula.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id23810X15949" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -11349,7 +10836,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script">mkdir -p /etc/fw</Option>
+          <Option name="prolog_script"/>
           <Option name="scpArgs"/>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs"/>
@@ -11363,7 +10850,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id24104X28041" folder="darko" host_OS="linux24" lastCompiled="1455135265" lastInstalled="1450687615" lastModified="1448559096" platform="iptables" name="icinga.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id24104X28041" folder="darko" host_OS="linux24" lastCompiled="1437580872" lastInstalled="1437580908" lastModified="1437580859" platform="iptables" name="icinga.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id24108X28041" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -11643,7 +11130,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script">mkdir -p /etc/fw</Option>
+          <Option name="prolog_script"/>
           <Option name="scpArgs">-P 2022</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 2022</Option>
@@ -11657,7 +11144,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id25280X32056" folder="Christof" host_OS="linux24" lastCompiled="1455135273" lastInstalled="0" lastModified="1448559110" platform="iptables" name="testbot.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id25280X32056" folder="Christof" host_OS="linux24" lastCompiled="1434301010" lastInstalled="0" lastModified="1434300978" platform="iptables" name="testbot.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id25284X32056" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -11832,7 +11319,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script">mkdir -p /etc/fw</Option>
+          <Option name="prolog_script"/>
           <Option name="scpArgs"/>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs"/>
@@ -11846,7 +11333,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id17976X10901" folder="Christof" host_OS="linux24" inactive="False" lastCompiled="1455216756" lastInstalled="1433804576" lastModified="1455216534" platform="iptables" version="" name="testfastd.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id17976X10901" folder="Christof" host_OS="linux24" inactive="False" lastCompiled="1461828711" lastInstalled="1433804576" lastModified="1459280948" platform="iptables" version="" name="testfastd.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id18331X10901" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="False" top_rule_set="True">
           <NATRule id="id18333X10901" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -12231,7 +11718,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script">mkdir -p /etc/fw</Option>
+          <Option name="prolog_script"/>
           <Option name="scpArgs"/>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs"/>
@@ -12245,7 +11732,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id18416X21003" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1455135257" lastInstalled="1454157602" lastModified="1454157521" platform="iptables" version="" name="bounce.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id18416X21003" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1437117114" lastInstalled="1437117196" lastModified="1437117106" platform="iptables" version="" name="bounce.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id18647X21003" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
@@ -12374,7 +11861,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id18618X21003" disabled="False" group="" log="False" position="6" action="Deny" direction="Outbound" comment="">
+          <PolicyRule id="id18618X21003" disabled="False" group="" log="True" position="6" action="Deny" direction="Outbound" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -12489,7 +11976,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script">mkdir -p /etc/fw</Option>
+          <Option name="prolog_script"/>
           <Option name="scpArgs">-P 22121</Option>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs">-p 22121</Option>
@@ -12503,13 +11990,12 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id32639X29431" folder="Elmar" host_OS="linux24" inactive="False" lastCompiled="1455232751" lastInstalled="1455232756" lastModified="1455232734" platform="iptables" version="" name="fastd4.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id32639X29431" folder="Elmar" host_OS="linux24" inactive="False" lastCompiled="1463332619" lastInstalled="1463332625" lastModified="1463332586" platform="iptables" version="" name="fastd4.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id33030X29431" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <NATRule id="id33032X29431" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
               <ObjectRef ref="id2038X20429"/>
               <ObjectRef ref="id6189X11993"/>
-              <ObjectRef ref="id6213X11993"/>
             </OSrc>
             <ODst neg="False">
               <ObjectRef ref="sysid0"/>
@@ -12531,6 +12017,33 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
             </ItfInb>
             <ItfOutb neg="False">
               <ObjectRef ref="id32670X29431"/>
+            </ItfOutb>
+            <NATRuleOptions/>
+          </NATRule>
+          <NATRule id="id42545X29245" disabled="False" group="" position="1" action="Translate" comment="">
+            <OSrc neg="False">
+              <ObjectRef ref="id2038X20429"/>
+            </OSrc>
+            <ODst neg="False">
+              <ObjectRef ref="sysid0"/>
+            </ODst>
+            <OSrv neg="False">
+              <ServiceRef ref="sysid1"/>
+            </OSrv>
+            <TSrc neg="False">
+              <ObjectRef ref="id32647X29431"/>
+            </TSrc>
+            <TDst neg="False">
+              <ObjectRef ref="sysid0"/>
+            </TDst>
+            <TSrv neg="False">
+              <ServiceRef ref="sysid1"/>
+            </TSrv>
+            <ItfInb neg="False">
+              <ObjectRef ref="sysid0"/>
+            </ItfInb>
+            <ItfOutb neg="False">
+              <ObjectRef ref="id32647X29431"/>
             </ItfOutb>
             <NATRuleOptions/>
           </NATRule>
@@ -12727,16 +12240,33 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
             </Src>
             <Dst neg="False">
               <ObjectRef ref="id32647X29431"/>
-              <ObjectRef ref="id32656X29431"/>
             </Dst>
             <Srv neg="False">
-              <ServiceRef ref="tcp-HTTP"/>
               <ServiceRef ref="id83116X21166"/>
               <ServiceRef ref="id15120X15962"/>
-              <ServiceRef ref="id451737X3999"/>
+              <ServiceRef ref="id25265X29245"/>
             </Srv>
             <Itf neg="False">
               <ObjectRef ref="id32647X29431"/>
+            </Itf>
+            <When neg="False">
+              <IntervalRef ref="sysid2"/>
+            </When>
+            <PolicyRuleOptions>
+              <Option name="stateless">False</Option>
+            </PolicyRuleOptions>
+          </PolicyRule>
+          <PolicyRule id="id486600X29245" disabled="False" group="" log="False" position="10" action="Accept" direction="Both" comment="">
+            <Src neg="False">
+              <ObjectRef ref="sysid0"/>
+            </Src>
+            <Dst neg="False">
+              <ObjectRef ref="id2685X75851"/>
+            </Dst>
+            <Srv neg="False">
+              <ServiceRef ref="sysid1"/>
+            </Srv>
+            <Itf neg="False">
               <ObjectRef ref="id32656X29431"/>
             </Itf>
             <When neg="False">
@@ -12746,9 +12276,28 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id32885X29431" disabled="False" group="" log="False" position="10" action="Accept" direction="Outbound" comment="">
+          <PolicyRule id="id638065X29245" disabled="False" group="" log="False" position="11" action="Accept" direction="Outbound" comment="">
             <Src neg="False">
               <ObjectRef ref="id6213X11993"/>
+            </Src>
+            <Dst neg="False">
+              <ObjectRef ref="sysid0"/>
+            </Dst>
+            <Srv neg="False">
+              <ServiceRef ref="sysid1"/>
+            </Srv>
+            <Itf neg="False">
+              <ObjectRef ref="id32656X29431"/>
+            </Itf>
+            <When neg="False">
+              <IntervalRef ref="sysid2"/>
+            </When>
+            <PolicyRuleOptions>
+              <Option name="stateless">False</Option>
+            </PolicyRuleOptions>
+          </PolicyRule>
+          <PolicyRule id="id32885X29431" disabled="False" group="" log="False" position="12" action="Accept" direction="Outbound" comment="">
+            <Src neg="False">
               <ObjectRef ref="id6189X11993"/>
             </Src>
             <Dst neg="False">
@@ -12765,15 +12314,51 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <IntervalRef ref="sysid2"/>
             </When>
             <PolicyRuleOptions>
+              <Option name="classification">False</Option>
+              <Option name="classify_str"/>
+              <Option name="connlimit_above_not">False</Option>
+              <Option name="connlimit_masklen">0</Option>
+              <Option name="connlimit_value">0</Option>
+              <Option name="firewall_is_part_of_any_and_networks"/>
+              <Option name="hashlimit_burst">0</Option>
+              <Option name="hashlimit_dstlimit">False</Option>
+              <Option name="hashlimit_expire">0</Option>
+              <Option name="hashlimit_gcinterval">0</Option>
+              <Option name="hashlimit_max">0</Option>
+              <Option name="hashlimit_mode_dstip">False</Option>
+              <Option name="hashlimit_mode_dstport">False</Option>
+              <Option name="hashlimit_mode_srcip">False</Option>
+              <Option name="hashlimit_mode_srcport">False</Option>
+              <Option name="hashlimit_name"/>
+              <Option name="hashlimit_size">0</Option>
+              <Option name="hashlimit_suffix"/>
+              <Option name="hashlimit_value">0</Option>
+              <Option name="ipt_continue">False</Option>
+              <Option name="ipt_gw"/>
+              <Option name="ipt_iif"/>
+              <Option name="ipt_mark_connections">False</Option>
+              <Option name="ipt_oif"/>
+              <Option name="ipt_tee">False</Option>
+              <Option name="limit_burst">0</Option>
+              <Option name="limit_suffix"/>
+              <Option name="limit_value">0</Option>
+              <Option name="limit_value_not">False</Option>
+              <Option name="log_level"/>
+              <Option name="log_prefix"/>
+              <Option name="routing">False</Option>
               <Option name="stateless">False</Option>
+              <Option name="tagging">False</Option>
+              <Option name="tagobject_id"/>
+              <Option name="ulog_nlgroup">1</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id32915X29431" disabled="False" group="" log="False" position="11" action="Accept" direction="Outbound" comment="">
+          <PolicyRule id="id32915X29431" disabled="False" group="" log="False" position="13" action="Accept" direction="Outbound" comment="">
             <Src neg="False">
               <ObjectRef ref="id2038X20429"/>
             </Src>
             <Dst neg="False">
               <ObjectRef ref="id2038X20429"/>
+              <ObjectRef ref="id3DC75CE5"/>
             </Dst>
             <Srv neg="False">
               <ServiceRef ref="sysid1"/>
@@ -12785,15 +12370,68 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <IntervalRef ref="sysid2"/>
             </When>
             <PolicyRuleOptions>
-              <Option name="stateless">False</Option>
+              <Option name="classification">False</Option>
+              <Option name="classify_str"/>
+              <Option name="connlimit_above_not">False</Option>
+              <Option name="connlimit_masklen">0</Option>
+              <Option name="connlimit_value">0</Option>
+              <Option name="firewall_is_part_of_any_and_networks"/>
+              <Option name="hashlimit_burst">0</Option>
+              <Option name="hashlimit_dstlimit">False</Option>
+              <Option name="hashlimit_expire">0</Option>
+              <Option name="hashlimit_gcinterval">0</Option>
+              <Option name="hashlimit_max">0</Option>
+              <Option name="hashlimit_mode_dstip">False</Option>
+              <Option name="hashlimit_mode_dstport">False</Option>
+              <Option name="hashlimit_mode_srcip">False</Option>
+              <Option name="hashlimit_mode_srcport">False</Option>
+              <Option name="hashlimit_name"/>
+              <Option name="hashlimit_size">0</Option>
+              <Option name="hashlimit_suffix"/>
+              <Option name="hashlimit_value">0</Option>
+              <Option name="ipt_continue">False</Option>
+              <Option name="ipt_gw"/>
+              <Option name="ipt_iif"/>
+              <Option name="ipt_mark_connections">False</Option>
+              <Option name="ipt_oif"/>
+              <Option name="ipt_tee">False</Option>
+              <Option name="limit_burst">0</Option>
+              <Option name="limit_suffix"/>
+              <Option name="limit_value">0</Option>
+              <Option name="limit_value_not">False</Option>
+              <Option name="log_level"/>
+              <Option name="log_prefix"/>
+              <Option name="routing">False</Option>
+              <Option name="stateless">True</Option>
+              <Option name="tagging">False</Option>
+              <Option name="tagobject_id"/>
+              <Option name="ulog_nlgroup">1</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id32943X29431" disabled="False" group="" log="False" position="12" action="Accept" direction="Outbound" comment="">
+          <PolicyRule id="id272579X29245" disabled="False" group="" log="False" position="14" action="Accept" direction="Outbound" comment="">
             <Src neg="False">
-              <ObjectRef ref="id2038X20429"/>
-              <ObjectRef ref="id6189X11993"/>
-              <ObjectRef ref="id6213X11993"/>
               <ObjectRef ref="id32670X29431"/>
+            </Src>
+            <Dst neg="False">
+              <ObjectRef ref="sysid0"/>
+            </Dst>
+            <Srv neg="False">
+              <ServiceRef ref="sysid1"/>
+            </Srv>
+            <Itf neg="False">
+              <ObjectRef ref="id32670X29431"/>
+            </Itf>
+            <When neg="False">
+              <IntervalRef ref="sysid2"/>
+            </When>
+            <PolicyRuleOptions>
+              <Option name="stateless">False</Option>
+            </PolicyRuleOptions>
+          </PolicyRule>
+          <PolicyRule id="id32943X29431" disabled="False" group="" log="False" position="15" action="Accept" direction="Outbound" comment="">
+            <Src neg="False">
+              <ObjectRef ref="id2038X20429"/>
+              <ObjectRef ref="id6189X11993"/>
             </Src>
             <Dst neg="False">
               <ObjectRef ref="sysid0"/>
@@ -12846,7 +12484,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="ulog_nlgroup">1</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id32973X29431" disabled="False" group="" log="False" position="13" action="Accept" direction="Outbound" comment="">
+          <PolicyRule id="id32973X29431" disabled="False" group="" log="False" position="16" action="Accept" direction="Outbound" comment="">
             <Src neg="False">
               <ObjectRef ref="id32647X29431"/>
             </Src>
@@ -12866,7 +12504,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id33001X29431" disabled="False" group="" log="False" position="14" action="Deny" direction="Both" comment="">
+          <PolicyRule id="id33001X29431" disabled="False" group="" log="False" position="17" action="Deny" direction="Both" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -12906,7 +12544,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <RuleSetOptions/>
         </Routing>
         <Interface id="id32647X29431" dedicated_failover="False" dyn="False" label="outside" security_level="0" unnum="False" unprotected="False" name="eth0" comment="" ro="False">
-          <IPv4 id="id32652X29431" name="fastd4.ffm.freifunk.net:eth0:ip" comment="" ro="False" address="136.243.216.104" netmask="255.255.255.240"/>
+          <IPv4 id="id32652X29431" name="fastd4.ffm.freifunk.net:eth0:ip" comment="" ro="False" address="138.201.45.136" netmask="255.255.255.240"/>
           <IPv6 id="id32653X29431" name="fastd4.ffm.freifunk.net:eth0:ip6" comment="" ro="False" address="fe80::216:3eff:fe97:8e62" netmask="64"/>
           <IPv6 id="id32654X29431" name="fastd4.ffm.freifunk.net:eth0:ip6-1" comment="" ro="False" address="2a01:4f8:212:657::68" netmask="64"/>
           <InterfaceOptions/>
@@ -12967,7 +12605,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="altAddress">fastd4.ffm.freifunk.net</Option>
           <Option name="bridging_fw">False</Option>
           <Option name="check_shading">True</Option>
-          <Option name="clamp_mss_to_mtu">False</Option>
+          <Option name="clamp_mss_to_mtu">True</Option>
           <Option name="clear_unknown_interfaces">False</Option>
           <Option name="cmdline"/>
           <Option name="compiler"/>
@@ -12978,7 +12616,19 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="data_dir"/>
           <Option name="debug">False</Option>
           <Option name="drop_invalid">False</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart</Option>
+          <Option name="epilog_script">/etc/init.d/fail2ban restart
+
+/etc/init.d/fail2ban restart
+
+/sbin/iptables -I FORWARD 2 -i  batbridge -m set --match-set exit dst -o eth0 -j ACCEPT
+#/sbin/ip6tables -I FORWARD 2  -i  batbridge -m set --match-set exit6 dst -o eth0 -j ACCEPT
+/sbin/iptables -I OUTPUT 2 -s 10.126.0.0/16 -m set --match-set exit dst -o eth0 -j ACCEPT
+#/sbin/ip6tables -I OUTPUT 2 -s fddd -m set --match-set exit6 dst -o eth0 -j ACCEPT
+
+/sbin/iptables -A PREROUTING -t mangle -m set --match-set exit dst -j MARK --set-mark 0x1
+#/sbin/ip6tables -A PREROUTING -t mangle -m set --match-set exit6 dst -j MARK --set-mark 0x1
+/sbin/ip rule add fwmark 0x1 lookup main
+</Option>
           <Option name="firewall_dir">/etc/fw</Option>
           <Option name="firewall_is_part_of_any_and_networks">True</Option>
           <Option name="flush_and_set_default_policy">True</Option>
@@ -13035,7 +12685,13 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script">mkdir -p /etc/fw</Option>
+          <Option name="prolog_script">mkdir -p /etc/fw
+/sbin/ipset create exit hash:net family inet hashsize 2048 maxelem 65536
+/sbin/ipset create exit-temp hash:net family inet hashsize 2048 maxelem 65536
+/sbin/ipset create exit6 hash:net family inet6 hashsize 2048 maxelem 65536
+/sbin/ipset create exit6-temp hash:net family inet6  hashsize 2048 maxelem 65536
+
+</Option>
           <Option name="scpArgs"/>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs"/>
@@ -13049,7 +12705,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id75985X29431" folder="Christof" host_OS="linux24" inactive="False" lastCompiled="1455216746" lastInstalled="1444042240" lastModified="1455216534" platform="iptables" version="" name="fastd10.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id75985X29431" folder="Christof" host_OS="linux24" inactive="False" lastCompiled="1461828709" lastInstalled="1444042240" lastModified="1459280948" platform="iptables" version="" name="fastd10.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id76376X29431" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <NATRule id="id76378X29431" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -13077,6 +12733,33 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
             </ItfInb>
             <ItfOutb neg="False">
               <ObjectRef ref="id76016X29431"/>
+            </ItfOutb>
+            <NATRuleOptions/>
+          </NATRule>
+          <NATRule id="id25574X29245" disabled="False" group="" position="1" action="Translate" comment="">
+            <OSrc neg="False">
+              <ObjectRef ref="id2038X20429"/>
+            </OSrc>
+            <ODst neg="False">
+              <ObjectRef ref="sysid0"/>
+            </ODst>
+            <OSrv neg="False">
+              <ServiceRef ref="sysid1"/>
+            </OSrv>
+            <TSrc neg="False">
+              <ObjectRef ref="id75993X29431"/>
+            </TSrc>
+            <TDst neg="False">
+              <ObjectRef ref="sysid0"/>
+            </TDst>
+            <TSrv neg="False">
+              <ServiceRef ref="sysid1"/>
+            </TSrv>
+            <ItfInb neg="False">
+              <ObjectRef ref="sysid0"/>
+            </ItfInb>
+            <ItfOutb neg="False">
+              <ObjectRef ref="id75993X29431"/>
             </ItfOutb>
             <NATRuleOptions/>
           </NATRule>
@@ -13239,6 +12922,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <ServiceRef ref="tcp-HTTP"/>
               <ServiceRef ref="id83116X21166"/>
               <ServiceRef ref="id15120X15962"/>
+              <ServiceRef ref="id25265X29245"/>
             </Srv>
             <Itf neg="False">
               <ObjectRef ref="id75993X29431"/>
@@ -13498,7 +13182,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script">mkdir -p /etc/fw</Option>
+          <Option name="prolog_script"/>
           <Option name="scpArgs"/>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs"/>
@@ -13512,7 +13196,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id21251X32010" folder="Dominik" host_OS="linux24" inactive="False" lastCompiled="1455216751" lastInstalled="1450687591" lastModified="1455322622" platform="iptables" version="" name="fastd5.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id21251X32010" folder="Dominik" host_OS="linux24" inactive="False" lastCompiled="1461618618" lastInstalled="1461618625" lastModified="1461618613" platform="iptables" version="" name="fastd5.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id21693X32010" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="False" top_rule_set="True">
           <NATRule id="id21695X32010" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -13541,7 +13225,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
             </ItfOutb>
             <NATRuleOptions/>
           </NATRule>
-          <NATRule id="id21738X32010" disabled="False" group="" position="1" action="Translate" comment="">
+          <NATRule id="id23822X13408" disabled="False" group="" position="1" action="Translate" comment="">
             <OSrc neg="False">
               <ObjectRef ref="id2038X20429"/>
               <ObjectRef ref="id6189X11993"/>
@@ -13566,6 +13250,34 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
             </ItfInb>
             <ItfOutb neg="False">
               <ObjectRef ref="id21272X32010"/>
+            </ItfOutb>
+            <NATRuleOptions/>
+          </NATRule>
+          <NATRule id="id21738X32010" disabled="False" group="" position="2" action="Translate" comment="">
+            <OSrc neg="False">
+              <ObjectRef ref="id2038X20429"/>
+              <ObjectRef ref="id6189X11993"/>
+            </OSrc>
+            <ODst neg="False">
+              <ObjectRef ref="sysid0"/>
+            </ODst>
+            <OSrv neg="False">
+              <ServiceRef ref="sysid1"/>
+            </OSrv>
+            <TSrc neg="False">
+              <ObjectRef ref="id21259X32010"/>
+            </TSrc>
+            <TDst neg="False">
+              <ObjectRef ref="sysid0"/>
+            </TDst>
+            <TSrv neg="False">
+              <ServiceRef ref="sysid1"/>
+            </TSrv>
+            <ItfInb neg="False">
+              <ObjectRef ref="sysid0"/>
+            </ItfInb>
+            <ItfOutb neg="False">
+              <ObjectRef ref="id21259X32010"/>
             </ItfOutb>
             <NATRuleOptions/>
           </NATRule>
@@ -13750,7 +13462,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <ServiceRef ref="tcp-HTTP"/>
               <ServiceRef ref="id83116X21166"/>
               <ServiceRef ref="id15120X15962"/>
-              <ServiceRef ref="id451737X3999"/>
+              <ServiceRef ref="id25265X29245"/>
             </Srv>
             <Itf neg="False">
               <ObjectRef ref="id21275X32010"/>
@@ -13791,6 +13503,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
             </Src>
             <Dst neg="False">
               <ObjectRef ref="id2038X20429"/>
+              <ObjectRef ref="id3DC75CE5"/>
             </Dst>
             <Srv neg="False">
               <ServiceRef ref="sysid1"/>
@@ -13882,7 +13595,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id21664X32010" disabled="False" group="" log="True" position="13" action="Deny" direction="Both" comment="">
+          <PolicyRule id="id21664X32010" disabled="False" group="" log="False" position="13" action="Deny" direction="Both" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -13966,17 +13679,27 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="altAddress">fastd5.ffm.freifunk.net</Option>
           <Option name="bridging_fw">False</Option>
           <Option name="check_shading">True</Option>
-          <Option name="clamp_mss_to_mtu">False</Option>
+          <Option name="clamp_mss_to_mtu">True</Option>
           <Option name="clear_unknown_interfaces">False</Option>
           <Option name="cmdline"/>
           <Option name="compiler"/>
           <Option name="configure_bonding_interfaces">False</Option>
           <Option name="configure_bridge_interfaces">False</Option>
-          <Option name="configure_interfaces">True</Option>
+          <Option name="configure_interfaces">False</Option>
           <Option name="configure_vlan_interfaces">False</Option>
           <Option name="debug">False</Option>
           <Option name="drop_invalid">False</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart</Option>
+          <Option name="epilog_script">/etc/init.d/fail2ban restart
+
+/sbin/iptables -I FORWARD 1  -i  batbridge -m set --match-set exit dst -o eth0 -j ACCEPT
+#/sbin/ip6tables -I FORWARD 1  -i  batbridge -m set --match-set exit6 dst -o eth0 -j ACCEPT
+/sbin/iptables -I OUTPUT 1  -s 10.126.0.0/16 -m set --match-set exit dst -o eth0 -j ACCEPT
+#/sbin/ip6tables -I OUTPUT 1  -s fddd -m set --match-set exit6 dst -o eth0 -j ACCEPT
+
+/sbin/iptables -A PREROUTING -t mangle -m set --match-set exit dst -j MARK --set-mark 0x1
+#/sbin/ip6tables -A PREROUTING -t mangle -m set --match-set exit6 dst -j MARK --set-mark 0x1
+/sbin/ip rule show |/bin/grep -q fwmark ||/sbin/ip rule add fwmark 0x1 lookup main
+</Option>
           <Option name="firewall_dir">/etc/fw</Option>
           <Option name="firewall_is_part_of_any_and_networks">True</Option>
           <Option name="flush_and_set_default_policy">True</Option>
@@ -14001,7 +13724,12 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script">mkdir -p /etc/fw</Option>
+          <Option name="prolog_script">mkdir -p /etc/fw
+/sbin/ipset create exit hash:net family inet hashsize 2048 maxelem 65536
+/sbin/ipset create exit-temp hash:net family inet hashsize 2048 maxelem 65536
+/sbin/ipset create exit6 hash:net family inet6 hashsize 2048 maxelem 65536
+/sbin/ipset create exit6-temp hash:net family inet6  hashsize 2048 maxelem 65536
+</Option>
           <Option name="scpArgs"/>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs"/>
@@ -14012,10 +13740,10 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="use_iptables_restore">False</Option>
           <Option name="use_m_set">False</Option>
           <Option name="use_numeric_log_levels">False</Option>
-          <Option name="verify_interfaces">True</Option>
+          <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id22014X1477" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1455216754" lastInstalled="1444042248" lastModified="1455216534" platform="iptables" version="" name="fastd6.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id22014X1477" folder="uvensys" host_OS="linux24" inactive="False" lastCompiled="1461828711" lastInstalled="1460973698" lastModified="1461617233" platform="iptables" version="" name="fastd6.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id22434X1477" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <NATRule id="id22436X1477" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -14075,7 +13803,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <ObjectRef ref="id6189X11993"/>
             </Src>
             <Dst neg="False">
-              <ObjectRef ref="id44490X23067"/>
+              <ObjectRef ref="id22031X1477"/>
             </Dst>
             <Srv neg="False">
               <ServiceRef ref="id3F530CC8"/>
@@ -14225,6 +13953,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <ServiceRef ref="tcp-HTTP"/>
               <ServiceRef ref="id83116X21166"/>
               <ServiceRef ref="id15120X15962"/>
+              <ServiceRef ref="id25265X29245"/>
             </Srv>
             <Itf neg="False">
               <ObjectRef ref="id22022X1477"/>
@@ -14321,7 +14050,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id22405X1477" disabled="False" group="" log="True" position="13" action="Deny" direction="Both" comment="">
+          <PolicyRule id="id22405X1477" disabled="False" group="" log="False" position="13" action="Deny" direction="Both" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -14361,7 +14090,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <RuleSetOptions/>
         </Routing>
         <Interface id="id22022X1477" dedicated_failover="False" dyn="False" label="outside" security_level="0" unnum="False" unprotected="False" name="eth0" comment="" ro="False">
-          <IPv4 id="id22027X1477" name="fastd6.ffm.freifunk.net:eth0:ip" comment="" ro="False" address="185.37.145.45" netmask="255.255.255.240"/>
+          <IPv4 id="id22027X1477" name="fastd6.ffm.freifunk.net:eth0:ip" comment="" ro="False" address="37.208.109.197" netmask="255.255.255.248"/>
           <InterfaceOptions/>
         </Interface>
         <Interface id="id22031X1477" dedicated_failover="False" dyn="False" label="" mgmt="False" security_level="0" unnum="False" unprotected="False" name="batbridge" comment="" ro="False">
@@ -14414,13 +14143,13 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="altAddress">fastd6.ffm.freifunk.net</Option>
           <Option name="bridging_fw">False</Option>
           <Option name="check_shading">True</Option>
-          <Option name="clamp_mss_to_mtu">False</Option>
+          <Option name="clamp_mss_to_mtu">True</Option>
           <Option name="clear_unknown_interfaces">False</Option>
           <Option name="cmdline"/>
           <Option name="compiler"/>
           <Option name="configure_bonding_interfaces">False</Option>
           <Option name="configure_bridge_interfaces">False</Option>
-          <Option name="configure_interfaces">True</Option>
+          <Option name="configure_interfaces">False</Option>
           <Option name="configure_vlan_interfaces">False</Option>
           <Option name="data_dir"/>
           <Option name="debug">False</Option>
@@ -14482,7 +14211,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script">mkdir -p /etc/fw</Option>
+          <Option name="prolog_script"/>
           <Option name="scpArgs"/>
           <Option name="script_name_on_firewall"/>
           <Option name="sshArgs"/>
@@ -14496,12 +14225,12 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id22986X4186" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1455143741" lastInstalled="1455143748" lastModified="1455143734" platform="iptables" version="" name="puppet.ffm.freifunk.net" comment="" ro="False">
-        <NAT id="id23215X4186" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
+      <Firewall id="id36623X11435" host_OS="linux24" lastCompiled="1447200176" lastInstalled="0" lastModified="1447187231" platform="iptables" name="puppet.ffm.freifunk.net" comment="" ro="False">
+        <NAT id="id36627X11435" name="NAT" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <RuleSetOptions/>
         </NAT>
-        <Policy id="id23015X4186" name="Policy" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
-          <PolicyRule id="id23017X4186" disabled="False" group="" log="False" position="0" action="Accept" direction="Both" comment="">
+        <Policy id="id36625X11435" name="Policy" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
+          <PolicyRule id="id36969X11435" disabled="False" group="" log="False" position="0" action="Accept" direction="Both" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -14512,7 +14241,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <ServiceRef ref="sysid1"/>
             </Srv>
             <Itf neg="False">
-              <ObjectRef ref="id23008X4186"/>
+              <ObjectRef ref="id37029X11435"/>
             </Itf>
             <When neg="False">
               <IntervalRef ref="sysid2"/>
@@ -14521,28 +14250,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id23045X4186" disabled="False" group="" log="False" position="1" action="Accept" direction="Inbound" comment="">
-            <Src neg="False">
-              <ObjectRef ref="sysid0"/>
-            </Src>
-            <Dst neg="False">
-              <ObjectRef ref="sysid0"/>
-            </Dst>
-            <Srv neg="False">
-              <ServiceRef ref="tcp-SSH"/>
-              <ServiceRef ref="id23309X4186"/>
-            </Srv>
-            <Itf neg="False">
-              <ObjectRef ref="sysid0"/>
-            </Itf>
-            <When neg="False">
-              <IntervalRef ref="sysid2"/>
-            </When>
-            <PolicyRuleOptions>
-              <Option name="stateless">False</Option>
-            </PolicyRuleOptions>
-          </PolicyRule>
-          <PolicyRule id="id23073X4186" disabled="False" group="" log="False" position="2" action="Accept" direction="Both" comment="">
+          <PolicyRule id="id36892X11435" disabled="False" group="" log="False" position="1" action="Accept" direction="Both" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -14563,19 +14271,19 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id23102X4186" disabled="True" group="" log="False" position="3" action="Accept" direction="Inbound" comment="">
+          <PolicyRule id="id36722X11435" disabled="False" group="" log="False" position="2" action="Accept" direction="Inbound" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
             <Dst neg="False">
-              <ObjectRef ref="id22999X4186"/>
+              <ObjectRef ref="sysid0"/>
             </Dst>
             <Srv neg="False">
-              <ServiceRef ref="sysid1"/>
+              <ServiceRef ref="tcp-SSH"/>
+              <ServiceRef ref="id36850X11435"/>
             </Srv>
             <Itf neg="False">
-              <ObjectRef ref="id22999X4186"/>
-              <ObjectRef ref="id22994X4186"/>
+              <ObjectRef ref="sysid0"/>
             </Itf>
             <When neg="False">
               <IntervalRef ref="sysid2"/>
@@ -14584,47 +14292,7 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">False</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <PolicyRule id="id23130X4186" disabled="False" group="" log="False" position="4" action="Accept" direction="Outbound" comment="">
-            <Src neg="False">
-              <ObjectRef ref="id22986X4186"/>
-            </Src>
-            <Dst neg="False">
-              <ObjectRef ref="sysid0"/>
-            </Dst>
-            <Srv neg="False">
-              <ServiceRef ref="sysid1"/>
-            </Srv>
-            <Itf neg="False">
-              <ObjectRef ref="id22994X4186"/>
-            </Itf>
-            <When neg="False">
-              <IntervalRef ref="sysid2"/>
-            </When>
-            <PolicyRuleOptions>
-              <Option name="stateless">False</Option>
-            </PolicyRuleOptions>
-          </PolicyRule>
-          <PolicyRule id="id23158X4186" disabled="False" group="" log="False" position="5" action="Accept" direction="Outbound" comment="">
-            <Src neg="False">
-              <ObjectRef ref="id22986X4186"/>
-            </Src>
-            <Dst neg="False">
-              <ObjectRef ref="sysid0"/>
-            </Dst>
-            <Srv neg="False">
-              <ServiceRef ref="sysid1"/>
-            </Srv>
-            <Itf neg="False">
-              <ObjectRef ref="id22999X4186"/>
-            </Itf>
-            <When neg="False">
-              <IntervalRef ref="sysid2"/>
-            </When>
-            <PolicyRuleOptions>
-              <Option name="stateless">False</Option>
-            </PolicyRuleOptions>
-          </PolicyRule>
-          <PolicyRule id="id23186X4186" disabled="False" group="" log="False" position="6" action="Deny" direction="Outbound" comment="">
+          <PolicyRule id="id36814X11435" disabled="False" group="" log="True" position="3" action="Deny" direction="Inbound" comment="">
             <Src neg="False">
               <ObjectRef ref="sysid0"/>
             </Src>
@@ -14644,45 +14312,25 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
               <Option name="stateless">True</Option>
             </PolicyRuleOptions>
           </PolicyRule>
-          <RuleSetOptions>
-            <Option name="mangle_only_rule_set">False</Option>
-          </RuleSetOptions>
+          <RuleSetOptions/>
         </Policy>
-        <Routing id="id23218X4186" name="Routing" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
-          <RoutingRule id="id23220X4186" disabled="False" group="" metric="0" position="0" comment="">
-            <RDst neg="False">
-              <ObjectRef ref="id131582X20122"/>
-            </RDst>
-            <RGtw neg="False">
-              <ObjectRef ref="id1963X20429"/>
-            </RGtw>
-            <RItf neg="False">
-              <ObjectRef ref="sysid0"/>
-            </RItf>
-            <RoutingRuleOptions/>
-          </RoutingRule>
+        <Routing id="id36629X11435" name="Routing" comment="" ro="False" ipv4_rule_set="False" ipv6_rule_set="False" top_rule_set="True">
           <RuleSetOptions/>
         </Routing>
-        <Interface id="id22994X4186" dedicated_failover="False" dyn="False" label="lxc-hostnetz" mgmt="False" security_level="0" unnum="False" unprotected="False" name="eth0" comment="" ro="False">
-          <IPv4 id="id22997X4186" name="puppet.ffm.freifunk.net:eth0:ip" comment="" ro="False" address="192.168.100.127" netmask="255.255.255.0"/>
-          <InterfaceOptions/>
-        </Interface>
-        <Interface id="id22999X4186" dedicated_failover="False" dyn="False" label="" mgmt="False" security_level="0" unnum="False" unprotected="False" name="batbridge" comment="" ro="False">
-          <IPv4 id="id23004X4186" name="puppet.ffm.freifunk.net:batbridge:ip" comment="" ro="False" address="10.126.255.1" netmask="255.255.0.0"/>
-          <IPv6 id="id23005X4186" name="puppet.ffm.freifunk.net:batbridge:ip6" comment="" ro="False" address="fddd:5d16:b5dd:0:3072:9ff:fe20:d546" netmask="64"/>
-          <IPv6 id="id23006X4186" name="puppet.ffm.freifunk.net:batbridge:ip6-1" comment="" ro="False" address="fe80::3072:9ff:fe20:d546" netmask="64"/>
+        <Interface id="id36652X11435" dedicated_failover="False" dyn="False" label="" mgmt="False" security_level="0" unnum="False" unprotected="False" name="eth0" comment="" ro="False">
+          <IPv4 id="id36709X11435" name="puppet.ffm.freifunk.net:eth0:ip" comment="" ro="False" address="192.168.100.127" netmask="255.255.255.0"/>
           <InterfaceOptions>
-            <Option name="bonding_policy"/>
-            <Option name="bondng_driver_options"/>
-            <Option name="enable_stp">False</Option>
-            <Option name="type">bridge</Option>
-            <Option name="vlan_id">0</Option>
-            <Option name="xmit_hash_policy"/>
+            <Option name="type">ethernet</Option>
           </InterfaceOptions>
         </Interface>
-        <Interface id="id23008X4186" dedicated_failover="False" dyn="False" label="" mgmt="False" security_level="0" unnum="False" unprotected="False" name="lo" comment="" ro="False">
-          <IPv4 id="id23012X4186" name="puppet.ffm.freifunk.net:lo:ip" comment="" ro="False" address="127.0.0.1" netmask="255.0.0.0"/>
-          <IPv6 id="id23013X4186" name="puppet.ffm.freifunk.net:lo:ip6" comment="" ro="False" address="::1" netmask="128"/>
+        <Interface id="id36680X11435" dedicated_failover="False" dyn="False" label="" mgmt="False" security_level="0" unnum="False" unprotected="False" name="batbridge" comment="" ro="False">
+          <IPv4 id="id36704X11435" name="puppet.ffm.freifunk.net:batbridge:ip" comment="" ro="False" address="10.126.255.1" netmask="255.255.0.0"/>
+          <InterfaceOptions>
+            <Option name="type">ethernet</Option>
+          </InterfaceOptions>
+        </Interface>
+        <Interface id="id37029X11435" dedicated_failover="False" dyn="False" label="" mgmt="False" security_level="0" unnum="False" unprotected="False" name="lo" comment="" ro="False">
+          <IPv4 id="id37053X11435" name="puppet.ffm.freifunk.net:lo:ip" comment="" ro="False" address="127.0.0.1" netmask="255.0.0.0"/>
           <InterfaceOptions>
             <Option name="type">ethernet</Option>
           </InterfaceOptions>
@@ -14693,63 +14341,23 @@ $IP6TABLES -I INPUT 1 -i batbridge -s fe80::/64 -m frag ! --fragid 0 -p udp -j A
           <PolicyInstallScript arguments="" command="" enabled="False"/>
         </Management>
         <FirewallOptions>
-          <Option name="accept_established">True</Option>
-          <Option name="accept_new_tcp_with_no_syn">True</Option>
-          <Option name="action_on_reject"/>
-          <Option name="activationCmd"/>
-          <Option name="add_mgmt_ssh_rule_when_stoped">True</Option>
-          <Option name="add_rules_for_ipv6_neighbor_discovery">False</Option>
-          <Option name="admUser">root</Option>
-          <Option name="altAddress">puppet.ffm.freifunk.net</Option>
-          <Option name="bridging_fw">False</Option>
-          <Option name="check_shading">True</Option>
-          <Option name="clamp_mss_to_mtu">False</Option>
-          <Option name="clear_unknown_interfaces">False</Option>
-          <Option name="cmdline"/>
-          <Option name="compiler"/>
-          <Option name="configure_bonding_interfaces">False</Option>
-          <Option name="configure_bridge_interfaces">False</Option>
-          <Option name="configure_interfaces">True</Option>
-          <Option name="configure_vlan_interfaces">False</Option>
-          <Option name="debug">False</Option>
-          <Option name="drop_invalid">False</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart</Option>
-          <Option name="firewall_dir">/etc/fw</Option>
-          <Option name="firewall_is_part_of_any_and_networks">True</Option>
+          <Option name="accept_established">true</Option>
+          <Option name="accept_new_tcp_with_no_syn">true</Option>
+          <Option name="check_shading">true</Option>
+          <Option name="configure_interfaces">true</Option>
+          <Option name="firewall_is_part_of_any_and_networks">true</Option>
           <Option name="flush_and_set_default_policy">True</Option>
-          <Option name="ignore_empty_groups">False</Option>
-          <Option name="ipv4_6_order">ipv4_first</Option>
-          <Option name="limit_suffix"/>
           <Option name="limit_value">0</Option>
           <Option name="linux24_ip_forward">1</Option>
-          <Option name="load_modules">False</Option>
-          <Option name="local_nat">False</Option>
-          <Option name="log_all">False</Option>
-          <Option name="log_invalid">False</Option>
-          <Option name="log_ip_opt">False</Option>
+          <Option name="load_modules">true</Option>
+          <Option name="local_nat">false</Option>
           <Option name="log_level">info</Option>
-          <Option name="log_prefix">radicale.ffm RULE %N -- %A </Option>
-          <Option name="log_tcp_opt">False</Option>
-          <Option name="log_tcp_seq">False</Option>
+          <Option name="log_prefix">RULE %N -- %A </Option>
           <Option name="loopback_interface">lo</Option>
-          <Option name="manage_virtual_addr">True</Option>
-          <Option name="mgmt_addr"/>
-          <Option name="mgmt_ssh">False</Option>
+          <Option name="manage_virtual_addr">true</Option>
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
-          <Option name="output_file"/>
-          <Option name="prolog_place">top</Option>
-          <Option name="prolog_script">mkdir -p /etc/fw</Option>
-          <Option name="scpArgs">-P 22127</Option>
-          <Option name="script_name_on_firewall"/>
-          <Option name="sshArgs">-p 22127</Option>
-          <Option name="ulog_cprange">0</Option>
           <Option name="ulog_nlgroup">1</Option>
-          <Option name="ulog_qthreshold">1</Option>
-          <Option name="use_ULOG">False</Option>
-          <Option name="use_iptables_restore">False</Option>
-          <Option name="use_m_set">False</Option>
-          <Option name="use_numeric_log_levels">False</Option>
-          <Option name="verify_interfaces">False</Option>
+          <Option name="verify_interfaces">true</Option>
         </FirewallOptions>
       </Firewall>
     </ObjectGroup>

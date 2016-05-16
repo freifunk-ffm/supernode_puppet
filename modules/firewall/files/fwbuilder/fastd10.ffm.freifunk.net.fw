@@ -4,7 +4,7 @@
 #
 #  Firewall Builder  fwb_ipt v5.1.0.3599
 #
-#  Generated Thu Feb 11 19:52:24 2016 CET by christof
+#  Generated Thu Apr 28 09:31:48 2016 CEST by christof
 #
 # files: * fastd10.ffm.freifunk.net.fw /etc/fw/fastd10.ffm.freifunk.net.fw
 #
@@ -290,7 +290,7 @@ verify_interfaces() {
 
 prolog_commands() {
     echo "Running prolog script"
-    mkdir -p /etc/fw
+    
 }
 
 epilog_commands() {
@@ -331,6 +331,12 @@ script_body() {
     echo "Rule 0 (NAT)"
     # 
     $IPTABLES -t nat -A POSTROUTING -o ovpn-inet   -s 10.126.0.0/16  -j MASQUERADE
+    # 
+    # Rule 1 (NAT)
+    # 
+    echo "Rule 1 (NAT)"
+    # 
+    $IPTABLES -t nat -A POSTROUTING -o eth0   -s 10.126.0.0/16  -j SNAT --to-source 185.37.145.43
 
 
 
@@ -389,13 +395,13 @@ script_body() {
     echo "Rule 7 (eth0,batbridge)"
     # 
     $IPTABLES -A INPUT -i batbridge  -p tcp -m tcp  -d 10.126.8.1   --dport 80  -m state --state NEW  -j ACCEPT
-    $IPTABLES -A INPUT -i batbridge  -p udp -m udp  -m multiport  -d 10.126.8.1   --dports 10000,10001  -m state --state NEW  -j ACCEPT
+    $IPTABLES -A INPUT -i batbridge  -p udp -m udp  -m multiport  -d 10.126.8.1   --dports 10000,10001,10002  -m state --state NEW  -j ACCEPT
     $IPTABLES -A INPUT -i eth0  -p tcp -m tcp  -d 10.126.8.1   --dport 80  -m state --state NEW  -j ACCEPT
-    $IPTABLES -A INPUT -i eth0  -p udp -m udp  -m multiport  -d 10.126.8.1   --dports 10000,10001  -m state --state NEW  -j ACCEPT
+    $IPTABLES -A INPUT -i eth0  -p udp -m udp  -m multiport  -d 10.126.8.1   --dports 10000,10001,10002  -m state --state NEW  -j ACCEPT
     $IPTABLES -A INPUT -i batbridge  -p tcp -m tcp  -d 185.37.145.43   --dport 80  -m state --state NEW  -j ACCEPT
-    $IPTABLES -A INPUT -i batbridge  -p udp -m udp  -m multiport  -d 185.37.145.43   --dports 10000,10001  -m state --state NEW  -j ACCEPT
+    $IPTABLES -A INPUT -i batbridge  -p udp -m udp  -m multiport  -d 185.37.145.43   --dports 10000,10001,10002  -m state --state NEW  -j ACCEPT
     $IPTABLES -A INPUT -i eth0  -p tcp -m tcp  -d 185.37.145.43   --dport 80  -m state --state NEW  -j ACCEPT
-    $IPTABLES -A INPUT -i eth0  -p udp -m udp  -m multiport  -d 185.37.145.43   --dports 10000,10001  -m state --state NEW  -j ACCEPT
+    $IPTABLES -A INPUT -i eth0  -p udp -m udp  -m multiport  -d 185.37.145.43   --dports 10000,10001,10002  -m state --state NEW  -j ACCEPT
     # 
     # Rule 9 (batbridge)
     # 
@@ -446,7 +452,7 @@ script_body() {
     echo "Rule 0 (NAT)"
     # 
     $IP6TABLES -t nat -A POSTROUTING -o ovpn-inet   -s 2001:1a50:11:4::/64  -j MASQUERADE
-    $IP6TABLES -t nat -A POSTROUTING -o ovpn-inet   -s fddd:5d16:b5dd::/64  -j MASQUERADE
+    $IP6TABLES -t nat -A POSTROUTING -o ovpn-inet   -s fddd:5d16:b5dd::/48  -j MASQUERADE
 
 
 
@@ -463,8 +469,8 @@ script_body() {
     # 
     echo "Rule 1 (global)"
     # 
-    $IP6TABLES -A FORWARD -i +  -p tcp -m tcp  -s fddd:5d16:b5dd::/64   -d fddd:5d16:b5dd:b101::1   --dport 53  -m state --state NEW  -j ACCEPT
-    $IP6TABLES -A FORWARD -i +  -p udp -m udp  -s fddd:5d16:b5dd::/64   -d fddd:5d16:b5dd:b101::1   --dport 53  -m state --state NEW  -j ACCEPT
+    $IP6TABLES -A FORWARD -i +  -p tcp -m tcp  -s fddd:5d16:b5dd::/48   -d fddd:5d16:b5dd:b101::1   --dport 53  -m state --state NEW  -j ACCEPT
+    $IP6TABLES -A FORWARD -i +  -p udp -m udp  -s fddd:5d16:b5dd::/48   -d fddd:5d16:b5dd:b101::1   --dport 53  -m state --state NEW  -j ACCEPT
     # 
     # Rule 4 (global)
     # 
@@ -495,16 +501,16 @@ script_body() {
     echo "Rule 7 (eth0,batbridge)"
     # 
     $IP6TABLES -A INPUT -i batbridge  -p tcp -m tcp  -d fddd:5d16:b5dd:b102::1   --dport 80  -m state --state NEW  -j ACCEPT
-    $IP6TABLES -A INPUT -i batbridge  -p udp -m udp  -m multiport  -d fddd:5d16:b5dd:b102::1   --dports 10000,10001  -m state --state NEW  -j ACCEPT
+    $IP6TABLES -A INPUT -i batbridge  -p udp -m udp  -m multiport  -d fddd:5d16:b5dd:b102::1   --dports 10000,10001,10002  -m state --state NEW  -j ACCEPT
     $IP6TABLES -A INPUT -i eth0  -p tcp -m tcp  -d fddd:5d16:b5dd:b102::1   --dport 80  -m state --state NEW  -j ACCEPT
-    $IP6TABLES -A INPUT -i eth0  -p udp -m udp  -m multiport  -d fddd:5d16:b5dd:b102::1   --dports 10000,10001  -m state --state NEW  -j ACCEPT
+    $IP6TABLES -A INPUT -i eth0  -p udp -m udp  -m multiport  -d fddd:5d16:b5dd:b102::1   --dports 10000,10001,10002  -m state --state NEW  -j ACCEPT
     $IP6TABLES -N Cid76199X29431.0
     $IP6TABLES -A INPUT -i batbridge  -p tcp -m tcp  --dport 80  -m state --state NEW  -j Cid76199X29431.0
-    $IP6TABLES -A INPUT -i batbridge  -p udp -m udp  -m multiport  --dports 10000,10001  -m state --state NEW  -j Cid76199X29431.0
+    $IP6TABLES -A INPUT -i batbridge  -p udp -m udp  -m multiport  --dports 10000,10001,10002  -m state --state NEW  -j Cid76199X29431.0
     $IP6TABLES -A Cid76199X29431.0  -d fe80::20c:29ff:fe72:7522   -j ACCEPT
     $IP6TABLES -N Cid76199X29431.1
     $IP6TABLES -A INPUT -i eth0  -p tcp -m tcp  --dport 80  -m state --state NEW  -j Cid76199X29431.1
-    $IP6TABLES -A INPUT -i eth0  -p udp -m udp  -m multiport  --dports 10000,10001  -m state --state NEW  -j Cid76199X29431.1
+    $IP6TABLES -A INPUT -i eth0  -p udp -m udp  -m multiport  --dports 10000,10001,10002  -m state --state NEW  -j Cid76199X29431.1
     $IP6TABLES -A Cid76199X29431.1  -d fe80::20c:29ff:fe72:7522   -j ACCEPT
     # 
     # Rule 8 (batbridge)
@@ -512,17 +518,24 @@ script_body() {
     echo "Rule 8 (batbridge)"
     # 
     $IP6TABLES -N Cid76231X29431.0
-    $IP6TABLES -A FORWARD -o batbridge   -s 2001:1a50:11:4::/64   -m state --state NEW  -j Cid76231X29431.0
-    $IP6TABLES -A FORWARD -o batbridge   -s fddd:5d16:b5dd::/64   -m state --state NEW  -j Cid76231X29431.0
+    $IP6TABLES -A OUTPUT -o batbridge   -s 2001:1a50:11:4::/64   -m state --state NEW  -j Cid76231X29431.0
+    $IP6TABLES -A OUTPUT -o batbridge   -s fddd:5d16:b5dd::/48   -m state --state NEW  -j Cid76231X29431.0
     $IP6TABLES -A Cid76231X29431.0  -d 2001:1a50:11:4::/64   -j ACCEPT
-    $IP6TABLES -A Cid76231X29431.0  -d fddd:5d16:b5dd::/64   -j ACCEPT
+    $IP6TABLES -A Cid76231X29431.0  -d fddd:5d16:b5dd::/48   -j ACCEPT
+    $IP6TABLES -N Cid76231X29431.1
+    $IP6TABLES -A FORWARD -o batbridge   -s 2001:1a50:11:4::/64   -m state --state NEW  -j Cid76231X29431.1
+    $IP6TABLES -A FORWARD -o batbridge   -s fddd:5d16:b5dd::/48   -m state --state NEW  -j Cid76231X29431.1
+    $IP6TABLES -A Cid76231X29431.1  -d 2001:1a50:11:4::/64   -j ACCEPT
+    $IP6TABLES -A Cid76231X29431.1  -d fddd:5d16:b5dd::/48   -j ACCEPT
     # 
     # Rule 10 (ovpn-inet)
     # 
     echo "Rule 10 (ovpn-inet)"
     # 
+    $IP6TABLES -A OUTPUT -o ovpn-inet   -s 2001:1a50:11:4::/64   -m state --state NEW  -j ACCEPT
+    $IP6TABLES -A OUTPUT -o ovpn-inet   -s fddd:5d16:b5dd::/48   -m state --state NEW  -j ACCEPT
     $IP6TABLES -A FORWARD -o ovpn-inet   -s 2001:1a50:11:4::/64   -m state --state NEW  -j ACCEPT
-    $IP6TABLES -A FORWARD -o ovpn-inet   -s fddd:5d16:b5dd::/64   -m state --state NEW  -j ACCEPT
+    $IP6TABLES -A FORWARD -o ovpn-inet   -s fddd:5d16:b5dd::/48   -m state --state NEW  -j ACCEPT
     # 
     # Rule 11 (eth0)
     # 
@@ -671,7 +684,7 @@ test -z "$cmd" && {
 
 case "$cmd" in
     start)
-        log "Activating firewall script generated Thu Feb 11 19:52:24 2016 by christof"
+        log "Activating firewall script generated Thu Apr 28 09:31:48 2016 by christof"
         check_tools
          prolog_commands 
         check_run_time_address_table_files
