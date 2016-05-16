@@ -4,7 +4,7 @@
 #
 #  Firewall Builder  fwb_ipt v5.1.0.3599
 #
-#  Generated Thu Apr 28 09:10:24 2016 CEST by christof
+#  Generated Mon May 16 14:32:54 2016 CEST by christof
 #
 # files: * fastd2.ffm.freifunk.net.fw /etc/fw/fastd2.ffm.freifunk.net.fw
 #
@@ -292,10 +292,11 @@ verify_interfaces() {
 
 prolog_commands() {
     echo "Running prolog script"
-    /sbin/ipset create exit hash:net family inet hashsize 2048 maxelem 65536
-/sbin/ipset create exit-temp hash:net family inet hashsize 2048 maxelem 65536
-/sbin/ipset create exit6 hash:net family inet6 hashsize 2048 maxelem 65536
-/sbin/ipset create exit6-temp hash:net family inet6  hashsize 2048 maxelem 65536
+    mkdir -p /etc/fw
+/sbin/ipset create exit hash:net family inet hashsize 2048 maxelem 65536 -exist
+/sbin/ipset create exit-temp hash:net family inet hashsize 2048 maxelem 65536 -exist
+/sbin/ipset create exit6 hash:net family inet6 hashsize 2048 maxelem 65536 -exist
+/sbin/ipset create exit6-temp hash:net family inet6  hashsize 2048 maxelem 65536 -exist
 }
 
 epilog_commands() {
@@ -309,7 +310,8 @@ epilog_commands() {
 
 /sbin/iptables -A PREROUTING -t mangle -m set --match-set exit dst -j MARK --set-mark 0x1
 #/sbin/ip6tables -A PREROUTING -t mangle -m set --match-set exit6 dst -j MARK --set-mark 0x1
-/sbin/ip rule add fwmark 0x1 lookup main
+
+/sbin/ip rule |grep -q  "fwmark 0x1 lookup main" || /sbin/ip rule add fwmark 0x1 lookup main
 }
 
 run_epilog_and_exit() {
@@ -721,7 +723,7 @@ test -z "$cmd" && {
 
 case "$cmd" in
     start)
-        log "Activating firewall script generated Thu Apr 28 09:10:24 2016 by christof"
+        log "Activating firewall script generated Mon May 16 14:32:54 2016 by christof"
         check_tools
          prolog_commands 
         check_run_time_address_table_files
