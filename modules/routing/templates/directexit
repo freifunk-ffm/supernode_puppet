@@ -31,8 +31,7 @@ asList=(
 
 
 ipsetCreate() {
-# TODO test this line
-/sbin/ipset list |grep -q "^${1}$" || /sbin/ipset create $1 hash:net family inet$2 hashsize 2048 maxelem 65536
+/sbin/ipset create $1 hash:net family inet$2 hashsize 2048 maxelem 65536 -exist
 }
 
 ipsetCreate exit ""
