@@ -4,6 +4,7 @@ asList=(
 	19679 # Dropbox
 	57976 # Blizzard
 	50472 # CCC
+	13020 # CCCV 
 	32934 # Facebook
 	15169 # Google
 	8075  # Micro$oft
@@ -32,7 +33,7 @@ asList=(
 
 ipsetCreate() {
 # TODO test this line
-/sbin/ipset list |grep -q "^${1}$" || /sbin/ipset create $1 hash:net family inet$2 hashsize 2048 maxelem 65536
+/sbin/ipset list |grep -q "^${1}$" || /sbin/ipset -exist create $1 hash:net family inet$2 hashsize 2048 maxelem 65536
 }
 
 ipsetCreate exit ""
@@ -52,7 +53,7 @@ ipsetAdd() {
 	ipset=$1
 
 	while read; do
-		ipset add "$ipset" "$REPLY"
+		ipset -exist add "$ipset" "$REPLY"
 	done
 }
 
