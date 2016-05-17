@@ -29,9 +29,10 @@ asList=(
 	49009  # Freifunk Rheinland / Hamburg
 )
 
+IPSET=/sbin/ipset
 
 ipsetCreate() {
-/sbin/ipset create $1 hash:net family inet$2 hashsize 2048 maxelem 65536 -exist
+$IPSET create $1 hash:net family inet$2 hashsize 2048 maxelem 65536 -exist
 }
 
 ipsetCreate exit ""
@@ -51,13 +52,13 @@ ipsetAdd() {
 	ipset=$1
 
 	while read; do
-		ipset add "$ipset" "$REPLY"
+		$IPSET add "$ipset" "$REPLY"
 	done
 }
 
 
 for ((i=0; i<${#ipsets[@]}; i++)); do
-	ipset flush "${ipsets[i]}-temp"
+	$IPSET flush "${ipsets[i]}-temp"
 done
 
 for as in "${asList[@]}"; do
@@ -72,7 +73,7 @@ done
 
 ## Apply and cleanup
 for ((i=0; i<${#ipsets[@]}; i++)); do
-	ipset swap "${ipsets[i]}" "${ipsets[i]}-temp"
-	ipset flush "${ipsets[i]}-temp"
+	$IPSET swap "${ipsets[i]}" "${ipsets[i]}-temp"
+	$IPSET flush "${ipsets[i]}-temp"
 done
 
