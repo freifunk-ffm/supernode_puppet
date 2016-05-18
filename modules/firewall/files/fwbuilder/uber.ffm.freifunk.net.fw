@@ -4,7 +4,7 @@
 #
 #  Firewall Builder  fwb_ipt v5.1.0.3599
 #
-#  Generated Thu Apr 28 09:31:52 2016 CEST by christof
+#  Generated Mon May 16 14:32:57 2016 CEST by christof
 #
 # files: * uber.ffm.freifunk.net.fw /etc/fw/uber.ffm.freifunk.net.fw
 #
@@ -520,12 +520,9 @@ script_body() {
     # 
     echo "Rule 17 (global)"
     # 
-    $IPTABLES -N RULE_17
-    $IPTABLES -A OUTPUT  -j RULE_17
-    $IPTABLES -A INPUT  -j RULE_17
-    $IPTABLES -A FORWARD  -j RULE_17
-    $IPTABLES -A RULE_17  -j LOG  --log-level info --log-prefix "uber-RULE 17 -- DENY "
-    $IPTABLES -A RULE_17  -j DROP
+    $IPTABLES -A OUTPUT  -j DROP
+    $IPTABLES -A INPUT  -j DROP
+    $IPTABLES -A FORWARD  -j DROP
 
 
     # ================ IPv6
@@ -630,12 +627,9 @@ script_body() {
     # 
     echo "Rule 17 (global)"
     # 
-    $IP6TABLES -N RULE_17
-    $IP6TABLES -A OUTPUT  -j RULE_17
-    $IP6TABLES -A INPUT  -j RULE_17
-    $IP6TABLES -A FORWARD  -j RULE_17
-    $IP6TABLES -A RULE_17  -j LOG  --log-level info --log-prefix "uber-RULE 17 -- DENY "
-    $IP6TABLES -A RULE_17  -j DROP
+    $IP6TABLES -A OUTPUT  -j DROP
+    $IP6TABLES -A INPUT  -j DROP
+    $IP6TABLES -A FORWARD  -j DROP
 
     # ============== ROUTING RULES ============== 
 
@@ -766,7 +760,7 @@ test -z "$cmd" && {
 
 case "$cmd" in
     start)
-        log "Activating firewall script generated Thu Apr 28 09:31:52 2016 by christof"
+        log "Activating firewall script generated Mon May 16 14:32:57 2016 by christof"
         check_tools
         
         check_run_time_address_table_files
