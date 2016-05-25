@@ -68,7 +68,7 @@ then
   exit 1
 fi
 
-CURRENT_ROUTE=$(ip route show table $TABLE to 0.0.0.0/1)
+CURRENT_ROUTE=$(ip route show table $TABLE to 0.0.0.0/0)
 [[ -z $CURRENT_ROUTE ]] && CURRENT_ROUTE=$(ip route show table $TABLE to 0.0.0.0/0)
 UPDATE_ROUTE=false
 
