@@ -1,79 +1,85 @@
 #!/bin/bash
 asList=(
-	714   # Apple
-	19679 # Dropbox
-	57976 # Blizzard
-	50472 # CCC
-	32934 # Facebook
-	15169 # Google
-	8075  # Micro$oft
-	2906  # Netflix
-	36692 # OpenDNS
-	8403  # Spotify
-	46489 # Twitch
-	13414 # Twitter
-	32590 # Valve
-	10310 # Yahoo
-	8302  # Zattoo
-	32787 # AKAMAI (other)
-	20940 # AKAMAI
-	13335 # CLOUDFLARE
-	43821 # WIKIMEDIA-EU
-	14907 # WIKIMEDIA-USA 
-	
-	#Freifunk
-	44194  # Freifunk Berlin
-	3624   # Freifunk Bremen
-	6766   # Freifunk Darmstadt
-	201701 # Freifunk Rheinland
-	49009  # Freifunk Rheinland / Hamburg
+    714     # Apple
+    20940   # AKAMAI
+    32787   # AKAMAI (other)
+    57976   # Blizzard
+    50472   # CCC
+    13335   # CLOUDFLARE
+    19679   # Dropbox
+    32934   # Facebook
+    15169   # Google
+    8075    # Micro$oft
+    2906    # Netflix
+    36692   # OpenDNS
+    8403    # Spotify
+    46489   # Twitch
+    13414   # Twitter
+    32590   # Valve
+    43821   # WIKIMEDIA-EU
+    14907   # WIKIMEDIA-USA
+    10310   # Yahoo
+    8302    # Zattoo
+
+    #Freifunk
+    44194   # Freifunk Berlin
+    3624    # Freifunk Bremen
+    6766    # Freifunk Darmstadt
+    201701  # Freifunk Rheinland
+    49009   # Freifunk Rheinland / Hamburg
 )
 
 IPSET=/sbin/ipset
 
-ipsetCreate() {
-$IPSET create $1 hash:net family inet$2 hashsize 2048 maxelem 65536 -exist
-}
-
-ipsetCreate exit ""
-ipsetCreate exit-temp ""
-ipsetCreate exit6 6
-ipsetCreate exit-temp 6
-
 # Ipsets to add
 ipsets=(exit exit6)
 # Grep parameter for ipsets
-grepcmd=('-v :' ':')
+grepCmd=('-v :' ':')
 
+
+# Add ipset if not exists
+ipsetCreate() {
+    local name=${1}
+    local type=${2-""}
+
+    $IPSET create -exist "${name}" hash:net family "inet${type}" hashsize 2048 maxelem 65536
+}
 
 # Add ip ranges to ipset
 ipsetAdd() {
-	local ipset
-	ipset=$1
+    local ipset=${1}
 
-	while read; do
-		$IPSET add "$ipset" "$REPLY"
-	done
+    while read; do
+        $IPSET add "${ipset}" "${REPLY}"
+    done
 }
 
 
+# Make sure that all ipsets exists
+ipsetCreate exit
+ipsetCreate exit-temp
+ipsetCreate exit6 6
+ipsetCreate exit-temp 6
+
+# Clear temp ipsets
 for ((i=0; i<${#ipsets[@]}; i++)); do
-	$IPSET flush "${ipsets[i]}-temp"
+    $IPSET flush "${ipsets[i]}-temp"
 done
 
+# Add as ips to ipsets
 for as in "${asList[@]}"; do
-	# Get IPs
-	asdata=$(curl -s 'https://stat.ripe.net/data/announced-prefixes/data.json?min_peers_seeing=0&resource='$as|jq --raw-output .data.prefixes[].prefix)
+    # Get IPs
+    asData=$(curl -s "https://stat.ripe.net/data/announced-prefixes/data.json?min_peers_seeing=0&resource=${as}"|jq --raw-output .data.prefixes[].prefix)
 
-	for ((i=0;i<${#ipsets[@]};i++)); do
-		# Add IPs to ipset
-		ipsetAdd "${ipsets[i]}-temp" < <(echo "${asdata}" | grep ${grepcmd[i]})
-	done
+    for ((i=0;i<${#ipsets[@]};i++)); do
+        # Add IPs to ipset
+        ipsetAdd "${ipsets[i]}-temp" < <(echo "${asData}" | grep ${grepCmd[i]})
+    done
 done
 
-## Apply and cleanup
+# Apply and cleanup
 for ((i=0; i<${#ipsets[@]}; i++)); do
-	$IPSET swap "${ipsets[i]}" "${ipsets[i]}-temp"
-	$IPSET flush "${ipsets[i]}-temp"
+    $IPSET swap "${ipsets[i]}" "${ipsets[i]}-temp"
+    $IPSET flush "${ipsets[i]}-temp"
 done
 
