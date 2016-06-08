@@ -1,4 +1,4 @@
-[Netdev]
+[NetDev]
 Description=Next Gateway Pseudo Interface
 Name=local-gate
 Kind=macvlan
