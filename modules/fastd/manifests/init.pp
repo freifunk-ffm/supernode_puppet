@@ -43,10 +43,16 @@ class fastd (
   }
 
   systemd::service {
+    'fastd-setup':
+      source => 'puppet:///modules/fastd/fastd-setup.service';
     'fastd@':
       source => 'puppet:///modules/fastd/fastd@.service';
     'fastd':
       source => 'puppet:///modules/fastd/fastd.service';
+  }
+
+  systemd::network { 'batbridge':
+    content => template('fastd/batbridge.network'),
   }
 
   service { 'fastd':

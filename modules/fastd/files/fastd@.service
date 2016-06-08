@@ -2,6 +2,8 @@
 Description=Fastd %i instance
 PartOf=fastd.service
 ReloadPropagatedFrom=fastd.service
+Requires=fastd-setup.service
+After=fastd-setup.service
 
 [Service]
 Type=forking
