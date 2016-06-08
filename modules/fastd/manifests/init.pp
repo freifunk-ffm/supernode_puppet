@@ -64,6 +64,16 @@ class fastd (
     mode    => '0755',
   }
 
+  $update_fastd_backbone = '/usr/local/bin/ffffm-update-fastd-backbone'
+
+  file { $update_fastd_backbone:
+    ensure => file,
+    mode   => '0755',
+    owner  => 'root',
+    group  => 'root',
+    source => 'puppet:///modules/fastd/update-fastd-backbone.sh',
+  }
+
   Vcsrepo {
     ensure   => present,
     require  => Class['git'],
