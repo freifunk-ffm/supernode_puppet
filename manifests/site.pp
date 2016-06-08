@@ -23,7 +23,6 @@ node /lxc\d+\.ffm.freifunk.net/ {
 }
 
 node 'mail.ffm.freifunk.net' {
-  include ffmff
   class { 'mailserver': }
 }
 
