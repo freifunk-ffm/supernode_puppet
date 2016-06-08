@@ -44,7 +44,7 @@ class fastd (
 
   systemd::service {
     'fastd-setup':
-      source => 'puppet:///modules/fastd/fastd-setup.service';
+      content => template('fastd/fastd-setup.service');
     'fastd@':
       source => 'puppet:///modules/fastd/fastd@.service';
     'fastd':
