@@ -51,7 +51,7 @@ class fastd (
       source => 'puppet:///modules/fastd/fastd.service';
   }
 
-  service { 'fastd':
+  service { ['fastd', 'fastd-setup']:
     ensure => running,
     enable => true,
   }
