@@ -50,7 +50,7 @@ class ffmff::dns_repo {
   }
 
   include ffmff::chronic
-  package { 'moreutils':
+  package { 'python-yaml':
     ensure => present,
   }
 
