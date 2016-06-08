@@ -1,0 +1,4 @@
+[NetDev]
+Name=batbridge
+Kind=bridge
+MACAddress=<%= @macvendor %>:<%= @rndmac %>:7d:<%= @supernodenum.to_s.rjust(2, "0") %>

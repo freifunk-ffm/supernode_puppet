@@ -133,12 +133,6 @@ class ffmff::supernode (
   systemd::netdev {
     'local-gate':
       source => 'puppet:///modules/ffmff/local-gate.netdev';
-    'batbridge':
-      source => 'puppet:///modules/ffmff/batbridge.netdev';
-  }
-
-  systemd::network { 'batbridge':
-    content => template('fastd/batbridge.network'),
   }
 
   systemd::network {
