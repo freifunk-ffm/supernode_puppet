@@ -2,10 +2,11 @@ define systemd::unit (
   $ensure = present,
   $source = undef,
   $content = undef,
+  $type = 'system',
 ) {
   include systemd
 
-  $file = "${systemd::unit_dir}/${title}"
+  $file = "/etc/systemd/${type}/${title}"
 
   file { $file:
     ensure  => $ensure,
@@ -17,5 +18,16 @@ define systemd::unit (
     notify  => $systemd::reload,
   }
 
-  File[$file] ~> Exec[$systemd::reload_command]
+  case $type {
+    'system': {
+      File[$file] ~> Exec[$systemd::reload_command]
+    }
+    'network': {
+      include systemd::networkd
+      File[$file] ~> Service[$systemd::networkd::service]
+    }
+    default: {
+      fail()
+    }
+  }
 }
