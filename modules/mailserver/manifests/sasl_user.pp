@@ -9,6 +9,6 @@ define mailserver::sasl_user (
 
   concat::fragment { "${db}+${username}":
     target  => $db,
-    content => "${username}:{PLAIN}${password}",
+    content => strip("${username}:{PLAIN}${password}"),
   }
 }
