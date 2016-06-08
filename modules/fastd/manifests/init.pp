@@ -54,6 +54,8 @@ class fastd (
     enable => true,
   }
 
+  $update_fastd_backbone = '/usr/local/bin/ffffm-update-fastd-backbone'
+
   file { '/etc/cron.d/fastd':
     ensure  => file,
     owner   => 'root',
@@ -61,8 +63,6 @@ class fastd (
     content => template('fastd/fastd-cron.erb'),
     mode    => '0755',
   }
-
-  $update_fastd_backbone = '/usr/local/bin/ffffm-update-fastd-backbone'
 
   file { $update_fastd_backbone:
     ensure => file,
