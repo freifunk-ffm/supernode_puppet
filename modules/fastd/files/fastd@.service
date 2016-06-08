@@ -1,7 +1,7 @@
 [Unit]
 Description=Fastd %i instance
-PartOf=tinc.service
-ReloadPropagatedFrom=tinc.service
+PartOf=fastd.service
+ReloadPropagatedFrom=fastd.service
 
 [Service]
 Type=forking
