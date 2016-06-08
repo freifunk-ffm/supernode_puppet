@@ -1,4 +1,4 @@
-class ffmfff::chronic {
+class ffmff::chronic {
   package { 'moreutils':
     ensure => installed,
   }
