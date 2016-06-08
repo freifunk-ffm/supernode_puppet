@@ -51,10 +51,6 @@ class fastd (
       source => 'puppet:///modules/fastd/fastd.service';
   }
 
-  systemd::network { 'batbridge':
-    content => template('fastd/batbridge.network'),
-  }
-
   service { 'fastd':
     ensure => running,
     enable => true,
