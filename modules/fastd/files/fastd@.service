@@ -1,8 +1,13 @@
 [Unit]
 Description=Fastd %i instance
+PartOf=tinc.service
+ReloadPropagatedFrom=tinc.service
 
 [Service]
-ExecStart=/usr/bin/fastd --syslog-level info --config /etc/fastd/%i/fastd.conf
+Type=forking
+PIDFile=/run/fastd.%i.pid
+ExecStart=/usr/bin/fastd --daemon --pid-file /run/fastd.%i.pid --syslog-level info --config /etc/fastd/%i/fastd.conf
+ExecReload=/bin/kill -SIGHUP $MAINPID
 
 [Install]
 WantedBy=multi-user.target
