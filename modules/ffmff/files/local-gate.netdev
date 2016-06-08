@@ -1,0 +1,5 @@
+[NetDev]
+Description=Next Gateway Pseudo Interface
+Name=local-gate
+Kind=macvlan
+MACAddress=16:41:95:40:f7:dd

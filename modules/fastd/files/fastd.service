@@ -1,0 +1,11 @@
+[Unit]
+Description=Fastd VPN
+
+[Service]
+ExecStart=/bin/true
+ExecReload=/bin/true
+Type=oneshot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

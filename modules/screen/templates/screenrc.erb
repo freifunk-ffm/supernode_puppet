@@ -1,0 +1,10 @@
+defutf8 on
+startup_message off
+hardstatus alwayslastline
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%= %{g}]'
+termcapinfo xterm|xterms|xs|rxvt|aterm ti@:te@
+
+bindkey "^b" command -c mykey
+#bindkey -k "%i" next
+bindkey -k "#4" prev
+bindkey "^t" screen

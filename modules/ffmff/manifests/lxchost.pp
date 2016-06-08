@@ -6,7 +6,7 @@ class ffmff::lxchost (
   include ffmff
 
     package { [
-      'git',  'iptables', 'lxc', 'screen'
+      'git',  'iptables', 'lxc'
     ]:
     ensure => installed,
     }

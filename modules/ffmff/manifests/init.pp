@@ -7,6 +7,7 @@ class ffmff (
   class { '::ffmff::puppet':
     master => $puppetmaster,
   }
+  include ::screen
   include ::rsyslog
   include ::sshd
   include ::postfix

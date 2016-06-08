@@ -11,7 +11,6 @@ class fastd (
   $rndmac,
 ) {
   $user = 'fastd_serv'
-  $legacy_service = 'fastd'
 
   package { [
     'fastd', 'bridge-utils', 'curl',
@@ -30,11 +29,6 @@ class fastd (
     managehome => true,
   }
 
-  service { $legacy_service:
-    ensure  => stopped,
-    enable  => false,
-  }
-
   file { '/etc/default/fastd':
     ensure => absent,
     before => Service['fastd'],
@@ -48,13 +42,19 @@ class fastd (
     require => Package['fastd'],
   }
 
-   file { '/etc/systemd/system/fastd@.service':
-     ensure => file,
-     owner  => 'root',
-     group  => 'root',
-     mode   => '0644',
-     source => 'puppet:///modules/fastd/fastd@.service',
-   }
+  systemd::service {
+    'fastd@':
+      source => 'puppet:///modules/fastd/fastd@.service';
+    'fastd':
+      source => 'puppet:///modules/fastd/fastd.service';
+  }
+
+  service { 'fastd':
+    ensure => running,
+    enable => true,
+  }
+
+  $update_fastd_backbone = '/usr/local/bin/ffffm-update-fastd-backbone'
 
   file { '/etc/cron.d/fastd':
     ensure  => file,
@@ -62,6 +62,14 @@ class fastd (
     group   => 'root',
     content => template('fastd/fastd-cron.erb'),
     mode    => '0755',
+  }
+
+  file { $update_fastd_backbone:
+    ensure => file,
+    mode   => '0755',
+    owner  => 'root',
+    group  => 'root',
+    source => 'puppet:///modules/fastd/update-fastd-backbone.sh',
   }
 
   Vcsrepo {

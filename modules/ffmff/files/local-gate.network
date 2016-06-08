@@ -1,0 +1,6 @@
+[Match]
+Name=local-gate
+
+[Network]
+Address=10.126.0.4/16
+Address=fddd:5d16:b5dd::2/64

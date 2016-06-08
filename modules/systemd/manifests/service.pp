@@ -15,6 +15,8 @@ define systemd::service (
     provider => 'systemd',
   }
 
-  Systemd::Unit["${title}.service"] ~> Service[$title]
-  Exec[$systemd::reload_command] -> Service[$title]
+  if $title !~ /@$/ {
+    Systemd::Unit["${title}.service"] ~> Service[$title]
+    Exec[$systemd::reload_command] -> Service[$title]
+  }
 }
