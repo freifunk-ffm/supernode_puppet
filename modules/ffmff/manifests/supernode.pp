@@ -130,8 +130,11 @@ class ffmff::supernode (
 
   include ffmff::dns_server
 
-  systemd::netdev { 'local-gate':
-    source => 'puppet:///modules/ffmff/local-gate.netdev',
+  systemd::netdev {
+    'local-gate':
+      source => 'puppet:///modules/ffmff/local-gate.netdev';
+    'batbridge':
+      source => 'puppet:///modules/ffmff/batbridge.netdev';
   }
 
   systemd::network {
