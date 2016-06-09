@@ -196,16 +196,16 @@ class ffmff::supernode (
       zone => 'users';
   }
   include shorewall::symlink::interfaces
- 
+
   shorewall::four::policy {
     'default':
       source    => 'all',
       dest      => 'all',
-      action    => 'REJECT',
+      policy    => 'REJECT',
       log_level => 'info',
       order     => 999,
   }
-  include shorewall::symlink::policy
+  include shorewall::symlink::policies
 
 >>>>>>> little bit of shorewall
 }
