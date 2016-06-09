@@ -12,6 +12,6 @@ define shorewall::four::fragment (
   ::concat::fragment { "${basedir}/${target}+${title}":
     target  => "${basedir}/${target}",
     order   => sprintf("%010d", $order),
-    content => strip(join($content, "	")),
+    content => regsubst(strip(join($content, "	")), '^(.+?)(\t-)*$', '\1'),
   }
 }
