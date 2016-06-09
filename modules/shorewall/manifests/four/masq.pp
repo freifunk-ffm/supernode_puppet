@@ -22,3 +22,4 @@ define shorewall::four::masq (
       $switch, $origdest, $probability,
     ],
   }
+}
