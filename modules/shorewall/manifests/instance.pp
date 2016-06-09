@@ -34,9 +34,4 @@ define shorewall::instance (
     require => Package[$package],
     notify  => Service[$service],
   }
-
-  service { $service:
-    ensure => running,
-    enable => true,
-  }
 }
