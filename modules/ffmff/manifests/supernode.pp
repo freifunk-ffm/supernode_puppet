@@ -148,4 +148,56 @@ class ffmff::supernode (
     ensure => stopped,
     enable => false,
   }
+
+  systemd::service { 'setup-ipsets':
+    source => 'puppet:///modules/ffmff/supernode/setup-ipsets.service';
+  }
+
+  service { 'setup-ipsets':
+    ensure => running,
+    enable => true,
+  }
+
+  systemd::service {
+    'shorewall':
+      source => 'puppet:///modules/ffmff/systemd/units/shorewall.service';
+    'shorewall6':
+      source => 'puppet:///modules/ffmff/systemd/units/shorewall6.service';
+  }
+
+  service { [
+    'shorewall',
+    'shorewall6',
+  ]:
+    ensure => stopped,
+    enable => false,
+  }
+
+  shorewall::four::zone { [
+    'net',
+    'ovpn',
+    'fastd',
+    'client',
+    #    'bat',
+  ]: }
+  shorewall::four::zone { 'fw':
+    type => 'firewall',
+  }
+  include shorewall::symlink::zones
+
+  shorewall::four::interface {
+    'eth0':
+      zone => 'net';
+    ['mesh-vpn', 'mesh-vpn-*']:
+      zone => 'fastd';
+    'mesh-vpn-*':
+      zone => 'fastd';
+    'ovpn-inet':
+      zone => 'ovpn';
+    ['batbridge', 'local-gate']:
+      zone => 'client';
+  }
+  include shorewall::symlink::interfaces
+
+>>>>>>> little bit of shorewall
 }

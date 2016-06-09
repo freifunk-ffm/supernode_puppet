@@ -1,0 +1,14 @@
+[Unit]
+Description=Shorewall IPv6 firewall
+Wants=network-pre.target
+Before=network-pre.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/sbin/shorewall6 start
+ExecStop=/sbin/shorewall6 stop
+ExecReload=/sbin/shorewall6 reload
+
+[Install]
+WantedBy=basic.target
