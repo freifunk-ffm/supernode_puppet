@@ -139,6 +139,6 @@ class ffmff::supernode (
     'local-gate':
       source => 'puppet:///modules/ffmff/local-gate.network';
     'bat0':
-      source => 'puppet:///modules/ffmff/supernode/bat0';
+      source => 'puppet:///modules/ffmff/supernode/bat0.network';
   }
 }
