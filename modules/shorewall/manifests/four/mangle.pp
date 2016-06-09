@@ -1,7 +1,7 @@
 define shorewall::four::mangle (
   $order,
   $action,
-  $source,
+  $source = '-',
   $dest = '-',
   $proto = '-',
   $dport = '-',
