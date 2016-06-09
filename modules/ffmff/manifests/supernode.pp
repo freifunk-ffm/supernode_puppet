@@ -177,7 +177,7 @@ class ffmff::supernode (
     'net',
     'ovpn',
     'fastd',
-    'client',
+    'users',
     #    'bat',
   ]: }
   shorewall::four::zone { 'fw':
@@ -193,7 +193,7 @@ class ffmff::supernode (
     'ovpn-inet':
       zone => 'ovpn';
     ['batbridge', 'local-gate']:
-      zone => 'client';
+      zone => 'users';
   }
   include shorewall::symlink::interfaces
 
