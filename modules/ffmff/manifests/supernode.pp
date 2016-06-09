@@ -198,6 +198,11 @@ class ffmff::supernode (
   include shorewall::symlink::interfaces
 
   shorewall::four::policy {
+    'outbound':
+      source => '$FW',
+      dest   => 'all',
+      policy => 'ACCEPT',
+      order  => 1;
     'default':
       source    => 'all',
       dest      => 'all',
@@ -216,17 +221,70 @@ class ffmff::supernode (
     'ssh':
       order  => 1,
       source => 'all',
-      dest   => 'all',
+      dest   => 'all', # $FW?
       proto  => 'tcp',
       dport  => 'ssh';
-    'allow local exit':
+    'ping':
       order  => 2,
-      source => 'users',
-      dest   => 'net:+exit';
-    'mark local exit': # FIXME PREROUTING?
+      source => 'all',
+      dest   => 'all', # $FW?
+      proto  => 'icmp',
+      dport  => 8;
+    'dns':
       order  => 3,
-      action => 'IPTABLES(MARK --set-mark 0x1)',
+      source => 'client',
+      dest   => '$FW',
+      proto  => ['udp', 'tcp'],
+      dport  => 'domain';
+    'nagios':
+      order  => 4,
+      source => 'net:130.180.93.142',
+      dest   => '$FW',
+      proto  => 'tcp',
+      dport  => [6556, 5666];
+    'foo1':
+      order  => 5,
+      source => 'client',
+      dest   => '$FW',
+      proto  => 'tcp',
+      dport  => 3000;
+    'foo2':
+      order  => 6,
+      source => 'client:10.126.255.25',
+      dest   => '$FW',
+      proto  => 'tcp',
+      dport  => [6556,5666];
+    'dhcp':
+      order  => 7,
+      source => 'client',
+      dest   => '$FW',  # all?
+      proto  => 'udp',
+      dport  => [67, 68];
+    'fastd':
+      order  => 8,
+      source => 'net',
+      dest   => '$FW',  # all?
+      proto  => 'udp',
+      dport  => '10000:10002';
+    'allow local exit':
+      order  => 99,
       source => 'users',
       dest   => 'net:+exit';
+  }
+
+  shorewall::four::mangle {
+    'mark local exit':
+      order  => 1,
+      action => 'MARK(0x1)',
+      source => 'users',
+      dest   => 'net:+exit';
+  }
+
+  shorewall::four::masq {
+    'ovpn-inet':
+      interface => 'ovpn-inet',
+      source    => '10.126.0.0/16',
+      # address   => '138.201.45.136',
+      # 1.1.1.1?
   }
 }
