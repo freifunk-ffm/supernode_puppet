@@ -205,7 +205,7 @@ class ffmff::supernode (
       log_level => 'info',
       order     => 999,
   }
-  include shorewall::symlink::policies
+  include shorewall::symlink::policy
 
 >>>>>>> little bit of shorewall
 }
