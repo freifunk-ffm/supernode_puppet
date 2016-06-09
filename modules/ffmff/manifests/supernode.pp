@@ -336,10 +336,9 @@ class ffmff::supernode (
       dest   => '$FW',  # all?
       proto  => 'udp',
       dport  => '10000:10002';
-    'foo1':
+    'foo2':
       order  => 9,
-      source => 'users',
-      dest   => '$FW',
-      source => 'ff00::/8',
+      source => 'users:ff00::/8',
+      dest   => '$FW';
   }
 }
