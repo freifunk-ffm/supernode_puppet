@@ -5,3 +5,4 @@ Name=batbridge
 Address=<%= @ipv4_net %>.<%= @ipv4_subnet_start %>.<%= @ipv4_suffix %>/16
 Address=<%= @ipv6_rnet %>::1/64
 MACVLAN=local-gate
+IPv6AcceptRouterAdvertisements=false
