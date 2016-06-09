@@ -276,8 +276,7 @@ class ffmff::supernode (
     'mark local exit':
       order  => 1,
       action => 'MARK(0x1)',
-      source => 'users',
-      dest   => 'net:+exit';
+      dest   => '-';
   }
 
   shorewall::four::masq {
