@@ -203,6 +203,11 @@ class ffmff::supernode (
       dest   => 'all',
       policy => 'ACCEPT',
       order  => 1;
+    'users':
+      source => 'users',
+      dest   => 'ovpn',
+      policy => 'ACCEPT',
+      order  => 2;
     'default':
       source    => 'all',
       dest      => 'all',
