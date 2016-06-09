@@ -219,9 +219,14 @@ class ffmff::supernode (
       dest   => 'all',
       proto  => 'tcp',
       dport  => 'ssh';
-    'oo':
+    'allow local exit':
       order  => 2,
       source => 'users',
-      dest   => 'net+exit';
+      dest   => 'net:+exit';
+    'mark local exit': # FIXME PREROUTING?
+      order  => 3,
+      action => 'IPTABLES(MARK --set-mark 0x1)',
+      source => 'users',
+      dest   => 'net:+exit';
   }
 }
