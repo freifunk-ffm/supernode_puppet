@@ -14,6 +14,8 @@ ExecStart=/sbin/ip route add <%= @ipv4_net %>.0.0/16 dev batbridge table ffffm
 ExecStart=/sbin/ip route add 10.0.0.0/8 via 10.126.255.11 dev batbridge table ffffm
 ExecStart=/sbin/ip -6 route add <%= @ipv6_rnet_prefix %>:/<%= @ipv6_rnet_mask %> dev batbridge table ffffm
 ExecStart=/sbin/ip -6 route add <%= @ipv6_net %>::/64 dev batbridge table ffffm
+ExecReload=/bin/true
+ExecStop=/bin/false
 
 [Install]
 WantedBy=multi-user.target
