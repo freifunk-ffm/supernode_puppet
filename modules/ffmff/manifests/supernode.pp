@@ -188,7 +188,7 @@ class ffmff::supernode (
   shorewall::four::interface {
     'eth0':
       zone => 'net';
-    ['mesh-vpn', 'mesh-vpn-*']:
+    ['mesh-vpn', 'mesh-vpn-+']:
       zone => 'fastd';
     'ovpn-inet':
       zone => 'ovpn';
