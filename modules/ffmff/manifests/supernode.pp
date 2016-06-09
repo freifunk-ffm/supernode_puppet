@@ -232,7 +232,7 @@ class ffmff::supernode (
       dport  => 8;
     'dns':
       order  => 3,
-      source => 'client',
+      source => 'users',
       dest   => '$FW',
       proto  => ['udp', 'tcp'],
       dport  => 'domain';
@@ -244,19 +244,19 @@ class ffmff::supernode (
       dport  => [6556, 5666];
     'foo1':
       order  => 5,
-      source => 'client',
+      source => 'users',
       dest   => '$FW',
       proto  => 'tcp',
       dport  => 3000;
     'foo2':
       order  => 6,
-      source => 'client:10.126.255.25',
+      source => 'users:10.126.255.25',
       dest   => '$FW',
       proto  => 'tcp',
       dport  => [6556,5666];
     'dhcp':
       order  => 7,
-      source => 'client',
+      source => 'users',
       dest   => '$FW',  # all?
       proto  => 'udp',
       dport  => [67, 68];
