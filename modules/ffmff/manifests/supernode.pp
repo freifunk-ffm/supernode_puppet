@@ -207,5 +207,21 @@ class ffmff::supernode (
   }
   include shorewall::symlink::policy
 
->>>>>>> little bit of shorewall
+  Shorewall::Four::Rule {
+    section => 'NEW',
+    action  => 'ACCEPT',
+  }
+
+  shorewall::four::rule {
+    'ssh':
+      order  => 1,
+      source => 'all',
+      dest   => 'all',
+      proto  => 'tcp',
+      dport  => 'ssh';
+    'oo':
+      order  => 2,
+      source => 'users',
+      dest   => 'net+exit';
+  }
 }
