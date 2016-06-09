@@ -23,6 +23,7 @@ class ffmff::dns_server {
     '/etc/bind/zones.ffm':
       source => 'puppet:///modules/ffmff/dns_server/zones.ffm';
     '/etc/bind/zones.ff':
+      owner => 'ffmff',
       ensure => link,
       target => '/var/lib/ffmff/output/zones.ff';
     '/etc/bind/master':
