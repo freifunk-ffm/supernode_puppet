@@ -221,13 +221,13 @@ class ffmff::supernode (
     'ssh':
       order  => 1,
       source => 'all',
-      dest   => 'all', # $FW?
+      dest   => '$FW',
       proto  => 'tcp',
       dport  => 'ssh';
     'ping':
       order  => 2,
       source => 'all',
-      dest   => 'all', # $FW?
+      dest   => '$FW',
       proto  => 'icmp',
       dport  => 8;
     'dns':
@@ -286,5 +286,60 @@ class ffmff::supernode (
       source    => '10.126.0.0/16',
       # address => '138.201.45.136',
       # 1.1.1.1?
+  }
+
+  shorewall::six::masq {
+    'ovpn-inet':
+      order     => 1,
+      interface => 'ovpn-inet',
+      source    => 'fddd:5d16:b5dd::/48',
+  }
+
+  Shorewall::Six {
+    section => 'NEW',
+    action  => 'ACCEPT',
+  }
+
+  shorewall::six::rule {
+    'ssh':
+      order  => 1,
+      source => 'all',
+      dest   => '$FW',
+      proto  => 'tcp',
+      dport  => 'ssh';
+    'ping':
+      order  => 2,
+      source => 'all',
+      dest   => '$FW',
+      proto  => 'ipv6-icmp',
+    'dns':
+      order  => 3,
+      source => 'users',
+      dest   => '$FW',
+      proto  => ['udp', 'tcp'],
+      dport  => 'domain';
+    'foo1':
+      order  => 5,
+      source => 'users',
+      dest   => '$FW',
+      proto  => 'tcp',
+      dport  => 3000;
+    'dhcp':
+      order  => 7,
+      source => 'users',
+      dest   => '$FW',  # all?
+      proto  => 'udp',
+      dport  => [67, 68];
+    'fastd':
+      order  => 8,
+      source => 'net',
+      dest   => '$FW',  # all?
+      proto  => 'udp',
+      dport  => '10000:10002';
+    'foo1':
+      order  => 9,
+      source => 'users',
+      dest   => '$FW',
+      source => 'ff00::/8',
   }
 }
