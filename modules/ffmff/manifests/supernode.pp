@@ -190,8 +190,6 @@ class ffmff::supernode (
       zone => 'net';
     ['mesh-vpn', 'mesh-vpn-*']:
       zone => 'fastd';
-    'mesh-vpn-*':
-      zone => 'fastd';
     'ovpn-inet':
       zone => 'ovpn';
     ['batbridge', 'local-gate']:
