@@ -295,7 +295,7 @@ class ffmff::supernode (
       source    => 'fddd:5d16:b5dd::/48',
   }
 
-  Shorewall::Six {
+  Shorewall::Six::Rule {
     section => 'NEW',
     action  => 'ACCEPT',
   }
