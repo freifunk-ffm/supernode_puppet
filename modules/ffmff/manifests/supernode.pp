@@ -311,7 +311,7 @@ class ffmff::supernode (
       order  => 2,
       source => 'all',
       dest   => '$FW',
-      proto  => 'ipv6-icmp',
+      proto  => 'ipv6-icmp';
     'dns':
       order  => 3,
       source => 'users',
