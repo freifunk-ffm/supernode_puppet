@@ -1,0 +1,5 @@
+[Match]
+Name=bat0
+
+[Network]
+Bridge=batbridge

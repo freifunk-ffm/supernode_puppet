@@ -1,5 +1,0 @@
-[Match]
-Name=batbridge
-
-[Network]
-MACVLAN=local-gate
