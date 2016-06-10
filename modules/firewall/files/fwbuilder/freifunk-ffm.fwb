@@ -3260,7 +3260,7 @@
           <Option name="verify_interfaces">True</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id4191X9028" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1461828713" lastInstalled="1441059734" lastModified="1462006625" platform="iptables" version="" name="uber.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id4191X9028" folder="uberspace" host_OS="linux24" inactive="False" lastCompiled="1463401979" lastInstalled="1441059734" lastModified="1462006625" platform="iptables" version="" name="uber.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id4195X9028" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <NATRule id="id19987X27248" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -6310,7 +6310,7 @@
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id6244X11180" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1461827425" lastInstalled="1461827465" lastModified="1461968930" platform="iptables" version="" name="fastd2.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id6244X11180" folder="datafabrik" host_OS="linux24" inactive="False" lastCompiled="1463401976" lastInstalled="1461827465" lastModified="1463401965" platform="iptables" version="" name="fastd2.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id6512X11180" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="True" top_rule_set="True">
           <NATRule id="id6514X11180" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
@@ -6864,7 +6864,9 @@
 
 /sbin/iptables -A PREROUTING -t mangle -m set --match-set exit dst -j MARK --set-mark 0x1
 #/sbin/ip6tables -A PREROUTING -t mangle -m set --match-set exit6 dst -j MARK --set-mark 0x1
-/sbin/ip rule add fwmark 0x1 lookup main
+
+/sbin/ip rule |grep -q  "fwmark 0x1 lookup main" || /sbin/ip rule add fwmark 0x1 lookup main
+
 </Option>
           <Option name="firewall_dir">/etc/fw</Option>
           <Option name="firewall_is_part_of_any_and_networks">True</Option>
@@ -6922,10 +6924,11 @@
           <Option name="modules_dir">/lib/modules/`uname -r`/kernel/net/</Option>
           <Option name="output_file"/>
           <Option name="prolog_place">top</Option>
-          <Option name="prolog_script">/sbin/ipset create exit hash:net family inet hashsize 2048 maxelem 65536
-/sbin/ipset create exit-temp hash:net family inet hashsize 2048 maxelem 65536
-/sbin/ipset create exit6 hash:net family inet6 hashsize 2048 maxelem 65536
-/sbin/ipset create exit6-temp hash:net family inet6  hashsize 2048 maxelem 65536
+          <Option name="prolog_script">mkdir -p /etc/fw
+/sbin/ipset create exit hash:net family inet hashsize 2048 maxelem 65536 -exist
+/sbin/ipset create exit-temp hash:net family inet hashsize 2048 maxelem 65536 -exist
+/sbin/ipset create exit6 hash:net family inet6 hashsize 2048 maxelem 65536 -exist
+/sbin/ipset create exit6-temp hash:net family inet6  hashsize 2048 maxelem 65536 -exist
 </Option>
           <Option name="scpArgs"/>
           <Option name="script_name_on_firewall"/>
@@ -9996,7 +9999,7 @@
           <Option name="verify_interfaces">False</Option>
         </FirewallOptions>
       </Firewall>
-      <Firewall id="id44323X23067" folder="igor" host_OS="linux24" lastCompiled="1461617252" lastInstalled="1461617258" lastModified="1463401728" platform="iptables" name="fastd1.ffm.freifunk.net" comment="" ro="False">
+      <Firewall id="id44323X23067" folder="igor" host_OS="linux24" lastCompiled="1463401736" lastInstalled="1463401743" lastModified="1463401728" platform="iptables" name="fastd1.ffm.freifunk.net" comment="" ro="False">
         <NAT id="id44327X23067" name="NAT" comment="" ro="False" ipv4_rule_set="True" ipv6_rule_set="False" top_rule_set="True">
           <NATRule id="id38254X30153" disabled="False" group="" position="0" action="Translate" comment="">
             <OSrc neg="False">
