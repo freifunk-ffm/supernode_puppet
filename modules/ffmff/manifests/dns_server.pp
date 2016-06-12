@@ -34,6 +34,7 @@ class ffmff::dns_server {
 
   file { '/var/lib/ffmff/output/zones.ff':
     ensure => file,
+    owner  => 'ffmff',
     before => Service['bind9'],
   }
 
