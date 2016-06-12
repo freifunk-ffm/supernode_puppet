@@ -21,6 +21,7 @@ class routing {
     content => template('routing/directexit'),
     mode    => '0755',
   }
+
   cron { 'update-directexit':
     command  => "/usr/bin/chronic ${update_directexit}",
     user     => $user,

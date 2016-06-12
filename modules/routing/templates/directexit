@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 asList=(
     714     # Apple
     20940   # AKAMAI
@@ -51,7 +53,7 @@ ipsetAdd() {
     local ipset=${1}
 
     while read; do
-        $IPSET add "${ipset}" "${REPLY}"
+        $IPSET add -exist "${ipset}" "${REPLY}"
     done
 }
 
