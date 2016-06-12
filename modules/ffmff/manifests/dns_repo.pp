@@ -25,6 +25,8 @@ class ffmff::dns_repo {
       ensure => directory;
     "${libdir}/output":
       ensure => directory;
+    "${libdir}/output/zones.ff":
+      ensure => file;
   }
 
   Vcsrepo {
