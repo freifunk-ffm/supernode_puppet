@@ -74,10 +74,12 @@ for as in "${asList[@]}"; do
     # Get IPs
     asData=$(curl -s "https://stat.ripe.net/data/announced-prefixes/data.json?min_peers_seeing=0&resource=${as}"|jq --raw-output .data.prefixes[].prefix)
 
-    for ((i=0;i<${#ipsets[@]};i++)); do
-        # Add IPs to ipset
-        ipsetAdd "${ipsets[i]}-temp" < <(echo "${asData}" | grep ${grepCmd[i]})
-    done
+    if [[ -n "$asData" ]]; then
+        for ((i=0;i<${#ipsets[@]};i++)); do
+            # Add IPs to ipset
+            ipsetAdd "${ipsets[i]}-temp" < <(echo "${asData}" | grep ${grepCmd[i]})
+        done
+    fi
 done
 
 # Apply and cleanup
