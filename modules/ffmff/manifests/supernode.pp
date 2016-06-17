@@ -288,9 +288,13 @@ class ffmff::supernode (
     'ovpn-inet':
       order     => 1,
       interface => 'ovpn-inet',
-      source    => '10.126.0.0/16',
+      source    => '10.126.0.0/16';
       # address => '138.201.45.136',
       # 1.1.1.1?
+    'eth0':
+      order     => 2,
+      interface => 'eth0',
+      source    => '10.126.0.0/16';
   }
 
   shorewall::six::masq {
