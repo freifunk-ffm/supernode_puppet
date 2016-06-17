@@ -169,8 +169,6 @@ class ffmff::supernode (
     'shorewall',
     'shorewall6',
   ]:
-    ensure => stopped,
-    enable => false,
   }
 
   shorewall::four::zone { [
@@ -276,6 +274,24 @@ class ffmff::supernode (
       source => 'users',
       dest   => 'net:+exit';
   }
+
+  Shorewall::Four::Stoppedrule {
+      source => '-',
+      action => 'ACCEPT',
+      dest   => '$FW',
+  }
+
+  shorewall::four::stoppedrule {
+    'ssh':
+      order  => 1,
+      proto  => 'tcp',
+      dport  => 'ssh';
+    'ping':
+      order  => 2,
+      proto  => 'icmp',
+      dport  => 8;
+  }
+  include shorewall::symlink::stoppedrules
 
   shorewall::four::mangle {
     'mark local exit':
