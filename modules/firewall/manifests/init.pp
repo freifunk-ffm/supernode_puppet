@@ -3,37 +3,7 @@ class firewall {
   $fw_dir = '/etc/fw'
   $fw_file = "${fw_dir}/${fqdn}"
   $fw_link = "${fw_dir}/script"
-  $service = 'fwbuilder'
-
-  file { $fw_dir:
-    ensure  => directory,
-    mode    => '0755',
-    group   => 'root',
-    owner   => 'root',
-    purge   => true,
-    recurse => true,
-    force   => true,
-  }
-
-  file { $fw_file:
-    ensure => file,
-    mode   => '0750',
-    owner  => 'root',
-    group  => 'root',
-    source => "puppet:///modules/firewall/fwbuilder/${fqdn}.fw",
-    notify => Service[$service],
-  }
-  
-  file { '/etc/network/if-up.d/script':
-    ensure => link,
-    target => $fw_file,
-  }
-
-  file { $fw_link:
-    ensure => link,
-    target => $fw_file,
-    notify => Service[$service],
-  }
+  $service = 'shorewall'
 
   file_line { '/etc/rc.local:firewall':
     ensure            => absent,
@@ -43,11 +13,6 @@ class firewall {
     match_for_absence => true,
     notify            => Service[$service],
     before            => Service['fail2ban'],
-  }
-
-  systemd::service { $service:
-    ensure  => present,
-    content => template('firewall/fwbuilder.service'),
   }
 
   service { $service:
