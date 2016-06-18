@@ -22,8 +22,6 @@ DNS(ACCEPT)	$FW		wan
 #
 SSH(ACCEPT)     ff             $FW
 SSH(ACCEPT)     wan            $FW
-DNS(ACCEPT)	ff             $FW
-NTP(ACCEPT)	ff             $FW
 #
 #	DMZ DNS access to the Internet
 #
@@ -57,6 +55,8 @@ Ping(ACCEPT)    dmz            wan
 ACCEPT		$FW		wan		icmp
 ACCEPT		$FW		ff		icmp
 ACCEPT		$FW		vpn		icmp
+
+ACCEPT		ff		$FW		dns,ntp
 
 # Uncomment this if using Proxy ARP and static NAT and you want to alffw ping from
 # the wan zone to the dmz and ffc
