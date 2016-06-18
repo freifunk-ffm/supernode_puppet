@@ -348,7 +348,7 @@ class ffmff::supernode (
       source => 'users',
       dest   => '$FW',
       proto  => ['udp', 'tcp'],
-      dport  => 'time';
+      dport  => 123;
     'foo1':
       order  => 5,
       source => 'users',
