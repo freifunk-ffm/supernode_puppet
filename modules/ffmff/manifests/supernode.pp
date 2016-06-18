@@ -244,7 +244,7 @@ class ffmff::supernode (
       source => 'users',
       dest   => '$FW',
       proto  => ['udp', 'tcp'],
-      dport  => 'time';
+      dport  => 123;
     'nagios':
       order  => 4,
       source => 'net:130.180.93.142',
