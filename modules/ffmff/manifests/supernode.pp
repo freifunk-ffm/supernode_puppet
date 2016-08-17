@@ -185,12 +185,17 @@ class ffmff::supernode (
 
   shorewall::four::interface {
     'eth0':
+      options => ['dhcp'],
       zone => 'net';
     ['mesh-vpn', 'mesh-vpn-+']:
       zone => 'fastd';
     'ovpn-inet':
       zone => 'ovpn';
-    ['batbridge', 'local-gate']:
+    'batbridge':
+      options => ['bridge', 'dhcp'],
+      zone => 'users';
+    'local-gate':
+      options => ['dhcp'],
       zone => 'users';
   }
   include shorewall::symlink::interfaces
