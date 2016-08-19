@@ -7,8 +7,6 @@ asList=(
     32787   # AKAMAI (other)
     16625   # AKAMAI (other #2)
     57976   # Blizzard
-    50472   # CCC
-    13020   # CCCV
     13335   # CLOUDFLARE
     19679   # Dropbox
     32934   # Facebook
@@ -25,14 +23,6 @@ asList=(
     10310   # Yahoo
     8302    # Zattoo
     44949   # GIGACODES
-    
-
-    #Freifunk
-    44194   # Freifunk Berlin
-    3624    # Freifunk Bremen
-    6766    # Freifunk Darmstadt
-    201701  # Freifunk Rheinland
-    49009   # Freifunk Rheinland / Hamburg
 )
 
 IPSET=/sbin/ipset
