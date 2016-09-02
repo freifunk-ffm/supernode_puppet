@@ -1,6 +1,7 @@
 [Unit]
 Description=Apply FWBuilder configuration
-Before=network.target
+Before=network-pre.target
+Wants=network-pre.target
 
 [Service]
 Type=oneshot
