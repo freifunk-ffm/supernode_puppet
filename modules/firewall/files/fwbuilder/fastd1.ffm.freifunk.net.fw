@@ -401,8 +401,8 @@ script_body() {
     # 
     echo "Rule 5 (global)"
     # 
-    $IPTABLES -A INPUT -p tcp -m tcp  --dport 22  -m state --state NEW  -j ACCEPT
-    $IPTABLES -A FORWARD -i +  -p tcp -m tcp  --dport 22  -m state --state NEW  -j ACCEPT
+    $IPTABLES -A INPUT -p tcp -m tcp  -m multiport  --dports  22,9100  -m state --state NEW  -j ACCEPT
+    $IPTABLES -A FORWARD -i +  -p tcp -m tcp  -m multiport  --dports  22,9100  -m state --state NEW  -j ACCEPT
     # 
     # Rule 6 (global)
     # 
