@@ -4,16 +4,16 @@
 #
 #  Firewall Builder  fwb_ipt v5.1.0.3599
 #
-#  Generated Mon May 16 14:28:54 2016 CEST by christof
+#  Generated Sat Sep  3 12:54:45 2016 CEST by igor
 #
 # files: * fastd1.ffm.freifunk.net.fw /etc/fw/fastd1.ffm.freifunk.net.fw
 #
 # Compiled for iptables (any version)
 #
 
-# fastd1.ffm.freifunk.net:Policy:6: warning: Making rule stateless because it matches ICMPv6
-# fastd1.ffm.freifunk.net:Policy:6: warning: Making rule stateless because it matches ICMPv6
-# fastd1.ffm.freifunk.net:Policy:6: warning: Making rule stateless because it matches ICMPv6
+# fastd1.ffm.freifunk.net:Policy:7: warning: Making rule stateless because it matches ICMPv6
+# fastd1.ffm.freifunk.net:Policy:7: warning: Making rule stateless because it matches ICMPv6
+# fastd1.ffm.freifunk.net:Policy:7: warning: Making rule stateless because it matches ICMPv6
 
 # fastd1.ffm.freifunk.net:Policy:: warning: target TCPMSS is not supported by ip6tables before v1.3.8
 
@@ -401,42 +401,49 @@ script_body() {
     # 
     echo "Rule 5 (global)"
     # 
-    $IPTABLES -A INPUT -p tcp -m tcp  -m multiport  --dports  22,9100  -m state --state NEW  -j ACCEPT
-    $IPTABLES -A FORWARD -i +  -p tcp -m tcp  -m multiport  --dports  22,9100  -m state --state NEW  -j ACCEPT
+    $IPTABLES -A INPUT -p tcp -m tcp  --dport 22  -m state --state NEW  -j ACCEPT
+    $IPTABLES -A FORWARD -i +  -p tcp -m tcp  --dport 22  -m state --state NEW  -j ACCEPT
     # 
     # Rule 6 (global)
     # 
     echo "Rule 6 (global)"
     # 
+    $IPTABLES -A INPUT -p tcp -m tcp  --dport 9100  -m state --state NEW  -j ACCEPT
+    $IPTABLES -A FORWARD -i +  -p tcp -m tcp  --dport 9100  -m state --state NEW  -j ACCEPT
+    # 
+    # Rule 7 (global)
+    # 
+    echo "Rule 7 (global)"
+    # 
     $IPTABLES -A OUTPUT -p icmp  -m icmp  --icmp-type any  -m state --state NEW  -j ACCEPT
     $IPTABLES -A INPUT -p icmp  -m icmp  --icmp-type any  -m state --state NEW  -j ACCEPT
     $IPTABLES -A FORWARD -p icmp  -m icmp  --icmp-type any  -m state --state NEW  -j ACCEPT
     # 
-    # Rule 7 (batbridge)
+    # Rule 8 (batbridge)
     # 
-    echo "Rule 7 (batbridge)"
+    echo "Rule 8 (batbridge)"
     # 
     $IPTABLES -A INPUT -i batbridge  -p udp -m udp  -m multiport  --dports 68,67  -m state --state NEW  -j ACCEPT
     $IPTABLES -A FORWARD -i batbridge  -p udp -m udp  -m multiport  --dports 68,67  -m state --state NEW  -j ACCEPT
     $IPTABLES -A OUTPUT -o batbridge  -p udp -m udp  -m multiport  --dports 68,67  -m state --state NEW  -j ACCEPT
     $IPTABLES -A FORWARD -o batbridge  -p udp -m udp  -m multiport  --dports 68,67  -m state --state NEW  -j ACCEPT
     # 
-    # Rule 8 (eth0)
+    # Rule 9 (eth0)
     # 
-    echo "Rule 8 (eth0)"
+    echo "Rule 9 (eth0)"
     # 
     $IPTABLES -A INPUT -i eth0  -p udp -m udp  -m multiport  -d 5.9.221.124   --dports 10000,10001,10002  -m state --state NEW  -j ACCEPT
     # 
-    # Rule 10 (batbridge)
+    # Rule 11 (batbridge)
     # 
-    echo "Rule 10 (batbridge)"
+    echo "Rule 11 (batbridge)"
     # 
     $IPTABLES -A OUTPUT -o batbridge   -s 10.126.0.0/16   -d 10.126.0.0/16   -j ACCEPT
     $IPTABLES -A FORWARD -o batbridge   -s 10.126.0.0/16   -d 10.126.0.0/16   -j ACCEPT
     # 
-    # Rule 11 (ovpn-inet)
+    # Rule 12 (ovpn-inet)
     # 
-    echo "Rule 11 (ovpn-inet)"
+    echo "Rule 12 (ovpn-inet)"
     # 
     for i_ovpn_inet in $i_ovpn_inet_list
     do
@@ -445,15 +452,15 @@ script_body() {
     $IPTABLES -A OUTPUT -o ovpn-inet   -s 10.126.0.0/16   -j ACCEPT
     $IPTABLES -A FORWARD -o ovpn-inet   -s 10.126.0.0/16   -j ACCEPT
     # 
-    # Rule 12 (eth0)
+    # Rule 13 (eth0)
     # 
-    echo "Rule 12 (eth0)"
+    echo "Rule 13 (eth0)"
     # 
     $IPTABLES -A OUTPUT -o eth0   -s 5.9.221.124   -m state --state NEW  -j ACCEPT
     # 
-    # Rule 13 (global)
+    # Rule 14 (global)
     # 
-    echo "Rule 13 (global)"
+    echo "Rule 14 (global)"
     # 
     $IPTABLES -A OUTPUT  -j DROP
     $IPTABLES -A INPUT  -j DROP
@@ -502,31 +509,38 @@ script_body() {
     # 
     echo "Rule 6 (global)"
     # 
-    # fastd1.ffm.freifunk.net:Policy:6: warning: Making rule stateless because it matches ICMPv6
+    $IP6TABLES -A INPUT -p tcp -m tcp  --dport 9100  -m state --state NEW  -j ACCEPT
+    $IP6TABLES -A FORWARD -i +  -p tcp -m tcp  --dport 9100  -m state --state NEW  -j ACCEPT
+    # 
+    # Rule 7 (global)
+    # 
+    echo "Rule 7 (global)"
+    # 
+    # fastd1.ffm.freifunk.net:Policy:7: warning: Making rule stateless because it matches ICMPv6
 
     $IP6TABLES -A OUTPUT -p ipv6-icmp  -j ACCEPT
     $IP6TABLES -A INPUT -p ipv6-icmp  -j ACCEPT
     $IP6TABLES -A FORWARD -p ipv6-icmp  -j ACCEPT
     # 
-    # Rule 7 (batbridge)
+    # Rule 8 (batbridge)
     # 
-    echo "Rule 7 (batbridge)"
+    echo "Rule 8 (batbridge)"
     # 
     $IP6TABLES -A INPUT -i batbridge  -p udp -m udp  -m multiport  --dports 68,67  -m state --state NEW  -j ACCEPT
     $IP6TABLES -A FORWARD -i batbridge  -p udp -m udp  -m multiport  --dports 68,67  -m state --state NEW  -j ACCEPT
     $IP6TABLES -A OUTPUT -o batbridge  -p udp -m udp  -m multiport  --dports 68,67  -m state --state NEW  -j ACCEPT
     $IP6TABLES -A FORWARD -o batbridge  -p udp -m udp  -m multiport  --dports 68,67  -m state --state NEW  -j ACCEPT
     # 
-    # Rule 9 (batbridge)
+    # Rule 10 (batbridge)
     # 
-    echo "Rule 9 (batbridge)"
+    echo "Rule 10 (batbridge)"
     # 
     $IP6TABLES -A OUTPUT -o batbridge   -s fddd:5d16:b5dd::/48   -d fddd:5d16:b5dd::/48   -j ACCEPT
     $IP6TABLES -A FORWARD -o batbridge   -s fddd:5d16:b5dd::/48   -d fddd:5d16:b5dd::/48   -j ACCEPT
     # 
-    # Rule 11 (ovpn-inet)
+    # Rule 12 (ovpn-inet)
     # 
-    echo "Rule 11 (ovpn-inet)"
+    echo "Rule 12 (ovpn-inet)"
     # 
     for i_ovpn_inet_v6 in $i_ovpn_inet_v6_list
     do
@@ -535,9 +549,9 @@ script_body() {
     $IP6TABLES -A OUTPUT -o ovpn-inet   -s fddd:5d16:b5dd::/48   -j ACCEPT
     $IP6TABLES -A FORWARD -o ovpn-inet   -s fddd:5d16:b5dd::/48   -j ACCEPT
     # 
-    # Rule 13 (global)
+    # Rule 14 (global)
     # 
-    echo "Rule 13 (global)"
+    echo "Rule 14 (global)"
     # 
     $IP6TABLES -A OUTPUT  -j DROP
     $IP6TABLES -A INPUT  -j DROP
@@ -601,7 +615,7 @@ test -z "$cmd" && {
 
 case "$cmd" in
     start)
-        log "Activating firewall script generated Mon May 16 14:28:54 2016 by christof"
+        log "Activating firewall script generated Sat Sep  3 12:54:45 2016 by igor"
         check_tools
          prolog_commands 
         check_run_time_address_table_files
