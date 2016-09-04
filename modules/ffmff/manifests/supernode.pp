@@ -141,4 +141,10 @@ class ffmff::supernode (
     'bat0':
       source => 'puppet:///modules/ffmff/supernode/bat0.network';
   }
+
+  # fix dependency cycle
+  service { 'rpcbind':
+    ensure => stopped,
+    enable => false,
+  }
 }
