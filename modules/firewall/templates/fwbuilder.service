@@ -1,6 +1,8 @@
 [Unit]
 Description=Apply FWBuilder configuration
+DefaultDependencies=false
 Before=network-pre.target
+After=local-fs.target
 Wants=network-pre.target
 
 [Service]
