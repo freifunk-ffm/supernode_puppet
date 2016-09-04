@@ -10,4 +10,4 @@ ExecReload=/etc/fw/script reload
 RemainAfterExit=yes
 
 [Install]
-WantedBy=basic.target
+WantedBy=network.target
