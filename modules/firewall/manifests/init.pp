@@ -25,7 +25,7 @@ class firewall {
   }
   
   file { '/etc/network/if-up.d/script':
-    ensure => file,
+    ensure => link,
     target => $fw_file,
   }
 
