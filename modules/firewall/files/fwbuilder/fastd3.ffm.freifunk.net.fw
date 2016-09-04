@@ -4,7 +4,7 @@
 #
 #  Firewall Builder  fwb_ipt v5.1.0.3599
 #
-#  Generated Mon Apr 25 23:07:16 2016 CEST by christof
+#  Generated Sun Sep  4 15:06:44 2016 CEST by igor
 #
 # files: * fastd3.ffm.freifunk.net.fw /etc/fw/fastd3.ffm.freifunk.net.fw
 #
@@ -297,7 +297,7 @@ prolog_commands() {
 
 epilog_commands() {
     echo "Running epilog script"
-    /etc/init.d/fail2ban restart
+    /bin/systemctl try-restart --no-block fail2ban.service
 }
 
 run_epilog_and_exit() {
@@ -588,7 +588,7 @@ test -z "$cmd" && {
 
 case "$cmd" in
     start)
-        log "Activating firewall script generated Mon Apr 25 23:07:16 2016 by christof"
+        log "Activating firewall script generated Sun Sep  4 15:06:44 2016 by igor"
         check_tools
          prolog_commands 
         check_run_time_address_table_files
