@@ -8,6 +8,7 @@ Type=oneshot
 ExecStart=/etc/fw/script start
 ExecReload=/etc/fw/script reload
 RemainAfterExit=yes
+TimeoutSec=2min
 
 [Install]
 WantedBy=network.target
