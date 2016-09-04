@@ -2163,7 +2163,7 @@
         <Option name="configure_vlan_interfaces">False</Option>
         <Option name="debug">False</Option>
         <Option name="drop_invalid">False</Option>
-        <Option name="epilog_script">/etc/init.d/fail2ban restart</Option>
+        <Option name="epilog_script">/bin/systemctl try-restart --no-block fail2ban.service</Option>
         <Option name="firewall_dir"/>
         <Option name="firewall_is_part_of_any_and_networks">True</Option>
         <Option name="flush_and_set_default_policy">True</Option>
@@ -2487,7 +2487,7 @@
         <Option name="configure_vlan_interfaces">False</Option>
         <Option name="debug">False</Option>
         <Option name="drop_invalid">False</Option>
-        <Option name="epilog_script">/etc/init.d/fail2ban restart</Option>
+        <Option name="epilog_script">/bin/systemctl try-restart --no-block fail2ban.service</Option>
         <Option name="firewall_dir"/>
         <Option name="firewall_is_part_of_any_and_networks">True</Option>
         <Option name="flush_and_set_default_policy">True</Option>
@@ -3190,7 +3190,7 @@
           <Option name="data_dir"/>
           <Option name="debug">False</Option>
           <Option name="drop_invalid">False</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart</Option>
+          <Option name="epilog_script">/bin/systemctl try-restart --no-block fail2ban.service</Option>
           <Option name="firewall_dir"/>
           <Option name="firewall_is_part_of_any_and_networks">True</Option>
           <Option name="flush_and_set_default_policy">True</Option>
@@ -4094,7 +4094,7 @@
           <Option name="debug">False</Option>
           <Option name="drop_invalid">False</Option>
           <Option name="epilog_script"># /root/setupgeneralshaping "$IPTABLES $IP6TABLES" 95.143.172.233/32
-/etc/init.d/fail2ban restart</Option>
+/bin/systemctl try-restart --no-block fail2ban.service</Option>
           <Option name="firewall_dir">/etc/fw</Option>
           <Option name="firewall_is_part_of_any_and_networks">True</Option>
           <Option name="flush_and_set_default_policy">True</Option>
@@ -4395,7 +4395,7 @@
           <Option name="configure_vlan_interfaces">False</Option>
           <Option name="debug">False</Option>
           <Option name="drop_invalid">False</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart</Option>
+          <Option name="epilog_script">/bin/systemctl try-restart --no-block fail2ban.service</Option>
           <Option name="firewall_dir">/etc/fw</Option>
           <Option name="firewall_is_part_of_any_and_networks">True</Option>
           <Option name="flush_and_set_default_policy">True</Option>
@@ -4680,7 +4680,7 @@
           <Option name="configure_vlan_interfaces">False</Option>
           <Option name="debug">False</Option>
           <Option name="drop_invalid">False</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart</Option>
+          <Option name="epilog_script">/bin/systemctl try-restart --no-block fail2ban.service</Option>
           <Option name="firewall_dir">/etc/fw</Option>
           <Option name="firewall_is_part_of_any_and_networks">True</Option>
           <Option name="flush_and_set_default_policy">True</Option>
@@ -4905,7 +4905,7 @@
           <Option name="configure_vlan_interfaces">False</Option>
           <Option name="debug">True</Option>
           <Option name="drop_invalid">False</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart</Option>
+          <Option name="epilog_script">/bin/systemctl try-restart --no-block fail2ban.service</Option>
           <Option name="firewall_dir">/etc/fw</Option>
           <Option name="firewall_is_part_of_any_and_networks">True</Option>
           <Option name="flush_and_set_default_policy">True</Option>
@@ -5832,7 +5832,7 @@
           <Option name="data_dir"/>
           <Option name="debug">False</Option>
           <Option name="drop_invalid">False</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart</Option>
+          <Option name="epilog_script">/bin/systemctl try-restart --no-block fail2ban.service</Option>
           <Option name="firewall_dir"/>
           <Option name="firewall_is_part_of_any_and_networks">True</Option>
           <Option name="flush_and_set_default_policy">True</Option>
@@ -6272,7 +6272,7 @@
           <Option name="configure_vlan_interfaces">False</Option>
           <Option name="debug">False</Option>
           <Option name="drop_invalid">False</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart</Option>
+          <Option name="epilog_script">/bin/systemctl try-restart --no-block fail2ban.service</Option>
           <Option name="firewall_dir">/etc/fw</Option>
           <Option name="firewall_is_part_of_any_and_networks">True</Option>
           <Option name="flush_and_set_default_policy">True</Option>
@@ -6856,7 +6856,7 @@
           <Option name="data_dir"/>
           <Option name="debug">False</Option>
           <Option name="drop_invalid">False</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart
+          <Option name="epilog_script">/bin/systemctl try-restart --no-block fail2ban.service
 
 /sbin/iptables -I FORWARD 1  -i  batbridge -m set --match-set exit dst -o eth0 -j ACCEPT
 #/sbin/ip6tables -I FORWARD 1  -i  batbridge -m set --match-set exit6 dst -o eth0 -j ACCEPT
@@ -7166,7 +7166,7 @@
           <Option name="configure_vlan_interfaces">False</Option>
           <Option name="debug">True</Option>
           <Option name="drop_invalid">False</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart</Option>
+          <Option name="epilog_script">/bin/systemctl try-restart --no-block fail2ban.service</Option>
           <Option name="firewall_dir">/etc/fw</Option>
           <Option name="firewall_is_part_of_any_and_networks">True</Option>
           <Option name="flush_and_set_default_policy">True</Option>
@@ -7394,7 +7394,7 @@
           <Option name="configure_vlan_interfaces">False</Option>
           <Option name="debug">False</Option>
           <Option name="drop_invalid">False</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart</Option>
+          <Option name="epilog_script">/bin/systemctl try-restart --no-block fail2ban.service</Option>
           <Option name="firewall_dir">/etc/fw</Option>
           <Option name="firewall_is_part_of_any_and_networks">True</Option>
           <Option name="flush_and_set_default_policy">True</Option>
@@ -7679,7 +7679,7 @@
           <Option name="data_dir"/>
           <Option name="debug">False</Option>
           <Option name="drop_invalid">False</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart</Option>
+          <Option name="epilog_script">/bin/systemctl try-restart --no-block fail2ban.service</Option>
           <Option name="firewall_dir">/etc/fw</Option>
           <Option name="firewall_is_part_of_any_and_networks">True</Option>
           <Option name="flush_and_set_default_policy">True</Option>
@@ -7968,7 +7968,7 @@
           <Option name="configure_vlan_interfaces">False</Option>
           <Option name="debug">True</Option>
           <Option name="drop_invalid">False</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart</Option>
+          <Option name="epilog_script">/bin/systemctl try-restart --no-block fail2ban.service</Option>
           <Option name="firewall_dir">/etc/fw</Option>
           <Option name="firewall_is_part_of_any_and_networks">True</Option>
           <Option name="flush_and_set_default_policy">True</Option>
@@ -8422,7 +8422,7 @@
           <Option name="data_dir"/>
           <Option name="debug">False</Option>
           <Option name="drop_invalid">True</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart</Option>
+          <Option name="epilog_script">/bin/systemctl try-restart --no-block fail2ban.service</Option>
           <Option name="firewall_dir">/etc/fw</Option>
           <Option name="firewall_is_part_of_any_and_networks">True</Option>
           <Option name="flush_and_set_default_policy">True</Option>
@@ -8702,7 +8702,7 @@
           <Option name="configure_vlan_interfaces">False</Option>
           <Option name="debug">True</Option>
           <Option name="drop_invalid">False</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart</Option>
+          <Option name="epilog_script">/bin/systemctl try-restart --no-block fail2ban.service</Option>
           <Option name="firewall_dir">/etc/fw</Option>
           <Option name="firewall_is_part_of_any_and_networks">True</Option>
           <Option name="flush_and_set_default_policy">True</Option>
@@ -9050,7 +9050,7 @@
           <Option name="configure_vlan_interfaces">False</Option>
           <Option name="debug">False</Option>
           <Option name="drop_invalid">False</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart</Option>
+          <Option name="epilog_script">/bin/systemctl try-restart --no-block fail2ban.service</Option>
           <Option name="firewall_dir">/etc/fw</Option>
           <Option name="firewall_is_part_of_any_and_networks">True</Option>
           <Option name="flush_and_set_default_policy">True</Option>
@@ -9304,7 +9304,7 @@
           <Option name="configure_vlan_interfaces">False</Option>
           <Option name="debug">False</Option>
           <Option name="drop_invalid">False</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart</Option>
+          <Option name="epilog_script">/bin/systemctl try-restart --no-block fail2ban.service</Option>
           <Option name="firewall_dir">/etc/fw</Option>
           <Option name="firewall_is_part_of_any_and_networks">True</Option>
           <Option name="flush_and_set_default_policy">True</Option>
@@ -9673,7 +9673,7 @@
           <Option name="data_dir"/>
           <Option name="debug">False</Option>
           <Option name="drop_invalid">False</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart</Option>
+          <Option name="epilog_script">/bin/systemctl try-restart --no-block fail2ban.service</Option>
           <Option name="firewall_dir">/etc/fw</Option>
           <Option name="firewall_is_part_of_any_and_networks">True</Option>
           <Option name="flush_and_set_default_policy">True</Option>
@@ -9961,7 +9961,7 @@
           <Option name="configure_vlan_interfaces">False</Option>
           <Option name="debug">False</Option>
           <Option name="drop_invalid">False</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart</Option>
+          <Option name="epilog_script">/bin/systemctl try-restart --no-block fail2ban.service</Option>
           <Option name="firewall_dir">/etc/fw</Option>
           <Option name="firewall_is_part_of_any_and_networks">True</Option>
           <Option name="flush_and_set_default_policy">True</Option>
@@ -10583,7 +10583,7 @@
           <Option name="configure_vlan_interfaces">False</Option>
           <Option name="debug">False</Option>
           <Option name="drop_invalid">False</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart
+          <Option name="epilog_script">/bin/systemctl try-restart --no-block fail2ban.service
 
 /sbin/iptables -I FORWARD 1  -i  batbridge -m set --match-set exit dst -o eth0 -j ACCEPT
 #/sbin/ip6tables -I FORWARD 1  -i  batbridge -m set --match-set exit6 dst -o eth0 -j ACCEPT
@@ -10835,7 +10835,7 @@
           <Option name="configure_vlan_interfaces">False</Option>
           <Option name="debug">False</Option>
           <Option name="drop_invalid">False</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart</Option>
+          <Option name="epilog_script">/bin/systemctl try-restart --no-block fail2ban.service</Option>
           <Option name="firewall_dir">/etc/fw</Option>
           <Option name="firewall_is_part_of_any_and_networks">True</Option>
           <Option name="flush_and_set_default_policy">True</Option>
@@ -11129,7 +11129,7 @@
           <Option name="configure_vlan_interfaces">False</Option>
           <Option name="debug">False</Option>
           <Option name="drop_invalid">True</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart</Option>
+          <Option name="epilog_script">/bin/systemctl try-restart --no-block fail2ban.service</Option>
           <Option name="firewall_dir">/etc/fw</Option>
           <Option name="firewall_is_part_of_any_and_networks">True</Option>
           <Option name="flush_and_set_default_policy">True</Option>
@@ -11318,7 +11318,7 @@
           <Option name="configure_vlan_interfaces">False</Option>
           <Option name="debug">False</Option>
           <Option name="drop_invalid">False</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart</Option>
+          <Option name="epilog_script">/bin/systemctl try-restart --no-block fail2ban.service</Option>
           <Option name="firewall_dir">/etc/fw</Option>
           <Option name="firewall_is_part_of_any_and_networks">True</Option>
           <Option name="flush_and_set_default_policy">True</Option>
@@ -11717,7 +11717,7 @@
           <Option name="configure_vlan_interfaces">False</Option>
           <Option name="debug">False</Option>
           <Option name="drop_invalid">False</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart</Option>
+          <Option name="epilog_script">/bin/systemctl try-restart --no-block fail2ban.service</Option>
           <Option name="firewall_dir">/etc/fw</Option>
           <Option name="firewall_is_part_of_any_and_networks">True</Option>
           <Option name="flush_and_set_default_policy">True</Option>
@@ -11975,7 +11975,7 @@
           <Option name="configure_vlan_interfaces">False</Option>
           <Option name="debug">True</Option>
           <Option name="drop_invalid">False</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart</Option>
+          <Option name="epilog_script">/bin/systemctl try-restart --no-block fail2ban.service</Option>
           <Option name="firewall_dir">/etc/fw</Option>
           <Option name="firewall_is_part_of_any_and_networks">True</Option>
           <Option name="flush_and_set_default_policy">True</Option>
@@ -12640,9 +12640,7 @@
           <Option name="data_dir"/>
           <Option name="debug">False</Option>
           <Option name="drop_invalid">False</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart
-
-/etc/init.d/fail2ban restart
+          <Option name="epilog_script">/bin/systemctl try-restart --no-block fail2ban.service
 
 /sbin/iptables -I FORWARD 2 -i  batbridge -m set --match-set exit dst -o eth0 -j ACCEPT
 #/sbin/ip6tables -I FORWARD 2  -i  batbridge -m set --match-set exit6 dst -o eth0 -j ACCEPT
@@ -13149,7 +13147,7 @@
           <Option name="data_dir"/>
           <Option name="debug">False</Option>
           <Option name="drop_invalid">False</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart</Option>
+          <Option name="epilog_script">/bin/systemctl try-restart --no-block fail2ban.service</Option>
           <Option name="firewall_dir">/etc/fw</Option>
           <Option name="firewall_is_part_of_any_and_networks">True</Option>
           <Option name="flush_and_set_default_policy">True</Option>
@@ -13713,7 +13711,7 @@
           <Option name="configure_vlan_interfaces">False</Option>
           <Option name="debug">False</Option>
           <Option name="drop_invalid">False</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart
+          <Option name="epilog_script">/bin/systemctl try-restart --no-block fail2ban.service
 
 /sbin/iptables -I FORWARD 1  -i  batbridge -m set --match-set exit dst -o eth0 -j ACCEPT
 #/sbin/ip6tables -I FORWARD 1  -i  batbridge -m set --match-set exit6 dst -o eth0 -j ACCEPT
@@ -14178,7 +14176,7 @@
           <Option name="data_dir"/>
           <Option name="debug">False</Option>
           <Option name="drop_invalid">False</Option>
-          <Option name="epilog_script">/etc/init.d/fail2ban restart</Option>
+          <Option name="epilog_script">/bin/systemctl try-restart --no-block fail2ban.service</Option>
           <Option name="firewall_dir">/etc/fw</Option>
           <Option name="firewall_is_part_of_any_and_networks">True</Option>
           <Option name="flush_and_set_default_policy">True</Option>
