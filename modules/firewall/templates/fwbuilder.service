@@ -9,6 +9,8 @@ ExecStart=/etc/fw/script start
 ExecReload=/etc/fw/script reload
 RemainAfterExit=yes
 TimeoutSec=2min
+Before=network-pre.target
+SyslogFacilitiy=fwbuilder
 
 [Install]
 WantedBy=network.target
