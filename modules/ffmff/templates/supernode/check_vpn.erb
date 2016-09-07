@@ -2,7 +2,9 @@
 # Script for automated update of default multipath routes based on
 # state of available tunnel interfaces. Execute in regular intervals
 # via cron.
-#set -ix
+
+set -e
+
 #INTERFACES=(tun0 tun1 tun2 tun3)       # Array of all VPN interfaces
 INTERFACES=(ovpn-inet)  # Array of all VPN interfaces
 BANDWIDTHS=(96 0 0 0)         # Approximate effective bandwidths (Mbit/s) of interfaces for use as weights in multipath routes
@@ -13,7 +15,12 @@ BATMAN_IF=bat0                  # Batman-adv interface
 [[ -f /root/disable ]] && {
     /usr/sbin/batctl -m $BATMAN_IF gw off
     /etc/init.d/isc-dhcp-server stop >/dev/null
+    update_stats 0
     exit 0
+}
+
+update_stats {
+	echo "fastd_gateway_mode $1" | curl --data-binary @- http://hopglass.ffm.freifunk.net:9091/metrics/job/check_vpn/instance/"$(hostname -f)"
 }
 
 # echo -n "Test available interfaces:"
@@ -121,6 +128,7 @@ fi
 
 if [ ${#ACTIVE_INTERFACES[@]} -gt 0 ]
 then
+  update_stats 1
 
   # Check whether gateway mode needs to be activated
   if [ $(/usr/sbin/batctl -m $BATMAN_IF gw | awk '{print $1}') == "off" ] 
@@ -135,5 +143,7 @@ then
     echo "Batman-adv gateway mode has been enabled. DHCP and IPv6 router advertisement daemons have been started." >&2
     logger -t check-mpr-gateway "Batman-adv gateway mode has been enabled. DHCP and IPv6 router advertisement daemons have been started."
   fi
+else
+  update_stats 0
 fi
 
