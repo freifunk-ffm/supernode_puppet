@@ -12,15 +12,15 @@ PING_DEST=8.8.8.8              # Ping destination
 TABLE=ffffm                     # Name of routing table
 BATMAN_IF=bat0                  # Batman-adv interface
 
+update_stats {
+	echo "fastd_gateway_mode $1" | curl --data-binary @- http://hopglass.ffm.freifunk.net:9091/metrics/job/check_vpn/instance/"$(hostname -f)"
+}
+
 [[ -f /root/disable ]] && {
     /usr/sbin/batctl -m $BATMAN_IF gw off
     /etc/init.d/isc-dhcp-server stop >/dev/null
     update_stats 0
     exit 0
-}
-
-update_stats {
-	echo "fastd_gateway_mode $1" | curl --data-binary @- http://hopglass.ffm.freifunk.net:9091/metrics/job/check_vpn/instance/"$(hostname -f)"
 }
 
 # echo -n "Test available interfaces:"
