@@ -1,24 +1,21 @@
 interface batbridge {
-AdvSendAdvert on;
-AdvHomeAgentFlag off;
-MinRtrAdvInterval 10;
-MaxRtrAdvInterval 30;
-AdvOtherConfigFlag on;
-AdvSourceLLAddress off;
-AdvLinkMTU 1350; #1442 - fastd - batman-adv - See wiki for details
-#prefix <%= @ipv6_net %>::/64 {
-#AdvOnLink on;
-#AdvAutonomous on;
-#AdvRouterAddr on;
-#};
-    RDNSS 2001:1A50:11:4::14 {   # I have 2 DNS servers
-        # I have no options to add here
-    };
-RDNSS fddd:5d16:b5dd:0:a070:1fff:fe5f:5796 {
-};
-prefix <%= @ipv6_rnet %>::/64 {
-AdvOnLink on;
-AdvAutonomous on;
-AdvRouterAddr on;
-};
+	AdvSendAdvert on;
+	AdvHomeAgentFlag off;
+	MinRtrAdvInterval 10;
+	MaxRtrAdvInterval 30;
+	AdvOtherConfigFlag on;
+	AdvSourceLLAddress off;
+	AdvLinkMTU 1350; #1442 - fastd - batman-adv - See wiki for details
+	#prefix <%= @ipv6_net %>::/64 {
+		#AdvOnLink on;
+		#AdvAutonomous on;
+		#AdvRouterAddr on;
+	#};
+	RDNSS fddd:5d16:b5dd:0:a070:1fff:fe5f:5796 {
+	};
+	prefix <%= @ipv6_rnet %>::/64 {
+		AdvOnLink on;
+		AdvAutonomous on;
+		AdvRouterAddr on;
+	};
 };
