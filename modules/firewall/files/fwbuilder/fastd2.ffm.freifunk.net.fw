@@ -376,6 +376,12 @@ script_body() {
     $IPTABLES -N Cid50116X1847.0
     $IPTABLES -A FORWARD -i +  -p tcp -m tcp  -s 10.126.0.0/16   --dport 53  -m state --state NEW  -j Cid50116X1847.0
     $IPTABLES -A FORWARD -i +  -p udp -m udp  -s 10.126.0.0/16   --dport 53  -m state --state NEW  -j Cid50116X1847.0
+    	$IPTABLES -A INPUT -p tcp -m tcp  -s 10.126.0.0/16   -d 10.126.0.4   --dport 53  -m state --state NEW  -j ACCEPT
+	$IPTABLES -A INPUT -p udp -m udp  -s 10.126.0.0/16   -d 10.126.0.4   --dport 53  -m state --state NEW  -j ACCEPT
+	$IP6TABLES -A INPUT -p tcp -m tcp  -s fddd:5d16:b5dd::/48   -d fddd:5d16:b5dd::2   --dport 53  -m state --state NEW  -j ACCEPT
+	$IP6TABLES -A INPUT -p udp -m udp  -s fddd:5d16:b5dd::/48   -d fddd:5d16:b5dd::2  --dport 53  -m state --state NEW  -j ACCEPT
+	$IP6TABLES -A INPUT -p tcp -m tcp  -s fddd:5d16:b5dd::/48   -d fddd:5d16:b5dd::1   --dport 53  -m state --state NEW  -j ACCEPT
+	$IP6TABLES -A INPUT -p udp -m udp  -s fddd:5d16:b5dd::/48   -d fddd:5d16:b5dd::1  --dport 53  -m state --state NEW  -j ACCEPT
     $IPTABLES -A Cid50116X1847.0  -d 10.126.0.3   -j ACCEPT
     $IPTABLES -A Cid50116X1847.0  -d 10.126.255.14   -j ACCEPT
     # 
