@@ -378,6 +378,12 @@ script_body() {
     # 
     $IPTABLES -A INPUT -p tcp -m tcp  -s 10.126.0.0/16   -d 10.126.32.1   --dport 53  -m state --state NEW  -j ACCEPT
     $IPTABLES -A INPUT -p udp -m udp  -s 10.126.0.0/16   -d 10.126.32.1   --dport 53  -m state --state NEW  -j ACCEPT
+    	$IPTABLES -A INPUT -p tcp -m tcp  -s 10.126.0.0/16   -d 10.126.0.4   --dport 53  -m state --state NEW  -j ACCEPT
+	$IPTABLES -A INPUT -p udp -m udp  -s 10.126.0.0/16   -d 10.126.0.4   --dport 53  -m state --state NEW  -j ACCEPT
+	$IP6TABLES -A INPUT -p tcp -m tcp  -s fddd:5d16:b5dd::/48   -d fddd:5d16:b5dd::2   --dport 53  -m state --state NEW  -j ACCEPT
+	$IP6TABLES -A INPUT -p udp -m udp  -s fddd:5d16:b5dd::/48   -d fddd:5d16:b5dd::2  --dport 53  -m state --state NEW  -j ACCEPT
+	$IP6TABLES -A INPUT -p tcp -m tcp  -s fddd:5d16:b5dd::/48   -d fddd:5d16:b5dd::1   --dport 53  -m state --state NEW  -j ACCEPT
+	$IP6TABLES -A INPUT -p udp -m udp  -s fddd:5d16:b5dd::/48   -d fddd:5d16:b5dd::1  --dport 53  -m state --state NEW  -j ACCEPT
     # 
     # Rule 2 (batbridge)
     # 
