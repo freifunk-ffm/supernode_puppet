@@ -6,6 +6,7 @@ class ffmff::dns_repo {
 
   user { $user:
     ensure => present,
+    home   => $libdir,
     system => true,
   }
 
@@ -25,6 +26,13 @@ class ffmff::dns_repo {
       ensure => directory;
     "${libdir}/output":
       ensure => directory;
+    "${libdir}/.config":
+      ensure => directory;
+    "${libdir}/.config/git":
+      ensure => directory;
+    "${libdir}/.config/git/config":
+      content => "[user]\nname = ffmff\nemail = admin@ffm.freifunk.net",
+      ensure  => file;
   }
 
   Vcsrepo {
