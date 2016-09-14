@@ -1,0 +1,19 @@
+[Unit]
+Description=Debian Networking
+ConditionCapability=CAP_NET_ADMIN
+DefaultDependencies=no
+Before=network.target multi-user.target shutdown.target
+Conflicts=shutdown.target
+Wants=network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=/etc/init.d/networking start
+ExecStop=/etc/init.d/networking stop
+ProtectSystem=full
+ProtectHome=yes
+WatchdogSec=3min
+
+[Install]
+WantedBy=multi-user.target

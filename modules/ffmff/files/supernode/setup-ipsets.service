@@ -19,4 +19,4 @@ ExecStop=/sbin/ipset flush exit6-temp
 ExecStop=/sbin/ipset destroy exit6-temp
 
 [Install]
-WantedBy=network.target
+WantedBy=basic.target

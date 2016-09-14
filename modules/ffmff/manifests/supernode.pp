@@ -5,7 +5,9 @@ class ffmff::supernode (
 ) {
   validate_integer($supernodenum, 20, 1)
 
-  include ffmff
+  class { 'ffmff':
+    disable_firewall => true,
+  }
 
   # packages
 
@@ -165,10 +167,22 @@ class ffmff::supernode (
       source => 'puppet:///modules/ffmff/systemd/units/shorewall6.service';
   }
 
+  service { 'fwbuilder':
+    ensure   => stopped,
+    enable   => false,
+    provider => systemd,
+  } ~>
+
   service { [
     'shorewall',
     'shorewall6',
   ]:
+    ensure => running,
+    enable => true,
+  }
+
+  shorewall::four::config { 'ROUTE_FILTER':
+    value => 'No',
   }
 
   shorewall::four::zone { [
@@ -192,10 +206,10 @@ class ffmff::supernode (
     'ovpn-inet':
       zone => 'ovpn';
     'batbridge':
-      options => ['bridge', 'dhcp'],
+      options => ['bridge', 'dhcp' /*, 'routefilter'*/],
       zone => 'users';
     'local-gate':
-      options => ['dhcp'],
+      options => ['dhcp' /*, 'routefilter' */],
       zone => 'users';
   }
   include shorewall::symlink::interfaces
@@ -215,7 +229,6 @@ class ffmff::supernode (
       source    => 'all',
       dest      => 'all',
       policy    => 'REJECT',
-      log_level => 'info',
       order     => 999,
   }
   include shorewall::symlink::policy
@@ -280,6 +293,12 @@ class ffmff::supernode (
       dest   => '$FW',  # all?
       proto  => 'udp',
       dport  => '10000:10002';
+    'prometheus':
+      order  => 9,
+      source => 'all',
+      dest   => '$FW',  # all?
+      proto  => 'tcp',
+      dport  => '9100';
     'allow local exit':
       order  => 99,
       source => 'users',
@@ -324,12 +343,12 @@ class ffmff::supernode (
       source    => '10.126.0.0/16';
   }
 
-  shorewall::six::masq {
-    'ovpn-inet':
-      order     => 1,
-      interface => 'ovpn-inet',
-      source    => 'fddd:5d16:b5dd::/48',
-  }
+  #shorewall::six::masq {
+  #  'ovpn-inet':
+  #    order     => 1,
+  #    interface => 'ovpn-inet',
+  #    source    => 'fddd:5d16:b5dd::/48',
+  #}
 
   Shorewall::Six::Rule {
     section => 'NEW',
@@ -382,5 +401,27 @@ class ffmff::supernode (
       order  => 9,
       source => 'users:ff00::/8',
       dest   => '$FW';
+    'prometheus':
+      order  => 9,
+      source => 'all',
+      dest   => '$FW',  # all?
+      proto  => 'tcp',
+      dport  => '9100';
+  }
+
+  # fix dependency cycle
+  service { 'rpcbind':
+    ensure => stopped,
+    enable => false,
+  }
+
+  systemd::service { 'networking':
+    source => 'puppet:///modules/ffmff/supernode/networking.service';
+  }
+
+  service { 'networking':
+    provider => systemd,
+    enable   => true,
+    ensure   => running,
   }
 }
