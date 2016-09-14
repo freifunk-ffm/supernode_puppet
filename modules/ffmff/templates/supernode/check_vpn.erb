@@ -13,7 +13,7 @@ TABLE=ffffm                     # Name of routing table
 BATMAN_IF=bat0                  # Batman-adv interface
 
 update_stats() {
-	echo "fastd_gateway_mode $1" | curl --data-binary @- http://hopglass.ffm.freifunk.net:9091/metrics/job/check_vpn/instance/"$(hostname -f)"
+	echo "fastd_gateway_mode $1" | curl --silent --data-binary @- http://hopglass.ffm.freifunk.net:9091/metrics/job/check_vpn/instance/"$(hostname -f)"
 }
 
 [[ -f /root/disable ]] && {
