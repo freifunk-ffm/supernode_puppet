@@ -145,12 +145,6 @@ class ffmff::supernode (
       source => 'puppet:///modules/ffmff/supernode/bat0.network';
   }
 
-  # fix dependency cycle
-  service { 'rpcbind':
-    ensure => stopped,
-    enable => false,
-  }
-
   systemd::service { 'setup-ipsets':
     source => 'puppet:///modules/ffmff/supernode/setup-ipsets.service';
   }
