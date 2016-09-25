@@ -1,7 +1,7 @@
 [Match]
 Name=local-gate
 
-[Network]
+[Address]
 Address=fddd:5d16:b5dd::2/128
 
 [Address]
