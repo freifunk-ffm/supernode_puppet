@@ -2,5 +2,8 @@
 Name=local-gate
 
 [Network]
-Address=10.126.0.4/32
 Address=fddd:5d16:b5dd::2/128
+
+[Address]
+Address=10.126.0.4/32
+Broadcast=10.126.255.255
