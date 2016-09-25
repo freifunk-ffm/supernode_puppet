@@ -58,7 +58,7 @@ class ffmff::dns_repo {
   }
 
   include ffmff::chronic
-  package { 'python-yaml':
+  package { 'python3-yaml':
     ensure => present,
   }
 
