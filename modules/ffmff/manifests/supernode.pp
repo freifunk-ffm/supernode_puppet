@@ -16,6 +16,7 @@ class ffmff::supernode (
   }
 
   Class['apt::update'] -> Package['check-mk-agent']
+  include ffmff::chronic
 
   file {
     'check_vpn':
@@ -140,5 +141,11 @@ class ffmff::supernode (
       source => 'puppet:///modules/ffmff/local-gate.network';
     'bat0':
       source => 'puppet:///modules/ffmff/supernode/bat0.network';
+  }
+
+  # fix dependency cycle
+  service { 'rpcbind':
+    ensure => stopped,
+    enable => false,
   }
 }
