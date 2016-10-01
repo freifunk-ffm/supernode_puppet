@@ -1,0 +1,14 @@
+[Unit]
+Description=Shorewall IPv4 firewall
+Wants=network-pre.target
+Before=network-pre.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/sbin/shorewall start
+ExecStop=/sbin/shorewall stop
+ExecReload=/sbin/shorewall reload
+
+[Install]
+WantedBy=basic.target

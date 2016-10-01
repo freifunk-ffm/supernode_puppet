@@ -1,5 +1,6 @@
 class ffmff (
   $puppetmaster = false,
+  $disable_firewall = false,
 ) {
   validate_bool($puppetmaster)
 
@@ -11,7 +12,15 @@ class ffmff (
   include ::rsyslog
   include ::sshd
   include ::postfix
-  include ::firewall
+
+  if !$disable_firewall {
+    include ::firewall
+  } else {
+    file { '/etc/fw/':
+      ensure => absent,
+      force  => true,
+    }
+  }
   include ::ffmff::ntp
   include ::ffmff::admintools
   include ::ffmff::locales

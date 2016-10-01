@@ -1,6 +1,6 @@
 option domain-name "mesh.ffm.freifunk.net";
-#option domain-name-servers 10.126.255.14, 213.73.91.35;
-option domain-name-servers 10.126.0.1, 10.126.<%= @ipv4_subnet_start %>.<%= @gateway_router_host %>, 10.126.255.14;
+#option domain-name-servers 10.126.<%= @ipv4_subnet_start %>.<%= @gateway_router_host %>, 10.126.255.14;
+option domain-name-servers 10.126.0.4, 10.126.255.14;
 
 default-lease-time 60;
 max-lease-time 720;

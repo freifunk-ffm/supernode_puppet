@@ -4,7 +4,7 @@ Description=DHCP Server
 [Service]
 Type=forking
 PIDFile=/var/run/dhcpd.pid
-ExecStart=/usr/sbin/dhcpd -q -cf /etc/dhcp/dhcpcd.conf -pf /var/run/dhcpd.pid
+ExecStart=/usr/sbin/dhcpd -q -cf /etc/dhcp/dhcpcd.conf -pf /var/run/dhcpd.pid batbridge
 
 [Install]
 WantedBy=multi-user.target

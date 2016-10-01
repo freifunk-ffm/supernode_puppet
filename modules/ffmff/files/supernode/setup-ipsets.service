@@ -1,0 +1,22 @@
+[Unit]
+Description=Set up IPSets
+Before=shorewall.service shorewall6.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=/sbin/ipset create exit hash:net family inet hashsize 2048 maxelem 65536 -exist
+ExecStart=/sbin/ipset create exit-temp hash:net family inet hashsize 2048 maxelem 65536 -exist
+ExecStart=/sbin/ipset create exit6 hash:net family inet6 hashsize 2048 maxelem 65536 -exist
+ExecStart=/sbin/ipset create exit6-temp hash:net family inet6  hashsize 2048 maxelem 65536 -exist
+ExecStop=/sbin/ipset flush exit
+ExecStop=/sbin/ipset destroy exit
+ExecStop=/sbin/ipset flush exit-temp
+ExecStop=/sbin/ipset destroy exit-temp
+ExecStop=/sbin/ipset flush exit6
+ExecStop=/sbin/ipset destroy exit6
+ExecStop=/sbin/ipset flush exit6-temp
+ExecStop=/sbin/ipset destroy exit6-temp
+
+[Install]
+WantedBy=basic.target
