@@ -11,6 +11,10 @@ class batman ($ipv4_suffix, $ipv4_subnet_start){
     ensure  => installed,
     require => Class['apt::update'],
   }
+  package { 'batctl':
+    ensure  => installed,
+    require => Class['apt::update'],
+  }
 
   package { 'uml-utilities':
     ensure  => installed,
