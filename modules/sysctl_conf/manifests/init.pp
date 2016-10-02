@@ -1,20 +1,27 @@
 class sysctl_conf {
-#	package { 'sysctl':
-#		ensure => installed,
-#	}
-#	service { 'sysctl':
-#		ensure  => running,
-#		require => Package['sysctl'],
-#	}
-	File {
-		owner => 'root',
-		group => 'root',
-	}
-	file { '/etc/sysctl.conf':
-		ensure  => file,
-		content => template('sysctl_conf/sysctl.conf.erb'),
-		mode    => '0644',
-#		require => Package['sysctl'],
-		notify  => Service['sysctl'],
-	}
+  augeas { '/etc/sysctl.conf':
+    context => '/files/etc/sysctl.conf',
+    changes => [
+      'set net.ipv4.ip_forward 1',
+      'set net.ipv4.ip_no_pmtu_disc 1',
+      'set net.ipv4.route.flush 1',
+      'set net.core.rmem_max 83886080',
+      'set net.core.wmem_max 83886080',
+      'set net.core.rmem_default 83886080',
+      'set net.core.wmem_default 83886080',
+      'set net.ipv4.conf.all.send_redirects 0',
+      'set net.ipv4.conf.batbridge.send_redirects 0',
+      'set net.ipv4.neigh.default.gc_thresh1 1024',
+      'set net.ipv4.neigh.default.gc_thresh2 2048',
+      'set net.ipv4.neigh.default.gc_thresh3 4096',
+      'set net.netfilter.nf_conntrack_max 655360000',
+      'set net.ipv6.conf.all.forwarding 1',
+      'set net.ipv6.conf.all.autoconf 0',
+      'set net.ipv6.conf.all.accept_ra 0',
+      'set net.ipv6.neigh.default.gc_thresh1 1024',
+      'set net.ipv6.neigh.default.gc_thresh2 2048',
+      'set net.ipv6.neigh.default.gc_thresh3 4096',
+
+    ],
+  }
 }
