@@ -12,6 +12,12 @@ kernel.softlockup_panic=1
 ## Networking
 # See https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt
 
+net.core.rmem_max = 83886080
+net.core.wmem_max = 83886080
+net.core.rmem_default = 83886080
+net.core.wmem_default = 83886080
+
+
 ## IPv4 tuning
 
 # Reset all configuration parameters to RFC1812
