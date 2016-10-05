@@ -1,20 +1,19 @@
 class sysctl_conf {
-	package { 'sysctl':
-		ensure => installed,
-	}
-	service { 'sysctl':
-		ensure  => running,
-		require => Package['sysctl'],
-	}
-	File {
-		owner => 'root',
-		group => 'root',
-	}
 	file { '/etc/sysctl.conf':
 		ensure  => file,
-		content => template('sysctl_conf/sysctl.conf.erb'),
+		owner   => 'root',
+		group   => 'root',
 		mode    => '0644',
-		require => Package['sysctl'],
-		notify  => Service['sysctl'],
+		content => template('sysctl_conf/sysctl.conf.erb'),
+		notify  => [
+			Exec["sysctl"],
+		],
+	}
+
+	exec { "sysctl":
+		command     => "sysctl -p /etc/sysctl.conf",
+		path        => [ '/usr/sbin', '/sbin', '/usr/bin', '/bin' ],
+		refreshonly => true,
+		require     => File["/etc/sysctl.conf"],
 	}
 }
