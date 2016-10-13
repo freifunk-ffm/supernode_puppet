@@ -23,6 +23,6 @@ class prometheus::node_exporter (
   }
 
   systemd::service { $service:
-    content => 'puppet:///modules/prometheus/prometheus-node-exporter.service',
+    source => 'puppet:///modules/prometheus/prometheus-node-exporter.service',
   }
 }
