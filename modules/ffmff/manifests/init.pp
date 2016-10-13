@@ -25,5 +25,7 @@ class ffmff (
   include ::ffmff::admintools
   include ::ffmff::locales
   include ::ffmff::timezone
-  include prometheus::node_exporter
+  class { 'prometheus::node_exporter':
+    diskstats_ignored_devices => '^(ram|loop|fd)\\d+$',
+  }
 }
