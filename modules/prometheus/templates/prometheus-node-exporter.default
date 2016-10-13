@@ -1,0 +1,4 @@
+ARGS=''
+<%- unless @diskstats_ignored_devices.nil? -%>
+ARGS="${ARGS} -collector.diskstats.ignored-devices='<%= @diskstats_ignored_devices %>'
+<%- end -%>

@@ -25,4 +25,5 @@ class ffmff (
   include ::ffmff::admintools
   include ::ffmff::locales
   include ::ffmff::timezone
+  include prometheus::node_exporter
 }
