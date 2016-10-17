@@ -113,14 +113,14 @@ class ffmff::supernode (
       peerlimit		=> 220,
       macvendor		=> '02:ff:2f',
       backbone => false;
-	'mesh-vpn-1312':
-		nullcipher        => true,
-		mtu               => 1312,
-		port              => 10003,
-		pmtu              => false,
-		peerlimit		=> 220,
-		macvendor		=> '02:ff:3f',
-		backbone => false;
+    'mesh-vpn-1312':
+      nullcipher        => true,
+      mtu               => 1312,
+      port              => 10003,
+      pmtu              => false,
+      peerlimit		=> 220,
+      macvendor		=> '02:ff:3f',
+      backbone		=> false;
   }
 
   include ff_tools
