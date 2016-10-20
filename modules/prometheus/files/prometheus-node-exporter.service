@@ -1,0 +1,11 @@
+[Unit]
+Description=Prometheus exporter for machine metrics
+
+[Service]
+User=prometheus
+Group=prometheus
+EnvironmentFile=/etc/default/prometheus-node-exporter
+ExecStart=/usr/bin/prometheus-node-exporter $ARGS
+
+[Install]
+WantedBy=multi-user.target
