@@ -15,3 +15,4 @@ define systemd::timer (
     Systemd::Unit["${title}.timer"] ~> Service[$title]
     Exec[$systemd::reload_command] -> Service[$title]
   }
+}
