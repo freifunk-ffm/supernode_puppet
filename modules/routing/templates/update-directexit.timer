@@ -1,0 +1,8 @@
+[Unit]
+Description=Trigger Population of directexit ipsets
+
+[Timer]
+OnUnitActiveSec=1h
+
+[Install]
+WantedBy=multi-user.target
