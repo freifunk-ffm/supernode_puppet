@@ -2,6 +2,7 @@
 Description=Trigger Population of directexit ipsets
 
 [Timer]
+OnActiveSec=0s
 OnUnitActiveSec=1h
 
 [Install]
