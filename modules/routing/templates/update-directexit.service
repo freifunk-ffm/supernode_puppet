@@ -5,6 +5,7 @@ After=setup-ipsets.service
 
 [Service]
 Type=oneshot
+RemainAfterExit=yes
 ExecStart=<%= @update_directexit %>
 
 [Install]
