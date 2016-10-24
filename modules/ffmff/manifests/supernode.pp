@@ -294,7 +294,7 @@ class ffmff::supernode (
       source => 'net',
       dest   => '$FW',  # all?
       proto  => 'udp',
-      dport  => '10000:10002';
+      dport  => '10000:10003';
     'prometheus':
       order  => 9,
       source => 'all',
