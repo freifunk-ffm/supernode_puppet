@@ -11,6 +11,10 @@ define systemd::timer (
     content => $content,
   }
 
+  Service <| title == "${title}.timer" |> {
+    provider => 'systemd',
+  }
+
   if $title !~ /@$/ {
     Systemd::Unit["${title}.timer"] ~> Service[$title]
     Exec[$systemd::reload_command] -> Service[$title]
