@@ -23,15 +23,21 @@ class routing {
   }
 
   systemd::service { 'update-directexit':
-    ensure  => running,
-    enable  => true,
     content => template('routing/update-directexit.service'),
-  } ->
+  }
 
   systemd::timer { 'update-directexit':
+    content => template('routing/update-directexit.timer'),
+  }
+
+  service { 'update-directexit.timer':
     ensure  => running,
     enable  => true,
-    content => template('routing/update-directexit.timer'),
+  } ->
+
+  service { 'update-directexit.service':
+    ensure  => running,
+    enable  => true,
   }
 
   cron { 'update-directexit':
