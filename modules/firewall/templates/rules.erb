@@ -28,7 +28,7 @@ SSH(ACCEPT)     wan            $FW
 DNS(ACCEPT)	ff		$FW
 
 # allow inbound fastd connections
-ACCEPT		wan		$FW		udp	10000,10001,10002
+ACCEPT		wan		$FW		udp	10000,10001,10002,10003
 # Drop Ping from the "bad" wan zone.
 
 Ping(DROP)   	wan             $FW
