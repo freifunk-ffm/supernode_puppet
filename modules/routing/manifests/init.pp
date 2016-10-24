@@ -35,7 +35,7 @@ class routing {
     enable  => true,
   } ->
 
-  service { 'update-directexit.service':
+  service { 'update-directexit':
     ensure  => running,
     enable  => true,
   }
