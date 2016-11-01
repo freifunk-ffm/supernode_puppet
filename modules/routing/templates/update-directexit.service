@@ -1,0 +1,11 @@
+[Unit]
+Description=Populate directexit ipsets
+Requires=setup-ipsets.service
+After=setup-ipsets.service
+
+[Service]
+Type=oneshot
+ExecStart=<%= @update_directexit %>
+
+[Install]
+WantedBy=multi-user.target

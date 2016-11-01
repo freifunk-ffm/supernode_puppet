@@ -39,3 +39,8 @@ node 'fastd25.ffm.freifunk.net' {
     rndmac       => fqdn_rand(99),
   }
 }
+
+node 'prometheus.ffm.freifunk.net' {
+  include ffmff
+  include prometheus::server
+}
