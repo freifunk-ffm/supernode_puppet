@@ -9,6 +9,13 @@ class sysctl_conf {
 			Exec["sysctl"],
 		],
 	}
+	file { '/etc/modules-load.d/nf_conntrack':
+		ensure  => file,
+		owner   => 'root',
+		group   => 'root',
+		mode    => '0644',
+		content => template('sysctl_conf/nf_conntrack.erb'),
+	}
 
 	exec { "sysctl":
 		command     => "sysctl -p /etc/sysctl.conf",
