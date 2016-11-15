@@ -9,7 +9,7 @@ class sysctl_conf {
 			Exec["sysctl"],
 		],
 	}
-	file { '/etc/modules-load.d/nf_conntrack':
+	file { '/etc/modules-load.d/nf_conntrack.conf':
 		ensure  => file,
 		owner   => 'root',
 		group   => 'root',
