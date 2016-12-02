@@ -1,13 +1,11 @@
 #!/bin/bash
 exec >>/var/log/fastd-verifylog_<%= @mtu %> 2>&1
 # set -ix
-# TODO hier irgendetwas schlaues hinschreiben, dass erstmal eine blacklist
-# prueft und ansonsten immer erfolgreich beendet wird
 key=$1
 
 if grep -q "$key" "<%= @dir %>/backbone/blacklist/blacklist"
 then
   exit 1
 else
-  exit 0
+  source ./on_verify_batman
 fi

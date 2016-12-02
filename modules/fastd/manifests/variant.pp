@@ -57,6 +57,8 @@ define fastd::variant (
       content => template('fastd/fastd-up.erb');
     "${dir}/verify":
       content => template('fastd/verify.erb');
+    "${dir}/on_verify_batman":
+      content => template('fastd/on_verify_batman.erb');
     "${dir}/fastd.conf":
       mode    => '0644',
       content => template('fastd/fastd.conf.erb');
