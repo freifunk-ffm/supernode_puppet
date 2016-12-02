@@ -1,0 +1,82 @@
+#!/bin/bash
+# https://forum.freifunk.net/t/bessere-verteilung-von-knoten-clients-auf-sn-unter-fastd/12445
+
+# peer limit may be used as a failsafe and not be changed.
+# use this script as fastd on_verify to roughly balance peers. 
+# If you feel that management should be even stricter and cause 
+# fastd-peers to re-connect to other gateways, then also use the 
+# cron-script that is adjusting the peer limit. This may be useful after 
+# an outage.
+#
+# Managing client count per gateway would be a lot nicer, but the
+# client count for the whole network can only be obtained by querying 
+# other infrastructure (map/api).
+#
+# please append to your fastd.conf (config file of fastd) like following example
+# "// " prefix is key!
+#
+# // minpeers 50
+# // bufferpercentage 10
+# // batctl /usr/local/sbin/batctl
+#
+set -ix
+# things to adjust to your server
+fastdsockets=( "/var/run/fastd-mesh-vpn-1280.sock" "/var/run/fastd-mesh-vpn-1312.sock" "/var/run/fastd-mesh-vpn-1426.sock" )
+fastdconf="/etc/fastd/mesh-vpn-*/fastd.conf"
+FASTD_PEERCONNECTIONS=2
+BATCTL="/usr/sbin/batctl"
+MINPEERS=50
+BUFFERPERCENTAGE=10
+DISABLEFILE=/root/disable
+
+# this file may be created manually to allow for maintenance
+[ -f $DISABLEFILE ] && exit 1
+
+# check if batctl is avail
+# otherwise we could try to read from proc sys directly
+# this script should not do harm if it is broken => successful exit, 
+# fastd will accept the peer.
+[ -x $BATCTL ] || exit 0
+
+
+# estimate network size and amount of gateways
+net_peer_amount=$(($($BATCTL o |wc -l) * $FASTD_PEERCONNECTIONS))
+gwamount=$($BATCTL gwl -H |wc -l)
+((gwamount+=1))
+
+## dirty count fastdconnections, 
+## timeout means that connection on verify need 0.2 seconds, some consider this long!
+# 0.2 seconds per verify means there can 50 connections be verified per second. 
+connected_peer_amount=0
+for fastdsocket in ${fastdsockets[@]}
+do
+  connectd_peer_thisinstance=$(timeout --foreground .2 ncat -U  $fastdsocket |grep -o established|wc -l )
+  ((connected_peer_amount+=$connectd_peer_thisinstance))
+done
+
+# set connection limit and doing so, consider a buffersize
+connection_average_estimate=$(( net_peer_amount / gwamount )) 
+connection_limit_estimate=$((connection_average_estimate + (connection_limit_estimate * BUFFERPERCENTAGE)/100))
+
+[[ $connection_limit_estimate -lt $MINPEERS ]] && connection_limit_estimate=$MINPEERS
+
+# get actual peer limit
+peerlimit=$(grep -oP '(?<=^peer\slimit\s)[0-9]+(?=\s*;$)' $fastdconf|awk -F: '{sum=sum+$2} END {print sum}')
+
+[[ $peerlimit != *[!0-9]* ]] ||
+{
+    # set a sane default if peerlimit is not defined or not numeric
+    peerlimit=$((connection_limit_estimate+1))
+}
+
+[[ $peerlimit -gt $connection_limit_estimate ]] ||
+{
+  # if a peer limit has been set via fastd.conf, cap the connection limit
+  # estimate at that peer limit.
+  connection_limit_estimate=$peerlimit
+}
+
+[[ $connection_limit_estimate -gt $connected_peer_amount ]] && exit 0
+
+exit 1
+
