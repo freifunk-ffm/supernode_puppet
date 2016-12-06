@@ -5,7 +5,7 @@ This is just a dirty collection of puppet modules.
 Setup
 * set host name
 
-The following is obsolet.
+The following is obsolet:
 * place firewall file in /etc/fw
 * edit manifests/supernode.pp (fastdnum + key)
 * puppet apply  --modulepath modules manifests/site.pp
