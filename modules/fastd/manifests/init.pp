@@ -13,7 +13,7 @@ class fastd (
   $user = 'fastd_serv'
 
   package { [
-    'fastd', 'bridge-utils', 'curl',
+    'fastd', 'bridge-utils', 'curl', 'nmap',
   ]:
     ensure  => installed,
   }
