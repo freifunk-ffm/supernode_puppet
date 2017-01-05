@@ -23,7 +23,6 @@ asList=(
     14907   # WIKIMEDIA-USA
     10310   # Yahoo
     8302    # Zattoo
-    44949   # GIGACODES
 )
 
 IPSET=/sbin/ipset
