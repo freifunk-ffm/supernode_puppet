@@ -7,10 +7,20 @@ max-lease-time 720;
 
 log-facility local7;
 
+# suppress wpad DHCPINFORM requests from MSFT devices
+# See https://lists.isc.org/pipermail/dhcp-users/2013-September/017193.html
+option wpad code 252 = text;
+option wpad "\n\000";
+class "MSFT" {
+	match if substring(option vendor-class-identifier, 0, 4) = "MSFT";
+	option dhcp-parameter-request-list = concat(option dhcp-parameter-request-list, fc);
+}
+
+option interface-mtu 1280; # MTU for br-client (min MTU v6)
+
 subnet 10.126.0.0 netmask 255.255.0.0 {
 	range 10.126.<%= @ipv4_subnet_start %>.10 10.126.<%= @ipv4_subnet_end %>.255;
 	option routers 10.126.<%= @ipv4_subnet_start %>.<%= @gateway_router_host %>;
-	option interface-mtu 1280; # MTU for br-client (min MTU v6)
 	pool {
 		range 10.126.0.1 10.126.<%= @ipv4_subnet_start %>.9;
 		deny all clients;
