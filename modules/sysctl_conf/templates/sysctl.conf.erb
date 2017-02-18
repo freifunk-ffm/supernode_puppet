@@ -31,6 +31,13 @@ net.ipv6.conf.all.accept_source_route = 0
 net.ipv6.conf.default.accept_source_route = 0
 
 
+#
+# Don't filter packet passing a bridge and not being routed on this host.
+net.bridge.bridge-nf-call-iptables = 0
+net.bridge.bridge-nf-call-ip6tables = 0
+net.bridge.bridge-nf-call-arptables = 0
+
+
 ## IPv4 tuning
 
 #Prevent SYN attack, enable SYNcookies (they will kick-in when the max_syn_backlog reached)
@@ -66,6 +73,14 @@ net.nf_conntrack_max = 1337000
 net.ipv4.netfilter.ip_conntrack_max = 1337000 
 net.ipv4.netfilter.ip_conntrack_generic_timeout = 120
 net.ipv4.netfilter.ip_conntrack_tcp_timeout_established = 1200
+
+#
+# "Be conservative in what you do,
+#  be liberal in what you accept from others."
+#  If it's non-zero, we mark only out of window RST segments as INVALID.
+#  -- net/netfilter/nf_conntrack_proto_tcp.c
+#
+net.ipv4.netfilter.ip_conntrack_tcp_be_liberal = 1
 
 ## IPv6 tuning
 
