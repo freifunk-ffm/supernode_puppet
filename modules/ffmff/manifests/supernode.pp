@@ -121,6 +121,14 @@ class ffmff::supernode (
       peerlimit		=> 220,
       macvendor		=> '02:ff:3f',
       backbone		=> false;
+    'mesh-vpn-1312':
+      nullcipher        => true,
+      mtu               => 1312,
+      port              => 10004,
+      pmtu              => false,
+      peerlimit		=> 220,
+      macvendor		=> '02:ff:4f',
+      backbone		=> false;
   }
 
   include ff_tools
@@ -294,7 +302,7 @@ class ffmff::supernode (
       source => 'net',
       dest   => '$FW',  # all?
       proto  => 'udp',
-      dport  => '10000:10003';
+      dport  => '10000:10004';
     'prometheus':
       order  => 9,
       source => 'all',
@@ -398,7 +406,7 @@ class ffmff::supernode (
       source => 'net',
       dest   => '$FW',  # all?
       proto  => 'udp',
-      dport  => '10000:10003';
+      dport  => '10000:10004';
     'foo2':
       order  => 9,
       source => 'users:ff00::/8',
