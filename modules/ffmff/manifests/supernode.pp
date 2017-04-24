@@ -309,6 +309,11 @@ class ffmff::supernode (
       dest   => '$FW',  # all?
       proto  => 'tcp',
       dport  => '9100';
+    'gre':
+      order  => 10,
+      source => 'all',
+      dest   => '$FW',
+      proto  => 'gre';
     'allow local exit':
       order  => 99,
       source => 'users',
