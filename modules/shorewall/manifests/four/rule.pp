@@ -66,5 +66,4 @@ define shorewall::four::rule (
       $mark, $connlimit, $time, $headers, $switch, $helper,
     ],
   }
-
 }

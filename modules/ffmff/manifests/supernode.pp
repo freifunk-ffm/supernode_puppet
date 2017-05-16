@@ -318,6 +318,12 @@ class ffmff::supernode (
       order  => 99,
       source => 'users',
       dest   => 'net:+exit';
+    'outgoing-mail':
+      source => 'users',
+      destination => ['net', 'ovpn'],
+      action  => 'SMTP(REJECT)';
+ }
+
   }
 
   Shorewall::Four::Stoppedrule {
@@ -422,6 +428,10 @@ class ffmff::supernode (
       dest   => '$FW',  # all?
       proto  => 'tcp',
       dport  => '9100';
+    'outgoing-mail':
+      source => 'users',
+      destination => ['net', 'ovpn'],
+      action  => 'SMTP(REJECT)';
     'gre':
       order  => 10,
       source => 'net',
