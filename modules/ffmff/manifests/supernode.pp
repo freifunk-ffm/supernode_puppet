@@ -302,7 +302,7 @@ class ffmff::supernode (
       source => 'net',
       dest   => '$FW',  # all?
       proto  => 'udp',
-      dport  => '10000:10004';
+      dport  => '10000:10010';
     'prometheus':
       order  => 9,
       source => 'all',
@@ -411,7 +411,7 @@ class ffmff::supernode (
       source => 'net',
       dest   => '$FW',  # all?
       proto  => 'udp',
-      dport  => '10000:10004';
+      dport  => '10000:10010';
     'foo2':
       order  => 9,
       source => 'users:ff00::/8',
@@ -422,6 +422,11 @@ class ffmff::supernode (
       dest   => '$FW',  # all?
       proto  => 'tcp',
       dport  => '9100';
+    'gre':
+      order  => 10,
+      source => 'net',
+      dest   => '$FW',
+      proto  => 'gre';
   }
 
   # fix dependency cycle
