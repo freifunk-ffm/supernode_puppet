@@ -55,7 +55,7 @@ do
 done
 
 # set connection limit and doing so, consider a buffersize
-connection_average_estimate=$(( net_peer_amount / gwamount )) 
+connection_average_estimate=$(( 2 * net_peer_amount / gwamount )) 
 connection_limit_estimate=$((connection_average_estimate + (connection_limit_estimate * BUFFERPERCENTAGE)/100))
 
 [[ $connection_limit_estimate -lt $MINPEERS ]] && connection_limit_estimate=$MINPEERS
