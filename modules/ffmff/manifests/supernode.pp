@@ -320,7 +320,7 @@ class ffmff::supernode (
       dest   => 'net:+exit';
     'outgoing-mail':
       source => 'users',
-      destination => ['net', 'ovpn'],
+      dest => ['net', 'ovpn'],
       action  => 'SMTP(REJECT)';
   }
 
@@ -428,7 +428,7 @@ class ffmff::supernode (
       dport  => '9100';
     'outgoing-mail':
       source => 'users',
-      destination => ['net', 'ovpn'],
+      dest => ['net', 'ovpn'],
       action  => 'SMTP(REJECT)';
     'gre':
       order  => 10,
