@@ -319,6 +319,7 @@ class ffmff::supernode (
       source => 'users',
       dest   => 'net:+exit';
     'outgoing-mail':
+      order  => 20,
       source => 'users',
       dest => ['net', 'ovpn'],
       action  => 'SMTP(REJECT)';
@@ -427,6 +428,7 @@ class ffmff::supernode (
       proto  => 'tcp',
       dport  => '9100';
     'outgoing-mail':
+      order  => 20,
       source => 'users',
       dest => ['net', 'ovpn'],
       action  => 'SMTP(REJECT)';
