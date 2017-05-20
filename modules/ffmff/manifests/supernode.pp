@@ -322,8 +322,6 @@ class ffmff::supernode (
       source => 'users',
       destination => ['net', 'ovpn'],
       action  => 'SMTP(REJECT)';
- }
-
   }
 
   Shorewall::Four::Stoppedrule {
