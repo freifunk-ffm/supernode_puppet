@@ -411,6 +411,12 @@ class ffmff::supernode (
       dest   => '$FW',  # all?
       proto  => 'udp',
       dport  => [67, 68];
+    'announced':
+      order  => 10,
+      source => 'users',
+      dest   => '$FW',  # all?
+      proto  => 'udp',
+      dport  => 1001;
     'fastd':
       order  => 8,
       source => 'net',
