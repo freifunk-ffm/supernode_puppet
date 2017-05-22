@@ -302,7 +302,7 @@ class ffmff::supernode (
       source => 'net',
       dest   => '$FW',  # all?
       proto  => 'udp',
-      dport  => '10000:10004';
+      dport  => '10000:10010';
     'prometheus':
       order  => 9,
       source => 'all',
@@ -318,6 +318,11 @@ class ffmff::supernode (
       order  => 99,
       source => 'users',
       dest   => 'net:+exit';
+    'outgoing-mail':
+      order  => 20,
+      source => 'users',
+      dest => ['net', 'ovpn'],
+      action  => 'SMTP(REJECT)';
   }
 
   Shorewall::Four::Stoppedrule {
@@ -406,12 +411,18 @@ class ffmff::supernode (
       dest   => '$FW',  # all?
       proto  => 'udp',
       dport  => [67, 68];
+    'announced':
+      order  => 10,
+      source => 'users',
+      dest   => '$FW',  # all?
+      proto  => 'udp',
+      dport  => 1001;
     'fastd':
       order  => 8,
       source => 'net',
       dest   => '$FW',  # all?
       proto  => 'udp',
-      dport  => '10000:10004';
+      dport  => '10000:10010';
     'foo2':
       order  => 9,
       source => 'users:ff00::/8',
@@ -422,6 +433,16 @@ class ffmff::supernode (
       dest   => '$FW',  # all?
       proto  => 'tcp',
       dport  => '9100';
+    'outgoing-mail':
+      order  => 20,
+      source => 'users',
+      dest => ['net', 'ovpn'],
+      action  => 'SMTP(REJECT)';
+    'gre':
+      order  => 10,
+      source => 'net',
+      dest   => '$FW',
+      proto  => 'gre';
   }
 
   # fix dependency cycle
