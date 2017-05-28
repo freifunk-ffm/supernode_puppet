@@ -70,17 +70,6 @@ net.ipv4.route.max_size = 8388608
 
 # Tweak conntrack
 net.nf_conntrack_max = 50000
-net.ipv4.netfilter.ip_conntrack_max = 50000 
-net.ipv4.netfilter.ip_conntrack_generic_timeout = 120
-net.ipv4.netfilter.ip_conntrack_tcp_timeout_established = 1200
-
-#
-# "Be conservative in what you do,
-#  be liberal in what you accept from others."
-#  If it's non-zero, we mark only out of window RST segments as INVALID.
-#  -- net/netfilter/nf_conntrack_proto_tcp.c
-#
-net.ipv4.netfilter.ip_conntrack_tcp_be_liberal = 1
 
 ## IPv6 tuning
 
