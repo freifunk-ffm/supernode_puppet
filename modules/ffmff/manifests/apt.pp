@@ -26,19 +26,19 @@ package { ['apt-transport-https']: ensure => installed }
   }
 
   apt::source { 'debian':
-    location => 'http://mirrors.kernel.org/debian',
+    location => 'http://deb.debian.org/debian',
     release  => $release,
   }
 
   apt::source { 'updates':
-    location => 'http://mirrors.kernel.org/debian',
+    location => 'http://deb.debian.org/debian',
     release  => "${release}-updates",
   }
 
   # Do not use apt::backports, as this pins the origin.
   # As we use the same origin for everything, that brakes pins
   apt::source { 'backports':
-    location => 'http://mirrors.kernel.org/debian',
+    location => 'http://deb.debian.org/debian',
     release  => "${release}-backports",
   }
 
