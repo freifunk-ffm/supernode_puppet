@@ -2,7 +2,7 @@
 killall alfred
 killall batadv-vis
 
-
+/sbin/ifconfig <%= @interface %> up
 echo 60 >/sys/class/net/bat0/mesh/hop_penalty
 #/usr/sbin/batctl bl enable
 /usr/sbin/batctl if add <%= @interface %>
