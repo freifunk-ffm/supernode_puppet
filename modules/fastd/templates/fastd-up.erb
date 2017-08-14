@@ -2,7 +2,7 @@
 killall alfred
 killall batadv-vis
 
-/sbin/ifconfig <%= @interface %> hw ether <%= @macvendor %>:<%= @rndmac %>:7d:<%= @supernodenum.to_s.rjust(2, "0") %> up
+/sbin/ifconfig bat0 hw ether <%= @macvendor %>:<%= @rndmac %>:7d:<%= @supernodenum.to_s.rjust(2, "0") %> up
 
 echo 60 >/sys/class/net/bat0/mesh/hop_penalty
 #/usr/sbin/batctl bl enable
