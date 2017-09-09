@@ -12,3 +12,4 @@ The following is obsolet:
 * edit /etc/openvpn/ovpn-inet.conf and adapt to vpn-provier
 * generate a hash (doveadm -pw ssha) using the the password found in /etc/postfis/sasl_passwd and add to /etc/dovecot/passwd on the mailserver
 * test routing
+GNAAAAHAAHAHAHAHAHAHAAAAAAAAA
