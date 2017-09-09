@@ -3,7 +3,9 @@
 # state of available tunnel interfaces. Execute in regular intervals
 # via cron.
 
-set -e
+# please NEVER use set -e in this script, otherwise gw mode will not be
+# switched back on if appropriate - Chrsitof - 2017-09-09
+# set -e
 
 #INTERFACES=(tun0 tun1 tun2 tun3)       # Array of all VPN interfaces
 INTERFACES=(ovpn-inet)  # Array of all VPN interfaces
