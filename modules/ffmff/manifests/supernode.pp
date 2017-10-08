@@ -297,20 +297,27 @@ class ffmff::supernode (
       dest   => '$FW',  # all?
       proto  => 'udp',
       dport  => [67, 68];
-    'fastd':
+    'fastd-own-ip':
       order  => 8,
+      source => 'net:185.206.208.0/22',
+      dest   => '$FW',  # all?
+      proto  => 'udp',
+      dport  => '10000:10010',
+      action  => 'DROP';
+    'fastd':
+      order  => 9,
       source => 'net',
       dest   => '$FW',  # all?
       proto  => 'udp',
       dport  => '10000:10010';
     'prometheus':
-      order  => 9,
+      order  => 19,
       source => 'all',
       dest   => '$FW',  # all?
       proto  => 'tcp',
       dport  => '9100';
     'gre':
-      order  => 10,
+      order  => 20,
       source => 'all',
       dest   => '$FW',
       proto  => 'gre';
