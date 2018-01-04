@@ -3,6 +3,13 @@ exec >>/var/log/fastd-verifylog_<%= @mtu %> 2>&1
 # set -ix
 key=$1
 
+
+if [[ "$key" == "2f3e4d683815b58c57f6dd839d1e5f65cce9e5a85d472651430121f7b8fe6674" ]]
+then
+# this is the VM that connects the dl-server to the network
+  exit 0
+fi
+
 if grep -q "$key" "<%= @dir %>/backbone/blacklist/blacklist"
 then
   exit 1
