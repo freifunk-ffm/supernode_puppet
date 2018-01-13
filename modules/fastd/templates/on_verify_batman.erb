@@ -21,9 +21,9 @@
 #
 set -ix
 # things to adjust to your server
-fastdsockets=( "/var/run/fastd-mesh-vpn-1280.sock" "/var/run/fastd-mesh-vpn-1312.sock" "/var/run/fastd-mesh-vpn-1426.sock" )
+fastdsockets=( "/var/run/fastd-mesh-vpn-1280.sock" "/var/run/fastd-mesh-vpn-1312.sock" "/var/run/fastd-mesh-vpn-1374.sock" "/var/run/fastd-mesh-vpn-1426.sock" )
 fastdconf="/etc/fastd/mesh-vpn-*/fastd.conf"
-FASTD_PEERCONNECTIONS=2
+FASTD_PEERCONNECTIONS=1
 BATCTL="/usr/sbin/batctl"
 MINPEERS=50
 BUFFERPERCENTAGE=10
