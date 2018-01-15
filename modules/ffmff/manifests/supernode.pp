@@ -102,7 +102,7 @@ class ffmff::supernode (
       mtu               => 1280,
       port              => 10001,
       pmtu              => false,
-      peerlimit		=> 150,
+      peerlimit		=> 11,
       macvendor		=> '02:ff:1f',
       backbone => false;
     'mesh-vpn-1426':
@@ -110,7 +110,7 @@ class ffmff::supernode (
       mtu               => 1426,
       port              => 10002,
       pmtu              => false,
-      peerlimit		=> 150,
+      peerlimit		=> 11,
       macvendor		=> '02:ff:2f',
       backbone => false;
     'mesh-vpn-1374':
@@ -118,7 +118,7 @@ class ffmff::supernode (
       mtu               => 1374,
       port              => 10003,
       pmtu              => false,
-      peerlimit		=> 150,
+      peerlimit		=> 115,
       macvendor		=> '02:ff:3f',
       backbone		=> false;
     'mesh-vpn-1312':
@@ -126,7 +126,7 @@ class ffmff::supernode (
       mtu               => 1312,
       port              => 10004,
       pmtu              => false,
-      peerlimit		=> 150,
+      peerlimit		=> 11,
       macvendor		=> '02:ff:4f',
       backbone		=> false;
   }
