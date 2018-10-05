@@ -1,5 +1,3 @@
-# test123 
-
 node /fastd\d+\.ffm\.freifunk\.net/ {
   $certname = $::trusted['certname']
 
@@ -38,9 +36,4 @@ node 'fastd25.ffm.freifunk.net' {
     fastd_key    => '0000000000000000000000000000000000000000000000000000000000000000',
     rndmac       => fqdn_rand(99),
   }
-}
-
-node 'prometheus.ffm.freifunk.net' {
-  include ffmff
-  include prometheus::server
 }
