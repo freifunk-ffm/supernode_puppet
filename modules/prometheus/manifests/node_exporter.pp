@@ -9,6 +9,7 @@ class prometheus::node_exporter (
     ensure => present,
   } ->
 
+/*
   file { $envvars:
     ensure  => file,
     mode    => '0644',
@@ -16,6 +17,7 @@ class prometheus::node_exporter (
     group   => 'root',
     content => template('prometheus/prometheus-node-exporter.default'),
   } ~>
+*/
 
   service { $service:
     ensure => running,
